@@ -32,13 +32,13 @@ function Header(props) {
         </Typography>
         <Box ml="auto">
           <Button>
-            <Link to="/home">Home</Link>
+            <Link to="/">Home</Link>
           </Button>
           <Button>
             <Link to="/product">Product</Link>
           </Button>
           <Button>
-            <Link to="/detail">Detail</Link>
+            <Link to="/about">About us</Link>
           </Button>
           <IconButton edge="start" color="inherit" aria-label="menu">
             <Link to="/cart">
@@ -47,6 +47,9 @@ function Header(props) {
             </Badge>
             </Link>
           </IconButton>
+          <Button>
+            <Link to="/Signup">Sign up</Link>
+          </Button>
         </Box>
       </Toolbar>
     </AppBar>

@@ -8,6 +8,8 @@ import Home from "./Home";
 import Cart from "./Cart";
 import ProductDetail from "./ProductDetail";
 import axios from 'axios'
+import SignUp from './SignUp'
+import AboutUs from './AboutUs'
 
 const style = (theme) => ({
   root: {
@@ -53,7 +55,9 @@ class ShoppingCart extends Component {
           handleChangePage = {this.handleChangePage}
           ></ProductList>
         </Route>
+        <Route path="/about" component={AboutUs}></Route>
         <Route path="/cart" component={Cart}></Route>
+        <Route path="/signup" component={SignUp}></Route>
         <Route path="*">
           404 PAGE
         </Route>
