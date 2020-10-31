@@ -81,12 +81,14 @@ app.get('/t-shirt', (req, res) =>{
 });
 
 app.get('/t-shirt/:id', (req, res) =>{
+    //console.log(req.params)
     const data = {
         // username:'khanh',
         // age:'21'
     };
-
-    BlogPost.find({})
+    BlogPost.findOne({
+        id:req.params.id
+    })
     .then((data)=>{
         console.log('Data: ', data);
         res.json(data);

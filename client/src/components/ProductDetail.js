@@ -32,7 +32,7 @@ class ProductDetail extends Component {
   };
   componentDidMount(){
     axios.get(
-      `https://kmin-academy-shopping-cart-api.herokuapp.com/products/${this.props.match.params.masanpham}`
+      `http://localhost:8080/t-shirt/${this.props.match.params.masanpham}`
     )
     .then(res =>{
       const {id, name, price ,size ,src } = res.data;
