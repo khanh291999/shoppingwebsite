@@ -106,7 +106,7 @@ const onSubmitLogin  = async () => {
             autoComplete="email" 
             onChange={onChangeEmail} 
           />
-          { <p className="text-red-400 text-xs italic">{validationMsg.email}</p>}
+          { <p style={{color:"red"}}>{validationMsg.email}</p>}
           <TextField
             variant="outlined"
             margin="normal"
@@ -119,7 +119,7 @@ const onSubmitLogin  = async () => {
             autoComplete="current-password"
             onChange={onChangePassword}
           />
-          {<p className="text-red-400 text-xs italic">{validationMsg.password}</p>}
+          {<p style={{color:"red"}}>{validationMsg.password}</p>}
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
