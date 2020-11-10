@@ -36,9 +36,23 @@ const CartSchema = new Schema({
      product:Array
 })
 
+const AdminSchema = new Schema({
+    id:Number,
+    username:String,
+    password:String
+})
+
+const UserSchema = new Schema({
+    id:Number,
+    username:String,
+    password:String
+})
+
 //Model
 const BlogPost = mongoose.model('BlogPost', BlogPostSchema);
 const Cart = mongoose.model('cart',CartSchema)
+const Admin = mongoose.model('admin',AdminSchema)
+const User = mongoose.model('user',UserSchema)
 
 //Saving data to our mongo database
 const data = {
@@ -48,6 +62,8 @@ const data = {
 
 const newBlogPost = new BlogPost(data); // instance of the model
 const newCart = new Cart(data);
+const newAdmin = new Admin(data);
+const newUser = new User(data);
 
 //.save()
 // newBlogPost.save((error)=>{
@@ -127,5 +143,35 @@ app.post('/cart', (req,res)=>{
         })
     })
 })
+
+app.get('/admin', (req, res) =>{
+    const data = {
+        // username:'quyen',
+        // age:'20'
+    };
+    Admin.find({})
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.get('/user', (req, res) =>{
+    const data = {
+        // username:'quyen',
+        // age:'20'
+    };
+    User.find({})
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
 
 app.listen(PORT, console.log(`Sever is starting at ${PORT}`));
