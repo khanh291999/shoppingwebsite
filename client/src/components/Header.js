@@ -8,6 +8,7 @@ import { Button, Box, Badge } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import {connect} from "react-redux"
+import AuthOptions from "./auth/AuthOptions"
 //function component dung makestyles
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,7 +51,11 @@ function Header(props) {
           <Button>
             <Link to="/Signup">Sign up</Link>
           </Button>
+          <Button>
+          <AuthOptions />
+          </Button>
         </Box>
+     
       </Toolbar>
     </AppBar>
   );
