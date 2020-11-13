@@ -43,13 +43,14 @@ function Header(props) {
           <Button>
             <Link to="/about">About us</Link>
           </Button>
+          {userData.user ?(
           <IconButton edge="start" color="inherit" aria-label="menu">
             <Link to="/cart">
             <Badge badgeContent={props.quantity} color="secondary">
               <ShoppingCart />
             </Badge>
             </Link>
-          </IconButton>
+          </IconButton>):("")}
           <Button>
           {userData.user ? (
             <p>Welcome {userData.user.displayName}</p>

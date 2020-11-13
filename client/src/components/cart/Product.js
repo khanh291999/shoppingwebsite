@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Grid, Box, Typography, Button } from "@material-ui/core";
 import {Link} from 'react-router-dom'
+import UserContext from "../../context/userContext"
 
 export default function Product(props) {
+  const { userData } = useContext(UserContext);
   const handleAddToCart = () =>{
   const { id, name, price, img } = props;
     props.addToCart({
@@ -39,9 +41,12 @@ export default function Product(props) {
           <Typography color="secondary" variant="h4">
             {price}$
           </Typography>
+          {userData.user ?(
           <Button variant="contained" color="primary" onClick={handleAddToCart}>
             Add to Cart
-          </Button>
+          </Button>):(
+              ""
+          )}
         </Box>
       </Box>
     </Grid>
