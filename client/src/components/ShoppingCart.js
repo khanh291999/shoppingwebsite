@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import ProductList from "./ProductList";
+import ProductList from "./cart/ProductList";
 import Header from "./Header";
 import Footer from "./Footer";
 import { withStyles } from "@material-ui/core/styles";
 import { Route, Switch } from "react-router-dom";
 import Home from "./Home";
-import Cart from "./Cart";
-import ProductDetail from "./ProductDetail";
+import Cart from "./cart/Cart";
+import ProductDetail from "./cart/ProductDetail";
 import axios from 'axios'
 import SignUp from './SignUp'
 import AboutUs from './AboutUs'
