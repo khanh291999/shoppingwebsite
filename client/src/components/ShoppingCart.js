@@ -8,7 +8,7 @@ import Home from "./Home";
 import Cart from "./cart/Cart";
 import ProductDetail from "./cart/ProductDetail";
 import axios from 'axios'
-import SignUp from './SignUp'
+//import SignUp from './SignUp'
 import AboutUs from './AboutUs'
 import Login from './auth/Login'
 import Register from './auth/Register'
@@ -60,7 +60,7 @@ class ShoppingCart extends Component {
         </Route>
         <Route path="/about" component={AboutUs}></Route>
         <Route path="/cart" component={Cart}></Route>
-        <Route path="/signup" component={SignUp}></Route>
+        {/* <Route path="/signup" component={SignUp}></Route> */}
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="*">
