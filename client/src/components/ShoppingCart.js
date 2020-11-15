@@ -1,13 +1,18 @@
 import React, { Component } from "react";
-import ProductList from "./ProductList";
+import ProductList from "./cart/ProductList";
 import Header from "./Header";
 import Footer from "./Footer";
 import { withStyles } from "@material-ui/core/styles";
 import { Route, Switch } from "react-router-dom";
 import Home from "./Home";
-import Cart from "./Cart";
-import ProductDetail from "./ProductDetail";
+import Cart from "./cart/Cart";
+import ProductDetail from "./cart/ProductDetail";
 import axios from 'axios'
+//import SignUp from './SignUp'
+import AboutUs from './AboutUs'
+import Login from './auth/Login'
+import Register from './auth/Register'
+
 
 const style = (theme) => ({
   root: {
@@ -53,7 +58,11 @@ class ShoppingCart extends Component {
           handleChangePage = {this.handleChangePage}
           ></ProductList>
         </Route>
+        <Route path="/about" component={AboutUs}></Route>
         <Route path="/cart" component={Cart}></Route>
+        {/* <Route path="/signup" component={SignUp}></Route> */}
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
         <Route path="*">
           404 PAGE
         </Route>

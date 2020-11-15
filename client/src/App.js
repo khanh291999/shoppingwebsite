@@ -1,8 +1,42 @@
-import React from "react";
+import React, { useState, useEffect }  from "react";
 import ShoppingCart from "./components/ShoppingCart";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import {createStore} from "redux"
 import {Provider} from "react-redux"
+import Axios from "axios";
+import UserContext from "./context/userContext"
+
+export default function App() {
+  const [userData, setUserData] = useState({
+    token: undefined,
+    user: undefined,
+  });
+
+  useEffect(() => {
+    const checkLoggedIn = async () => {
+      let token = localStorage.getItem("auth-token");
+      if (token === null) {
+        localStorage.setItem("auth-token", "");
+        token = "";
+      }
+      const tokenRes = await Axios.post(
+        "http://localhost:8080/users/tokenIsValid",
+        null,
+        { headers: { "x-auth-token": token } }
+      );
+      if (tokenRes.data) {
+        const userRes = await Axios.get("http://localhost:8080/users/", {
+          headers: { "x-auth-token": token },
+        });
+        setUserData({
+          token,
+          user: userRes.data,
+        });
+      }
+    };
+
+    checkLoggedIn();
+  }, []);
 
 const theme = createMuiTheme({
   palette: {
@@ -72,16 +106,21 @@ const rootReducer = (state = initState, action) =>{
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
-function App() {
+
   return (
     <Provider store={store}>
+ 
       <ThemeProvider theme={theme}>
       <div className="App">
-        <ShoppingCart />>
+      <UserContext.Provider value={{ userData, setUserData }}>
+        <ShoppingCart />
+      </UserContext.Provider>
       </div>
       </ThemeProvider>
+      
     </Provider>
   );
+
 }
 
-export default App;
+//export default App;

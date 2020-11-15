@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -8,6 +8,8 @@ import { Button, Box, Badge } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import {connect} from "react-redux"
+import AuthOptions from "./auth/AuthOptions"
+import UserContext from "../context/userContext";
 //function component dung makestyles
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Header(props) {
   const classes = useStyles(props);
+  const { userData } = useContext(UserContext);
   return (
     <AppBar position="static" className="nav" className={classes.root}>
       <Toolbar variant="dense">
@@ -32,22 +35,36 @@ function Header(props) {
         </Typography>
         <Box ml="auto">
           <Button>
-            <Link to="/home">Home</Link>
+            <Link to="/">Home</Link>
           </Button>
           <Button>
             <Link to="/product">Product</Link>
           </Button>
           <Button>
-            <Link to="/detail">Detail</Link>
+            <Link to="/about">About us</Link>
           </Button>
+          {userData.user ?(
           <IconButton edge="start" color="inherit" aria-label="menu">
             <Link to="/cart">
             <Badge badgeContent={props.quantity} color="secondary">
               <ShoppingCart />
             </Badge>
             </Link>
-          </IconButton>
+          </IconButton>):("")}
+          <Button>
+          {userData.user ? (
+            <p>Welcome {userData.user.displayName}</p>
+           ) : (
+          <>
+           <p>You are not logged in</p>
+           </>
+           )}
+          </Button>
+          <Button>
+          <AuthOptions />
+          </Button>
         </Box>
+     
       </Toolbar>
     </AppBar>
   );
