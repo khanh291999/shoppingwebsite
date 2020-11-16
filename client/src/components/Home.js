@@ -1,20 +1,11 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import UserContext from "../context/userContext";
+import React from "react";
+import VideoSection from "./VideoSection";
 
 export default function Home() {
-  const { userData } = useContext(UserContext);
+  // const { userData } = useContext(UserContext);
   return (
     <div className="page">
-    {/* {userData.user ? (
-      <h1>Welcome {userData.user.displayName}</h1>
-    ) : (
-      <>
-        <h2>You are not logged in</h2>
-        <Link to="/login">Log in</Link>
-      </>
-    )} */}
-    <h1>Homepage</h1>
+      <VideoSection/>
   </div>
   );
 }

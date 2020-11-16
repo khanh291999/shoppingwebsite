@@ -11,22 +11,8 @@ import IconButton from "@material-ui/core/IconButton";
 import { ShoppingCart } from "@material-ui/icons";
 import { Badge } from "@material-ui/core";
 
-//function component dung makestyles
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.primary.main,
-    // position: (props) => (props.fixed ? "fixed" : ""),
-    "& button": {
-      color: "white",
-      "& span": {
-        textDecoration: "underline",
-      },
-    },
-  },
-}));
-
 function Header(props) {
-  const classes = useStyles(props);
+  // const classes = useStyles(props);
   const { userData, setUserData } = useContext(UserContext);
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -34,7 +20,6 @@ function Header(props) {
 
   const history = useHistory();
 
-  const register = () => history.push("/register");
   const login = () => history.push("/login");
   const logout = () => {
     setUserData({
@@ -63,7 +48,7 @@ function Header(props) {
     <>
     <nav className='navbar'>
       <div className='navbar-container'>
-        <Link to='/' className='navbar-logo'>
+        <Link to='/' className='navbar-logo' style={{fontFamily: "LibreBaskervilleBold,Georgia,Times,serif"}}>
           K&Q
           <i class='fab fa-typo3' />
         </Link>
