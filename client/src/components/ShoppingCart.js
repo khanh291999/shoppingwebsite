@@ -30,7 +30,7 @@ class ShoppingCart extends Component {
   componentDidMount(){
     //promise
     this.setState({isLoading:true})
-    axios.get("http://localhost:8080/t-shirt").then(res=>{
+    axios.get("http://localhost:8080/jacket").then(res=>{
       const {data} = res;
       this.setState({products:data, isLoading:false})
     }).catch(err=>{

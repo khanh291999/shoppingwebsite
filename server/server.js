@@ -43,6 +43,13 @@ const AdminSchema = new Schema({
     password:String
 })
 
+const JacketSchema = new Schema({
+    id:Number,
+    name:String,
+    src:String,
+    price:Number,
+});
+
 // const UserSchema = new Schema({
 //     id:Number,
 //     username:String,
@@ -53,6 +60,7 @@ const AdminSchema = new Schema({
 const BlogPost = mongoose.model('BlogPost', BlogPostSchema);
 const Cart = mongoose.model('cart',CartSchema)
 const Admin = mongoose.model('admin',AdminSchema)
+const Jacket = mongoose.model('jacket',JacketSchema)
 //const User = mongoose.model('user',UserSchema)
 
 //Saving data to our mongo database
@@ -64,6 +72,7 @@ const data = {
 const newBlogPost = new BlogPost(data); // instance of the model
 const newCart = new Cart(data);
 const newAdmin = new Admin(data);
+const newJacket = new Jacket(data);
 //const newUser = new User(data);
 
 //.save()
@@ -116,6 +125,40 @@ app.get('/t-shirt/:id', (req, res) =>{
     })
 });
 
+
+app.get('/jacket', (req, res) =>{
+    const data = {
+        // username:'khanh',
+        // age:'21'
+    };
+
+    Jacket.find({})
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.get('/jacket/:id', (req, res) =>{
+    //console.log(req.params)
+    const data = {
+        // username:'khanh',
+        // age:'21'
+    };
+    Jacket.findOne({
+        id:req.params.id
+    })
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
 
 app.get('/cart', (req, res) =>{
     const data = {

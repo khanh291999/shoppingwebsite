@@ -5,6 +5,7 @@ import {withStyles} from '@material-ui/core'
 import { withRouter } from "react-router-dom";
 import {connect} from 'react-redux'
 import axios from 'axios'
+import ImageContainer from "./ImageContainer";
 
 const styles = (theme=>({
   img_container: {
@@ -25,23 +26,24 @@ class ProductDetail extends Component {
   //state-hook
   state={
     selected_size: "",
-    quantity: 1
+    quantity: 1,
+    img:[]
   }
   handleChange = event => {
     this.setState({selected_size:event.target.value});
   };
   componentDidMount(){
     axios.get(
-      `http://localhost:8080/t-shirt/${this.props.match.params.masanpham}`
+      `http://localhost:8080/jacket/${this.props.match.params.masanpham}`
     )
     .then(res =>{
-      const {id, name, price ,size ,src } = res.data;
+      const {id, name, price ,size ,image } = res.data;
       this.setState({
         id,
         name,
         price,
         size,
-        img: src
+        img:image
       });
     })
     .catch(e =>{
@@ -69,7 +71,9 @@ class ProductDetail extends Component {
       <Grid container>
       <Grid item md={4} className={classes.img_container}>
         <Box className={classes.big_img}>
-          <img src={img}/>
+          {/* <img src={img}/> */}
+          
+          <ImageContainer items={img}/>
         </Box>
         {/* <Box display="flex">
           <Box className={classes.small_img}>small</Box>

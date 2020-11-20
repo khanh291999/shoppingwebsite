@@ -15,11 +15,10 @@ export default function Product(props) {
       quantity:1,
       img,
     })
-    console.log("ADD");
   }
   const { id, name, price, img } = props;
   return (
-    <Grid item md={3}>
+    <Grid item md={3} >
       <Box boxShadow={5}>
         <Box
           height={250}
@@ -35,14 +34,14 @@ export default function Product(props) {
           />
         </Box>
         <Box p={2}>
-          <Typography color="primary" variant="h5">
+          <Typography color="inherit" variant="body1">
             <Link to={"/product/"+id}>{name}</Link>
           </Typography>
-          <Typography color="secondary" variant="h4">
+          <Typography color="inherit" variant="subtitle1">
             {price}$
           </Typography>
           {userData.user ?(
-          <Button variant="contained" color="primary" onClick={handleAddToCart}>
+          <Button variant="outlined" color="default" onClick={handleAddToCart}>
             Add to Cart
           </Button>):(
               ""
