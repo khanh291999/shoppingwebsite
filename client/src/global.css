@@ -126,3 +126,20 @@ body {
     font-size: 0.9rem;
   }
 }
+
+.img-items {
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+}
+
+.big_img {
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.small_img {
+  min-height: 50px;
+  width: 100%;
+  border: 1px solid black;
+}

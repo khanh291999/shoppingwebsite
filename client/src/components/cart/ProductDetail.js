@@ -1,49 +1,46 @@
 import { Box, Grid, Typography, TextField , Container, Button, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from "@material-ui/core";
 //import { TextFields } from "@material-ui/icons";
 import React, {Component} from "react";
-import {withStyles} from '@material-ui/core'
+import {withStyles, CircularProgress} from '@material-ui/core'
 import { withRouter } from "react-router-dom";
 import {connect} from 'react-redux'
 import axios from 'axios'
 import ImageContainer from "./ImageContainer";
+//import Spinner from "reactstrap"
 
 const styles = (theme=>({
   img_container: {
     boxShadow: theme.shadows[3]
   },
-  big_img:{
-    minHeight:'300px',
-    display:'flex',
-    justifyContent:'center'
-  },
-  small_img:{
-    minHeight:'100px',
-    width:'100%',
-    border:'1px solid black'
-  }
 }))
 class ProductDetail extends Component {
   //state-hook
   state={
     selected_size: "",
     quantity: 1,
-    img:[]
+    img:[],
+    loading: undefined
   }
   handleChange = event => {
     this.setState({selected_size:event.target.value});
   };
   componentDidMount(){
+    this.setState({
+      loading:true,
+  })
     axios.get(
       `http://localhost:8080/jacket/${this.props.match.params.masanpham}`
     )
     .then(res =>{
       const {id, name, price ,size ,image } = res.data;
       this.setState({
+      
         id,
         name,
         price,
         size,
-        img:image
+        img:image,
+        loading:false
       });
     })
     .catch(e =>{
@@ -67,21 +64,23 @@ class ProductDetail extends Component {
   const {classes} = this.props;
   const {id, name , price ,size ,img } = this.state;
   return (
+    <>
+    {this.state.loading === false ?
     <Container>
       <Grid container>
-      <Grid item md={4} className={classes.img_container}>
-        <Box className={classes.big_img}>
+      <Grid item md={3} className={classes.img_container}>
+        {/* <Box > */}
+        {/* className={classes.big_img} */}
           {/* <img src={img}/> */}
-          
           <ImageContainer items={img}/>
-        </Box>
+        {/* </Box> */}
         {/* <Box display="flex">
           <Box className={classes.small_img}>small</Box>
           <Box className={classes.small_img}>small</Box>
           <Box className={classes.small_img}>small</Box>
         </Box> */}
       </Grid>
-      <Grid item md={8}>
+      <Grid item md={9}>
       <Typography variant="h3">{name}</Typography>
       <Typography variant="h4">{price}</Typography>
       <FormControl component="fieldset">
@@ -107,6 +106,12 @@ class ProductDetail extends Component {
       </Grid>
     </Grid>
     </Container>
+    :
+    <Box width="100%" height="100vh" display="flex" justifyContent="center" alignItems="center">
+    <CircularProgress/>
+  </Box>
+  }
+ </>
   );
  }
 }

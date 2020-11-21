@@ -22,12 +22,12 @@ export default class ImageContainer extends Component {
             <>
                 <Container fluid>
                     <Row>
-                        <img  className='img-items' src={(typeof this.state.items) !== 'string' ? this.state.items[this.state.selected] : this.state.items}></img>
+                        <img style={{ maxWidth: "100%", maxHeight: "100%" }}  className='img-items' src={(typeof this.state.items) !== 'string' ? this.state.items[this.state.selected] : this.state.items}></img>
                     </Row>
                     {(typeof this.state.items) !== 'string' && <Row className="mt-3">   
                         {this.state.items.map((item,index)=>{
                             return <Col md={4} onClick={()=>{this.handleSelect(index)}}>
-                                <img className='img-items' key={index} src={item}></img>
+                                <img style={{ maxWidth: "100%", maxHeight: "100%" }} className='img-items' key={index} src={item}></img>
                             </Col>
                         })}
                 
