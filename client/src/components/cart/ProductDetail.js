@@ -66,9 +66,10 @@ class ProductDetail extends Component {
   return (
     <>
     {this.state.loading === false ?
-    <Container>
+    <Container  style={{ marginTop: "50px"}}>
       <Grid container>
-      <Grid item md={3} className={classes.img_container}>
+      <Grid item md={7} >
+      {/* className={classes.img_container} */}
         {/* <Box > */}
         {/* className={classes.big_img} */}
           {/* <img src={img}/> */}
@@ -80,9 +81,9 @@ class ProductDetail extends Component {
           <Box className={classes.small_img}>small</Box>
         </Box> */}
       </Grid>
-      <Grid item md={9}>
-      <Typography variant="h3">{name}</Typography>
-      <Typography variant="h4">{price}</Typography>
+      <Grid item md={5}>
+      <Typography color="inherit" variant="h4">{name}</Typography>
+      <Typography color="inherit" variant="h5">{price}$</Typography>
       <FormControl component="fieldset">
       <FormLabel component="legend">Size:</FormLabel>
       <RadioGroup aria-label="gender" name="gender1" value={this.state.size} onChange={this.handleChange}>
