@@ -113,7 +113,7 @@ const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && wi
       <ThemeProvider theme={theme}>
       <div className="App">
       <UserContext.Provider value={{ userData, setUserData }}>
-        <ShoppingCart />
+        <ShoppingCart /> 
       </UserContext.Provider>
       </div>
       </ThemeProvider>

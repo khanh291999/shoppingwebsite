@@ -1,18 +1,13 @@
 import React, { Component } from "react";
-import ProductList from "./cart/ProductList";
 import Header from "./Header";
 import Footer from "./Footer";
 import { withStyles } from "@material-ui/core/styles";
 import { Route, Switch } from "react-router-dom";
-import Home from "./Home";
-import Cart from "./cart/Cart";
 import ProductDetail from "./cart/ProductDetail";
 import axios from 'axios'
-//import SignUp from './SignUp'
-import AboutUs from './AboutUs'
-import Login from './auth/Login'
-import Register from './auth/Register'
-import MaleJean from "./MaleJean";
+import ProductListMaleJean from "./cart/ProductListMaleJean";
+import ProductDetailMaleJean from "./cart/ProductDetailMaleJean";
+
 
 
 const style = (theme) => ({
@@ -21,7 +16,7 @@ const style = (theme) => ({
   },
 });
 
-class ShoppingCart extends Component {
+class MaleJean extends Component {
   state = {
     products: [],
     isLoading: false,
@@ -31,7 +26,7 @@ class ShoppingCart extends Component {
   componentDidMount(){
     //promise
     this.setState({isLoading:true})
-    axios.get("http://localhost:8080/jacket").then(res=>{
+    axios.get("http://localhost:8080/jean").then(res=>{
       const {data} = res;
       this.setState({products:data, isLoading:false})
     }).catch(err=>{
@@ -45,30 +40,18 @@ class ShoppingCart extends Component {
     const {page,limit} = this.state
     return (
       <div>
-        <Header fixed />
+        {/* <Header fixed /> */}
         <Switch>
-        <Route exact path="/" component={Home}></Route>
-        <Route path="/product/:masanpham" render={()=><ProductDetail products={this.state.product}></ProductDetail>}></Route>
-        <Route path="/product">
-          <ProductList 
+        <Route path="/jean/:masanpham" render={()=><ProductDetailMaleJean products={this.state.product}></ProductDetailMaleJean>}></Route>
+        <Route path="/jean">
+          <ProductListMaleJean 
           isLoading={this.state.isLoading}
           total = {this.state.products.length}
           limit = {this.state.limit}
           page = {this.state.page}
           products={[...this.state.products].splice((page-1)*limit,limit)}
           handleChangePage = {this.handleChangePage}
-          ></ProductList>
-        </Route>
-        <Route path="/jean">
-          <MaleJean></MaleJean>
-        </Route>
-        <Route path="/about" component={AboutUs}></Route>
-        <Route path="/cart" component={Cart}></Route>
-        {/* <Route path="/signup" component={SignUp}></Route> */}
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="*">
-          404 PAGE
+          ></ProductListMaleJean>
         </Route>
         </Switch>
         {/* <ProductList products={this.state.products} />
@@ -81,4 +64,4 @@ class ShoppingCart extends Component {
   }
 }
 
-export default withStyles(style)(ShoppingCart);
+export default withStyles(style)(MaleJean);

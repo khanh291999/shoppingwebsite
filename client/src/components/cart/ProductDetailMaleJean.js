@@ -13,7 +13,7 @@ const styles = (theme=>({
     boxShadow: theme.shadows[3]
   },
 }))
-class ProductDetail extends Component {
+class ProductDetailMaleJean extends Component {
   //state-hook
   state={
     selected_size: "",
@@ -29,7 +29,7 @@ class ProductDetail extends Component {
       loading:true,
   })
     axios.get(
-      `http://localhost:8080/jacket/${this.props.match.params.masanpham}`
+      `http://localhost:8080/jean/${this.props.match.params.masanpham}`
     )
     .then(res =>{
       const {id, name, price ,size ,image } = res.data;
@@ -125,5 +125,5 @@ const mapDispatchToProps = dispatch =>{
   }
 }
 
-export default connect(null,mapDispatchToProps)(withRouter(withStyles(styles)(ProductDetail)));
+export default connect(null,mapDispatchToProps)(withRouter(withStyles(styles)(ProductDetailMaleJean)));
 
