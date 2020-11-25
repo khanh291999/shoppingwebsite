@@ -13,6 +13,8 @@ import AboutUs from './AboutUs'
 import Login from './auth/Login'
 import Register from './auth/Register'
 import MaleJean from "./cart/jean/MaleJean";
+import MaleTshirt from "./cart/t-shirt/MaleTshirt";
+import Femalejacket from "./cart/jacketfemale/FemaleJacket";
 
 
 const style = (theme) => ({
@@ -61,6 +63,12 @@ class ShoppingCart extends Component {
         </Route>
         <Route path="/jean">
           <MaleJean></MaleJean>
+        </Route>
+        <Route path="/t-shirt">
+          <MaleTshirt></MaleTshirt>
+        </Route>
+        <Route path="/femalejacket">
+          <Femalejacket></Femalejacket>
         </Route>
         <Route path="/about" component={AboutUs}></Route>
         <Route path="/cart" component={Cart}></Route>

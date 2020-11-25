@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Container, Box, CircularProgress } from "@material-ui/core";
-import ProductMaleJean from "./ProductMaleJean";
+import ProductMaleTshirt from "./ProductFemaleJacket";
 import {Pagination} from '@material-ui/lab';
 import {connect} from "react-redux"
 import { makeStyles } from '@material-ui/core/styles';
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ProductListMaleJean(props) {
+function ProductListFemaleJacket(props) {
   let total = 0;
   if(props.total % props.limit > 0){
     total = Math.floor(props.total / props.limit) + 1;
@@ -105,7 +105,7 @@ function ProductListMaleJean(props) {
               </ListItem>
               <Collapse in={openfemale} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                <ListItem button component={Link} to="/femalejacket"  className={classes.nested}>
+                  <ListItem button component={Link} to="/femalejacket"  className={classes.nested}>
                     <ListItemIcon>
                       <AddIcon />
                     </ListItemIcon>
@@ -134,7 +134,7 @@ function ProductListMaleJean(props) {
           </Box>:          <Grid container spacing={3}>
             {products.map(product => {
               return (
-                <ProductMaleJean
+                <ProductMaleTshirt
                   name={product.name}
                   price={product.price}
                   key={product.id}
@@ -161,4 +161,4 @@ const mapDispatchToProps = dispatch => {
       dispatch({type:"ADD_TO_CART", payload: product})}
   }
 }
-export default connect(mapStatetoProps, mapDispatchToProps)(ProductListMaleJean)
+export default connect(mapStatetoProps, mapDispatchToProps)(ProductListFemaleJacket)

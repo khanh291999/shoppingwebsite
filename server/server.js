@@ -67,6 +67,14 @@ const TshirtSchema = new Schema({
     size:Array
 });
 
+const FemaleJacketSchema = new Schema({
+    id:Number,
+    name:String,
+    image:Array,
+    price:Number,
+    size:Array
+});
+
 //Model
 // const BlogPost = mongoose.model('BlogPost', BlogPostSchema);
 const Cart = mongoose.model('cart',CartSchema)
@@ -74,6 +82,7 @@ const Admin = mongoose.model('admin',AdminSchema)
 const Jacket = mongoose.model('jacket',JacketSchema)
 const Jean = mongoose.model('jean',JeanSchema)
 const Tshirt = mongoose.model('t-shirt',TshirtSchema)
+const FemaleJacket = mongoose.model('femalejacket',FemaleJacketSchema)
 
 
 //Saving data to our mongo database
@@ -86,6 +95,7 @@ const newAdmin = new Admin(data);
 const newJacket = new Jacket(data);
 const newJean = new Jean(data)
 const newTshirt = new Tshirt(data)
+const newFemale = new FemaleJacket(data);
 
 //.save()
 // newBlogPost.save((error)=>{
@@ -181,6 +191,38 @@ app.get('/t-shirt/:id', (req, res) =>{
     const data = {
     };
     Tshirt.findOne({
+        id:req.params.id
+    })
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+
+
+
+app.get('/femalejacket', (req, res) =>{
+    const data = {
+    };
+
+    FemaleJacket.find({})
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.get('/femalejacket/:id', (req, res) =>{
+    const data = {
+    };
+    FemaleJacket.findOne({
         id:req.params.id
     })
     .then((data)=>{

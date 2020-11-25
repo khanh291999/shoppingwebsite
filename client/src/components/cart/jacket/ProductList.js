@@ -91,7 +91,7 @@ function ProductList(props) {
                     </ListItemIcon>
                     <ListItemText primary="Jean" />
                   </ListItem>
-                  <ListItem button component={Link} to="/product"  className={classes.nested}>
+                  <ListItem button component={Link} to="/t-shirt"  className={classes.nested}>
                     <ListItemIcon>
                       <AddIcon />
                     </ListItemIcon>
@@ -109,7 +109,19 @@ function ProductList(props) {
               </ListItem>
               <Collapse in={openfemale} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                  <ListItem button component={Link} to="/product"  className={classes.nested}>
+                <ListItem button component={Link} to="/femalejacket"  className={classes.nested}>
+                    <ListItemIcon>
+                      <AddIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Jacket" />
+                  </ListItem>
+                  <ListItem button component={Link} to="/femalejean"  className={classes.nested}>
+                    <ListItemIcon>
+                      <AddIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Jean" />
+                  </ListItem>
+                  <ListItem button component={Link} to="/femalet-shirt"  className={classes.nested}>
                     <ListItemIcon>
                       <AddIcon />
                     </ListItemIcon>
