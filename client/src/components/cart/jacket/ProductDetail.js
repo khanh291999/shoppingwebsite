@@ -5,7 +5,7 @@ import {withStyles, CircularProgress} from '@material-ui/core'
 import { withRouter } from "react-router-dom";
 import {connect} from 'react-redux'
 import axios from 'axios'
-import ImageContainer from "./ImageContainer";
+import ImageContainer from "../ImageContainer";
 //import Spinner from "reactstrap"
 
 const styles = (theme=>({
@@ -86,7 +86,8 @@ class ProductDetail extends Component {
       <Typography variant="h5">{price}$</Typography>
       <FormControl component="fieldset">
       <FormLabel component="legend">Size:</FormLabel>
-      <RadioGroup aria-label="gender" name="gender1" value={this.state.size} onChange={this.handleChange}>
+      {/* <RadioGroup aria-label="gender" name="gender1" value={this.state.size} onChange={this.handleChange}> */}
+      <RadioGroup aria-label="gender" name="gender1" onChange={this.handleChange}>
           {size &&
           size.map((s,index)=>{
             return (
@@ -103,7 +104,7 @@ class ProductDetail extends Component {
       <Box>
         <TextField type="number" value={this.state.quantity} onChange={(event)=>{this.setState({quantity:Number(event.target.value)})}}></TextField>
         <Button onClick={this.handleClickBtn}>Add to cart</Button>
-      </Box>
+      </Box>  
       </Grid>
     </Grid>
     </Container>

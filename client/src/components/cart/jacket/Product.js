@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Grid, Box, Typography, Button } from "@material-ui/core";
 import {Link} from 'react-router-dom'
-import UserContext from "../../context/userContext"
+import UserContext from "../../../context/userContext"
 
 export default function Product(props) {
   const { userData } = useContext(UserContext);

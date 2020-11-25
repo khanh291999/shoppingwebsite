@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import ProductList from "./cart/ProductList";
+import ProductList from "./cart/jacket/ProductList";
 import Header from "./Header";
 import Footer from "./Footer";
 import { withStyles } from "@material-ui/core/styles";
 import { Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Cart from "./cart/Cart";
-import ProductDetail from "./cart/ProductDetail";
+import ProductDetail from "./cart/jacket/ProductDetail";
 import axios from 'axios'
 //import SignUp from './SignUp'
 import AboutUs from './AboutUs'
 import Login from './auth/Login'
 import Register from './auth/Register'
-import MaleJean from "./MaleJean";
+import MaleJean from "./cart/jean/MaleJean";
 
 
 const style = (theme) => ({

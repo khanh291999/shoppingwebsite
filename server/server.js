@@ -21,13 +21,13 @@ mongoose.connection.on('connected', ()=>{
 })
 //Schema
 const Schema = mongoose.Schema;
-const BlogPostSchema = new Schema({
-    id:Number,
-    name:String,
-    src:String,
-    price:Number,
-    size:Array,
-});
+// const BlogPostSchema = new Schema({
+//     id:Number,
+//     name:String,
+//     src:String,
+//     price:Number,
+//     size:Array,
+// });
 
 const CartSchema = new Schema({
      name:String,
@@ -59,32 +59,33 @@ const JeanSchema = new Schema({
     size:Array
 });
 
-// const UserSchema = new Schema({
-//     id:Number,
-//     username:String,
-//     password:String
-// })
+const TshirtSchema = new Schema({
+    id:Number,
+    name:String,
+    image:Array,
+    price:Number,
+    size:Array
+});
 
 //Model
-const BlogPost = mongoose.model('BlogPost', BlogPostSchema);
+// const BlogPost = mongoose.model('BlogPost', BlogPostSchema);
 const Cart = mongoose.model('cart',CartSchema)
 const Admin = mongoose.model('admin',AdminSchema)
 const Jacket = mongoose.model('jacket',JacketSchema)
 const Jean = mongoose.model('jean',JeanSchema)
-//const User = mongoose.model('user',UserSchema)
+const Tshirt = mongoose.model('t-shirt',TshirtSchema)
+
 
 //Saving data to our mongo database
 const data = {
-    // title: 'Welcome',
-    // body: 'Bla bla'
 }
 
-const newBlogPost = new BlogPost(data); // instance of the model
-const newCart = new Cart(data);
+// const newBlogPost = new BlogPost(data); 
+const newCart = new Cart(data);// instance of the model
 const newAdmin = new Admin(data);
 const newJacket = new Jacket(data);
 const newJean = new Jean(data)
-//const newUser = new User(data);
+const newTshirt = new Tshirt(data)
 
 //.save()
 // newBlogPost.save((error)=>{
@@ -102,45 +103,9 @@ app.use(cors());
 app.use(morgan('tiny'))
 app.use("/users", require("./routes/userRouter"));
 
-app.get('/t-shirt', (req, res) =>{
-    const data = {
-        // username:'khanh',
-        // age:'21'
-    };
-
-    BlogPost.find({})
-    .then((data)=>{
-        console.log('Data: ', data);
-        res.json(data);
-    })
-    .catch((error)=>{
-        console.log('error: ', daerrorta)
-    })
-});
-
-app.get('/t-shirt/:id', (req, res) =>{
-    //console.log(req.params)
-    const data = {
-        // username:'khanh',
-        // age:'21'
-    };
-    BlogPost.findOne({
-        id:req.params.id
-    })
-    .then((data)=>{
-        console.log('Data: ', data);
-        res.json(data);
-    })
-    .catch((error)=>{
-        console.log('error: ', daerrorta)
-    })
-});
-
 
 app.get('/jacket', (req, res) =>{
     const data = {
-        // username:'khanh',
-        // age:'21'
     };
 
     Jacket.find({})
@@ -154,10 +119,7 @@ app.get('/jacket', (req, res) =>{
 });
 
 app.get('/jacket/:id', (req, res) =>{
-    //console.log(req.params)
     const data = {
-        // username:'khanh',
-        // age:'21'
     };
     Jacket.findOne({
         id:req.params.id
@@ -174,8 +136,6 @@ app.get('/jacket/:id', (req, res) =>{
 
 app.get('/jean', (req, res) =>{
     const data = {
-        // username:'khanh',
-        // age:'21'
     };
 
     Jean.find({})
@@ -189,10 +149,7 @@ app.get('/jean', (req, res) =>{
 });
 
 app.get('/jean/:id', (req, res) =>{
-    //console.log(req.params)
     const data = {
-        // username:'khanh',
-        // age:'21'
     };
     Jean.findOne({
         id:req.params.id
@@ -206,10 +163,37 @@ app.get('/jean/:id', (req, res) =>{
     })
 });
 
+app.get('/t-shirt', (req, res) =>{
+    const data = {
+    };
+
+    Tshirt.find({})
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.get('/t-shirt/:id', (req, res) =>{
+    const data = {
+    };
+    Tshirt.findOne({
+        id:req.params.id
+    })
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
 app.get('/cart', (req, res) =>{
     const data = {
-        // username:'quyen',
-        // age:'20'
     };
     Cart.find({})
     .then((data)=>{
@@ -237,8 +221,6 @@ app.post('/cart', (req,res)=>{
 
 app.get('/admin', (req, res) =>{
     const data = {
-        // username:'quyen',
-        // age:'20'
     };
     Admin.find({})
     .then((data)=>{
@@ -249,20 +231,5 @@ app.get('/admin', (req, res) =>{
         console.log('error: ', daerrorta)
     })
 });
-
-// app.get('/user', (req, res) =>{
-//     const data = {
-//         // username:'quyen',
-//         // age:'20'
-//     };
-//     User.find({})
-//     .then((data)=>{
-//         console.log('Data: ', data);
-//         res.json(data);
-//     })
-//     .catch((error)=>{
-//         console.log('error: ', daerrorta)
-//     })
-// });
 
 app.listen(PORT, console.log(`Sever is starting at ${PORT}`));

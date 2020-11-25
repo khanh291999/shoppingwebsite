@@ -18,7 +18,7 @@ export default function CartProduct(props){
                 <img style={{maxWidth: "100%"}} src={img} alt="cart img"></img>
             </Grid> 
             <Grid item md={8}>
-                <Typography>{name} x {quantity}</Typography>
+                <Typography variant="h5">{name} x {quantity}</Typography>
                 <Typography>{price*quantity}$</Typography>
                 <TextField type="number" value = {quantity} onChange={handleChangeQuantity}></TextField>
                 <Button onClick={handleDeleteFromCart}>Delete</Button>

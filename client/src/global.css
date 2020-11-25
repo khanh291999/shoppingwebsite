@@ -132,14 +132,3 @@ body {
   border-radius: 5px;
 }
 
-.big_img {
-  min-height: 100px;
-  display: flex;
-  justify-content: center;
-}
-
-.small_img {
-  min-height: 50px;
-  width: 100%;
-  border: 1px solid black;
-}

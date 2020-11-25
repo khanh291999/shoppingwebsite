@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
+import Footer from "../../Footer";
 import { withStyles } from "@material-ui/core/styles";
 import { Route, Switch } from "react-router-dom";
-import ProductDetail from "./cart/ProductDetail";
 import axios from 'axios'
-import ProductListMaleJean from "./cart/ProductListMaleJean";
-import ProductDetailMaleJean from "./cart/ProductDetailMaleJean";
+import ProductListMaleJean from "./ProductListMaleJean";
+import ProductDetailMaleJean from "./ProductDetailMaleJean";
 
 
 
@@ -15,7 +13,6 @@ const style = (theme) => ({
     background: "black",
   },
 });
-
 class MaleJean extends Component {
   state = {
     products: [],

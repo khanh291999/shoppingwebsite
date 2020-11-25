@@ -5,7 +5,7 @@ import {withStyles, CircularProgress} from '@material-ui/core'
 import { withRouter } from "react-router-dom";
 import {connect} from 'react-redux'
 import axios from 'axios'
-import ImageContainer from "./ImageContainer";
+import ImageContainer from "../ImageContainer";
 //import Spinner from "reactstrap"
 
 const styles = (theme=>({
