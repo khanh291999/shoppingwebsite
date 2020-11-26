@@ -88,6 +88,10 @@ function Header(props) {
               </IconButton>):("")}
           </li>
           </ul>
+          {userData.user ? (
+            <h5> {userData.user.displayName}</h5>
+              ) : ("")}
+         
           {userData.user ?(
             <button id="logout-btn" onClick={logout}>SIGN OUT</button>
           ):(
