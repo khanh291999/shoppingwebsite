@@ -43,12 +43,12 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-.page {
+/* .page {
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 .container {
   margin: 0 auto;
