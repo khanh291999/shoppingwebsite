@@ -37,11 +37,11 @@ const CartSchema = new Schema({
      product:Array
 })
 
-const AdminSchema = new Schema({
-    id:Number,
-    username:String,
-    password:String
-})
+// const AdminSchema = new Schema({
+//     id:Number,
+//     username:String,
+//     password:String
+// })
 
 const JacketSchema = new Schema({
     id:Number,
@@ -78,7 +78,7 @@ const FemaleJacketSchema = new Schema({
 //Model
 // const BlogPost = mongoose.model('BlogPost', BlogPostSchema);
 const Cart = mongoose.model('cart',CartSchema)
-const Admin = mongoose.model('admin',AdminSchema)
+// const Admin = mongoose.model('admin',AdminSchema)
 const Jacket = mongoose.model('jacket',JacketSchema)
 const Jean = mongoose.model('jean',JeanSchema)
 const Tshirt = mongoose.model('t-shirt',TshirtSchema)
@@ -91,7 +91,7 @@ const data = {
 
 // const newBlogPost = new BlogPost(data); 
 const newCart = new Cart(data);// instance of the model
-const newAdmin = new Admin(data);
+// const newAdmin = new Admin(data);
 const newJacket = new Jacket(data);
 const newJean = new Jean(data)
 const newTshirt = new Tshirt(data)
@@ -112,6 +112,8 @@ app.use(express.urlencoded({extended: false}))
 app.use(cors());
 app.use(morgan('tiny'))
 app.use("/users", require("./routes/userRouter"));
+app.use("/admins", require("./routes/adminRouter"));
+
 
 
 app.get('/jacket', (req, res) =>{
@@ -261,17 +263,17 @@ app.post('/cart', (req,res)=>{
     })
 })
 
-app.get('/admin', (req, res) =>{
-    const data = {
-    };
-    Admin.find({})
-    .then((data)=>{
-        console.log('Data: ', data);
-        res.json(data);
-    })
-    .catch((error)=>{
-        console.log('error: ', daerrorta)
-    })
-});
+// app.get('/admin', (req, res) =>{
+//     const data = {
+//     };
+//     Admin.find({})
+//     .then((data)=>{
+//         console.log('Data: ', data);
+//         res.json(data);
+//     })
+//     .catch((error)=>{
+//         console.log('error: ', daerrorta)
+//     })
+// });
 
 app.listen(PORT, console.log(`Sever is starting at ${PORT}`));
