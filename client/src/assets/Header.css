@@ -99,6 +99,11 @@
   color: white;
 }
 
+h5{
+  color:white;
+  margin-right: 10px;
+}
+
 @media screen and (max-width: 960px) {
   .NavbarItems {
     position: relative;

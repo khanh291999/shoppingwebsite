@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import '../../assets/modal.css'
 export default class Modal extends Component {
     state={
         name:"PRODUCT NEW",
@@ -63,7 +63,7 @@ export default class Modal extends Component {
 
         const {name,price,image_one,image_two,image_three}=this.state
         return (
-            <div className="modal ">
+            <div className="modal">
                 <div className="content p-3">
                     <button type="button" onClick={this.handleClose} className="close btn btn-outline-primary">
                         Close
@@ -90,7 +90,7 @@ export default class Modal extends Component {
                             <label>Product Image</label>
                             <input type="text" name="image_three" className="form-control" placeholder="Product image" value={image_three} onChange={this.handleChange}/>
                         </div>
-                        <button type="submit" class="btn btn-outline-primary">
+                        <button type="submit" class="btnadmin btn-outline-primary-admin">
                             {this.props.editingProduct?"UPDATE":"ADD"}
                         </button>
                     </form>

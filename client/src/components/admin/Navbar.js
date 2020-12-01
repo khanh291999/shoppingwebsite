@@ -24,7 +24,7 @@ export default function Navbar(props) {
 
   return (
     <>
-    <nav className='navbar'>
+    <nav className='navbaradmin'>
     <button onClick={props.toggleSidebar}>
         <BarsSolid/>   
     </button>
@@ -38,7 +38,7 @@ export default function Navbar(props) {
         </div>
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           <li className='nav-item'>
-            <Link to='/' className='nav-links'>
+            <Link to='/admin' className='nav-links'>
               Home
             </Link>
           </li>
