@@ -35,36 +35,38 @@ export default function Login() {
   };
   return (
     <div className="page">
-      <h2>Log in</h2>
-      {error && (
-        <ErrorNotice message={error} clearError={() => setError(undefined)} />
-      )}
-      <form className="form" onSubmit={submit}>
-        <label htmlFor="login-email">Email</label>
-        <input
-          id="login-email"
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <div className='login-form-container'>
+        <h2>Log in</h2>
+        {error && (
+          <ErrorNotice message={error} clearError={() => setError(undefined)} />
+        )}
+        <form className="form" onSubmit={submit}>
+          <label htmlFor="login-email">Email</label>
+          <input
+            id="login-email"
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <label htmlFor="login-password">Password</label>
-        <input
-          id="login-password"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <label htmlFor="login-password">Password</label>
+          <input
+            id="login-password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <button type="submit" id="login-btn">Log in</button>
-        <div className='register-in-login-container'>
-          You are new?
-          <Link
-            to='/register'
-            className='register-in-login'
-          >
-            Register
-          </Link>
-        </div>
-      </form>
+          <button type="submit" id="login-btn">Log in</button>
+          <div className='register-in-login-container'>
+            You are new?
+            <Link
+              to='/register'
+              className='register-in-login'
+            >
+              Register
+            </Link>
+          </div>
+        </form>
+        </div> 
     </div>
   );
 }
