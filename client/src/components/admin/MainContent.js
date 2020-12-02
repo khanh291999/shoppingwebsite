@@ -26,16 +26,7 @@ export default class MainContent extends React.Component{
     }
 
     addProduct=(name,image,price)=>{
-        // const product={
-        //     id:this.state.products.length,
-        //     name,
-        //     image,
-        //     price
-        // }
-        // this.setState({
-        //     products:[...this.state.products,product]
-        // })
-        axios.post('https://shopping-api-with-jwt.herokuapp.com/products',{
+        axios.post('http://localhost:8080/jacket',{
             name,
             image,
             price
@@ -63,24 +54,54 @@ export default class MainContent extends React.Component{
     }
 
     updateProduct = (name,image,price) => {
-        const new_products = [...this.state.products];
-        new_products[this.state.isEditting]={
-            ...new_products[this.state.isEditting],
+        axios.patch('http://localhost:8080/jacket/',{
             name,
             image,
             price
-        }
-        this.setState({
-            products:new_products
+        },{
+            headers:{
+                token: window.localStorage.getItem('admin_token')
+            }
+        }).then(res=>{
+            console.log(res)
+            Swal.fire({
+                title:"Create Successfully",
+                timer:1000,
+                icon:'success'
+            })
+        }).catch(err=>{
+            console.log(err);
+            Swal.fire({
+                title:"Create Unsuccessfully",
+                text:err.message,
+                timer:1000,
+                icon:'error'
+            })
         })
     }
 
     deleteProduct = (id) => {
-        const updated_product = [...this.state.products].filter((product)=>{
-            return product.id !== id
-        });
-        this.setState({
-            products:updated_product
+        axios.delete(`http://localhost:8080/jacket/${id}`,{
+         id
+        },{
+            headers:{
+                token: window.localStorage.getItem('admin_token')
+            }
+        }).then(res=>{
+            console.log(res)
+            Swal.fire({
+                title:"Delete Successfully",
+                timer:1000,
+                icon:'success'
+            })
+        }).catch(err=>{
+            console.log(err);
+            Swal.fire({
+                title:"Delete Unsuccessfully",
+                text:err.message,
+                timer:1000,
+                icon:'error'
+            })
         })
     }
 

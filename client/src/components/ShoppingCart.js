@@ -66,7 +66,8 @@ class ShoppingCart extends Component {
         <Route path="/adlogin" component={AdLogin}></Route>
         <Route path="/admin" component={ShoppingAdmin}></Route>
           <Layout>
-          <Route exact path="/" component={Home}></Route>
+            <Switch>
+            <Route exact path="/" component={Home}></Route>
           <Route path="/product/:masanpham" render={()=><ProductDetail products={this.state.product}></ProductDetail>}></Route>
           <Route path="/product">
             <ProductList 
@@ -95,6 +96,7 @@ class ShoppingCart extends Component {
           <Route path="*">
             404 PAGE
           </Route>
+            </Switch>
         </Layout>
         </Switch>
       </div>

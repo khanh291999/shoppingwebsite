@@ -1,9 +1,11 @@
 //Import npm packages
 const express = require('express');
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 const morgan = require('morgan');
 const cors = require('cors')
 const path = require('path');
+const { post } = require('./routes/userRouter');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -43,13 +45,14 @@ const CartSchema = new Schema({
 //     password:String
 // })
 
-const JacketSchema = new Schema({
+const JacketSchema = new mongoose.Schema({
     id:Number,
     name:String,
     image:Array,
     price:Number,
     size:Array
 });
+JacketSchema.plugin(AutoIncrement, {inc_field: 'id', start_seq:'6'});
 
 const JeanSchema = new Schema({
     id:Number,
@@ -145,6 +148,28 @@ app.get('/jacket/:id', (req, res) =>{
     })
 });
 
+app.post('/jacket', (req,res)=>{
+    const data = req.body;
+
+    const newJacket = new Jacket(data);
+    newJacket.save((error)=>{
+        if(error){
+            res.status(500).json({msg:'Sorry, internal server errors'});
+        }
+        return res.json({
+            msg: ' Your data has been saved!!!'
+        })
+    })
+})
+
+app.delete("/jacket/:id",async (req, res) => {
+    try {
+      const deletedJacket = await Jacket.findByIdAndDelete(req.Jacket);
+      res.json(deletedJacket);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
 
 app.get('/jean', (req, res) =>{
     const data = {

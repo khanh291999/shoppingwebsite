@@ -4,9 +4,9 @@ export default class Modal extends Component {
     state={
         name:"PRODUCT NEW",
         price:20,
-        image_one:"//bizweb.dktcdn.net/thumb/large/100/331/067/products/115844444-311743083208439-6108934669943805257-n.jpg?v=1595330674000",
-        image_two:"//bizweb.dktcdn.net/thumb/large/100/331/067/products/115844444-311743083208439-6108934669943805257-n.jpg?v=1595330674000",
-        image_three:"//bizweb.dktcdn.net/thumb/large/100/331/067/products/115844444-311743083208439-6108934669943805257-n.jpg?v=1595330674000"
+        image_one:"https://www.scotch-soda.com/dw/image/v2/AANA_PRD/on/demandware.static/-/Sites-scotch-master-catalog-FW20/default/dwfd141870/images/xlarge-2D368637-7728-4094-99A7CB28FA38C2EF.png?sw=1125&strip=false&bgcolor=EDEEE5",
+        image_two:"https://www.scotch-soda.com/dw/image/v2/AANA_PRD/on/demandware.static/-/Sites-scotch-master-catalog-FW20/default/dwf45da75a/images/xlarge-42521F82-ED8E-49AA-AFEC0B884601A530.png?sw=1125&strip=false&bgcolor=EDEEE5",
+        image_three:"https://www.scotch-soda.com/dw/image/v2/AANA_PRD/on/demandware.static/-/Sites-scotch-master-catalog-FW20/default/dw20a50f46/images/xlarge-7492426A-F546-499C-9B549EEB85506777.png?sw=1125&strip=false&bgcolor=EDEEE5"
     
     }
     handleClose=()=>{

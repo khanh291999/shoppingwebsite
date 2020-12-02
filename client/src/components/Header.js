@@ -89,7 +89,7 @@ function Header(props) {
           </li>
           </ul>
           {userData.user ? (
-            <h5> {userData.user.displayName}</h5>
+            <h5 className='user-name'> {userData.user.displayName}</h5>
               ) : ("")}
          
           {userData.user ?(
