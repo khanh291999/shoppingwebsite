@@ -1,72 +1,108 @@
 import React, { useContext } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link, useHistory } from "react-router-dom";
+import {connect} from "react-redux"
+import UserContext from "../context/userContext";
+import { useState, useEffect } from 'react';
+import { Button } from './Button';
+import '../assets/Header.css';
+//
 import IconButton from "@material-ui/core/IconButton";
 import { ShoppingCart } from "@material-ui/icons";
-import { Button, Box, Badge } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
-import {connect} from "react-redux"
-import AuthOptions from "./auth/AuthOptions"
-import UserContext from "../context/userContext";
-//function component dung makestyles
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.primary.main,
-    // position: (props) => (props.fixed ? "fixed" : ""),
-    "& button": {
-      color: "white",
-      "& span": {
-        textDecoration: "underline",
-      },
-    },
-  },
-}));
+import { Badge } from "@material-ui/core";
 
 function Header(props) {
-  const classes = useStyles(props);
-  const { userData } = useContext(UserContext);
+  // const classes = useStyles(props);
+  const { userData, setUserData } = useContext(UserContext);
+  const [click, setClick] = useState(false);
+  const [button, setButton] = useState(true);
+  const handleClick = () => setClick(!click);
+
+  const history = useHistory();
+
+  const login = () => history.push("/login");
+  const logout = () => {
+    setUserData({
+      token: undefined,
+      user: undefined,
+    });
+    localStorage.setItem("auth-token", "");
+  };
+
+  //show/hide button if width to small
+  const showButton = () => {
+    if (window.innerWidth <= 960) {
+      setButton(false);
+    } else {
+      setButton(true);
+    }
+  };
+
+  useEffect(() => {
+    showButton();
+  }, []);
+
+  window.addEventListener('resize', showButton);
+
   return (
-    <AppBar position="static" className="nav" className={classes.root}>
-      <Toolbar variant="dense">
-        <Typography variant="h6" color="inherit">
-          Shopping Cart ReactJS 14
-        </Typography>
-        <Box ml="auto">
-          <Button>
-            <Link to="/">Home</Link>
-          </Button>
-          <Button>
-            <Link to="/product">Product</Link>
-          </Button>
-          <Button>
-            <Link to="/about">About us</Link>
-          </Button>
-          {userData.user ?(
-          <IconButton edge="start" color="inherit" aria-label="menu">
-            <Link to="/cart">
-            <Badge badgeContent={props.quantity} color="secondary">
-              <ShoppingCart />
-            </Badge>
+    <>
+    <nav className='navbar'>
+      <div className='navbar-container'>
+        <Link to='/' className='navbar-logo' style={{fontFamily: "LibreBaskervilleBold,Georgia,Times,serif"}}>
+          K&Q
+          <i class='fab fa-typo3' />
+        </Link>
+        <div className='menu-icon' onClick={handleClick}>
+          <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+        </div>
+        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+          <li className='nav-item'>
+            <Link to='/' className='nav-links'>
+              Home
             </Link>
-          </IconButton>):("")}
-          <Button>
+          </li>
+          <li className='nav-item'>
+            <Link
+              to='/product'
+              className='nav-links'
+            >
+              Products
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link
+              to='/about'
+              className='nav-links'
+            >
+              About us
+            </Link>
+          </li>
+          <li className='nav-item'>
+            {userData.user ?(
+              <IconButton edge="start" color='Colors.white' aria-label="menu" id="cart-icon">
+                <Link to="/cart">
+                <Badge badgeContent={props.quantity} color="secondary">
+                  <ShoppingCart />
+                </Badge>
+                </Link>
+              </IconButton>):("")}
+          </li>
+          </ul>
           {userData.user ? (
-            <p>Welcome {userData.user.displayName}</p>
-           ) : (
-          <>
-           <p>You are not logged in</p>
-           </>
-           )}
-          </Button>
-          <Button>
-          <AuthOptions />
-          </Button>
-        </Box>
-     
-      </Toolbar>
-    </AppBar>
+            <h5 className='user-name'> {userData.user.displayName}</h5>
+              ) : ("")}
+         
+          {userData.user ?(
+            <button id="logout-btn" onClick={logout}>SIGN OUT</button>
+          ):(
+            <span>
+              {button && <Button onClick={login} buttonStyle='btn--outline'>SIGN IN</Button>}
+            </span>
+          )}
+          
+      </div>
+    </nav>
+  </>
   );
 }
 

@@ -5,11 +5,16 @@ import {createStore} from "redux"
 import {Provider} from "react-redux"
 import Axios from "axios";
 import UserContext from "./context/userContext"
+import adminContext from "./context/adminContext"
 
 export default function App() {
   const [userData, setUserData] = useState({
     token: undefined,
     user: undefined,
+  });
+  const [adminData, setadminData] = useState({
+    token: undefined,
+    admin: undefined,
   });
 
   useEffect(() => {
@@ -35,6 +40,29 @@ export default function App() {
       }
     };
 
+    const checkLoggedInAdmin = async () => {
+      let token = localStorage.getItem("admin-token");
+      if (token === null) {
+        localStorage.setItem("admin-token", "");
+        token = "";
+      }
+      const tokenRes = await Axios.post(
+        "http://localhost:8080/admins/tokenIsValidAdmin",
+        null,
+        { headers: { "x-admin-token": token } }
+      );
+      if (tokenRes.data) {
+        const adminRes = await Axios.get("http://localhost:8080/admins/", {
+          headers: { "x-auth-token": token },
+        });
+        setadminData({
+          token,
+          admin: adminRes.data,
+        });
+      }
+    };
+
+    checkLoggedInAdmin();
     checkLoggedIn();
   }, []);
 
@@ -112,9 +140,11 @@ const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && wi
  
       <ThemeProvider theme={theme}>
       <div className="App">
+        <adminContext.Provider value={{adminData,setadminData}}>
       <UserContext.Provider value={{ userData, setUserData }}>
-        <ShoppingCart />
+        <ShoppingCart /> 
       </UserContext.Provider>
+      </adminContext.Provider>
       </div>
       </ThemeProvider>
       

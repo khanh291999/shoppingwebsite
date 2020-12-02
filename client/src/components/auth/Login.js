@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import UserContext from "../../context/userContext";
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
+import '../../assets/Login.css'
 
 export default function Login() {
   const [email, setEmail] = useState();
@@ -12,6 +13,7 @@ export default function Login() {
   const { setUserData } = useContext(UserContext);
   const history = useHistory();
 
+  //post login data
   const submit = async (e) => {
     e.preventDefault();
     try {
@@ -52,7 +54,16 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <input type="submit" value="Log in" />
+        <button type="submit" id="login-btn">Log in</button>
+        <div className='register-in-login-container'>
+          You are new?
+          <Link
+            to='/register'
+            className='register-in-login'
+          >
+            Register
+          </Link>
+        </div>
       </form>
     </div>
   );

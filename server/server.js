@@ -1,9 +1,11 @@
 //Import npm packages
 const express = require('express');
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 const morgan = require('morgan');
 const cors = require('cors')
 const path = require('path');
+const { post } = require('./routes/userRouter');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -21,13 +23,13 @@ mongoose.connection.on('connected', ()=>{
 })
 //Schema
 const Schema = mongoose.Schema;
-const BlogPostSchema = new Schema({
-    id:Number,
-    name:String,
-    src:String,
-    price:Number,
-    size:Array,
-});
+// const BlogPostSchema = new Schema({
+//     id:Number,
+//     name:String,
+//     src:String,
+//     price:Number,
+//     size:Array,
+// });
 
 const CartSchema = new Schema({
      name:String,
@@ -37,34 +39,66 @@ const CartSchema = new Schema({
      product:Array
 })
 
-const AdminSchema = new Schema({
-    id:Number,
-    username:String,
-    password:String
-})
-
-// const UserSchema = new Schema({
+// const AdminSchema = new Schema({
 //     id:Number,
 //     username:String,
 //     password:String
 // })
 
+const JacketSchema = new mongoose.Schema({
+    id:Number,
+    name:String,
+    image:Array,
+    price:Number,
+    size:Array
+});
+JacketSchema.plugin(AutoIncrement, {inc_field: 'id', start_seq:'6'});
+
+const JeanSchema = new Schema({
+    id:Number,
+    name:String,
+    image:Array,
+    price:Number,
+    size:Array
+});
+
+const TshirtSchema = new Schema({
+    id:Number,
+    name:String,
+    image:Array,
+    price:Number,
+    size:Array
+});
+
+const FemaleJacketSchema = new Schema({
+    id:Number,
+    name:String,
+    image:Array,
+    price:Number,
+    size:Array
+});
+
 //Model
-const BlogPost = mongoose.model('BlogPost', BlogPostSchema);
+// const BlogPost = mongoose.model('BlogPost', BlogPostSchema);
 const Cart = mongoose.model('cart',CartSchema)
-const Admin = mongoose.model('admin',AdminSchema)
-//const User = mongoose.model('user',UserSchema)
+// const Admin = mongoose.model('admin',AdminSchema)
+const Jacket = mongoose.model('jacket',JacketSchema)
+const Jean = mongoose.model('jean',JeanSchema)
+const Tshirt = mongoose.model('t-shirt',TshirtSchema)
+const FemaleJacket = mongoose.model('femalejacket',FemaleJacketSchema)
+
 
 //Saving data to our mongo database
 const data = {
-    // title: 'Welcome',
-    // body: 'Bla bla'
 }
 
-const newBlogPost = new BlogPost(data); // instance of the model
-const newCart = new Cart(data);
-const newAdmin = new Admin(data);
-//const newUser = new User(data);
+// const newBlogPost = new BlogPost(data); 
+const newCart = new Cart(data);// instance of the model
+// const newAdmin = new Admin(data);
+const newJacket = new Jacket(data);
+const newJean = new Jean(data)
+const newTshirt = new Tshirt(data)
+const newFemale = new FemaleJacket(data);
 
 //.save()
 // newBlogPost.save((error)=>{
@@ -81,14 +115,96 @@ app.use(express.urlencoded({extended: false}))
 app.use(cors());
 app.use(morgan('tiny'))
 app.use("/users", require("./routes/userRouter"));
+app.use("/admins", require("./routes/adminRouter"));
+
+
+
+app.get('/jacket', (req, res) =>{
+    const data = {
+    };
+
+    Jacket.find({})
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.get('/jacket/:id', (req, res) =>{
+    const data = {
+    };
+    Jacket.findOne({
+        id:req.params.id
+    })
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.post('/jacket', (req,res)=>{
+    const data = req.body;
+
+    const newJacket = new Jacket(data);
+    newJacket.save((error)=>{
+        if(error){
+            res.status(500).json({msg:'Sorry, internal server errors'});
+        }
+        return res.json({
+            msg: ' Your data has been saved!!!'
+        })
+    })
+})
+
+app.delete("/jacket/:id",async (req, res) => {
+    try {
+      const deletedJacket = await Jacket.findByIdAndDelete(req.Jacket);
+      res.json(deletedJacket);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+app.get('/jean', (req, res) =>{
+    const data = {
+    };
+
+    Jean.find({})
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.get('/jean/:id', (req, res) =>{
+    const data = {
+    };
+    Jean.findOne({
+        id:req.params.id
+    })
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
 
 app.get('/t-shirt', (req, res) =>{
     const data = {
-        // username:'khanh',
-        // age:'21'
     };
 
-    BlogPost.find({})
+    Tshirt.find({})
     .then((data)=>{
         console.log('Data: ', data);
         res.json(data);
@@ -99,12 +215,9 @@ app.get('/t-shirt', (req, res) =>{
 });
 
 app.get('/t-shirt/:id', (req, res) =>{
-    //console.log(req.params)
     const data = {
-        // username:'khanh',
-        // age:'21'
     };
-    BlogPost.findOne({
+    Tshirt.findOne({
         id:req.params.id
     })
     .then((data)=>{
@@ -117,10 +230,39 @@ app.get('/t-shirt/:id', (req, res) =>{
 });
 
 
+
+
+app.get('/femalejacket', (req, res) =>{
+    const data = {
+    };
+
+    FemaleJacket.find({})
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.get('/femalejacket/:id', (req, res) =>{
+    const data = {
+    };
+    FemaleJacket.findOne({
+        id:req.params.id
+    })
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
 app.get('/cart', (req, res) =>{
     const data = {
-        // username:'quyen',
-        // age:'20'
     };
     Cart.find({})
     .then((data)=>{
@@ -146,27 +288,10 @@ app.post('/cart', (req,res)=>{
     })
 })
 
-app.get('/admin', (req, res) =>{
-    const data = {
-        // username:'quyen',
-        // age:'20'
-    };
-    Admin.find({})
-    .then((data)=>{
-        console.log('Data: ', data);
-        res.json(data);
-    })
-    .catch((error)=>{
-        console.log('error: ', daerrorta)
-    })
-});
-
-// app.get('/user', (req, res) =>{
+// app.get('/admin', (req, res) =>{
 //     const data = {
-//         // username:'quyen',
-//         // age:'20'
 //     };
-//     User.find({})
+//     Admin.find({})
 //     .then((data)=>{
 //         console.log('Data: ', data);
 //         res.json(data);

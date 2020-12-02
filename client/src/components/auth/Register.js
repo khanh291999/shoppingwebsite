@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import UserContext from "../../context/userContext";
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
+import '../../assets/Register.css'
 
 export default function Register() {
   const [email, setEmail] = useState();
@@ -14,6 +15,7 @@ export default function Register() {
   const { setUserData } = useContext(UserContext);
   const history = useHistory();
 
+  //post register data
   const submit = async (e) => {
     e.preventDefault();
 
@@ -69,7 +71,16 @@ export default function Register() {
           onChange={(e) => setDisplayName(e.target.value)}
         />
 
-        <input type="submit" value="Register" />
+        <button type="submit" id="register-btn">Register</button>
+        <div className='login-in-register-container'>
+          Already have an account?
+          <Link
+            to='/login'
+            className='login-in-register'
+          >
+            Login
+          </Link>
+        </div>
       </form>
     </div>
   );
