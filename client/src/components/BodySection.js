@@ -9,7 +9,7 @@ function BodySection() {
           <div className='body-one-wrapper'>
             <Grid container spacing={0} className="center">
                 <Grid item xs={6} className='set-relative'>
-                  <img src={require('../assets/pciture/test1.jpg')} alt="Gift one image"/>
+                  <img className='img-body-section' src={require('../assets/pciture/test1.jpg')} alt="Gift one image"/>
                 </Grid>
                 <Grid item xs={6} className='set-relative'>
                   <video autoPlay loop muted>
@@ -38,7 +38,7 @@ function BodySection() {
           <div className='body-two-wrapper'>
             <div className='center'>
               <div className='set-relative'>
-                <img src={require('../assets/pciture/test2.jpg')} alt="Holiday gift image"/>
+                <img className='img-body-section' src={require('../assets/pciture/test2.jpg')} alt="Holiday gift image"/>
               </div>
               <div className='set-absolute'>
                 <div className='copy'>
