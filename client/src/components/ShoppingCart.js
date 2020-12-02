@@ -15,6 +15,8 @@ import Register from './auth/Register'
 import MaleJean from "./cart/jean/MaleJean";
 import MaleTshirt from "./cart/t-shirt/MaleTshirt";
 import Femalejacket from "./cart/jacketfemale/FemaleJacket";
+import ShoppingAdmin from "./admin/ShoppingAdmin"
+import AdLogin from "./admin/AdLogin"
 
 
 const style = (theme) => ({
@@ -22,6 +24,17 @@ const style = (theme) => ({
     background: "black",
   },
 });
+
+const Layout = ({ children }) => {
+  return (
+    <section>
+      <Header fixed/>
+        {children}
+      <Footer/>
+    </section>
+  )
+
+}
 
 class ShoppingCart extends Component {
   state = {
@@ -43,47 +56,49 @@ class ShoppingCart extends Component {
   handleChangePage = page => {
     this.setState({page: page});
   }
+
+  
   render() {
     const {page,limit} = this.state
     return (
       <div>
-        <Header fixed />
         <Switch>
-        <Route exact path="/" component={Home}></Route>
-        <Route path="/product/:masanpham" render={()=><ProductDetail products={this.state.product}></ProductDetail>}></Route>
-        <Route path="/product">
-          <ProductList 
-          isLoading={this.state.isLoading}
-          total = {this.state.products.length}
-          limit = {this.state.limit}
-          page = {this.state.page}
-          products={[...this.state.products].splice((page-1)*limit,limit)}
-          handleChangePage = {this.handleChangePage}
-          ></ProductList>
-        </Route>
-        <Route path="/jean">
-          <MaleJean></MaleJean>
-        </Route>
-        <Route path="/t-shirt">
-          <MaleTshirt></MaleTshirt>
-        </Route>
-        <Route path="/femalejacket">
-          <Femalejacket></Femalejacket>
-        </Route>
-        <Route path="/about" component={AboutUs}></Route>
-        <Route path="/cart" component={Cart}></Route>
-        {/* <Route path="/signup" component={SignUp}></Route> */}
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="*">
-          404 PAGE
-        </Route>
+        <Route path="/adlogin" component={AdLogin}></Route>
+        <Route path="/admin" component={ShoppingAdmin}></Route>
+          <Layout>
+            <Switch>
+            <Route exact path="/" component={Home}></Route>
+          <Route path="/product/:masanpham" render={()=><ProductDetail products={this.state.product}></ProductDetail>}></Route>
+          <Route path="/product">
+            <ProductList 
+            isLoading={this.state.isLoading}
+            total = {this.state.products.length}
+            limit = {this.state.limit}
+            page = {this.state.page}
+            products={[...this.state.products].splice((page-1)*limit,limit)}
+            handleChangePage = {this.handleChangePage}
+            ></ProductList>
+          </Route>
+          <Route path="/jean">
+            <MaleJean></MaleJean>
+          </Route>
+          <Route path="/t-shirt">
+            <MaleTshirt></MaleTshirt>
+          </Route>
+          <Route path="/femalejacket">
+            <Femalejacket></Femalejacket>
+          </Route>
+          <Route path="/about" component={AboutUs}></Route>
+          <Route path="/cart" component={Cart}></Route>
+          {/* <Route path="/signup" component={SignUp}></Route> */}
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="*">
+            404 PAGE
+          </Route>
+            </Switch>
+        </Layout>
         </Switch>
-        {/* <ProductList products={this.state.products} />
-        <Button className={this.props.classes.root} variant="contained">
-          OKOKOKOK
-        </Button> */}
-        <Footer />
       </div>
     );
   }

@@ -99,6 +99,11 @@
   color: white;
 }
 
+.user-name{
+  color:white;
+  margin-right: 10px;
+}
+
 @media screen and (max-width: 960px) {
   .NavbarItems {
     position: relative;
