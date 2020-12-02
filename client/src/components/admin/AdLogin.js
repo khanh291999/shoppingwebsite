@@ -45,7 +45,8 @@ export default function Login() {
   };
   return (
     <div className="page">
-      <h2>Log in</h2>
+      <div className='login-form-container'>
+      <h2>Admin Log in</h2>
       {error && (
         <ErrorNotice message={error} clearError={() => setError(undefined)} />
       )}
@@ -66,6 +67,7 @@ export default function Login() {
 
         <button type="submit" id="login-btn">Log in</button>
       </form>
+      </div>
     </div>
   );
 }
