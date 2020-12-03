@@ -78,6 +78,22 @@ const FemaleJacketSchema = new Schema({
     size:Array
 });
 
+const FemaleJeanSchema = new Schema({
+    id:Number,
+    name:String,
+    image:Array,
+    price:Number,
+    size:Array
+});
+
+const FemaleTshirtSchema = new Schema({
+    id:Number,
+    name:String,
+    image:Array,
+    price:Number,
+    size:Array
+});
+
 //Model
 // const BlogPost = mongoose.model('BlogPost', BlogPostSchema);
 const Cart = mongoose.model('cart',CartSchema)
@@ -86,6 +102,8 @@ const Jacket = mongoose.model('jacket',JacketSchema)
 const Jean = mongoose.model('jean',JeanSchema)
 const Tshirt = mongoose.model('t-shirt',TshirtSchema)
 const FemaleJacket = mongoose.model('femalejacket',FemaleJacketSchema)
+const FemaleJean = mongoose.model('jeanfemale',FemaleJeanSchema)
+const FemaleTshirt = mongoose.model('t-shirtfemale',FemaleTshirtSchema)
 
 
 //Saving data to our mongo database
@@ -98,7 +116,9 @@ const newCart = new Cart(data);// instance of the model
 const newJacket = new Jacket(data);
 const newJean = new Jean(data)
 const newTshirt = new Tshirt(data)
-const newFemale = new FemaleJacket(data);
+const newFemaleJacket = new FemaleJacket(data);
+const newFemaleJean = new FemaleJean(data);
+const newFemaleTshirt = new FemaleTshirt(data);
 
 //.save()
 // newBlogPost.save((error)=>{
@@ -229,9 +249,6 @@ app.get('/t-shirt/:id', (req, res) =>{
     })
 });
 
-
-
-
 app.get('/femalejacket', (req, res) =>{
     const data = {
     };
@@ -250,6 +267,66 @@ app.get('/femalejacket/:id', (req, res) =>{
     const data = {
     };
     FemaleJacket.findOne({
+        id:req.params.id
+    })
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+
+
+app.get('/femalejean', (req, res) =>{
+    const data = {
+    };
+
+    FemaleJean.find({})
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.get('/femalejean/:id', (req, res) =>{
+    const data = {
+    };
+    FemaleJean.findOne({
+        id:req.params.id
+    })
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.get('/femalet-shirt', (req, res) =>{
+    const data = {
+    };
+
+    FemaleTshirt.find({})
+    .then((data)=>{
+        console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.get('/femalet-shirt/:id', (req, res) =>{
+    const data = {
+    };
+    FemaleTshirt.findOne({
         id:req.params.id
     })
     .then((data)=>{

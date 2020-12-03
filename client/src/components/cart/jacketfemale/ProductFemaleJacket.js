@@ -16,7 +16,7 @@ export default function ProductFemaleJacket(props) {
       img,
     })
   }
-  const { id, name, price, img } = props;
+  const { id, name, price, img, img1 } = props;
   return (
     <Grid item md={3} >
       <Box boxShadow={5}>
@@ -32,6 +32,8 @@ export default function ProductFemaleJacket(props) {
             src={img}
             alt="product"
             style={{ maxWidth: "100%", maxHeight: "100%" }}
+            onMouseOver={e => (e.currentTarget.src=img1)}
+            onMouseOut={e=> (e.currentTarget.src=img)}
           />
         </Box>
         <Box p={2} borderTop="1px solid black">

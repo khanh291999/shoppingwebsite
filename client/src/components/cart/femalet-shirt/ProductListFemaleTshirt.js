@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Container, Box, CircularProgress } from "@material-ui/core";
-import Product from "./Product";
+import ProductMaleTshirt from "./ProductFemaleTshirt";
 import {Pagination} from '@material-ui/lab';
 import {connect} from "react-redux"
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,15 +10,12 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
 import AddIcon from '@material-ui/icons/Add';
 import CheckIcon from '@material-ui/icons/Check';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
 import { Link } from "react-router-dom";
+import ProductFemaleTshirt from "./ProductFemaleTshirt";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ProductList(props) {
+function ProductListFemaleTshirt(props) {
   let total = 0;
   if(props.total % props.limit > 0){
     total = Math.floor(props.total / props.limit) + 1;
@@ -109,7 +106,7 @@ function ProductList(props) {
               </ListItem>
               <Collapse in={openfemale} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                <ListItem button component={Link} to="/femalejacket"  className={classes.nested}>
+                  <ListItem button component={Link} to="/femalejacket"  className={classes.nested}>
                     <ListItemIcon>
                       <AddIcon />
                     </ListItemIcon>
@@ -138,7 +135,7 @@ function ProductList(props) {
           </Box>:          <Grid container spacing={3}>
             {products.map(product => {
               return (
-                <Product
+                <ProductFemaleTshirt
                   name={product.name}
                   price={product.price}
                   key={product.id}
@@ -166,4 +163,4 @@ const mapDispatchToProps = dispatch => {
       dispatch({type:"ADD_TO_CART", payload: product})}
   }
 }
-export default connect(mapStatetoProps, mapDispatchToProps)(ProductList)
+export default connect(mapStatetoProps, mapDispatchToProps)(ProductListFemaleTshirt)

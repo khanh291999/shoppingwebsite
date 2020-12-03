@@ -139,6 +139,7 @@ function ProductListMaleTshirt(props) {
                   price={product.price}
                   key={product.id}
                   img={product.image[0]}
+                  img1={product.image[1]}
                   id={product.id}
                   addToCart={props.addToCart}
                 />

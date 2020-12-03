@@ -3,10 +3,10 @@ import { Grid, Box, Typography, Button } from "@material-ui/core";
 import {Link} from 'react-router-dom'
 import UserContext from "../../../context/userContext"
 
-export default function Product(props) {
+export default function ProductFemaleTshirt(props) {
   const { userData } = useContext(UserContext);
   const handleAddToCart = () =>{
-  const { id, name, price, img} = props;
+  const { id, name, price, img } = props;
     props.addToCart({
       id_cart:"cart_"+Date.now()+Math.random(),
       id_product:id,
@@ -35,11 +35,10 @@ export default function Product(props) {
             onMouseOver={e => (e.currentTarget.src=img1)}
             onMouseOut={e=> (e.currentTarget.src=img)}
           />
-          
         </Box>
         <Box p={2} borderTop="1px solid black">
           <Typography color="inherit" variant="body1">
-            <Link to={"/product/"+id}>{name}</Link>
+            <Link to={"/femalet-shirt/"+id}>{name}</Link>
           </Typography>
           <Typography color="inherit" variant="subtitle1">
             {price}$

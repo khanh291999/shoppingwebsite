@@ -15,8 +15,10 @@ import Register from './auth/Register'
 import MaleJean from "./cart/jean/MaleJean";
 import MaleTshirt from "./cart/t-shirt/MaleTshirt";
 import Femalejacket from "./cart/jacketfemale/FemaleJacket";
+import Femalejean from "./cart/jeanfemale/FemaleJean";
 import ShoppingAdmin from "./admin/ShoppingAdmin"
 import AdLogin from "./admin/AdLogin"
+import FemaleTshirt from "./cart/femalet-shirt/FemaleTshirt";
 
 
 const style = (theme) => ({
@@ -87,6 +89,12 @@ class ShoppingCart extends Component {
           </Route>
           <Route path="/femalejacket">
             <Femalejacket></Femalejacket>
+          </Route>
+          <Route path="/femalet-shirt">
+            <FemaleTshirt></FemaleTshirt>
+          </Route>
+          <Route path="/femalejean">
+            <Femalejean></Femalejean>
           </Route>
           <Route path="/about" component={AboutUs}></Route>
           <Route path="/cart" component={Cart}></Route>
