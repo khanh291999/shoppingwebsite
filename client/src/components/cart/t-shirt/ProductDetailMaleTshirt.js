@@ -32,7 +32,7 @@ class ProductDetailMaleTshirt extends Component {
       `http://localhost:8080/t-shirt/${this.props.match.params.masanpham}`
     )
     .then(res =>{
-      const {id, name, price ,size ,image } = res.data;
+      const {id, name, price ,size ,image, description } = res.data;
       this.setState({
       
         id,
@@ -40,7 +40,8 @@ class ProductDetailMaleTshirt extends Component {
         price,
         size,
         img:image,
-        loading:false
+        loading:false,
+        description
       });
     })
     .catch(e =>{
@@ -62,7 +63,7 @@ class ProductDetailMaleTshirt extends Component {
   };
  render(){
   const {classes} = this.props;
-  const {id, name , price ,size ,img } = this.state;
+  const {id, name , price ,size ,img, description } = this.state;
   return (
     <>
     {this.state.loading === false ?
@@ -86,7 +87,7 @@ class ProductDetailMaleTshirt extends Component {
       <Typography variant="h5">{price}$</Typography>
       <FormControl component="fieldset">
       <FormLabel component="legend">Size:</FormLabel>
-      <RadioGroup aria-label="gender" name="gender1" value={this.state.size} onChange={this.handleChange}>
+      <RadioGroup aria-label="gender" name="size" value={this.state.size} onChange={this.handleChange}>
           {size &&
           size.map((s,index)=>{
             return (
@@ -104,6 +105,7 @@ class ProductDetailMaleTshirt extends Component {
         <TextField type="number" value={this.state.quantity} onChange={(event)=>{this.setState({quantity:Number(event.target.value)})}}></TextField>
         <Button onClick={this.handleClickBtn}>Add to cart</Button>
       </Box>
+      <Typography variant="h5">{description}</Typography>
       </Grid>
     </Grid>
     </Container>

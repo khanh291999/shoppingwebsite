@@ -13,11 +13,11 @@ export default function CartProduct(props){
         props.deleteCart(props.cart.id_cart);
     }
     return (
-        <Grid container style={{margin: "20px 0"}}>
+        <Grid container style={{margin: "20px 0", borderBottom:"1px solid black", padding: "10px"}}>
             <Grid item md={4}>
-                <img style={{maxWidth: "100%"}} src={img} alt="cart img"></img>
+                <img style={{maxWidth: "30%"}} src={img} alt="cart img"></img>
             </Grid> 
-            <Grid item md={8}>
+            <Grid item md={8} >
                 <Typography variant="h5">{name} x {quantity}</Typography>
                 <Typography>{price*quantity}$</Typography>
                 <TextField type="number" value = {quantity} onChange={handleChangeQuantity}></TextField>
