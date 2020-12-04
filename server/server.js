@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const cors = require('cors')
 const path = require('path');
 const { post } = require('./routes/userRouter');
+const { exec } = require('child_process');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -145,7 +146,7 @@ app.get('/jacket', (req, res) =>{
 
     Jacket.find({})
     .then((data)=>{
-        console.log('Data: ', data);
+        // console.log('Data: ', data);
         res.json(data);
     })
     .catch((error)=>{
@@ -160,7 +161,7 @@ app.get('/jacket/:id', (req, res) =>{
         id:req.params.id
     })
     .then((data)=>{
-        console.log('Data: ', data);
+        // console.log('Data: ', data);
         res.json(data);
     })
     .catch((error)=>{
@@ -182,14 +183,40 @@ app.post('/jacket', (req,res)=>{
     })
 })
 
-app.delete("/jacket/:id",async (req, res) => {
-    try {
-      const deletedJacket = await Jacket.findByIdAndDelete(req.Jacket);
-      res.json(deletedJacket);
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
+// app.delete("/jacket/:id",async (req, res) => {
+//     try {
+//       const deletedJacket = await Jacket.findByIdAndDelete(req.Jacket);
+//       res.json(deletedJacket);
+//     } catch (err) {
+//       res.status(500).json({ error: err.message });
+//     }
+//   });
+
+app.delete('/jacket/:id', async (req,res)=>{
+  try{
+    console.log(req.params.id);
+      const removedPost = await Jacket.remove({id: req.params.id});
+      res.json(removedPost);
+  }
+  catch(err){
+    res.json({message:err});
+  }
+})
+
+app.patch('/jacket/:id', async (req, res)=>{
+   try{
+       const updatePost = await Jacket.updateOne(
+           {id: req.params.id},
+           {$set: {name:req.body.name,price:req.body.price,image:req.body.image}}
+       );
+       res.json(updatePost);
+   }catch (err){
+       
+       res.json({message:err});
+   }
   });
+
+
 
 app.get('/jean', (req, res) =>{
     const data = {

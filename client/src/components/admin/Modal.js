@@ -15,12 +15,13 @@ export default class Modal extends Component {
 
     componentDidMount(){
         if(this.props.editingProduct){
-            const {image,price,name} =  this.props.editingProduct
+            const {image,price,name,id} =  this.props.editingProduct
             console.log("MODAL EDIT")
             this.setState({
                 image,
                 price,
-                name
+                name,
+                id
             })
         }else{
             console.log("MODAL CREATE")
@@ -47,10 +48,10 @@ export default class Modal extends Component {
 
     handleSubmit=(event)=>{
         event.preventDefault();
-        const {name,price,image_one,image_three,image_two}=this.state
+        const {id,name,price,image_one,image_three,image_two}=this.state
         const image =[image_one,image_two,image_three]
         if(this.props.editingProduct){
-            this.props.updateProduct(name,image,price)
+            this.props.updateProduct(id,name,image,price)
         }else{
             this.props.addProduct(name,image,price)
         }
@@ -61,7 +62,7 @@ export default class Modal extends Component {
 
     render() {
 
-        const {name,price,image_one,image_two,image_three}=this.state
+        const {id,name,price,image_one,image_two,image_three}=this.state
         return (
             <div className="modal">
                 <div className="content p-3">

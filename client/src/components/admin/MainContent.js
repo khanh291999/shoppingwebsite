@@ -53,8 +53,8 @@ export default class MainContent extends React.Component{
 
     }
 
-    updateProduct = (name,image,price) => {
-        axios.patch('http://localhost:8080/jacket/',{
+    updateProduct = (id,name,image,price) => {
+        axios.patch(`http://localhost:8080/jacket/${id}`,{
             name,
             image,
             price
@@ -64,15 +64,20 @@ export default class MainContent extends React.Component{
             }
         }).then(res=>{
             console.log(res)
+            this.setState({
+                name: +name,
+                price:+price,
+                image:+image
+            })
             Swal.fire({
-                title:"Create Successfully",
+                title:"Edit Successfully",
                 timer:1000,
                 icon:'success'
             })
         }).catch(err=>{
             console.log(err);
             Swal.fire({
-                title:"Create Unsuccessfully",
+                title:"Edit Unsuccessfully",
                 text:err.message,
                 timer:1000,
                 icon:'error'
