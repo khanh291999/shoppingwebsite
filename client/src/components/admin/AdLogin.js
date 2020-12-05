@@ -14,12 +14,12 @@ export default function Login() {
   const  {setadminData}  = useContext(adminContext);
   const history = useHistory();
 
-  // useEffect(() => {
-  //   const token = window.localStorage.getItem('admin_token');
-  //   if(token){
-  //       this.props.history.push('/admin')
-  //   }
-  // }, []);
+  useEffect(() => {
+    const token = window.localStorage.getItem('admin-token');
+    if(token){
+        history.push('/admin')
+    }
+  }, []);
 
 
   //post login data
