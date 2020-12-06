@@ -2,7 +2,7 @@ import { Grid, TextField, Typography, Button } from '@material-ui/core'
 import React from 'react'
 
 export default function CartProduct(props){
-    const {img,name,price,quantity} = props.cart;
+    const {img,name,price,size,quantity} = props.cart;
     const handleChangeQuantity = event =>{
         if(Number(event.target.value)===0){
             return props.deleteCart(props.cart.id_cart);
@@ -21,6 +21,7 @@ export default function CartProduct(props){
                 <Typography variant="h5">{name} x {quantity}</Typography>
                 <Typography>{price*quantity}$</Typography>
                 <TextField type="number" value = {quantity} onChange={handleChangeQuantity}></TextField>
+                <Typography>Size: {size}</Typography>
                 <Button onClick={handleDeleteFromCart}>Delete</Button>
             </Grid>
         </Grid>

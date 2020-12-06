@@ -5,9 +5,28 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle'
-import { TextField } from '@material-ui/core';
+import { TextField, Typography } from '@material-ui/core';
+import UserContext from './../../context/userContext'
 
 export default class CheckoutForm extends Component {
+  static contextType = UserContext
+  
+  componentDidMount() {
+    const userData = this.context
+    userData ? (
+      this.setState({
+        name: "userData.displayName",
+        address:"userData.address",
+        phone_number:"userData.phone_number",
+      })
+        ) : (this.setState({
+          name:"",
+          address:"",
+          phone_number:""
+        }))
+      console.log(userData)
+  }
+
   state={
       name:"",
       address:"",
@@ -35,7 +54,7 @@ export default class CheckoutForm extends Component {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
-            <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+            <DialogTitle id="alert-dialog-title">{"Checkout"}</DialogTitle>
             <DialogContent>
                 <TextField type="text" onChange={this.handleChange} name="name" value={this.state.name} label="name"></TextField>
                 <TextField type="text" onChange={this.handleChange} name="address" value={this.state.address} label="address"></TextField>

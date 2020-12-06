@@ -28,7 +28,6 @@ function Header(props) {
     });
     localStorage.setItem("auth-token", "");
   };
-
   //show/hide button if width to small
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -78,16 +77,16 @@ function Header(props) {
             </Link>
           </li>
           <li className='nav-item'>
-            {userData.user ?(
               <IconButton edge="start" color='Colors.white' aria-label="menu" id="cart-icon">
                 <Link to="/cart">
                 <Badge badgeContent={props.quantity} color="secondary">
                   <ShoppingCart />
                 </Badge>
                 </Link>
-              </IconButton>):("")}
+              </IconButton>
           </li>
           </ul>
+          
           {userData.user ? (
             <h5 className='user-name'> {userData.user.displayName}</h5>
               ) : ("")}
