@@ -11,21 +11,22 @@ import UserContext from './../../context/userContext'
 export default class CheckoutForm extends Component {
   static contextType = UserContext
   
-  componentDidMount() {
-    const userData = this.context
-    userData ? (
+  componentWillMount() {
+    const user = this.context.userData.user;
+    user ? (
       this.setState({
-        name: "userData.displayName",
-        address:"userData.address",
-        phone_number:"userData.phone_number",
+        name: user.displayName,
+        address:user.address,
+        phone_number:user.phoneNumber,
       })
         ) : (this.setState({
           name:"",
           address:"",
           phone_number:""
         }))
-      console.log(userData)
+      // console.log('userdata', user);
   }
+  
 
   state={
       name:"",
@@ -56,16 +57,16 @@ export default class CheckoutForm extends Component {
           >
             <DialogTitle id="alert-dialog-title">{"Checkout"}</DialogTitle>
             <DialogContent>
-                <TextField type="text" onChange={this.handleChange} name="name" value={this.state.name} label="name"></TextField>
-                <TextField type="text" onChange={this.handleChange} name="address" value={this.state.address} label="address"></TextField>
-                <TextField type="text" onChange={this.handleChange} name="phone_number" value={this.state.phone_number} label="phone_number"></TextField>
+                <TextField type="text" onChange={this.handleChange} name="name" value={this.state.name} label="Name"></TextField>
+                <TextField type="text" onChange={this.handleChange} name="address" value={this.state.address} label="Address"></TextField>
+                <TextField type="text" onChange={this.handleChange} name="phone_number" value={this.state.phone_number} label="Phone Number"></TextField>
             </DialogContent>
             <DialogActions>
               <Button onClick={handleClose} color="primary">
-                Disagree
+                No, Thanks
               </Button>
               <Button onClick={this.handlePay} color="primary" autoFocus>
-                Agree
+                Buy
               </Button>
             </DialogActions>
           </Dialog>

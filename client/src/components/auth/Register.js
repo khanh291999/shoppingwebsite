@@ -10,6 +10,8 @@ export default function Register() {
   const [password, setPassword] = useState();
   const [passwordCheck, setPasswordCheck] = useState();
   const [displayName, setDisplayName] = useState();
+  const [address, setAddress] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
   const [error, setError] = useState();
 
   const { setUserData } = useContext(UserContext);
@@ -20,7 +22,7 @@ export default function Register() {
     e.preventDefault();
 
     try {
-      const newUser = { email, password, passwordCheck, displayName };
+      const newUser = { email, password, passwordCheck, displayName, address, phoneNumber };
       await Axios.post("http://localhost:8080/users/register", newUser);
       console.log("ResponseRegister");
       const loginRes = await Axios.post("http://localhost:8080/users/login", {
@@ -70,6 +72,20 @@ export default function Register() {
             id="register-display-name"
             type="text"
             onChange={(e) => setDisplayName(e.target.value)}
+          />
+
+          <label htmlFor="register-address">Adress</label>
+          <input
+            id="register-address"
+            type="text"
+            onChange={(e) => setAddress(e.target.value)}
+          />
+
+          <label htmlFor="register-phone-number">Phone Number</label>
+          <input
+            id="register-phone-number"
+            type="text"
+            onChange={(e) => setPhoneNumber(e.target.value)}
           />
 
           <button type="submit" id="register-btn">Register</button>
