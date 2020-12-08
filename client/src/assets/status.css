@@ -1,0 +1,26 @@
+.table-headers, .table-rows {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1.5fr;
+  }
+
+  .table-headers {
+    text-transform: uppercase;
+    font-weight: 600;
+    border-bottom: 1px solid #d2d2d2;
+    padding: 20px 0;
+  }
+
+  .table-rows {
+    border-bottom: 1px solid #d2d2d2;
+    padding: 20px 0;
+  }
+
+  .table-rows .table-cell {
+    display: flex;
+    align-items: center;
+  }
+
+  .table-rows .table-cell img {
+    max-width: 50px;
+  }
+

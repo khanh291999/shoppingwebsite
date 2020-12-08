@@ -32,7 +32,8 @@ class Cart extends React.Component {
       ...form,
       id: 'order' +Date.now()+Math.random(),
       product:this.props.cart_data,
-      userid: user.id
+      userid: user.id,
+      status:"Waiting for confirm"
     }).then(res=>{
       this.setState({
         alert:"Purchase Complete!",

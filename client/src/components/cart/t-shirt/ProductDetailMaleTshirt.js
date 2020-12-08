@@ -53,7 +53,7 @@ class ProductDetailMaleTshirt extends Component {
 
     this.props.addToCart({
       id_cart:"cart_"+Date.now()+Math.random(),
-      id_prodict:id,
+      id_product:id,
       name,
       price,
       img,
@@ -87,7 +87,7 @@ class ProductDetailMaleTshirt extends Component {
       <Typography variant="h5">{price}$</Typography>
       <FormControl component="fieldset">
       <FormLabel component="legend">Size:</FormLabel>
-      <RadioGroup aria-label="gender" name="size" value={this.state.size} onChange={this.handleChange}>
+      <RadioGroup aria-label="gender" name="size" onChange={this.handleChange}>
           {size &&
           size.map((s,index)=>{
             return (

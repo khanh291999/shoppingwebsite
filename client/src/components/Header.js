@@ -68,14 +68,18 @@ function Header(props) {
               Products
             </Link>
           </li>
+          {
+            userData.user?
           <li className='nav-item'>
             <Link
-              to='/about'
+              to='/status'
               className='nav-links'
             >
-              About us
+              Order Status
             </Link>
           </li>
+          : ("")
+          }
           <li className='nav-item'>
               <IconButton edge="start" color='Colors.white' aria-label="menu" id="cart-icon">
                 <Link to="/cart">

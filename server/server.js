@@ -38,7 +38,8 @@ const CartSchema = new Schema({
      phone_number:String,
      id:String,
      product:Array,
-     userid:String
+     userid:String,
+     status:String
 })
 
 // const AdminSchema = new Schema({

@@ -19,6 +19,7 @@ import Femalejean from "./cart/jeanfemale/FemaleJean";
 import ShoppingAdmin from "./admin/ShoppingAdmin"
 import AdLogin from "./admin/AdLogin"
 import FemaleTshirt from "./cart/femalet-shirt/FemaleTshirt";
+import Status from "./status/Status"
 
 
 const style = (theme) => ({
@@ -101,6 +102,7 @@ class ShoppingCart extends Component {
           {/* <Route path="/signup" component={SignUp}></Route> */}
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/status" component={Status} />
           <Route path="*">
             404 PAGE
           </Route>
