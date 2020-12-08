@@ -5,10 +5,12 @@ import {connect} from "react-redux"
 import CheckoutForm from "./CheckoutForm";
 import axios from "axios"
 import MuiAlert from '@material-ui/lab/Alert';
+import UserContext from './../../context/userContext'
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 class Cart extends React.Component {
+  static contextType = UserContext
   state={
     open:false,
     openAlert:false,
@@ -25,10 +27,12 @@ class Cart extends React.Component {
     this.setState({openAlert:false})
   }
   handleSendForm = (form) =>{
+    const user = this.context.userData.user;
     axios.post("http://localhost:8080/cart",{
       ...form,
       id: 'order' +Date.now()+Math.random(),
-      product:this.props.cart_data
+      product:this.props.cart_data,
+      userid: user.id
     }).then(res=>{
       this.setState({
         alert:"Purchase Complete!",
@@ -36,6 +40,7 @@ class Cart extends React.Component {
         openAlert:true,
         open:false
       })
+      console.log(user);
       this.props.clearCart();
     }).catch(err =>{
       this.setState({
