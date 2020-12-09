@@ -61,9 +61,8 @@ export default function App() {
         });
       }
     };
-
-    checkLoggedInAdmin();
     checkLoggedIn();
+    checkLoggedInAdmin();
   }, []);
 
 const theme = createMuiTheme({

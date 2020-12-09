@@ -21,7 +21,7 @@ router.post("/adminlogin", async (req, res) => {
     const isMatch = await bcrypt.compare(password, admin.password);
     if (!isMatch) return res.status(400).json({ msg: "Invalid credentials." });
  
-    const JWT_SECRET='*e>xn8f?994tn>gen5gQL;Nt"pdpjDVM5Q8[7"3a@_T}<69z[K'
+    const JWT_SECRET='*e>xn8f?994tn>gen5gQL;'
     const token = jwt.sign({ id: admin._id },JWT_SECRET);
     res.json({
        token,
