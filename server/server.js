@@ -64,6 +64,7 @@ const JeanSchema = new Schema({
     price:Number,
     size:Array
 });
+JeanSchema.plugin(AutoIncrement, {id: 'id_jean',inc_field: 'id', start_seq:'9'});
 
 const TshirtSchema = new Schema({
     id:Number,
@@ -185,15 +186,6 @@ app.post('/jacket', (req,res)=>{
     })
 })
 
-// app.delete("/jacket/:id",async (req, res) => {
-//     try {
-//       const deletedJacket = await Jacket.findByIdAndDelete(req.Jacket);
-//       res.json(deletedJacket);
-//     } catch (err) {
-//       res.status(500).json({ error: err.message });
-//     }
-//   });
-
 app.delete('/jacket/:id', async (req,res)=>{
   try{
     console.log(req.params.id);
@@ -248,6 +240,44 @@ app.get('/jean/:id', (req, res) =>{
         console.log('error: ', daerrorta)
     })
 });
+
+app.post('/jean', (req,res)=>{
+    const data = req.body;
+
+    const newJean = new Jean(data);
+    newJean.save((error)=>{
+        if(error){
+            res.status(500).json({msg:'Sorry, internal server errors'});
+        }
+        return res.json({
+            msg: ' Your data has been saved!!!'
+        })
+    })
+})
+
+app.delete('/jean/:id', async (req,res)=>{
+  try{
+    console.log(req.params.id);
+      const removedPost = await Jean.remove({id: req.params.id});
+      res.json(removedPost);
+  }
+  catch(err){
+    res.json({message:err});
+  }
+})
+
+app.patch('/jean/:id', async (req, res)=>{
+   try{
+       const updatePost = await Jean.updateOne(
+           {id: req.params.id},
+           {$set: {name:req.body.name,price:req.body.price,image:req.body.image}}
+       );
+       res.json(updatePost);
+   }catch (err){
+       
+       res.json({message:err});
+   }
+  });
 
 app.get('/t-shirt', (req, res) =>{
     const data = {

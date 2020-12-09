@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../../assets/modal.css'
+import '../../../assets/modal.css'
 export default class Modal extends Component {
     state={
         name:"PRODUCT NEW",

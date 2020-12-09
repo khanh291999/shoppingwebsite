@@ -1,11 +1,11 @@
 import React from 'react'
-import ContentHeader from './ContentHeader'
-import { Empty } from './Empty'
-import Modal from './Modal'
-import ProductRow from './ProductRow'
+import ContentHeaderJean from './ContentHeaderJean'
+import {EmptyJean} from './EmptyJean'
+import ModalJean from './ModalJean'
+import ProductRowJean from './ProductRowJean'
 import axios from 'axios';
 import Swal from 'sweetalert2'
-export default class MainContent extends React.Component{
+export default class MainContentJean extends React.Component{
     state={
         open:false,
         products : [
@@ -17,7 +17,7 @@ export default class MainContent extends React.Component{
     componentDidMount(){
         console.log("DIDMOUNT")
         // fetch("http://localhost:9696/products")
-        axios.get("http://localhost:8080/jacket").then(res=>{
+        axios.get("http://localhost:8080/jean").then(res=>{
             console.log(res);
             this.setState({
                 products:res.data
@@ -26,7 +26,7 @@ export default class MainContent extends React.Component{
     }
 
     addProduct=(name,image,price)=>{
-        axios.post('http://localhost:8080/jacket',{
+        axios.post('http://localhost:8080/jean',{
             name,
             image,
             price
@@ -34,7 +34,8 @@ export default class MainContent extends React.Component{
             headers:{
                 token: window.localStorage.getItem('admin_token')
             }
-        }).then(res=>{
+        })
+        .then(res=>{
             console.log(res)
             Swal.fire({
                 title:"Create Successfully",
@@ -54,7 +55,7 @@ export default class MainContent extends React.Component{
     }
 
     updateProduct = (id,name,image,price) => {
-        axios.patch(`http://localhost:8080/jacket/${id}`,{
+        axios.patch(`http://localhost:8080/jean/${id}`,{
             name,
             image,
             price
@@ -86,19 +87,37 @@ export default class MainContent extends React.Component{
     }
 
     deleteProduct = (id) => {
-        axios.delete(`http://localhost:8080/jacket/${id}`,{
-         id
-        },{
-            headers:{
-                token: window.localStorage.getItem('admin_token')
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this product file!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, keep it'
+          }).then((result) => {
+            if (result.value) {
+                axios.delete(`http://localhost:8080/jean/${id}`,{
+                    id
+                   },{
+                       headers:{
+                           token: window.localStorage.getItem('admin_token')
+                       }
+                   })
+              Swal.fire(
+                'Deleted!',
+                'Your product has been deleted.',
+                'success'
+              )
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              Swal.fire(
+                'Cancelled',
+                'Your prodct is safe :)',
+                'error'
+              )
             }
-        }).then(res=>{
+          })
+        .then(res=>{
             console.log(res)
-            Swal.fire({
-                title:"Delete Successfully",
-                timer:1000,
-                icon:'success'
-            })
         }).catch(err=>{
             console.log(err);
             Swal.fire({
@@ -135,7 +154,7 @@ export default class MainContent extends React.Component{
     render(){
         return  <>
         <main>
-                <ContentHeader toggleModal={this.toggleModal} addProduct={this.addProduct}/>    
+                <ContentHeaderJean toggleModal={this.toggleModal} addProduct={this.addProduct}/>    
                 <div className="content-table">
                     <div className="table-headers">
                         <div className="table-header">
@@ -157,14 +176,14 @@ export default class MainContent extends React.Component{
                     {
                         this.state.products.length>0?
                         this.state.products.map((product)=>{
-                            return <ProductRow updateIsEditting={this.updateIsEditting}  deleteProduct={this.deleteProduct} key={`product_id_${product.id}`} product={product}/>
+                            return <ProductRowJean updateIsEditting={this.updateIsEditting}  deleteProduct={this.deleteProduct} key={`product_id_${product.id}`} product={product}/>
                         })
-                        :<Empty/>
+                        :<EmptyJean/>
                     }
                 </div>
             </main>
             {
-                this.state.open?<Modal updateProduct={this.updateProduct} clearIsEditing={this.clearIsEditing} editingProduct={this.state.products[this.state.isEditting]} addProduct={this.addProduct} toggleModal={this.toggleModal}/>:''
+                this.state.open?<ModalJean updateProduct={this.updateProduct} clearIsEditing={this.clearIsEditing} editingProduct={this.state.products[this.state.isEditting]} addProduct={this.addProduct} toggleModal={this.toggleModal}/>:''
             }
         </>
     }
