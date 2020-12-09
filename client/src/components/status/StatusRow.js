@@ -2,8 +2,7 @@ import React from 'react'
 import StatusItem from './StatusItem'
 export default function StatusRow(props){
 
-    const {product} = props.productss
-    console.log('product',product)
+    const {product,status} = props.productss
     return  (
         product.map(productitem=>{
             return(
@@ -13,6 +12,7 @@ export default function StatusRow(props){
                 img={productitem.img}
                 size={productitem.size}
                 quantity={productitem.quantity}
+                status={status}
                 />
             )
         })

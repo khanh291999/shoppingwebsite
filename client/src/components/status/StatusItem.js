@@ -19,6 +19,9 @@ export default function StatusItem(props){
                 <div className="table-cell">
                     {quantity}
                 </div>
+                <div className="table-cell">
+                    {status}
+                </div>
             </div>
         )
    

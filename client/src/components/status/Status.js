@@ -56,9 +56,13 @@ export default class Status extends Component{
                         <div className="table-header">
                             Quantity
                         </div>
+                        <div className="table-header">
+                            Status
+                        </div>
                     </div>
                 </div>
                 {
+                    
                         matchuser.length >0?
                         matchuser.map((product)=>{
                             return   <StatusRow  key={`product_id_${product.id}`} productss={product}/>
