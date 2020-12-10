@@ -1,0 +1,26 @@
+.admin-status-table-headers, .admin-status-table-rows {
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr;
+  }
+
+  .admin-status-table-headers {
+    text-transform: uppercase;
+    font-weight: 600;
+    border-bottom: 1px solid #d2d2d2;
+    padding: 20px 0;
+  }
+
+  .admin-status-table-rows {
+    border-bottom: 1px solid #d2d2d2;
+    padding: 20px 0;
+  }
+
+  .admin-status-table-rows .admin-status-table-cell {
+    display: flex;
+    align-items: center;
+  }
+
+  .admin-status-table-rows .admin-status-table-cell img {
+    max-width: 50px;
+  }
+

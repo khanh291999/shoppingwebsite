@@ -38,16 +38,16 @@ export default function Navbar(props) {
         </div>
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           <li className='nav-item'>
-            <Link to='/' className='nav-links'>
+            <Link to='/admin' className='nav-links'>
               Home
             </Link>
           </li>
           <li className='nav-item'>
             <Link
-              to='/product'
+              to='/adminstatus'
               className='nav-links'
             >
-              Products
+              Order Status
             </Link>
           </li>
           </ul>

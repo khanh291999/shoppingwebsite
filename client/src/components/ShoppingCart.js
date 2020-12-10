@@ -21,6 +21,7 @@ import AdLogin from "./admin/AdLogin"
 import FemaleTshirt from "./cart/femalet-shirt/FemaleTshirt";
 import Status from "./status/Status"
 import ShoppingAdminJean from "./admin/jean/ShoppingAdminJean";
+import AdminShoppingStatus from "./admin/status/AdminShoppingStatus";
 
 
 const style = (theme) => ({
@@ -70,6 +71,7 @@ class ShoppingCart extends Component {
         <Route path="/adlogin" component={AdLogin}></Route>
         <Route path="/admin" component={ShoppingAdmin}></Route>
         <Route path="/adminjean" component={ShoppingAdminJean}></Route>
+        <Route path="/adminstatus" component={AdminShoppingStatus}></Route>
           <Layout>
             <Switch>
             <Route exact path="/" component={Home}></Route>

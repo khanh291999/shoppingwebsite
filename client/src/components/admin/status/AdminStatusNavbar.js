@@ -4,7 +4,7 @@ import {useEffect } from 'react';
 import '../../../assets/Header.css';
 import BarsSolid from '../../../assets/icons/bars-solid'
 
-export default function NavbarJean(props) {
+export default function AdminStatusNavbar(props) {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
   const handleClick = () => setClick(!click);

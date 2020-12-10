@@ -424,6 +424,19 @@ app.post('/cart', (req,res)=>{
     })
 })
 
+app.patch('/cart/:id', async (req, res)=>{
+    try{
+        const updatePost = await Cart.updateOne(
+            {id: req.params.id},
+            {$set: {status:req.body.status}}
+        );
+        res.json(updatePost);
+    }catch (err){
+        
+        res.json({message:err});
+    }
+   });
+
 // app.get('/admin', (req, res) =>{
 //     const data = {
 //     };
