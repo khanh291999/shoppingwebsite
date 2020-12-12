@@ -20,6 +20,31 @@ export default class AdminStatus extends Component{
             })
       }
 
+      updateStatusWaiting = (id,status) => {
+        axios.patch(`http://localhost:8080/cart/${id}`,{
+           status
+        },{
+            headers:{
+                token: window.localStorage.getItem('admin_token')
+            }
+        }).then(res=>{
+            console.log(res)
+            Swal.fire({
+                title:"Change Status To Waiting to Confirm Successfully",
+                timer:1000,
+                icon:'success'
+            })
+        }).catch(err=>{
+            console.log(err);
+            Swal.fire({
+                title:"Change Status To Delivering Unsuccessfully",
+                text:err.message,
+                timer:1000,
+                icon:'error'
+            })
+        })
+    }
+
       updateStatusDelivering = (id,status) => {
         axios.patch(`http://localhost:8080/cart/${id}`,{
            status
@@ -83,7 +108,7 @@ export default class AdminStatus extends Component{
                            Adress
                         </div>
                         <div className="admin-status-table-header">
-                            Phone Number
+                            Phone
                         </div>
                         <div className="admin-status-able-header">
                             Product Name
@@ -103,13 +128,16 @@ export default class AdminStatus extends Component{
                         <div className="admin-status-table-header">
                             Status
                         </div>
+                        <div className="admin-status-table-header">
+                            Action
+                        </div>
                     </div>
                 </div>
                 {
                     
                         this.state.products.length >0?
                         this.state.products.map((product)=>{
-                            return   <AdminStatusRow updateStatusDelivering={this.updateStatusDelivering} updateStatusDone={this.updateStatusDone}  key={`product_id_${product.id}`} productss={product}/>
+                            return   <AdminStatusRow updateStatusWaiting={this.updateStatusWaiting} updateStatusDelivering={this.updateStatusDelivering} updateStatusDone={this.updateStatusDone}  key={`product_id_${product.id}`} productss={product}/>
                         })
                         :<AdminEmptyStatus/>
                 }

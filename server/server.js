@@ -402,7 +402,7 @@ app.get('/cart', (req, res) =>{
     };
     Cart.find({})
     .then((data)=>{
-        console.log('Data: ', data);
+        // console.log('Data: ', data);
         res.json(data);
     })
     .catch((error)=>{
