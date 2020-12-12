@@ -10,6 +10,7 @@ const WaitingButton = withStyles((theme) => ({
     '&:hover': {
       backgroundColor: red[700],
     },
+    width:50
   },
 }))(Button);
 
@@ -21,6 +22,7 @@ const DeliveringButton = withStyles((theme) => ({
     '&:hover': {
       backgroundColor: yellow[700],
     },
+   
   },
 }))(Button);
 
@@ -31,6 +33,7 @@ const DoneButton = withStyles((theme) => ({
     '&:hover': {
       backgroundColor: green[700],
     },
+    width:50
   },
 }))(Button);
 
