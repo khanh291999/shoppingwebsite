@@ -21,6 +21,7 @@ import AdLogin from "./admin/AdLogin"
 import FemaleTshirt from "./cart/femalet-shirt/FemaleTshirt";
 import Status from "./status/Status"
 import ShoppingAdminJean from "./admin/jean/ShoppingAdminJean";
+import ShoppingAdminTshirt from "./admin/t-shirt/ShoppingAdminTshirt";
 import AdminShoppingStatus from "./admin/status/AdminShoppingStatus";
 
 
@@ -71,6 +72,7 @@ class ShoppingCart extends Component {
         <Route path="/adlogin" component={AdLogin}></Route>
         <Route path="/admin" component={ShoppingAdmin}></Route>
         <Route path="/adminjean" component={ShoppingAdminJean}></Route>
+        <Route path="/admint-shirt" component={ShoppingAdminTshirt}></Route>
         <Route path="/adminstatus" component={AdminShoppingStatus}></Route>
           <Layout>
             <Switch>
