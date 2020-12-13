@@ -82,6 +82,7 @@ const FemaleJacketSchema = new Schema({
     price:Number,
     size:Array
 });
+FemaleJacketSchema.plugin(AutoIncrement, {id: 'id_femalejacket',inc_field: 'id', start_seq:'9'});
 
 const FemaleJeanSchema = new Schema({
     id:Number,
@@ -143,7 +144,7 @@ app.use("/users", require("./routes/userRouter"));
 app.use("/admins", require("./routes/adminRouter"));
 
 
-
+//Jacket
 app.get('/jacket', (req, res) =>{
     const data = {
     };
@@ -212,7 +213,7 @@ app.patch('/jacket/:id', async (req, res)=>{
   });
 
 
-
+//Jean
 app.get('/jean', (req, res) =>{
     const data = {
     };
@@ -280,6 +281,8 @@ app.patch('/jean/:id', async (req, res)=>{
    }
   });
 
+
+//T-shirt
 app.get('/t-shirt', (req, res) =>{
     const data = {
     };
@@ -348,6 +351,7 @@ app.patch('/t-shirt/:id', async (req, res)=>{
    }
   });
 
+  //FemaleJacket
 app.get('/femalejacket', (req, res) =>{
     const data = {
     };
@@ -377,8 +381,46 @@ app.get('/femalejacket/:id', (req, res) =>{
     })
 });
 
+app.post('/femalejacket', (req,res)=>{
+    const data = req.body;
+
+    const newFemaleJacket = new FemaleJacket(data);
+    newFemaleJacket.save((error)=>{
+        if(error){
+            res.status(500).json({msg:'Sorry, internal server errors'});
+        }
+        return res.json({
+            msg: ' Your data has been saved!!!'
+        })
+    })
+})
+
+app.delete('/femalejacket/:id', async (req,res)=>{
+  try{
+    console.log(req.params.id);
+      const removedPost = await FemaleJacket.remove({id: req.params.id});
+      res.json(removedPost);
+  }
+  catch(err){
+    res.json({message:err});
+  }
+})
+
+app.patch('/femalejacket/:id', async (req, res)=>{
+   try{
+       const updatePost = await FemaleJacket.updateOne(
+           {id: req.params.id},
+           {$set: {name:req.body.name,price:req.body.price,image:req.body.image}}
+       );
+       res.json(updatePost);
+   }catch (err){
+       
+       res.json({message:err});
+   }
+  });
 
 
+//FemaleJean
 app.get('/femalejean', (req, res) =>{
     const data = {
     };
@@ -408,6 +450,7 @@ app.get('/femalejean/:id', (req, res) =>{
     })
 });
 
+//FemaleT-shirt
 app.get('/femalet-shirt', (req, res) =>{
     const data = {
     };
@@ -437,6 +480,7 @@ app.get('/femalet-shirt/:id', (req, res) =>{
     })
 });
 
+//Cart
 app.get('/cart', (req, res) =>{
     const data = {
     };
