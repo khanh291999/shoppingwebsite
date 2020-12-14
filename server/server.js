@@ -100,6 +100,7 @@ const FemaleTshirtSchema = new Schema({
     price:Number,
     size:Array
 });
+FemaleTshirtSchema.plugin(AutoIncrement, {id: 'id_femalet-shirt',inc_field: 'id', start_seq:'11'});
 
 //Model
 // const BlogPost = mongoose.model('BlogPost', BlogPostSchema);
@@ -518,6 +519,44 @@ app.get('/femalet-shirt/:id', (req, res) =>{
         console.log('error: ', daerrorta)
     })
 });
+
+app.post('/femalet-shirt', (req,res)=>{
+    const data = req.body;
+
+    const newFemaleTshirt = new FemaleTshirt(data);
+    newFemaleTshirt.save((error)=>{
+        if(error){
+            res.status(500).json({msg:'Sorry, internal server errors'});
+        }
+        return res.json({
+            msg: ' Your data has been saved!!!'
+        })
+    })
+})
+
+app.delete('/femalet-shirt/:id', async (req,res)=>{
+  try{
+    console.log(req.params.id);
+      const removedPost = await FemaleTshirt.remove({id: req.params.id});
+      res.json(removedPost);
+  }
+  catch(err){
+    res.json({message:err});
+  }
+})
+
+app.patch('/femalet-shirt/:id', async (req, res)=>{
+   try{
+       const updatePost = await FemaleTshirt.updateOne(
+           {id: req.params.id},
+           {$set: {name:req.body.name,price:req.body.price,image:req.body.image}}
+       );
+       res.json(updatePost);
+   }catch (err){
+       
+       res.json({message:err});
+   }
+  });
 
 //Cart
 app.get('/cart', (req, res) =>{
