@@ -91,6 +91,7 @@ const FemaleJeanSchema = new Schema({
     price:Number,
     size:Array
 });
+FemaleJeanSchema.plugin(AutoIncrement, {id: 'id_femalejean',inc_field: 'id', start_seq:'9'});
 
 const FemaleTshirtSchema = new Schema({
     id:Number,
@@ -449,6 +450,44 @@ app.get('/femalejean/:id', (req, res) =>{
         console.log('error: ', daerrorta)
     })
 });
+
+app.post('/femalejean', (req,res)=>{
+    const data = req.body;
+
+    const newFemaleJean = new FemaleJean(data);
+    newFemaleJean.save((error)=>{
+        if(error){
+            res.status(500).json({msg:'Sorry, internal server errors'});
+        }
+        return res.json({
+            msg: ' Your data has been saved!!!'
+        })
+    })
+})
+
+app.delete('/femalejean/:id', async (req,res)=>{
+  try{
+    console.log(req.params.id);
+      const removedPost = await FemaleJean.remove({id: req.params.id});
+      res.json(removedPost);
+  }
+  catch(err){
+    res.json({message:err});
+  }
+})
+
+app.patch('/femalejean/:id', async (req, res)=>{
+   try{
+       const updatePost = await FemaleJean.updateOne(
+           {id: req.params.id},
+           {$set: {name:req.body.name,price:req.body.price,image:req.body.image}}
+       );
+       res.json(updatePost);
+   }catch (err){
+       
+       res.json({message:err});
+   }
+  });
 
 //FemaleT-shirt
 app.get('/femalet-shirt', (req, res) =>{
