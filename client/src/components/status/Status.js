@@ -1,4 +1,5 @@
-import React, {useContext, Component} from "react"
+import { Container } from "@material-ui/core";
+import React, {Component} from "react"
 import axios from "axios"
 import StatusRow from "./StatusRow"
 import {EmptyStatus} from "./EmptyStatus"
@@ -39,6 +40,7 @@ export default class Status extends Component{
           });
           return(
               <>
+              <Container>
             <div className="content-table">
                     <div className="table-headers">
                         <div className="table-header">
@@ -61,14 +63,20 @@ export default class Status extends Component{
                         </div>
                     </div>
                 </div>
+             
                 {
                     
                         matchuser.length >0?
                         matchuser.map((product)=>{
-                            return   <StatusRow  key={`product_id_${product.id}`} productss={product}/>
+                                return(
+                                    <div className="order">
+                                <StatusRow  key={`product_id_${product.id}`} productss={product}/>
+                                </div>
+                            )
                         })
                         :<EmptyStatus/>
                 }
+          </Container>
               </>
           )
       }
