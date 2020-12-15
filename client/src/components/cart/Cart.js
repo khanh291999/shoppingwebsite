@@ -17,6 +17,18 @@ class Cart extends React.Component {
     alert: "",
     severity:'success'
   }
+  constructor() {
+    super();
+    var today = new Date(),
+    date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    var timer = new Date(),
+    time = timer.getHours() + ':' + timer.getMinutes() + ':' + timer.getSeconds();
+    this.state = {
+      currentTime: time,
+      currentDate: date
+    }
+  }
+  
   handleCloseForm = ()=>{
     this.setState({open:false})
   }
@@ -33,7 +45,9 @@ class Cart extends React.Component {
       id: 'order' +Date.now()+Math.random(),
       product:this.props.cart_data,
       userid: user.id,
-      status:"Waiting for confirm"
+      status:"Waiting for confirm",
+      date: this.state.currentDate,
+      time: this.state.currentTime
     }).then(res=>{
       this.setState({
         alert:"Purchase Complete!",
@@ -57,6 +71,8 @@ class Cart extends React.Component {
     const total = this.props.cart_data.reduce((total,pic)=>{
       return total = total + (pic.quantity*pic.price)
     },0)
+    console.log('time',this.state.currentTime);
+    console.log('date',this.state.currentDate);
     return (
       <Container>
         <Grid container spacing={3}> 

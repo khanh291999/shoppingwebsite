@@ -40,7 +40,7 @@ export default class Status extends Component{
           });
           return(
               <>
-              <Container>
+              {/* <Container> */}
             <div className="content-table">
                     <div className="table-headers">
                         <div className="table-header">
@@ -61,6 +61,12 @@ export default class Status extends Component{
                         <div className="table-header">
                             Status
                         </div>
+                        <div className="table-header">
+                            Date
+                        </div>
+                        <div className="table-header">
+                            Time
+                        </div>
                     </div>
                 </div>
              
@@ -76,7 +82,7 @@ export default class Status extends Component{
                         })
                         :<EmptyStatus/>
                 }
-          </Container>
+          {/* </Container> */}
               </>
           )
       }

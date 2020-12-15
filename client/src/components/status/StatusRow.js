@@ -2,7 +2,7 @@ import React from 'react'
 import StatusItem from './StatusItem'
 export default function StatusRow(props){
 
-    const {product,status} = props.productss
+    const {product,status,date, time} = props.productss
     return  (
         product.map(productitem=>{
             return(
@@ -13,6 +13,8 @@ export default function StatusRow(props){
                 size={productitem.size}
                 quantity={productitem.quantity}
                 status={status}
+                date={date}
+                time={time}
                 />
                 
             )

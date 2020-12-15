@@ -39,7 +39,9 @@ const CartSchema = new Schema({
      id:String,
      product:Array,
      userid:String,
-     status:String
+     status:String,
+     date:String,
+     time:String
 })
 
 // const AdminSchema = new Schema({
