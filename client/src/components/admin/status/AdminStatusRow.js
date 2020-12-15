@@ -2,7 +2,7 @@ import React from 'react'
 import AdminStatusItem from './AdminStatusItem'
 export default function AdminStatusRow(props){
  
-    const {id,name,address,phone_number,product,status} = props.productss
+    const {id,name,address,phone_number,product,date,time,status} = props.productss
    
     
     console.log('id',props.productss.id);
@@ -20,6 +20,8 @@ export default function AdminStatusRow(props){
                 username={name}
                 useraddress={address}
                 userphone_number={phone_number}
+                date={date}
+                time={time}
                 status={status}
                 updateStatusDelivering={props.updateStatusDelivering}
                 updateStatusDone={props.updateStatusDone}

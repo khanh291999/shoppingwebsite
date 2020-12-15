@@ -3,7 +3,7 @@ import React, {Component} from "react"
 import axios from "axios"
 import StatusRow from "./StatusRow"
 import {EmptyStatus} from "./EmptyStatus"
-import '../../assets/status.css'
+import '../../assets/clientstatus.css'
 import UserContext from "../../context/userContext"
 
 export default class Status extends Component{
@@ -43,28 +43,28 @@ export default class Status extends Component{
               {/* <Container> */}
             <div className="content-table">
                     <div className="table-headers">
-                        <div className="table-header">
+                        <div className="client-table-header">
                             Name
                         </div>
-                        <div className="table-header">
+                        <div className="client-table-header">
                             Price
                         </div>
-                        <div className="table-header">
+                        <div className="client-table-header">
                             Size
                         </div>
-                        <div className="table-header">
+                        <div className="client-table-header">
                             Image
                         </div>
-                        <div className="table-header">
+                        <div className="client-table-header">
                             Quantity
                         </div>
-                        <div className="table-header">
+                        <div className="client-table-header">
                             Status
                         </div>
-                        <div className="table-header">
+                        <div className="client-table-header">
                             Date
                         </div>
-                        <div className="table-header">
+                        <div className="client-table-header">
                             Time
                         </div>
                     </div>

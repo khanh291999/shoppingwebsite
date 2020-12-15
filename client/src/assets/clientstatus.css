@@ -1,4 +1,4 @@
-.table-headers, .table-rows {
+.client-table-headers, .client-table-rows {
     display: grid;
     grid-template-columns: 1.5fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr 1fr 1fr;
   }

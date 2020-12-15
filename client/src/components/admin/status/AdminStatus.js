@@ -126,6 +126,12 @@ export default class AdminStatus extends Component{
                             Quantity
                         </div>
                         <div className="admin-status-table-header">
+                            Date
+                        </div>
+                        <div className="admin-status-table-header">
+                            Time
+                        </div>
+                        <div className="admin-status-table-header">
                             Status
                         </div>
                         <div className="admin-status-table-header">
@@ -137,7 +143,11 @@ export default class AdminStatus extends Component{
                     
                         this.state.products.length >0?
                         this.state.products.map((product)=>{
-                            return   <AdminStatusRow updateStatusWaiting={this.updateStatusWaiting} updateStatusDelivering={this.updateStatusDelivering} updateStatusDone={this.updateStatusDone}  key={`product_id_${product.id}`} productss={product}/>
+                            return   (
+                                <div className="order">
+                            <AdminStatusRow updateStatusWaiting={this.updateStatusWaiting} updateStatusDelivering={this.updateStatusDelivering} updateStatusDone={this.updateStatusDone}  key={`product_id_${product.id}`} productss={product}/>
+                            </div>
+                            )
                         })
                         :<AdminEmptyStatus/>
                 }

@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function StatusItem(props){
   const classes = useStyles();
-    const {username,useraddress,userphone_number,name,price,img,size,quantity,status} = props
+    const {username,useraddress,userphone_number,name,price,img,size,quantity,date,time,status} = props
     const Waiting = () => {
       const status = "Waiting for confirm"
       props.updateStatusWaiting(props.id,status)
@@ -85,6 +85,12 @@ export default function StatusItem(props){
                 </div>
                 <div className="admin-status-table-cell">
                     {quantity}
+                </div>
+                <div className="admin-status-table-cell">
+                    {date}
+                </div>
+                <div className="admin-status-table-cell">
+                    {time}
                 </div>
                 <div className="admin-status-table-cell">
                     {status}

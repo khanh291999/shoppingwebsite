@@ -4,28 +4,28 @@ export default function StatusItem(props){
     const {name,price,img,size,quantity,status,date,time} = props
         return(
             <div className="table-rows">
-                <div className="table-cell">
+                <div className="client-table-cell">
                   {name}
                 </div>
-                <div className="table-cell">
+                <div className="client-table-cell">
                 {price}$
                 </div>
-                <div className="table-cell">
+                <div className="client-table-cell">
                     {size}
                 </div>
-                <div className="table-cell">
+                <div className="client-table-cell">
                     <img src={img} />
                 </div>
-                <div className="table-cell">
+                <div className="client-table-cell">
                     {quantity}
                 </div>
-                <div className="table-cell">
+                <div className="client-table-cell">
                     {status}
                 </div>
-                <div className="table-cell">
+                <div className="client-table-cell">
                     {date}
                 </div>
-                <div className="table-cell">
+                <div className="client-table-cell">
                     {time}
                 </div>
             </div>
