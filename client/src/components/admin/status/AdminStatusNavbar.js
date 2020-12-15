@@ -25,9 +25,9 @@ export default function AdminStatusNavbar(props) {
   return (
     <>
     <nav className='navbaradmin'>
-    <button onClick={props.toggleSidebar}>
+    {/* <button onClick={props.toggleSidebar}>
         <BarsSolid/>   
-    </button>
+    </button> */}
       <div className='navbar-container'>
         <Link to='/' className='navbar-logo' style={{fontFamily: "LibreBaskervilleBold,Georgia,Times,serif"}}>
           K&Q
