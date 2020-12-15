@@ -41,8 +41,8 @@ export default class Status extends Component{
           return(
               <>
               {/* <Container> */}
-            <div className="content-table">
-                    <div className="table-headers">
+            <div className="client-content-table">
+                    <div className="client-table-headers">
                         <div className="client-table-header">
                             Name
                         </div>

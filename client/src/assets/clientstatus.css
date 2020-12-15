@@ -1,38 +1,39 @@
-.client-table-headers, .client-table-rows {
-    display: grid;
-    grid-template-columns: 1.5fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr 1fr 1fr;
-  }
+.client-table-headers,
+.client-table-rows {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr 1fr 1fr;
+}
 
-  .table-headers {
-    text-transform: uppercase;
-    font-weight: 600;
-    border-bottom: 1px solid #d2d2d2;
-    padding: 20px 20px;
-  }
+.client-table-headers {
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid #d2d2d2;
+  padding: 20px 20px;
+}
 
-  .table-rows {
-    border-bottom: 1px solid #d2d2d2;
-    padding: 20px 20px;
-  }
+.client-table-rows {
+  border-bottom: 1px solid #d2d2d2;
+  padding: 20px 20px;
+}
 
-  .table-rows .table-cell {
-    display: flex;
-    align-items: center;
-  }
+.client-table-rows .client-table-cell {
+  display: flex;
+  align-items: center;
+}
 
-  .table-rows .table-cell img {
-    max-width: 50px;
-  }
+.client-table-rows .client-table-cell img {
+  max-width: 50px;
+}
 
-  .primary-btn {
-    background: #173451;
-    color: white;
-  }
-  .primary-btn:hover {
-    background: #224e79;
-    color: white;
-  }
+.primary-btn {
+  background: #173451;
+  color: white;
+}
+.primary-btn:hover {
+  background: #224e79;
+  color: white;
+}
 
-  .order{
-    border-bottom: 2px solid black;
-  }
+.order {
+  border-bottom: 2px solid black;
+}
