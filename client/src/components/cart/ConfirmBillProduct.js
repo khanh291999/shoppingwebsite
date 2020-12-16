@@ -10,8 +10,8 @@ export default function ConfirmBillProduct(props){
             </Grid> 
             <Grid item md={8} >
                 <Typography variant="h5">{name} x {quantity}</Typography>
-                <Typography>{price*quantity}$</Typography>
-                <TextField type="number" value = {quantity} ></TextField>
+                <Typography>Price: {price*quantity}$</Typography>
+                <Typography> Quantity: {quantity} </Typography>
                 <Typography>Size: {size}</Typography>
             </Grid>
         </Grid>

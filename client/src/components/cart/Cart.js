@@ -6,6 +6,7 @@ import CheckoutForm from "./CheckoutForm";
 import axios from "axios"
 import MuiAlert from '@material-ui/lab/Alert';
 import UserContext from './../../context/userContext'
+import Swal from 'sweetalert2'
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -13,8 +14,8 @@ class Cart extends React.Component {
   static contextType = UserContext
   state={
     open:false,
-    openAlert:false,
-    alert: "",
+    // openAlert:false,
+    // alert: "",
     severity:'success'
   }
   constructor() {
@@ -35,9 +36,9 @@ class Cart extends React.Component {
   handleCheckout =() =>{
     this.setState({open:true})
   }
-  handleCloseSnackBar = () =>{
-    this.setState({openAlert:false})
-  }
+  // handleCloseSnackBar = () =>{
+  //   this.setState({openAlert:false})
+  // }
   handleSendForm = (form) =>{
     const user = this.context.userData.user;
     axios.post("http://localhost:8080/cart",{
@@ -50,19 +51,29 @@ class Cart extends React.Component {
       time: this.state.currentTime
     }).then(res=>{
       this.setState({
-        alert:"Purchase Complete!",
+        // alert:"Purchase Complete!",
         severity:"success",
-        openAlert:true,
+        // openAlert:true,
         open:false
       })
-      console.log(user);
+      Swal.fire({
+        title:"Purchase Successfully",
+        timer:1000,
+        icon:'success'
+      })
       this.props.clearCart();
     }).catch(err =>{
       this.setState({
-        alert:"Purchase Fail!",
+        // alert:"Purchase Fail!",
         severity:"error",
-        openAlert:true,
+        // openAlert:true,
         open:false
+      })
+      Swal.fire({
+        title:"Purchase Unsuccessfully, Please contact our admin",
+        text:err.message,
+        timer:1000,
+        icon:'error'
       })
     })
   }
@@ -71,8 +82,6 @@ class Cart extends React.Component {
     const total = this.props.cart_data.reduce((total,pic)=>{
       return total = total + (pic.quantity*pic.price)
     },0)
-    console.log('time',this.state.currentTime);
-    console.log('date',this.state.currentDate);
     return (
       <Container>
         <Grid container spacing={3}> 
@@ -90,12 +99,12 @@ class Cart extends React.Component {
             </Box>
           </Grid>
         </Grid>
-        <CheckoutForm cart={this.props.cart_data} open={this.state.open} handleClose={this.handleCloseForm} handleSendForm={this.handleSendForm}></CheckoutForm>
-        <Snackbar open={this.state.openAlert} autoHideDuration={6000} onClose={this.handleCloseSnackBar}>
+        <CheckoutForm total={total} cart={this.props.cart_data} open={this.state.open} handleClose={this.handleCloseForm} handleSendForm={this.handleSendForm}></CheckoutForm>
+        {/* <Snackbar open={this.state.openAlert} autoHideDuration={6000} onClose={this.handleCloseSnackBar}>
           <Alert onClose={this.handleCloseSnackBar} severity={this.state.severity}>
             {this.state.alert}
           </Alert>
-        </Snackbar>
+        </Snackbar> */}
       </Container>
     );
   }

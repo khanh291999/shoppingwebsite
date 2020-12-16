@@ -63,6 +63,8 @@ export default class CheckoutForm extends Component {
   }
     render(){
         const {handleClose,open}=this.props;
+        console.log('total',this.props.total);
+        
         return(
             <Dialog
             open={open}
@@ -70,21 +72,21 @@ export default class CheckoutForm extends Component {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
-            <DialogTitle id="alert-dialog-title">{"Checkout"}</DialogTitle>
+            <DialogTitle id="alert-dialog-title">{"Please input your information"}</DialogTitle>
             <DialogContent>
                 <TextField type="text" onChange={this.handleChange} name="name" value={this.state.name} label="Name"></TextField>
                 <TextField type="text" onChange={this.handleChange} name="address" value={this.state.address} label="Address"></TextField>
                 <TextField type="text" onChange={this.handleChange} name="phone_number" value={this.state.phone_number} label="Phone Number"></TextField>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose} color="primary">
-                No, Thanks
+              <Button onClick={handleClose} color="black">
+                Back
               </Button>
-              <Button onClick={this.handleClickOpen} color="primary" autoFocus>
-                Buy
+              <Button onClick={this.handleClickOpen} color="black" autoFocus>
+                Continue
               </Button>
             </DialogActions>
-                <ConfirmBill open={this.state.openconfirmbill} handlePay={this.handlePay} handleClose={this.handleClose} cart={this.props.cart} username={this.state.name} useraddress={this.state.address} userphonenumber={this.state.phone_number} ></ConfirmBill>)
+                <ConfirmBill total={this.props.total} open={this.state.openconfirmbill} handlePay={this.handlePay} handleClose={this.handleClose} cart={this.props.cart} username={this.state.name} useraddress={this.state.address} userphonenumber={this.state.phone_number} ></ConfirmBill>)
           </Dialog>
         )
 

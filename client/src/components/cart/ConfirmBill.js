@@ -12,16 +12,20 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
-import { Grid, TextField } from '@material-ui/core'
+import { Container, Icon } from '@material-ui/core'
 import ConfirmBillProduct from './ConfirmBillProduct'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: 'relative',
+    background: "#242424"
   },
   title: {
     marginLeft: theme.spacing(2),
     flex: 1,
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
   },
 }));
 
@@ -30,7 +34,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function ConfirmBill(props) {
-    const {handleClose,handlePay,open,username,useraddress,userphonenumber} = props;
+    const {handleClose,handlePay,open,username,useraddress,userphonenumber,total} = props;
     const classes = useStyles();
   return (
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
@@ -47,22 +51,30 @@ export default function ConfirmBill(props) {
             </Button>
           </Toolbar>
         </AppBar>
-        <List>
+        <Container>
+        <List component="div" disablePadding>
           <ListItem>
-            <ListItemText primary="Username" secondary={username} />
+            <ListItemText primary="Username" secondary={username} className={classes.nested} />
           </ListItem>
           <Divider />
           <ListItem>
-            <ListItemText primary="Address" secondary={useraddress} />
+            <ListItemText primary="Address" secondary={useraddress} className={classes.nested} />
           </ListItem>
           <Divider />
           <ListItem>
-            <ListItemText primary="Phone Number" secondary={userphonenumber} />
+            <ListItemText primary="Phone Number" secondary={userphonenumber} className={classes.nested} />
           </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary="Total" secondary={total+"$"} className={classes.nested} />
+          </ListItem>
+          <Divider />
         </List>
-        {props.cart.map(cart_item=>{
-                return (<ConfirmBillProduct key={cart_item.id_cart}  cart={cart_item} ></ConfirmBillProduct>)
-              })}
+          {props.cart.map(cart_item=>{
+                  return (<ConfirmBillProduct key={cart_item.id_cart}  cart={cart_item} ></ConfirmBillProduct>)
+                })}
+          </Container>
       </Dialog>
+      
   );
 }
