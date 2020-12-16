@@ -90,7 +90,7 @@ class Cart extends React.Component {
             </Box>
           </Grid>
         </Grid>
-        <CheckoutForm open={this.state.open} handleClose={this.handleCloseForm} handleSendForm={this.handleSendForm}></CheckoutForm>
+        <CheckoutForm cart={this.props.cart_data} open={this.state.open} handleClose={this.handleCloseForm} handleSendForm={this.handleSendForm}></CheckoutForm>
         <Snackbar open={this.state.openAlert} autoHideDuration={6000} onClose={this.handleCloseSnackBar}>
           <Alert onClose={this.handleCloseSnackBar} severity={this.state.severity}>
             {this.state.alert}

@@ -7,6 +7,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle'
 import { TextField, Typography } from '@material-ui/core';
 import UserContext from './../../context/userContext'
+import ConfirmBill from './ConfirmBill';
 
 export default class CheckoutForm extends Component {
   static contextType = UserContext
@@ -32,7 +33,21 @@ export default class CheckoutForm extends Component {
       name:"",
       address:"",
       phone_number:"",
+      openconfirmbill:false
   }
+
+  handleClickOpen = () => {
+    this.setState({
+      openconfirmbill:true
+    })
+  };
+
+  handleClose = () => {
+    this.setState({
+      openconfirmbill:false
+    })
+  };
+
   handleChange=(event)=>{
       const new_state = {...this.state};
       new_state[event.target.name] = event.target.value; //new_state.name
@@ -65,11 +80,14 @@ export default class CheckoutForm extends Component {
               <Button onClick={handleClose} color="primary">
                 No, Thanks
               </Button>
-              <Button onClick={this.handlePay} color="primary" autoFocus>
+              <Button onClick={this.handleClickOpen} color="primary" autoFocus>
                 Buy
               </Button>
             </DialogActions>
+                <ConfirmBill open={this.state.openconfirmbill} handlePay={this.handlePay} handleClose={this.handleClose} cart={this.props.cart} username={this.state.name} useraddress={this.state.address} userphonenumber={this.state.phone_number} ></ConfirmBill>)
           </Dialog>
         )
+
+     
     }
 }
