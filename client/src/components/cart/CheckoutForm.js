@@ -33,13 +33,22 @@ export default class CheckoutForm extends Component {
       name:"",
       address:"",
       phone_number:"",
-      openconfirmbill:false
+      openconfirmbill:false,
+      helperText:""
   }
 
   handleClickOpen = () => {
+    if(this.state.name.length == 0 || this.state.address.length == 0 || this.state.phone_number.length == 0)
+    {
+      this.setState({
+        helperText:"Please input your information"
+      })
+    } 
+    else(
     this.setState({
       openconfirmbill:true
     })
+    )
   };
 
   handleClose = () => {
@@ -74,9 +83,9 @@ export default class CheckoutForm extends Component {
           >
             <DialogTitle id="alert-dialog-title">{"Please input your information"}</DialogTitle>
             <DialogContent>
-                <TextField type="text" onChange={this.handleChange} name="name" value={this.state.name} label="Name"></TextField>
-                <TextField type="text" onChange={this.handleChange} name="address" value={this.state.address} label="Address"></TextField>
-                <TextField type="text" onChange={this.handleChange} name="phone_number" value={this.state.phone_number} label="Phone Number"></TextField>
+                <TextField type="text" onChange={this.handleChange} helperText={this.state.helperText}  error ={this.state.helperText.length === 0 ? false : true } name="name" value={this.state.name} label="Name"></TextField>
+                <TextField type="text" onChange={this.handleChange} helperText={this.state.helperText}  error ={this.state.helperText.length === 0 ? false : true } name="address" value={this.state.address} label="Address"></TextField>
+                <TextField type="text" onChange={this.handleChange} helperText={this.state.helperText}  error ={this.state.helperText.length === 0 ? false : true } name="phone_number" value={this.state.phone_number} label="Phone Number"></TextField>
             </DialogContent>
             <DialogActions>
               <Button onClick={handleClose} color="black">
