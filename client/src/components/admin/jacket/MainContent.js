@@ -25,11 +25,12 @@ export default class MainContent extends React.Component{
    
     }
 
-    addProduct=(name,image,price)=>{
+    addProduct=(name,image,price,size)=>{
         axios.post('http://localhost:8080/jacket',{
             name,
             image,
-            price
+            price,
+            size
         },{
             headers:{
                 token: window.localStorage.getItem('admin_token')
