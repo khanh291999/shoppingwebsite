@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Sidebar(){
+export default function SidebarDisableJacket(){
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const [openfemale, setOpenFemale] = React.useState(true);

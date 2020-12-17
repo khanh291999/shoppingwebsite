@@ -89,10 +89,10 @@ export default class MainContent extends React.Component{
     deleteProduct = (id) => {
         Swal.fire({
             title: 'Are you sure?',
-            text: 'You will not be able to recover this product file!',
+            text: 'You will not be able to recover this product!',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
+            confirmButtonText: 'Yes, disable it!',
             cancelButtonText: 'No, keep it'
           }).then((result) => {
             if (result.value) {
@@ -105,13 +105,13 @@ export default class MainContent extends React.Component{
                    })
               Swal.fire(
                 'Deleted!',
-                'Your product has been deleted.',
+                'Your product has been disable.',
                 'success'
               )
             } else if (result.dismiss === Swal.DismissReason.cancel) {
               Swal.fire(
                 'Cancelled',
-                'Your prodct is safe :)',
+                'Your prodct is still on sale :)',
                 'error'
               )
             }
@@ -127,6 +127,25 @@ export default class MainContent extends React.Component{
                 icon:'error'
             })
         })
+    }
+
+    addDisableProduct=(id,name,image,price,size)=>{
+        axios.post('http://localhost:8080/disablejacket',{
+            id,
+            name,
+            image,
+            price,
+            size
+        },{
+            headers:{
+                token: window.localStorage.getItem('admin_token')
+            }
+        }).then(res=>{
+            console.log(res)
+        }).catch(err=>{
+            console.log(err);
+        })
+
     }
 
     updateIsEditting = (id) => {
@@ -176,7 +195,7 @@ export default class MainContent extends React.Component{
                     {
                         this.state.products.length>0?
                         this.state.products.map((product)=>{
-                            return <ProductRow updateIsEditting={this.updateIsEditting}  deleteProduct={this.deleteProduct} key={`product_id_${product.id}`} product={product}/>
+                            return <ProductRow updateIsEditting={this.updateIsEditting}  deleteProduct={this.deleteProduct} addDisableProduct={this.addDisableProduct} key={`product_id_${product.id}`} product={product}/>
                         })
                         :<Empty/>
                     }

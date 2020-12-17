@@ -1,13 +1,22 @@
 import React from 'react'
 
 export default function ProductRow(props){
-    const handleDelete = () => {
-        props.deleteProduct(props.product.id)
-    }
+   
     const handleUpdate = () => {
         props.updateIsEditting(props.product.id)
     }
-
+    const handleDelete = () => {
+        props.deleteProduct(props.product.id)
+    }
+    const handleAddDisableProduct = () => {
+        const {name,price,image,size} = props.product
+        props.addDisableProduct(props.product.id,name,image,price,size)
+    }
+    const handleDisable = () =>{
+        handleAddDisableProduct();
+        handleDelete();
+      
+    }   
     const {id,name,price,image} = props.product
     return  <div className="table-rows">
     <div className="table-cell">
@@ -26,8 +35,8 @@ export default function ProductRow(props){
         <button className="btn text-primary" onClick={handleUpdate}>
                 Edit
         </button>
-        <button className="btn text-danger" onClick={handleDelete}>
-                Delete
+        <button className="btn text-danger" onClick={handleDisable}>
+                Disable Product
         </button>
     </div>
  
