@@ -224,7 +224,7 @@ app.get('/jean', (req, res) =>{
 
     Jean.find({})
     .then((data)=>{
-        console.log('Data: ', data);
+        // console.log('Data: ', data);
         res.json(data);
     })
     .catch((error)=>{
@@ -239,7 +239,7 @@ app.get('/jean/:id', (req, res) =>{
         id:req.params.id
     })
     .then((data)=>{
-        console.log('Data: ', data);
+        // console.log('Data: ', data);
         res.json(data);
     })
     .catch((error)=>{
@@ -293,7 +293,7 @@ app.get('/t-shirt', (req, res) =>{
 
     Tshirt.find({})
     .then((data)=>{
-        console.log('Data: ', data);
+        // console.log('Data: ', data);
         res.json(data);
     })
     .catch((error)=>{
@@ -308,7 +308,7 @@ app.get('/t-shirt/:id', (req, res) =>{
         id:req.params.id
     })
     .then((data)=>{
-        console.log('Data: ', data);
+        // console.log('Data: ', data);
         res.json(data);
     })
     .catch((error)=>{
@@ -362,7 +362,7 @@ app.get('/femalejacket', (req, res) =>{
 
     FemaleJacket.find({})
     .then((data)=>{
-        console.log('Data: ', data);
+        // console.log('Data: ', data);
         res.json(data);
     })
     .catch((error)=>{
@@ -377,7 +377,7 @@ app.get('/femalejacket/:id', (req, res) =>{
         id:req.params.id
     })
     .then((data)=>{
-        console.log('Data: ', data);
+        // console.log('Data: ', data);
         res.json(data);
     })
     .catch((error)=>{
@@ -431,7 +431,7 @@ app.get('/femalejean', (req, res) =>{
 
     FemaleJean.find({})
     .then((data)=>{
-        console.log('Data: ', data);
+        // console.log('Data: ', data);
         res.json(data);
     })
     .catch((error)=>{
@@ -446,7 +446,7 @@ app.get('/femalejean/:id', (req, res) =>{
         id:req.params.id
     })
     .then((data)=>{
-        console.log('Data: ', data);
+        // console.log('Data: ', data);
         res.json(data);
     })
     .catch((error)=>{
@@ -499,7 +499,7 @@ app.get('/femalet-shirt', (req, res) =>{
 
     FemaleTshirt.find({})
     .then((data)=>{
-        console.log('Data: ', data);
+        // console.log('Data: ', data);
         res.json(data);
     })
     .catch((error)=>{
@@ -514,7 +514,7 @@ app.get('/femalet-shirt/:id', (req, res) =>{
         id:req.params.id
     })
     .then((data)=>{
-        console.log('Data: ', data);
+        // console.log('Data: ', data);
         res.json(data);
     })
     .catch((error)=>{

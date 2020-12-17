@@ -81,7 +81,7 @@ export default class CheckoutForm extends Component {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
-            <DialogTitle id="alert-dialog-title">{"Please input your information"}</DialogTitle>
+            <DialogTitle id="alert-dialog-title">{"Delivery information"}</DialogTitle>
             <DialogContent>
                 <TextField type="text" onChange={this.handleChange} helperText={this.state.helperText}  error ={this.state.helperText.length === 0 ? false : true } name="name" value={this.state.name} label="Name"></TextField>
                 <TextField type="text" onChange={this.handleChange} helperText={this.state.helperText}  error ={this.state.helperText.length === 0 ? false : true } name="address" value={this.state.address} label="Address"></TextField>
