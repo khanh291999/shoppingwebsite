@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, TextField , Container, Button, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from "@material-ui/core";
+import { Box, Grid, Typography, TextField , Container, Button, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, FormHelperText } from "@material-ui/core";
 //import { TextFields } from "@material-ui/icons";
 import React, {Component} from "react";
 import {withStyles, CircularProgress} from '@material-ui/core'
@@ -19,7 +19,8 @@ class ProductDetailMaleTshirt extends Component {
     selected_size: "",
     quantity: 1,
     img:[],
-    loading: undefined
+    loading: undefined,
+    helperText: ""
   }
   handleChange = event => {
     this.setState({selected_size:event.target.value});
@@ -50,7 +51,13 @@ class ProductDetailMaleTshirt extends Component {
   }
   handleClickBtn = () =>{
     const {id, name , price ,selected_size ,img, quantity } = this.state;
-
+    if(selected_size == "")
+    {
+      this.setState({
+        helperText:"Please choose size"
+      })
+    }
+    else{
     this.props.addToCart({
       id_cart:"cart_"+Date.now()+Math.random(),
       id_product:id,
@@ -60,6 +67,8 @@ class ProductDetailMaleTshirt extends Component {
       size: selected_size,
       quantity,
     })
+  }
+    
   };
  render(){
   const {classes} = this.props;
@@ -100,6 +109,7 @@ class ProductDetailMaleTshirt extends Component {
             )
           })}
       </RadioGroup>
+      <FormHelperText style={{color:"red"}}>{this.state.helperText}</FormHelperText>
     </FormControl>
       <Box>
         <TextField type="number" value={this.state.quantity} onChange={(event)=>{this.setState({quantity:Number(event.target.value)})}}></TextField>
