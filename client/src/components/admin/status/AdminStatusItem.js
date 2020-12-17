@@ -1,50 +1,50 @@
 import React from 'react'
-import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+// import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { green, red, yellow } from '@material-ui/core/colors';
+// import { green, red, yellow } from '@material-ui/core/colors';
 
-const WaitingButton = withStyles((theme) => ({
-  root: {
-    color: theme.palette.getContrastText(red[500]),
-    backgroundColor: red[500],
-    '&:hover': {
-      backgroundColor: red[700],
-    },
-    width:50
-  },
-}))(Button);
+// const WaitingButton = withStyles((theme) => ({
+//   root: {
+//     color: theme.palette.getContrastText(red[500]),
+//     backgroundColor: red[500],
+//     '&:hover': {
+//       backgroundColor: red[700],
+//     },
+//     width:50
+//   },
+// }))(Button);
 
 
-const DeliveringButton = withStyles((theme) => ({
-  root: {
-    color: theme.palette.getContrastText(yellow[500]),
-    backgroundColor: yellow[500],
-    '&:hover': {
-      backgroundColor: yellow[700],
-    },
+// const DeliveringButton = withStyles((theme) => ({
+//   root: {
+//     color: theme.palette.getContrastText(yellow[500]),
+//     backgroundColor: yellow[500],
+//     '&:hover': {
+//       backgroundColor: yellow[700],
+//     },
    
-  },
-}))(Button);
+//   },
+// }))(Button);
 
-const DoneButton = withStyles((theme) => ({
-  root: {
-    color: theme.palette.getContrastText(green[500]),
-    backgroundColor: green[500],
-    '&:hover': {
-      backgroundColor: green[700],
-    },
-    width:50
-  },
-}))(Button);
+// const DoneButton = withStyles((theme) => ({
+//   root: {
+//     color: theme.palette.getContrastText(green[500]),
+//     backgroundColor: green[500],
+//     '&:hover': {
+//       backgroundColor: green[700],
+//     },
+//     width:50
+//   },
+// }))(Button);
 
-const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   margin: {
+//     margin: theme.spacing(1),
+//   },
+// }));
 
 export default function StatusItem(props){
-  const classes = useStyles();
+  // const classes = useStyles();
     const {username,useraddress,userphone_number,name,price,img,size,quantity,date,time,status} = props
     const Waiting = () => {
       const status = "Waiting for confirm"
@@ -96,15 +96,15 @@ export default function StatusItem(props){
                     {status}
                 </div>
                 <div className="admin-status-table-cell">
-                    <WaitingButton variant="contained" color="primary" className={classes.margin} onClick={Waiting}>
+                    <Button style={{marginRight:"5px"}} variant="outlined" onClick={Waiting}>
                      Waiting
-                    </WaitingButton>
-                    <DeliveringButton variant="contained" color="primary" className={classes.margin} onClick={Delivering}>
+                    </Button>
+                    <Button style={{marginRight:"5px"}} variant="outlined" onClick={Delivering}>
                      Delivering
-                    </DeliveringButton>
-                    <DoneButton variant="contained" color="primary" className={classes.margin} onClick={Done}>
+                    </Button>
+                    <Button variant="outlined" onClick={Done}>
                     Done
-                    </DoneButton>
+                    </Button>
                 </div>
                 
             </div>
