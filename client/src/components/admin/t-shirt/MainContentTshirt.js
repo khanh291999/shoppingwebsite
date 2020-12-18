@@ -89,10 +89,10 @@ export default class MainContentTshirt extends React.Component{
     deleteProduct = (id) => {
         Swal.fire({
             title: 'Are you sure?',
-            text: 'You will not be able to recover this product file!',
+            text: 'You will not be able to recover this product!',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
+            confirmButtonText: 'Yes, disable it!',
             cancelButtonText: 'No, keep it'
           }).then((result) => {
             if (result.value) {
@@ -104,8 +104,8 @@ export default class MainContentTshirt extends React.Component{
                        }
                    })
               Swal.fire(
-                'Deleted!',
-                'Your product has been deleted.',
+                'Disable!',
+                'Your product has been disable.',
                 'success'
               )
             } else if (result.dismiss === Swal.DismissReason.cancel) {

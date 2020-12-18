@@ -104,8 +104,8 @@ export default class MainContent extends React.Component{
                        }
                    })
               Swal.fire(
-                'Deleted!',
-                'Your product has been disable.',
+                'Disabled!',
+                'Your product has been disabled.',
                 'success'
               )
             } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -145,7 +145,6 @@ export default class MainContent extends React.Component{
         }).catch(err=>{
             console.log(err);
         })
-
     }
 
     updateIsEditting = (id) => {

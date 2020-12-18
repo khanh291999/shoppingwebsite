@@ -15,7 +15,6 @@ export default function ProductRow(props){
     const handleDisable = () =>{
         handleAddDisableProduct();
         handleDelete();
-      
     }   
     const {id,name,price,image} = props.product
     return  <div className="table-rows">

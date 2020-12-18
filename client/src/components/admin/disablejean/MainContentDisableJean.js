@@ -1,9 +1,9 @@
 import React from 'react'
-import {EmptyDisableJacket} from './EmptyDisableJacket'
-import ProductRowDisableJacket from './ProductRowDisableJacket'
+import {EmptyDisableJean} from './EmptyDisableJean'
+import ProductRowDisableJean from './ProductRowDisableJean'
 import axios from 'axios';
 import Swal from 'sweetalert2'
-export default class MainContentDisableJacket extends React.Component{
+export default class MainContentDisableJean extends React.Component{
     state={
         open:false,
         products : [
@@ -15,7 +15,7 @@ export default class MainContentDisableJacket extends React.Component{
     componentDidMount(){
         console.log("DIDMOUNT")
         // fetch("http://localhost:9696/products")
-        axios.get("http://localhost:8080/disablejacket").then(res=>{
+        axios.get("http://localhost:8080/disablejean").then(res=>{
             console.log(res);
             this.setState({
                 products:res.data
@@ -33,7 +33,7 @@ export default class MainContentDisableJacket extends React.Component{
             cancelButtonText: 'No, keep it'
           }).then((result) => {
             if (result.value) {
-                axios.delete(`http://localhost:8080/disablejacket/${id}`,{
+                axios.delete(`http://localhost:8080/disablejean/${id}`,{
                     id
                    },{
                        headers:{
@@ -58,7 +58,7 @@ export default class MainContentDisableJacket extends React.Component{
         }).catch(err=>{
             console.log(err);
             Swal.fire({
-                title:"Delete Unsuccessfully",
+                title:"Disable Unsuccessfully",
                 text:err.message,
                 timer:1000,
                 icon:'error'
@@ -67,7 +67,7 @@ export default class MainContentDisableJacket extends React.Component{
     }
 
     addOnSaleProduct=(id,name,image,price,size)=>{
-        axios.post('http://localhost:8080/jacket',{
+        axios.post('http://localhost:8080/jean',{
             id,
             name,
             image,
@@ -109,9 +109,9 @@ export default class MainContentDisableJacket extends React.Component{
                     {
                         this.state.products.length>0?
                         this.state.products.map((product)=>{
-                            return <ProductRowDisableJacket deleteDisableProduct={this.deleteDisableProduct} addOnSaleProduct={this.addOnSaleProduct} key={`product_id_${product.id}`} product={product}/>
+                            return <ProductRowDisableJean deleteDisableProduct={this.deleteDisableProduct} addOnSaleProduct={this.addOnSaleProduct} key={`product_id_${product.id}`} product={product}/>
                         })
-                        :<EmptyDisableJacket/>
+                        :<EmptyDisableJean/>
                     }
                 </div>
             </main>
