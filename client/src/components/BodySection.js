@@ -99,6 +99,71 @@ function BodySection() {
             </Grid>
           </div>
         </div>
+    
+        <div className='body-three-container'>
+          <div className='body-three-wrapper'>
+            <div style={{fontSize:"26px", fontFamily:"Alegreya", fontWeight:"bold"}}>#KingOnMe</div>
+            <div>
+              Curated authentic inspiration. Shop the beauty behind our Instagram feed with just one click.
+            </div>
+            <Grid container spacing={0} className="center">
+              <div item xs={6} className="set-center">
+                <img 
+                  className='img-body-section' 
+                  src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5KWWtwa1ZUUm9NSEJNTHc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjEwODB9fX0=" 
+                  alt="Gift one image">
+                </img>
+                <img 
+                  className='img-body-section' 
+                  src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5KWkc1a1VreElMWHA0THc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjEwODB9fX0=" 
+                  alt="Gift one image">
+                </img>
+                <img 
+                    className='img-body-section' 
+                    src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5KWVZSU1h6SnFlRXRoTHc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjc1MH19fQ==" 
+                    alt="Gift one image">
+                  </img>
+                  <img 
+                    className='img-body-section' 
+                    src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5JVEZOdFFUaG5NWGxXTHc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjc1MH19fQ==" 
+                    alt="Gift one image">
+                  </img>
+              </div>
+            </Grid>
+          </div>
+        </div>
+    
+        <div className='body-four-container'>
+          <div className='body-four'>
+            <div style={{
+                fontFamily: "Alegreya",
+                fontSize: "30px",
+                fontWeight: "600",
+                margin: "16px 0 50px 0"}}>
+            Suggesstion box
+            </div>
+            <div
+            style={{fontFamily: "Alegreya",
+              fontSize: "18px",
+              maxWidth: "560px",
+              textAlignLast: "center"}}>
+              Due to our new born child, there will be some mistask. So do tell us what server you'd like to improve in the future 
+            </div>
+            <div className="suggest-box">
+              <input
+                id="login-email"
+                type="email"
+                placeholder="Your Email Address"
+              />
+              <button className="button-send">
+                <a>
+                  Send
+                </a>
+              </button>
+            </div>
+          </div>
+            
+        </div>
     </div>
   );
 }
