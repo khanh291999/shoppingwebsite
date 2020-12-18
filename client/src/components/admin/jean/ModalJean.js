@@ -53,7 +53,14 @@ export default class ModalJean extends Component {
         if(this.props.editingProduct){
             this.props.updateProduct(id,name,image,price)
         }else{
-            this.props.addProduct(name,image,price)
+            const size= [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL"
+            ]
+            this.props.addProduct(name,image,price,size)
         }
 
         this.props.toggleModal()

@@ -25,11 +25,12 @@ export default class MainContentTshirt extends React.Component{
         })
     }
 
-    addProduct=(name,image,price)=>{
+    addProduct=(name,image,price,size)=>{
         axios.post('http://localhost:8080/t-shirt',{
             name,
             image,
-            price
+            price,
+            size
         },{
             headers:{
                 token: window.localStorage.getItem('admin_token')
@@ -129,6 +130,25 @@ export default class MainContentTshirt extends React.Component{
         })
     }
 
+    addDisableProduct=(id,name,image,price,size)=>{
+        axios.post('http://localhost:8080/disablet-shirt',{
+            id,
+            name,
+            image,
+            price,
+            size
+        },{
+            headers:{
+                token: window.localStorage.getItem('admin_token')
+            }
+        }).then(res=>{
+            console.log(res)
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+
+
     updateIsEditting = (id) => {
         const product_index = this.state.products.findIndex((product)=>{
             return product.id === id
@@ -176,7 +196,7 @@ export default class MainContentTshirt extends React.Component{
                     {
                         this.state.products.length>0?
                         this.state.products.map((product)=>{
-                            return <ProductRowTshirt updateIsEditting={this.updateIsEditting}  deleteProduct={this.deleteProduct} key={`product_id_${product.id}`} product={product}/>
+                            return <ProductRowTshirt updateIsEditting={this.updateIsEditting}  deleteProduct={this.deleteProduct} addDisableProduct={this.addDisableProduct} key={`product_id_${product.id}`} product={product}/>
                         })
                         :<EmptyTshirt/>
                     }

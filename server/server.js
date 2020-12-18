@@ -91,7 +91,15 @@ const TshirtSchema = new Schema({
     price:Number,
     size:Array
 });
-TshirtSchema.plugin(AutoIncrement, {id: 'id_t-shirt',inc_field: 'id', start_seq:'9'});
+TshirtSchema.plugin(AutoIncrement, {id: 'id_t-shirt',inc_field: 'id', start_seq:'35'});
+
+const DisableTshirtSchema = new mongoose.Schema({
+    id:Number,
+    name:String,
+    image:Array,
+    price:Number,
+    size:Array
+});
 
 const FemaleJacketSchema = new Schema({
     id:Number,
@@ -129,6 +137,7 @@ const DisableJacket =mongoose.model('disablejacket',DisableJacketSchema)
 const Jean = mongoose.model('jean',JeanSchema)
 const DisableJean =mongoose.model('disablejean',DisableJeanSchema)
 const Tshirt = mongoose.model('t-shirt',TshirtSchema)
+const DisableTshirt =mongoose.model('disablet-shirt',DisableTshirtSchema)
 const FemaleJacket = mongoose.model('femalejacket',FemaleJacketSchema)
 const FemaleJean = mongoose.model('jeanfemale',FemaleJeanSchema)
 const FemaleTshirt = mongoose.model('t-shirtfemale',FemaleTshirtSchema)
@@ -146,6 +155,7 @@ const newDisableJacket = new DisableJacket(data);
 const newJean = new Jean(data)
 const newDisableJean = new DisableJean(data);
 const newTshirt = new Tshirt(data)
+const newDisableTshirt = new DisableTshirt(data);
 const newFemaleJacket = new FemaleJacket(data);
 const newFemaleJean = new FemaleJean(data);
 const newFemaleTshirt = new FemaleTshirt(data);
@@ -481,6 +491,60 @@ app.patch('/t-shirt/:id', async (req, res)=>{
        res.json({message:err});
    }
   });
+
+  app.get('/disablet-shirt', (req, res) =>{
+    const data = {
+    };
+
+    DisableTshirt.find({})
+    .then((data)=>{
+        // console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.get('/disablet-shirt/:id', (req, res) =>{
+    const data = {
+    };
+    DisableTshirt.findOne({
+        id:req.params.id
+    })
+    .then((data)=>{
+        // console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.post('/disablet-shirt', (req,res)=>{
+    const data = req.body;
+
+    const newDisableTshirt = new DisableTshirt(data);
+    newDisableTshirt.save((error)=>{
+        if(error){
+            res.status(500).json({msg:'Sorry, internal server errors'});
+        }
+        return res.json({
+            msg: ' Your data has been saved!!!'
+        })
+    })
+})
+
+app.delete('/disablet-shirt/:id', async (req,res)=>{
+    try{
+      console.log(req.params.id);
+        const removedPost = await DisableTshirt.remove({id: req.params.id});
+        res.json(removedPost);
+    }
+    catch(err){
+      res.json({message:err});
+    }
+  })
 
   //FemaleJacket
 app.get('/femalejacket', (req, res) =>{
