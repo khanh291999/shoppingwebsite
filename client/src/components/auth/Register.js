@@ -4,6 +4,9 @@ import UserContext from "../../context/userContext";
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
 import '../../assets/Register.css'
+import FacebookIcon from '@material-ui/icons/Facebook';
+import GoogleIcon from '../../assets/icons/google_icon.png'
+import Grid from '@material-ui/core/Grid'
 
 export default function Register() {
   const [email, setEmail] = useState();
@@ -41,63 +44,89 @@ export default function Register() {
   };
 
   return (
-    <div className="page">
+    <div className="background">
       <div className='register-form-container'>
         <h2>Register</h2>
         {error && (
           <ErrorNotice message={error} clearError={() => setError(undefined)} />
         )}
         <form className="form" onSubmit={submit}>
-          <label htmlFor="register-email">Email</label>
-          <input
-            id="register-email"
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <Grid container spacing={2} className="grid-container">
+            <Grid item xs={6} className="col1">
+              <label htmlFor="register-email">Email</label>
+                <input
+                  id="register-email"
+                  type="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
 
-          <label htmlFor="register-password">Password</label>
-          <input
-            id="register-password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Verify password"
-            onChange={(e) => setPasswordCheck(e.target.value)}
-          />
+              <label htmlFor="register-password">Password</label>
+                <input
+                  id="register-password"
+                  type="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <input
+                  type="password"
+                  placeholder="Verify password"
+                  onChange={(e) => setPasswordCheck(e.target.value)}
+                />
+              
+              <label htmlFor="register-address">Adress</label>
+                <input
+                  id="register-address"
+                  type="text"
+                  onChange={(e) => setAddress(e.target.value)}
+                />
 
-          <label htmlFor="register-display-name">Display name</label>
-          <input
-            id="register-display-name"
-            type="text"
-            onChange={(e) => setDisplayName(e.target.value)}
-          />
+                <label htmlFor="register-phone-number">Phone Number</label>
+                <input
+                  id="register-phone-number"
+                  type="text"
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                />
 
-          <label htmlFor="register-address">Adress</label>
-          <input
-            id="register-address"
-            type="text"
-            onChange={(e) => setAddress(e.target.value)}
-          />
+            </Grid>
+              
+            <Grid item xs={6} className="col1">
+            <label htmlFor="register-display-name">Display name</label>
+            <input
+              id="register-display-name"
+              type="text"
+              onChange={(e) => setDisplayName(e.target.value)}
+            />
+            <button type="submit" id="register-btn">Register</button>
+            <span
+                style={{fontFamily: "Titillium",
+                paddingLeft: "5px", 
+                margin: "5px 0", 
+                fontSize: "12px", 
+                color: "#757575"}}>
+              Or, sign up with
+            </span>
+            <button id="fb-login-btn">
+              <FacebookIcon></FacebookIcon>
+              <div style={{margin: "4px"}}>Facebook</div>
+            </button>
+            <button id="gg-login-btn">
+              <img
+                style={{maxWidth: "8%"}} 
+                src={GoogleIcon}
+                />
+              <div style={{margin: "4px"}}>Google</div>
+            </button>
 
-          <label htmlFor="register-phone-number">Phone Number</label>
-          <input
-            id="register-phone-number"
-            type="text"
-            onChange={(e) => setPhoneNumber(e.target.value)}
-          />
-
-          <button type="submit" id="register-btn">Register</button>
-          <div className='login-in-register-container'>
-            Already have an account?
-            <Link
-              to='/login'
-              className='login-in-register'
-            >
-              Login
-            </Link>
-          </div>
+            <div className='register-in-login-container'>
+                Already have an account?
+                <Link
+                  to='/login'
+                  className='login-in-register'
+                >
+                  Login
+                </Link>
+              </div>
+            </Grid>
+          </Grid>
         </form>
       </div>
     </div>

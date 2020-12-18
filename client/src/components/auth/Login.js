@@ -4,6 +4,9 @@ import UserContext from "../../context/userContext";
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
 import '../../assets/Login.css'
+import Grid from '@material-ui/core/Grid'
+import FacebookIcon from '@material-ui/icons/Facebook';
+import GoogleIcon from '../../assets/icons/google_icon.png'
 
 export default function Login() {
   const [email, setEmail] = useState();
@@ -34,39 +37,67 @@ export default function Login() {
     }
   };
   return (
-    <div className="page">
+    <div className="background">
       <div className='login-form-container'>
-        <h2>Log in</h2>
+        <h2>Welcome to K&Q! Please login.</h2>
         {error && (
           <ErrorNotice message={error} clearError={() => setError(undefined)} />
         )}
+        
         <form className="form" onSubmit={submit}>
-          <label htmlFor="login-email">Email</label>
-          <input
-            id="login-email"
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <Grid container spacing={2} className="grid-container">
+            <Grid item xs={6} className="col1">
+              <label htmlFor="login-email">Email</label>  
+                <input
+                  id="login-email"
+                  type="email"
+                  placeholder="Please enter your email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              <label htmlFor="login-password">Password</label>
+              <input
+                id="login-password"
+                type="password"
+                placeholder="Please enter your password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
 
-          <label htmlFor="login-password">Password</label>
-          <input
-            id="login-password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <button type="submit" id="login-btn">Log in</button>
-          <div className='register-in-login-container'>
-            You are new?
-            <Link
-              to='/register'
-              className='register-in-login'
-            >
-              Register
-            </Link>
-          </div>
+              <div className='register-in-login-container'>
+                You are new?
+                <Link
+                  to='/register'
+                  className='register-in-login'
+                >
+                  Register
+                </Link>
+              </div>
+            </Grid>
+              
+            <Grid item xs={6} className="col1">
+            <button type="submit" id="login-btn">Log in</button>
+            <span
+                style={{fontFamily: "Titillium",
+                paddingLeft: "5px", 
+                margin: "5px 0", 
+                fontSize: "12px", 
+                color: "#757575"}}>
+              Or,login with
+            </span>
+            <button id="fb-login-btn">
+              <FacebookIcon></FacebookIcon>
+              <div style={{margin: "4px"}}>Facebook</div>
+            </button>
+            <button id="gg-login-btn">
+              <img
+                style={{maxWidth: "8%"}} 
+                src={GoogleIcon}
+                />
+              <div style={{margin: "4px"}}>Google</div>
+            </button>
+            </Grid>
+          </Grid>
         </form>
-        </div> 
+      </div> 
     </div>
   );
 }
