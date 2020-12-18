@@ -2,61 +2,48 @@ import React from "react";
 import '.././assets/Footer.css';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
+import PhoneIcon from '@material-ui/icons/Phone';
+import MailIcon from '@material-ui/icons/Mail';
 
 export default function Footer() {
   return (
     <div className='footer-container'>
-      <section className='footer-subscription'>
-        <p className='footer-subscription-heading'>
-          Join the Adventure newsletter to receive our best vacation deals
-        </p>
-        <p className='footer-subscription-text'>
-          You can unsubscribe at any time.
-        </p>
-        <div className='input-areas'>
-          <form>
-            <input
-              className='footer-input'
-              name='email'
-              type='email'
-              placeholder='Your Email'
-            />
-            <Button buttonStyle='btn--outline'>Subscribe</Button>
-          </form>
-        </div>
-      </section>
       <div class='footer-links'>
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
             <h2>About Us</h2>
-            <Link to='/sign-up'>How it works</Link>
-            <Link to='/'>Testimonials</Link>
+            <Link to='/sign-up'>About Us</Link>
+            <Link to='/'>Contact Us</Link>
             <Link to='/'>Careers</Link>
-            <Link to='/'>Investors</Link>
-            <Link to='/'>Terms of Service</Link>
           </div>
           <div class='footer-link-items'>
-            <h2>Contact Us</h2>
-            <Link to='/'>Contact</Link>
-            <Link to='/'>Support</Link>
-            <Link to='/'>Destinations</Link>
-            <Link to='/'>Sponsorships</Link>
+            <h2>Information</h2>
+            <Link to='/'>Terms & Conditions</Link>
+            <Link to='/'>Store Location</Link>
           </div>
         </div>
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
-            <h2>Videos</h2>
-            <Link to='/'>Submit Video</Link>
-            <Link to='/'>Ambassadors</Link>
-            <Link to='/'>Agency</Link>
-            <Link to='/'>Influencer</Link>
+            <h2>Help</h2>
+            <Link to='/'>Privacy Policy</Link>
+            <Link to='/'>Shipping Details</Link>
           </div>
           <div class='footer-link-items'>
-            <h2>Social Media</h2>
+            <h2>Contact us</h2>
             <Link to='/'>Instagram</Link>
             <Link to='/'>Facebook</Link>
-            <Link to='/'>Youtube</Link>
-            <Link to='/'>Twitter</Link>
+            <Link to='/'>
+              <PhoneIcon></PhoneIcon>
+              +84 963 339 696
+            </Link>
+            <Link to='/'>
+              <MailIcon></MailIcon>
+              17110071@student.hcmute.edu.vn
+            </Link>
+            <img 
+              style={{paddingTop:"20px", width:"50%"}} 
+              src="https://www.uniform.klovergroup.net/wp-content/uploads/2018/05/visa-mastercard.png" 
+              alt="payment method"></img>
           </div>
         </div>
       </div>
