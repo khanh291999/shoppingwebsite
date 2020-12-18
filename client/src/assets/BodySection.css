@@ -40,7 +40,7 @@
   font-weight: bold;
   text-align: center;
   font-family: Alegreya;
-  font-size: 26px;
+  font-size: 33px;
   color: white;
 }
 
@@ -49,7 +49,7 @@
   text-align: center;
   font-family: MontserratMedium, Verdana, Arial, sans-serif;
   color: #fff;
-  font-size: 10px;
+  font-size: 13px;
 }
 
 .buttons{
@@ -60,7 +60,8 @@
 .buttons .btn--large{
   padding: 10px 30px;
   margin: 14px 3px;
-  font-size: small;
+  font-size: medium;
+  font-weight: bold;
   font-family: Alegreya;
 }
 
