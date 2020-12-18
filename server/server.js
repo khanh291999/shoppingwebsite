@@ -127,6 +127,14 @@ const FemaleJeanSchema = new Schema({
 });
 FemaleJeanSchema.plugin(AutoIncrement, {id: 'id_femalejean',inc_field: 'id', start_seq:'9'});
 
+const DisableFemaleJeanSchema = new mongoose.Schema({
+    id:Number,
+    name:String,
+    image:Array,
+    price:Number,
+    size:Array
+});
+
 const FemaleTshirtSchema = new Schema({
     id:Number,
     name:String,
@@ -149,6 +157,7 @@ const DisableTshirt =mongoose.model('disablet-shirt',DisableTshirtSchema)
 const FemaleJacket = mongoose.model('femalejacket',FemaleJacketSchema)
 const DisableFemaleJacket =mongoose.model('disablefemalejacket',DisableFemaleJacketSchema)
 const FemaleJean = mongoose.model('jeanfemale',FemaleJeanSchema)
+const DisableFemaleJean =mongoose.model('disablefemalejean',DisableFemaleJeanSchema)
 const FemaleTshirt = mongoose.model('t-shirtfemale',FemaleTshirtSchema)
 
 
@@ -168,6 +177,7 @@ const newDisableTshirt = new DisableTshirt(data);
 const newFemaleJacket = new FemaleJacket(data);
 const newDisableFemaleJacket = new DisableFemaleJacket(data)
 const newFemaleJean = new FemaleJean(data);
+const newDisableFemaleJean = new DisableFemaleJean(data)
 const newFemaleTshirt = new FemaleTshirt(data);
 
 //.save()
@@ -746,6 +756,60 @@ app.patch('/femalejean/:id', async (req, res)=>{
        res.json({message:err});
    }
   });
+
+  app.get('/disablefemalejean', (req, res) =>{
+    const data = {
+    };
+
+    DisableFemaleJacket.find({})
+    .then((data)=>{
+        // console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.get('/disablefemalejean/:id', (req, res) =>{
+    const data = {
+    };
+    DisableFemaleJacket.findOne({
+        id:req.params.id
+    })
+    .then((data)=>{
+        // console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.post('/disablefemalejean', (req,res)=>{
+    const data = req.body;
+
+    const newDisableFemaleJacket = new DisableFemaleJacket(data);
+    newDisableFemaleJacket.save((error)=>{
+        if(error){
+            res.status(500).json({msg:'Sorry, internal server errors'});
+        }
+        return res.json({
+            msg: ' Your data has been saved!!!'
+        })
+    })
+})
+
+app.delete('/disablefemalejean/:id', async (req,res)=>{
+    try{
+      console.log(req.params.id);
+        const removedPost = await DisableFemaleJacket.remove({id: req.params.id});
+        res.json(removedPost);
+    }
+    catch(err){
+      res.json({message:err});
+    }
+  })
 
 //FemaleT-shirt
 app.get('/femalet-shirt', (req, res) =>{
