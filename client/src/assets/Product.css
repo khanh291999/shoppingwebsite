@@ -1,0 +1,23 @@
+.product-list-price{
+    color: #910012;
+    font-family: B612;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.product-list-name{
+    padding: 10px 0;
+    font-family: LibreBaskervilleRegular,Georgia,Times,serif;
+    font-weight: 400;
+    line-height: 19px;
+    color: #000;
+}
+
+.product-list-img{
+    width: 290px;
+    height: 390px;
+}
+
+.product-container{
+    margin: 0px 15px 45px 0px;
+}

@@ -1,0 +1,33 @@
+.background{
+    background-color: #FAF8F6;
+    
+}
+
+.MuiContainer-root{
+    padding: 1px 24px 0px;
+}
+
+.MuiListItemIcon-root{
+    opacity: 0;
+}
+
+#nested-list-subheader{
+    font-size: 16px;
+    font-family: MontserratMedium,Verdana,Arial,sans-serif;
+    color: #000;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: 1.785;
+    font-stretch: normal;
+    padding-bottom: 20px;
+    background-color: #FAF8F6;;
+}
+
+.categories-title{
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    margin: 0px 0px 46px;
+    font-size: 33px;
+    font-family: Alegreya;
+}

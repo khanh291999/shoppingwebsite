@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Grid, Box, Typography, Button } from "@material-ui/core";
 import {Link} from 'react-router-dom'
 import UserContext from "../../../context/userContext"
+import '../../../assets/Product.css'
 
 export default function Product(props) {
   // const { userData } = useContext(UserContext);
@@ -19,41 +20,20 @@ export default function Product(props) {
   // }
   const { id, name, price, img, img1 } = props;
   return (
-    <Grid item md={3} >
-      <Box boxShadow={5}>
-        <Box
-          component={Link} to={"/product/"+id}
-          height={250}
-          overflow="hidden"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          bgcolor="#eeefe6"
-        >
-          <img
-            src={img}
-            alt="product"
-            style={{ maxWidth: "100%", maxHeight: "100%" }}
-            onMouseOver={e => (e.currentTarget.src=img1)}
-            onMouseOut={e=> (e.currentTarget.src=img)}
-          />
-          
-        </Box>
-        <Box p={2} borderTop="1px solid black">
-          <Typography color="inherit" variant="body1">
-            <Link to={"/product/"+id}>{name}</Link>
-          </Typography>
-          <Typography color="inherit" variant="subtitle1">
-            {price}$
-          </Typography>
-          {/* {userData.user ?(
-          <Button variant="outlined" color="default" onClick={handleAddToCart}>
-            Add to Cart
-          </Button>):(
-              ""
-          )} */}
-        </Box>
-      </Box>
-    </Grid>
+    <Box
+    component={Link} to={"/product/"+id}
+    >
+      <div className="product-container">
+        <img
+          className="product-list-img"
+          alt="product"
+          src={img}
+          onMouseOver={e => (e.currentTarget.src=img1)}
+          onMouseOut={e=> (e.currentTarget.src=img)}
+        />
+        <div className="product-list-name">{name}</div>
+        <div className="product-list-price">$ {price}</div>
+      </div>
+    </Box>
   );
 }

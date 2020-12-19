@@ -16,6 +16,7 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { Link } from "react-router-dom";
 import ProductFemaleJean from "./ProductFemaleJean";
+import '../../../assets/ProductList.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,75 +54,52 @@ function ProductListFemaleJean(props) {
     setOpenFemale(!openfemale);
   };
   return (
-    <Container maxWidth={false}>
-      <Grid container>
-        <Grid item md={2} xs={12} >
+    <Container maxWidth={false} className="background">
+      <div className="categories-title">Women's Jean</div>
+      <Grid container spacing={2}>
+        <Grid item md={2} xs={12}>
       
               <List
               component="nav"
               ria-labelledby="nested-list-subheader"
               subheader={
               <ListSubheader component="div" id="nested-list-subheader">
-              Product list
+              Product Categories
               </ListSubheader>
               }
                 className={classes.root}
               >
               <ListItem button onClick={handleClick}>
-                <ListItemIcon>
-                  <CheckIcon />
-                </ListItemIcon>
-                <ListItemText primary="Male" />
+                <ListItemText primary="Men" />
                 {open ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
               <Collapse in={open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                   <ListItem button component={Link} to="/product"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
                     <ListItemText primary="Jacket" />
                   </ListItem>
                   <ListItem button component={Link} to="/jean"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
                     <ListItemText primary="Jean" />
                   </ListItem>
                   <ListItem button component={Link} to="/t-shirt"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
                     <ListItemText primary="T-shirt" />
                   </ListItem>
                 </List>
               </Collapse>
               
               <ListItem button onClick={handleClickFemale}>
-                <ListItemIcon>
-                  <CheckIcon />
-                </ListItemIcon>
-                <ListItemText primary="Female" />
+                <ListItemText primary="Women" />
                 {openfemale ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
               <Collapse in={openfemale} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                   <ListItem button component={Link} to="/femalejacket"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
                     <ListItemText primary="Jacket" />
                   </ListItem>
                   <ListItem button component={Link} to="/femalejean"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
                     <ListItemText primary="Jean" />
                   </ListItem>
                   <ListItem button component={Link} to="/femalet-shirt"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
                     <ListItemText primary="T-shirt" />
                   </ListItem>
                 </List>
@@ -132,7 +110,7 @@ function ProductListFemaleJean(props) {
         <Grid item md={10} xs={12}>
           {isLoading?<Box width="100%" height="100vh" display="flex" justifyContent="center" alignItems="center">
             <CircularProgress/>
-          </Box>:          <Grid container spacing={3}>
+          </Box>:          <Grid container spacing={3} style={{justifyContent: "center"}}>
             {products.map(product => {
               return (
                 <ProductFemaleJean
@@ -140,7 +118,7 @@ function ProductListFemaleJean(props) {
                   price={product.price}
                   key={product.id}
                   img={product.image[0]}
-                  img1={product.image[1]}
+                  img1={product.image[4]}
                   id={product.id}
                   addToCart={props.addToCart}
                 />

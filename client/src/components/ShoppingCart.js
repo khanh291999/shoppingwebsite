@@ -55,7 +55,7 @@ class ShoppingCart extends Component {
     products: [],
     isLoading: false,
     page:1,
-    limit:8
+    limit:9
   };
   componentDidMount(){
     //promise
