@@ -6,6 +6,7 @@ import { withRouter } from "react-router-dom";
 import {connect} from 'react-redux'
 import axios from 'axios'
 import ImageContainer from "../ImageContainer";
+import '../../../assets/ProductDetail.css'
 //import Spinner from "reactstrap"
 
 const styles = (theme=>({
@@ -89,30 +90,38 @@ class ProductDetailFemaleTshirt extends Component {
           <Box className={classes.small_img}>small</Box>
         </Box> */}
       </Grid>
-      <Grid item md={6}>
-      <Typography variant="h4">{name}</Typography>
-      <Typography variant="h5">{price}$</Typography>
-      <FormControl component="fieldset">
-      <FormLabel component="legend">Size:</FormLabel>
-      <RadioGroup aria-label="gender" name="gender1" onChange={this.handleChange}>
-          {size &&
-          size.map((s,index)=>{
-            return (
-              <FormControlLabel
-              key={index}
-              value={s}
-              control={<Radio/>}
-              label={s}
-              />
-            )
-          })}
-      </RadioGroup>
-      <FormHelperText style={{color:"red"}}>{this.state.helperText}</FormHelperText>
-    </FormControl>
-      <Box>
-        <TextField type="number" value={this.state.quantity} onChange={(event)=>{this.setState({quantity:Number(event.target.value)})}}></TextField>
-        <Button onClick={this.handleClickBtn}>Add to cart</Button>
-      </Box>
+      <Grid item md={6} className="product-info-container">
+        <Typography variant="div" className="product-name">{name}</Typography>
+        <Typography variant="div" className="product-price">${price}</Typography>
+        <div className="product-info">
+          <div>The Charm is 70’s inspired with a high waist and kick flare. A new fit to our denim collection, it features faded detail and classic 5-pocket styling. </div>
+          <li>Full length inseam</li>
+          <li>Comfort stretch</li>
+          <li>Zip fly</li>
+          <li>Care: 30-degree normal wash</li>
+        </div>
+        <FormControl component="fieldset">
+        <FormLabel component="legend">Size:</FormLabel>
+        {/* <RadioGroup aria-label="gender" name="gender1" value={this.state.size} onChange={this.handleChange}> */}
+        <RadioGroup row aria-label="gender" name="size" onChange={this.handleChange} className="radio-btn-container">
+            {size &&
+            size.map((s,index)=>{
+              return (
+                <FormControlLabel
+                key={index}
+                value={s}
+                control={<Radio/>}
+                label={s}
+                />
+              )
+            })}
+        </RadioGroup>
+        <FormHelperText style={{color:"red"}}>{this.state.helperText}</FormHelperText>
+        </FormControl>
+        <Box>
+          <TextField className="product-quantity" type="number" value={this.state.quantity} onChange={(event)=>{this.setState({quantity:Number(event.target.value)})}}></TextField>
+          <button className="add-to-cart-button"onClick={this.handleClickBtn}>Add to cart</button>
+        </Box>  
       </Grid>
     </Grid>
     </Container>
