@@ -1,0 +1,28 @@
+.empty-cart-warning{
+    color: #000;
+    font-family: MontserratMedium,Verdana,Arial,sans-serif;
+    font-size: .875rem;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 1.785;
+    font-stretch: normal;
+    padding-bottom: 30px;
+}
+
+.continue-shopping-btn{
+    width: 228px;
+    padding: 8px 20px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    background-color: #000;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    height: 34px;
+}
+
+.empty-cart-warning-container{
+    margin: 15px;
+}

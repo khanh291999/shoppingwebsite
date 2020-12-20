@@ -7,6 +7,9 @@ import axios from "axios"
 import MuiAlert from '@material-ui/lab/Alert';
 import UserContext from './../../context/userContext'
 import Swal from 'sweetalert2'
+import '../../assets/Cart.css'
+import '../../assets/CartProduct.css'
+
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -87,16 +90,52 @@ class Cart extends React.Component {
         <Grid container spacing={3}> 
           <Grid item md={9}>
             <Box p={2}>
-              {this.props.cart_data.map(cart_item=>{
-                return (<CartProduct updateCart={this.props.updateCart} deleteCart={this.props.deleteCart} key={cart_item.id_cart} cart={cart_item} ></CartProduct>)
-              })}
+              {total=="0"?
+              <div className="empty-cart-warning-container">
+                <div className="empty-cart-warning">Your cart is currently empty.</div>
+                <a href="/product" className="continue-shopping-btn">Continue Shopping</a>
+              </div> 
+              : 
+              <table class="styled-table">
+              <thead>
+                  <tr>
+                      <th style={{width: "25%"}}>Product</th>
+                      <th style={{width: "25%"}}>Product Name</th>
+                      <th style={{width: "11%"}}>Size</th>
+                      <th style={{width: "13%"}}>Quantity</th>
+                      <th style={{width: "13%"}}>Price</th>
+                      <th style={{width: "13%"}}>Remove</th>
+                  </tr>
+              </thead>
+                {this.props.cart_data.map(cart_item=>{
+                  return (<CartProduct updateCart={this.props.updateCart} deleteCart={this.props.deleteCart} key={cart_item.id_cart} cart={cart_item} ></CartProduct>)
+                })}
+              </table>}
             </Box>
           </Grid>
           <Grid item md={3}>
+            {total=="0"? <></>:
             <Box boxShadow="0 0 25px rgba(0,0,0,0.16)" p={2}>
-              <Typography>ToTal: {total}$</Typography>
-              <Button onClick={this.handleCheckout}>Buy</Button>
-            </Box>
+              <div className="summary-title">Cart Total</div>
+              {/* <Typography>Subtotal: ${total}</Typography>
+              <Typography>Ship: </Typography>
+              <Typography>Total: ${total}</Typography> */}
+              <table class="summary-table">
+                <tr>
+                  <th>Subtotal</th>
+                  <td>${total}</td>
+                </tr>
+                <tr>
+                  <th>Ship</th>
+                  <td>Free</td>
+                </tr>
+                <tr>
+                  <th>Total</th>
+                  <td>${total}</td>
+                </tr>
+              </table>
+              <button className="summary-btn" onClick={this.handleCheckout}>Buy</button>
+            </Box>}
           </Grid>
         </Grid>
         <CheckoutForm total={total} cart={this.props.cart_data} open={this.state.open} handleClose={this.handleCloseForm} handleSendForm={this.handleSendForm}></CheckoutForm>
