@@ -92,12 +92,14 @@ function Header(props) {
           </ul>
           
           {userData.user ? (
-            <h5 className='user-name'> {userData.user.displayName}</h5>
-              ) : ("")}
-         
-          {userData.user ?(
-            <button id="logout-btn" onClick={logout}>SIGN OUT</button>
-          ):(
+            <div className="username-header">
+              {/* <h5 className='user-name'> {userData.user.displayName}</h5>
+              <button id="logout-btn" onClick={logout}>SIGN OUT</button> */}
+              <div className='user-name'>Welcome, {userData.user.displayName}
+                <button id="logout-btn" onClick={logout}>SIGN OUT</button>
+              </div>
+            </div>
+              ) : (
             <span>
               {button && <Button onClick={login} buttonStyle='btn--outline'>SIGN IN</Button>}
             </span>

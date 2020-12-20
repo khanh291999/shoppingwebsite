@@ -76,6 +76,8 @@
 }
 
 #logout-btn{
+  position: absolute;
+  display: none;
   background-color: transparent;
   color: #fff;
   padding: 8px 20px;
@@ -102,7 +104,13 @@
 .user-name{
   color:white;
   margin-right: 10px;
+  position: relative;
 }
+
+.user-name:hover #logout-btn{
+  display: block;
+}
+
 
 @media screen and (max-width: 960px) {
   .NavbarItems {

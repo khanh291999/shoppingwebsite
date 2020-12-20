@@ -39,7 +39,7 @@ export default function CartProduct(props){
                         {size}
                     </td>
                     <td>
-                        {quantity}
+                        <TextField className="quantity" type="number" value = {quantity} onChange={handleChangeQuantity}></TextField>
                     </td>
                     <td>
                         {price}

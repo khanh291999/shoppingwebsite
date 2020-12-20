@@ -1,7 +1,7 @@
 .empty-cart-warning{
     color: #000;
     font-family: MontserratMedium,Verdana,Arial,sans-serif;
-    font-size: .875rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 400;
     letter-spacing: normal;
@@ -24,5 +24,5 @@
 }
 
 .empty-cart-warning-container{
-    margin: 15px;
+    margin: 33px;
 }
