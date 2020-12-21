@@ -142,7 +142,7 @@ export default class AdminStatus extends Component{
                 {
                     
                         this.state.products.length >0?
-                        this.state.products.map((product)=>{
+                        this.state.products.slice(0).reverse().map((product)=>{
                             return   (
                                 <div className="order">
                             <AdminStatusRow updateStatusWaiting={this.updateStatusWaiting} updateStatusDelivering={this.updateStatusDelivering} updateStatusDone={this.updateStatusDone}  key={`product_id_${product.id}`} productss={product}/>
