@@ -31,6 +31,8 @@ export default function Login() {
         user: loginRes.data.user,
       });
       localStorage.setItem("auth-token", loginRes.data.token);
+      localStorage.setItem("user-login",  JSON.stringify(loginRes.data.user));
+      // console.log(loginRes.data.user);
       history.push("/");
     } catch (err) {
       err.response.data.msg && setError(err.response.data.msg);

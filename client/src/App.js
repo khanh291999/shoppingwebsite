@@ -39,6 +39,16 @@ export default function App() {
         });
       }
     };
+    const checkuser = async () =>{
+      let userlogin = localStorage.getItem("user-login")
+      console.log('user',userlogin);
+      if (userlogin) {
+        setUserData({
+          user: JSON.parse(userlogin)
+        })
+      }
+
+    }
 
     const checkLoggedInAdmin = async () => {
       let token = localStorage.getItem("admin-token");
@@ -61,6 +71,7 @@ export default function App() {
         });
       }
     };
+    checkuser();
     checkLoggedIn();
     checkLoggedInAdmin();
   }, []);

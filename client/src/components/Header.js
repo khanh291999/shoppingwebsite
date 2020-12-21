@@ -27,6 +27,7 @@ function Header(props) {
       user: undefined,
     });
     localStorage.setItem("auth-token", "");
+    localStorage.setItem("user-login","");
   };
   //show/hide button if width to small
   const showButton = () => {
