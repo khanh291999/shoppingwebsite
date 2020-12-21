@@ -1,4 +1,4 @@
-import React from "react";
+import React,  {useEffect}  from "react";
 import { Grid, Container, Box, CircularProgress } from "@material-ui/core";
 import ProductMaleTshirt from "./ProductFemaleJacket";
 import {Pagination} from '@material-ui/lab';
@@ -36,6 +36,10 @@ function ProductListFemaleJacket(props) {
   else{
     total = props.total / props.limit;
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const { products, isLoading, page , handleChangePage } = props;
   const handleChange = (e,page) => {

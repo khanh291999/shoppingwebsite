@@ -2,6 +2,7 @@ import React from 'react';
 import "../assets/BodySection.css"
 import Grid from '@material-ui/core/Grid'
 import {Button} from './Button';
+import {Link} from 'react-router-dom'
 
 function BodySection() {
   return (
@@ -26,30 +27,33 @@ function BodySection() {
                     <h2>5...4...3...2...</h2>
                     <div>This New Year's Eve may be different. But the countdown's still on. So let's embrace the spirit and get dressed up – because if nothing else, it sure feels good.</div>
                     <section className='buttons'>
-                      <Button
+                    <Link to="/femalejacket">
+                    <Button
                         className='btns'
                         buttonStyle='btn--outline'
                         buttonSize='btn--large'
-                        onClick={console.log('woman clothes')}
                       >
                         Shop Woman
                       </Button>
+                    </Link>
+                    <Link to="/product">
                       <Button
                         className='btns'
                         buttonStyle='btn--outline'
                         buttonSize='btn--large'
-                        onClick={console.log('man clothes')}
                       >
                         Shop Man
                       </Button>
+                      </Link>
+                      <Link to="/product">
                       <Button
                         className='btns'
                         buttonStyle='btn--outline'
                         buttonSize='btn--large'
-                        onClick={console.log('man clothes')}
                       >
                         See more
                       </Button>
+                      </Link>
                     </section>
                   </div>
                 </Grid>
@@ -77,6 +81,7 @@ function BodySection() {
                     <h2>Let's get ready to party</h2>
                     <div>Special outfits we've been waiting to wear all year.</div>
                     <section className='buttons'>
+                    <Link to="/femalejacket">
                     <Button
                         className='btns'
                         buttonStyle='btn--outline'
@@ -85,6 +90,8 @@ function BodySection() {
                       >
                         Shop girls 
                       </Button>
+                      </Link>
+                      <Link to="/product">
                       <Button
                         className='btns'
                         buttonStyle='btn--outline'
@@ -93,6 +100,7 @@ function BodySection() {
                       >
                         Shop boys
                       </Button>
+                      </Link>
                     </section>
                   </div>
                 </Grid>
