@@ -15,15 +15,23 @@ export default class MainContentFemaleTshirt extends React.Component{
     }
 
     componentDidMount(){
-        console.log("DIDMOUNT")
-        // fetch("http://localhost:9696/products")
+        this.getData();
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.intervalID);
+      }
+
+    getData = () =>{
         axios.get("http://localhost:8080/femalet-shirt").then(res=>{
             console.log(res);
             this.setState({
-                products:res.data
+                products: res.data
             })
         })
+        this.intervalID = setTimeout(this.getData.bind(this), 5000);
     }
+
 
     addProduct=(name,image,price,size)=>{
         axios.post('http://localhost:8080/femalet-shirt',{

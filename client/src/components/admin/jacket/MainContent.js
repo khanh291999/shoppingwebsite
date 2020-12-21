@@ -15,14 +15,21 @@ export default class MainContent extends React.Component{
     }
 
     componentDidMount(){
-        console.log("DIDMOUNT")
+        this.getData();
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.intervalID);
+      }
+
+    getData = () =>{
         axios.get("http://localhost:8080/jacket").then(res=>{
             console.log(res);
             this.setState({
                 products: res.data
             })
         })
-   
+        this.intervalID = setTimeout(this.getData.bind(this), 5000);
     }
 
     addProduct=(name,image,price,size)=>{

@@ -11,16 +11,23 @@ export default class MainContentDisableFemaleJacket extends React.Component{
         ],
         isEditting:undefined //index
     }
-
+    
     componentDidMount(){
-        console.log("DIDMOUNT")
-        // fetch("http://localhost:9696/products")
+        this.getData();
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.intervalID);
+      }
+
+    getData = () =>{
         axios.get("http://localhost:8080/disablefemalejacket").then(res=>{
             console.log(res);
             this.setState({
-                products:res.data
+                products: res.data
             })
         })
+        this.intervalID = setTimeout(this.getData.bind(this), 5000);
     }
 
     deleteDisableProduct = (id) => {

@@ -54,9 +54,9 @@ export default function SidebarTshirt(){
                   <CheckIcon />
                 </ListItemIcon>
                 <ListItemText primary="Male" />
-                {open ? <ExpandLess /> : <ExpandMore />}
+                {openDisable ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
-              <Collapse in={open} timeout="auto" unmountOnExit>
+              <Collapse in={openDisable} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                   <ListItem button component={Link} to="/admin"  className={classes.nested}>
                     <ListItemIcon>
@@ -84,9 +84,9 @@ export default function SidebarTshirt(){
                   <CheckIcon />
                 </ListItemIcon>
                 <ListItemText primary="Female" />
-                {openfemale ? <ExpandLess /> : <ExpandMore />}
+                {openfemaleDisable ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
-              <Collapse in={openfemale} timeout="auto" unmountOnExit>
+              <Collapse in={openfemaleDisable} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                 <ListItem button component={Link} to="/adminfemalejacket"  className={classes.nested}>
                     <ListItemIcon>
