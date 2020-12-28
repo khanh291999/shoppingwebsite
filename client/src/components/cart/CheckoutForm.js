@@ -110,7 +110,7 @@ export default class CheckoutForm extends Component {
                   Continue
                 </Button>
               </DialogActions>
-                  <ConfirmBill total={this.props.total} open={this.state.openconfirmbill} handlePay={this.handlePay} handleClose={this.handleClose} cart={this.props.cart} username={this.state.name} useraddress={this.state.address} userphonenumber={this.state.phone_number} ></ConfirmBill>)
+                  <ConfirmBill total={this.props.total} shippingfee={this.props.shippingfee} alltotal={this.props.alltotal} open={this.state.openconfirmbill} handlePay={this.handlePay} handleClose={this.handleClose} cart={this.props.cart} username={this.state.name} useraddress={this.state.address} userphonenumber={this.state.phone_number} ></ConfirmBill>)
           </Dialog>
         )
 

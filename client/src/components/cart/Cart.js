@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, Typography, Snackbar } from "@material-ui/core";
+import { Box, Button, Container, Grid, Typography, Snackbar, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from "@material-ui/core";
 import React from "react";
 import CartProduct from "./CartProduct"
 import {connect} from "react-redux"
@@ -19,7 +19,8 @@ class Cart extends React.Component {
     open:false,
     // openAlert:false,
     // alert: "",
-    severity:'success'
+    severity:'success',
+    selected_shipping: ""
   }
   constructor() {
     super();
@@ -33,6 +34,10 @@ class Cart extends React.Component {
     }
   }
   
+  handleChange = event => {
+    this.setState({selected_shipping:event.target.value});
+  };
+
   handleCloseForm = ()=>{
     this.setState({open:false})
   }
@@ -81,10 +86,17 @@ class Cart extends React.Component {
     })
   }
 
+  
   render(){
+    const {selected_shipping} = this.state
     const total = this.props.cart_data.reduce((total,pic)=>{
       return total = total + (pic.quantity*pic.price)
     },0)
+    const alltotal = total + parseInt(selected_shipping);
+    console.log('selected_shipping',typeof(selected_shipping));
+    console.log('total',typeof(total));
+    console.log('alltotal',alltotal);
+    
     return (
       <Container>
         <Grid container spacing={3}> 
@@ -127,18 +139,27 @@ class Cart extends React.Component {
                 </tr>
                 <tr>
                   <th>Ship</th>
-                  <td>Free</td>
+                  {/* <td>Free</td> */}
+                  <FormControl component="fieldset">
+                    <FormLabel component="legend">Shipping unit</FormLabel>
+                    <RadioGroup aria-label="unit" name="unit" value={this.value} onChange={this.handleChange}>
+                      <FormControlLabel value="1" control={<Radio />} label="Grab" />
+                      <FormControlLabel value="2" control={<Radio />} label="Now" />
+                      <FormControlLabel value="3" control={<Radio />} label="24h" />
+                    </RadioGroup>
+                  </FormControl>
+                  <td>${this.state.selected_shipping}</td>
                 </tr>
                 <tr>
                   <th>Total</th>
-                  <td>${total}</td>
+                  <td>${alltotal}</td>
                 </tr>
               </table>
               <button className="summary-btn" onClick={this.handleCheckout}>Buy</button>
             </Box>}
           </Grid>
         </Grid>
-        <CheckoutForm total={total} cart={this.props.cart_data} open={this.state.open} handleClose={this.handleCloseForm} handleSendForm={this.handleSendForm}></CheckoutForm>
+        <CheckoutForm total ={total} shippingfee={parseInt(selected_shipping)} alltotal={alltotal} cart={this.props.cart_data} open={this.state.open} handleClose={this.handleCloseForm} handleSendForm={this.handleSendForm}></CheckoutForm>
         {/* <Snackbar open={this.state.openAlert} autoHideDuration={6000} onClose={this.handleCloseSnackBar}>
           <Alert onClose={this.handleCloseSnackBar} severity={this.state.severity}>
             {this.state.alert}

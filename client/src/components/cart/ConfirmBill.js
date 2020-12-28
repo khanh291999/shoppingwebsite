@@ -34,7 +34,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function ConfirmBill(props) {
-    const {handleClose,handlePay,open,username,useraddress,userphonenumber,total} = props;
+    const {handleClose,handlePay,open,username,useraddress,userphonenumber,total, shippingfee, alltotal} = props;
     const classes = useStyles();
   return (
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
@@ -66,7 +66,15 @@ export default function ConfirmBill(props) {
           </ListItem>
           <Divider />
           <ListItem>
-            <ListItemText primary="Total" secondary={total+"$"} className={classes.nested} />
+            <ListItemText primary="Sub Total" secondary={total+"$"} className={classes.nested} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary="Shipping fee" secondary={shippingfee+"$"} className={classes.nested} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary="All total" secondary={alltotal+"$"} className={classes.nested} />
           </ListItem>
           <Divider />
         </List>
