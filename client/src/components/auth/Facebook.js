@@ -59,7 +59,6 @@ export default function Facebook() {
             userID: response.userID,
             user: response.name
           });
-          console.log(response.name);
           localStorage.setItem("facebook-token", JSON.stringify(response.accessToken));
           history.push("/");
     }

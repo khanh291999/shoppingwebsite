@@ -1,22 +1,33 @@
-// import React, { Component } from 'react'
-// import GoogleLogin from 'react-google-login'
+import React,  { useState, useContext } from 'react'
+import GoogleLogin from 'react-google-login'
+import UserContext from "../../context/userContext";
+import {useHistory } from "react-router-dom";
 
-// const responseGoogle = (response) => {
-//     console.log(response);
-//   }
 
-// export default class Google extends Component {
-//     render() {
-//         return (
-//             <div>
-//                   <GoogleLogin
-//                     clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-//                     buttonText="Login"
-//                     onSuccess={this.responseGoogle}
-//                     onFailure={this.responseGoogle}
-//                     cookiePolicy={'single_host_origin'}
-//   />
-//             </div>
-//         )
-//     }
-// }
+export default function Google() {
+    const { setUserData } = useContext(UserContext);
+    const history = useHistory();
+     const responseGoogle = (response) => {
+        console.log(response);
+        console.log(response.profileObj);
+        setUserData({
+            token: response.profileObj.googleId,
+            displayName: response.profileObj.givenName,
+            email:response.profileObj.email,
+            user: response.profileObj.familyName
+          });
+          localStorage.setItem("google-token", JSON.stringify(response.googleId));
+          history.push("/");
+      }
+        return (
+            <div>
+                  <GoogleLogin
+                    clientId="54212149291-r1gattdm98fjb9u9kopedvfcosgob7rs.apps.googleusercontent.com"
+                    buttonText="Login"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={'single_host_origin'}
+                     />
+            </div>
+        )
+}

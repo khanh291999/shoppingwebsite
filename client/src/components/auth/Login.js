@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid'
 import FacebookIcon from '@material-ui/icons/Facebook';
 import GoogleIcon from '../../assets/icons/google_icon.png'
 import Facebook from './Facebook'
+import Google from './Google'
 
 export default function Login() {
   const [email, setEmail] = useState();
@@ -91,13 +92,14 @@ export default function Login() {
               <div style={{margin: "4px"}}>Facebook</div> */}
               <Facebook/>
             {/* </button> */}
-            <button id="gg-login-btn">
+            {/* <button id="gg-login-btn">
               <img
                 style={{maxWidth: "8%"}} 
                 src={GoogleIcon}
                 />
               <div style={{margin: "4px"}}>Google</div>
-            </button>
+            </button> */}
+            <Google/>
             </Grid>
           </Grid>
         </form>
