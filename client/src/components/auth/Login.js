@@ -7,6 +7,7 @@ import '../../assets/Login.css'
 import Grid from '@material-ui/core/Grid'
 import FacebookIcon from '@material-ui/icons/Facebook';
 import GoogleIcon from '../../assets/icons/google_icon.png'
+import Facebook from './Facebook'
 
 export default function Login() {
   const [email, setEmail] = useState();
@@ -85,10 +86,11 @@ export default function Login() {
                 color: "#757575"}}>
               Or,login with
             </span>
-            <button id="fb-login-btn">
-              <FacebookIcon></FacebookIcon>
-              <div style={{margin: "4px"}}>Facebook</div>
-            </button>
+            {/* <button id="fb-login-btn"> */}
+              {/* <FacebookIcon></FacebookIcon>
+              <div style={{margin: "4px"}}>Facebook</div> */}
+              <Facebook/>
+            {/* </button> */}
             <button id="gg-login-btn">
               <img
                 style={{maxWidth: "8%"}} 

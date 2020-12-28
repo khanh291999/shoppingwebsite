@@ -96,7 +96,7 @@ function Header(props) {
             <div className="username-header">
               {/* <h5 className='user-name'> {userData.user.displayName}</h5>
               <button id="logout-btn" onClick={logout}>SIGN OUT</button> */}
-              <div className='user-name'>Welcome, {userData.user.displayName}
+              <div className='user-name'>Welcome, {userData.user.displayName||userData.displayName}
                 <button id="logout-btn" onClick={logout}>SIGN OUT</button>
               </div>
             </div>
