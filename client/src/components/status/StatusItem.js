@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function StatusItem(props){
-    const {name,price,img,size,quantity,status,date,time} = props
+    const {name,price,img,size,quantity,status,date,time, paypalstatus} = props
         return(
             <div className="client-table-rows">
                 <div className="client-table-cell">
@@ -27,6 +27,9 @@ export default function StatusItem(props){
                 </div>
                 <div className="client-table-cell">
                     {time}
+                </div>
+                <div className="client-table-cell">
+                    {paypalstatus}
                 </div>
             </div>
         )

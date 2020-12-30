@@ -1,51 +1,8 @@
 import React from 'react'
-// import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-// import { green, red, yellow } from '@material-ui/core/colors';
-
-// const WaitingButton = withStyles((theme) => ({
-//   root: {
-//     color: theme.palette.getContrastText(red[500]),
-//     backgroundColor: red[500],
-//     '&:hover': {
-//       backgroundColor: red[700],
-//     },
-//     width:50
-//   },
-// }))(Button);
-
-
-// const DeliveringButton = withStyles((theme) => ({
-//   root: {
-//     color: theme.palette.getContrastText(yellow[500]),
-//     backgroundColor: yellow[500],
-//     '&:hover': {
-//       backgroundColor: yellow[700],
-//     },
-   
-//   },
-// }))(Button);
-
-// const DoneButton = withStyles((theme) => ({
-//   root: {
-//     color: theme.palette.getContrastText(green[500]),
-//     backgroundColor: green[500],
-//     '&:hover': {
-//       backgroundColor: green[700],
-//     },
-//     width:50
-//   },
-// }))(Button);
-
-// const useStyles = makeStyles((theme) => ({
-//   margin: {
-//     margin: theme.spacing(1),
-//   },
-// }));
 
 export default function StatusItem(props){
-  // const classes = useStyles();
-    const {username,useraddress,userphone_number,name,price,img,size,quantity,date,time,status} = props
+    const {username,useraddress,userphone_number,name,price,img,size,quantity,date,time,status,paypalstatus} = props
     const Waiting = () => {
       const status = "Waiting for confirm"
       props.updateStatusWaiting(props.id,status)
@@ -91,6 +48,9 @@ export default function StatusItem(props){
                 </div>
                 <div className="admin-status-table-cell">
                     {time}
+                </div>
+                <div className="admin-status-table-cell">
+                    {paypalstatus}
                 </div>
                 <div className="admin-status-table-cell">
                     {status}

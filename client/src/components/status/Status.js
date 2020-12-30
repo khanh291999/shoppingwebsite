@@ -67,6 +67,9 @@ export default class Status extends Component{
                         <div className="client-table-header">
                             Time
                         </div>
+                        <div className="client-table-header">
+                            Paid
+                        </div>
                     </div>
                 </div>
              

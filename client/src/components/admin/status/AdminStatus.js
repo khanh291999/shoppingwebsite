@@ -102,7 +102,7 @@ export default class AdminStatus extends Component{
             <div className="content-table">
                     <div className="admin-status-table-headers">
                         <div className="admin-status-table-header">
-                            User Name
+                            User
                         </div>
                         <div className="admin-status-table-header">
                            Adress
@@ -130,6 +130,9 @@ export default class AdminStatus extends Component{
                         </div>
                         <div className="admin-status-table-header">
                             Time
+                        </div>
+                        <div className="admin-status-table-header">
+                            Paid
                         </div>
                         <div className="admin-status-table-header">
                             Status

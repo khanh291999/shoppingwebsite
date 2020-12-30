@@ -2,7 +2,7 @@ import React from 'react'
 import StatusItem from './StatusItem'
 export default function StatusRow(props){
 
-    const {product,status,date, time} = props.productss
+    const {product,status,date, time,paypalstatus} = props.productss
     return  (
         product.map(productitem=>{
             return(
@@ -15,6 +15,7 @@ export default function StatusRow(props){
                 status={status}
                 date={date}
                 time={time}
+                paypalstatus={paypalstatus}
                 />
                 
             )
