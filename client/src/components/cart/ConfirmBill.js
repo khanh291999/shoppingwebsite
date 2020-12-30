@@ -47,9 +47,9 @@ export default function ConfirmBill(props) {
             <Typography variant="h6" className={classes.title}>
               Information Confirm
             </Typography>
-            <Button autoFocus color="inherit" onClick={handlePay}>
+            {/* <Button autoFocus color="inherit" onClick={handlePay}>
               Buy
-            </Button>
+            </Button> */}
           </Toolbar>
         </AppBar>
         <Container>
@@ -82,7 +82,11 @@ export default function ConfirmBill(props) {
           {props.cart.map(cart_item=>{
                   return (<ConfirmBillProduct key={cart_item.id_cart}  cart={cart_item} ></ConfirmBillProduct>)
                 })}
+          <button className="checkout-btn" onClick={handlePay}>Buy</button>
+          <br></br>
+          <button className="checkout-btn" onClick={handlePay}>
           <Paypal handlePaypalPay={handlePaypalPay} alltotal={alltotal}></Paypal>
+          </button>
           </Container>
       </Dialog>
       

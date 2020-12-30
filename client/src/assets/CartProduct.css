@@ -45,8 +45,20 @@
     cursor: pointer;
     color: #fff;
     font-weight: 600;
-    margin-top: 5px;
     width: 100%;
+}
+
+.checkout-btn{
+    padding: 8px 20px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    background-color: #000;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    width: 30%;
+    margin: 5px 0px 5px 0px
 }
 
 .summary-btn:hover{
