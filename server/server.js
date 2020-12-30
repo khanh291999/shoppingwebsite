@@ -152,6 +152,10 @@ const DisableFemaleTshirtSchema = new mongoose.Schema({
     size:Array
 });
 
+const PaypalSchema = new mongoose.Schema({
+    orderID:Object
+});
+
 //Model
 // const BlogPost = mongoose.model('BlogPost', BlogPostSchema);
 const Cart = mongoose.model('cart',CartSchema)
@@ -168,6 +172,7 @@ const FemaleJean = mongoose.model('jeanfemale',FemaleJeanSchema)
 const DisableFemaleJean =mongoose.model('disablefemalejean',DisableFemaleJeanSchema)
 const FemaleTshirt = mongoose.model('t-shirtfemale',FemaleTshirtSchema)
 const DisableFemaleTshirt =mongoose.model('disablefemalet-shirt',DisableFemaleTshirtSchema)
+const Paypal = mongoose.model('paypal',PaypalSchema)
 
 //Saving data to our mongo database
 const data = {
@@ -188,6 +193,7 @@ const newFemaleJean = new FemaleJean(data);
 const newDisableFemaleJean = new DisableFemaleJean(data)
 const newFemaleTshirt = new FemaleTshirt(data);
 const newDisableFemaleTshirt = new DisableFemaleTshirt(data)
+const newPaypal = new Paypal(data);
 
 //.save()
 // newBlogPost.save((error)=>{
@@ -996,5 +1002,49 @@ app.patch('/cart/:id', async (req, res)=>{
 //         console.log('error: ', daerrorta)
 //     })
 // });
+
+//paypal
+app.get('/paypal', (req, res) =>{
+    const data = {
+    };
+
+    Paypal.find({})
+    .then((data)=>{
+        // console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.get('/paypal/:id', (req, res) =>{
+    const data = {
+    };
+    Paypal.findOne({
+        id:req.params.id
+    })
+    .then((data)=>{
+        // console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.post('/paypal', (req,res)=>{
+    const data = req.body;
+
+    const newPaypal = new Paypal(data);
+    newPaypal.save((error)=>{
+        if(error){
+            res.status(500).json({msg:'Sorry, internal server errors'});
+        }
+        return res.json({
+            msg: ' Your data has been saved!!!'
+        })
+    })
+})
 
 app.listen(PORT, console.log(`Sever is starting at ${PORT}`));

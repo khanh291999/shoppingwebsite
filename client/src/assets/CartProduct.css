@@ -45,6 +45,8 @@
     cursor: pointer;
     color: #fff;
     font-weight: 600;
+    margin-top: 5px;
+    width: 100%;
 }
 
 .summary-btn:hover{

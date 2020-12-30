@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, Typography, Snackbar, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from "@material-ui/core";
+import { Box, Button, Container, Grid, Typography, Snackbar, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, FormHelperText } from "@material-ui/core";
 import React from "react";
 import CartProduct from "./CartProduct"
 import {connect} from "react-redux"
@@ -9,6 +9,7 @@ import UserContext from './../../context/userContext'
 import Swal from 'sweetalert2'
 import '../../assets/Cart.css'
 import '../../assets/CartProduct.css'
+import Paypal from "./Paypal";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -20,7 +21,9 @@ class Cart extends React.Component {
     // openAlert:false,
     // alert: "",
     severity:'success',
-    selected_shipping: ""
+    selected_shipping: "",
+    checkout:false,
+    helperText:""
   }
   constructor() {
     super();
@@ -86,6 +89,20 @@ class Cart extends React.Component {
     })
   }
 
+  handleCheckoutPaypal=()=>{
+    const {selected_shipping}= this.state;
+    console.log('selected_shipping',selected_shipping);
+    
+    if(selected_shipping == undefined)
+    {
+      this.setState({
+        helperText:"Please choose shipping company"
+      })
+    }
+    else{
+      this.setState({checkout:true})
+    }
+  }
   
   render(){
     const {selected_shipping} = this.state
@@ -93,9 +110,6 @@ class Cart extends React.Component {
       return total = total + (pic.quantity*pic.price)
     },0)
     const alltotal = total + parseInt(selected_shipping);
-    console.log('selected_shipping',typeof(selected_shipping));
-    console.log('total',typeof(total));
-    console.log('alltotal',alltotal);
     
     return (
       <Container>
@@ -141,12 +155,13 @@ class Cart extends React.Component {
                   <th>Ship</th>
                   {/* <td>Free</td> */}
                   <FormControl component="fieldset">
-                    <FormLabel component="legend">Shipping unit</FormLabel>
+                    {/* <FormLabel component="legend">Shipping unit</FormLabel> */}
                     <RadioGroup aria-label="unit" name="unit" value={this.value} onChange={this.handleChange}>
                       <FormControlLabel value="1" control={<Radio />} label="Grab" />
                       <FormControlLabel value="2" control={<Radio />} label="Now" />
                       <FormControlLabel value="3" control={<Radio />} label="24h" />
                     </RadioGroup>
+                    <FormHelperText style={{color:"red"}}>{this.state.helperText}</FormHelperText>
                   </FormControl>
                   <td>${this.state.selected_shipping}</td>
                 </tr>
@@ -155,6 +170,12 @@ class Cart extends React.Component {
                   <td>${alltotal}</td>
                 </tr>
               </table>
+              {this.state.checkout ? (
+              <Paypal alltotal={alltotal}></Paypal>
+              ):(
+                <button className="summary-btn" onClick={this.handleCheckoutPaypal}>Paypal</button>
+              )}
+              <br></br>
               <button className="summary-btn" onClick={this.handleCheckout}>Buy</button>
             </Box>}
           </Grid>

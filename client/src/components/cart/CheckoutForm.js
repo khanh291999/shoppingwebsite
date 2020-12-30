@@ -73,7 +73,7 @@ export default class CheckoutForm extends Component {
   }
     render(){
         const {handleClose,open}=this.props;
-        console.log('total',this.props.total);
+        console.log('total',typeof(this.props.alltotal));
         
         return(
             <Dialog
