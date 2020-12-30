@@ -3,7 +3,7 @@ import { PayPalButton } from "react-paypal-button-v2";
 
 export default class Paypal extends Component {
   render() {
-    const {paypaltotal,alltotal} = this.props;
+    const {handlePaypalPay,alltotal} = this.props;
     
     return (
       <PayPalButton
@@ -24,7 +24,7 @@ export default class Paypal extends Component {
           return actions.order.capture().then(function(details) {
             // Show a success message to your buyer
             alert("Transaction completed by " + details.payer.name.given_name);
- 
+            {handlePaypalPay()}
             // OPTIONAL: Call your server to save the transaction
             return fetch("http://localhost:8080/paypal", {
               method: "post",

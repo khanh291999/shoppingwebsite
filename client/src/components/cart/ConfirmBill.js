@@ -14,6 +14,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import { Container, Icon } from '@material-ui/core'
 import ConfirmBillProduct from './ConfirmBillProduct'
+import Paypal from './Paypal'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -34,7 +35,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function ConfirmBill(props) {
-    const {handleClose,handlePay,open,username,useraddress,userphonenumber,total, shippingfee, alltotal} = props;
+    const {handleClose,handlePay,handlePaypalPay,open,username,useraddress,userphonenumber,total, shippingfee, alltotal} = props;
     const classes = useStyles();
   return (
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
@@ -81,6 +82,7 @@ export default function ConfirmBill(props) {
           {props.cart.map(cart_item=>{
                   return (<ConfirmBillProduct key={cart_item.id_cart}  cart={cart_item} ></ConfirmBillProduct>)
                 })}
+          <Paypal handlePaypalPay={handlePaypalPay} alltotal={alltotal}></Paypal>
           </Container>
       </Dialog>
       

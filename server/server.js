@@ -41,7 +41,8 @@ const CartSchema = new Schema({
      userid:String,
      status:String,
      date:String,
-     time:String
+     time:String,
+     paypalstatus:String
 })
 
 // const AdminSchema = new Schema({

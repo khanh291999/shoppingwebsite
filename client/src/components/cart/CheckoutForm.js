@@ -35,7 +35,8 @@ export default class CheckoutForm extends Component {
       address:"",
       phone_number:"",
       openconfirmbill:false,
-      helperText:""
+      helperText:"",
+      paypalstatus:""
   }
 
   handleClickOpen = () => {
@@ -71,6 +72,18 @@ export default class CheckoutForm extends Component {
         phone_number:"",
       })
   }
+  handlePaypalPay=()=>{
+    this.setState({
+      paypalstatus:"Paid by paypal"
+    })
+    this.props.handleSendForm(this.state)
+    this.setState({
+      name:"",
+      address:"",
+      phone_number:"",
+      paypalstatus:""
+    })
+}
     render(){
         const {handleClose,open}=this.props;
         console.log('total',typeof(this.props.alltotal));
@@ -110,7 +123,7 @@ export default class CheckoutForm extends Component {
                   Continue
                 </Button>
               </DialogActions>
-                  <ConfirmBill total={this.props.total} shippingfee={this.props.shippingfee} alltotal={this.props.alltotal} open={this.state.openconfirmbill} handlePay={this.handlePay} handleClose={this.handleClose} cart={this.props.cart} username={this.state.name} useraddress={this.state.address} userphonenumber={this.state.phone_number} ></ConfirmBill>)
+                  <ConfirmBill total={this.props.total} shippingfee={this.props.shippingfee} alltotal={this.props.alltotal} open={this.state.openconfirmbill} handlePay={this.handlePay} handlePaypalPay={this.handlePaypalPay} handleClose={this.handleClose} cart={this.props.cart} username={this.state.name} useraddress={this.state.address} userphonenumber={this.state.phone_number} ></ConfirmBill>)
           </Dialog>
         )
 

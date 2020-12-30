@@ -9,7 +9,6 @@ import UserContext from './../../context/userContext'
 import Swal from 'sweetalert2'
 import '../../assets/Cart.css'
 import '../../assets/CartProduct.css'
-import Paypal from "./Paypal";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -45,7 +44,16 @@ class Cart extends React.Component {
     this.setState({open:false})
   }
   handleCheckout =() =>{
+    const {selected_shipping}= this.state;
+    if(selected_shipping == undefined)
+    {
+      this.setState({
+        helperText:"Please choose shipping company"
+      })
+    }
+    else{
     this.setState({open:true})
+  }
   }
   // handleCloseSnackBar = () =>{
   //   this.setState({openAlert:false})
@@ -89,20 +97,20 @@ class Cart extends React.Component {
     })
   }
 
-  handleCheckoutPaypal=()=>{
-    const {selected_shipping}= this.state;
-    console.log('selected_shipping',selected_shipping);
+  // handleCheckoutPaypal=()=>{
+  //   const {selected_shipping}= this.state;
+  //   console.log('selected_shipping',selected_shipping);
     
-    if(selected_shipping == undefined)
-    {
-      this.setState({
-        helperText:"Please choose shipping company"
-      })
-    }
-    else{
-      this.setState({checkout:true})
-    }
-  }
+  //   if(selected_shipping == undefined)
+  //   {
+  //     this.setState({
+  //       helperText:"Please choose shipping company"
+  //     })
+  //   }
+  //   else{
+  //     this.setState({checkout:true})
+  //   }
+  // }
   
   render(){
     const {selected_shipping} = this.state
@@ -170,12 +178,12 @@ class Cart extends React.Component {
                   <td>${alltotal}</td>
                 </tr>
               </table>
-              {this.state.checkout ? (
+              {/* {this.state.checkout ? (
               <Paypal alltotal={alltotal}></Paypal>
               ):(
                 <button className="summary-btn" onClick={this.handleCheckoutPaypal}>Paypal</button>
               )}
-              <br></br>
+              <br></br> */}
               <button className="summary-btn" onClick={this.handleCheckout}>Buy</button>
             </Box>}
           </Grid>
