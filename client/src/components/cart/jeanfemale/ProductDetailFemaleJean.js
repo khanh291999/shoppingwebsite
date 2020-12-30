@@ -79,17 +79,7 @@ class ProductDetailFemaleJean extends Component {
     <Container  style={{ marginTop: "50px"}}>
       <Grid container>
       <Grid item md={6} >
-      {/* className={classes.img_container} */}
-        {/* <Box > */}
-        {/* className={classes.big_img} */}
-          {/* <img src={img}/> */}
           <ImageContainer items={img}/>
-        {/* </Box> */}
-        {/* <Box display="flex">
-          <Box className={classes.small_img}>small</Box>
-          <Box className={classes.small_img}>small</Box>
-          <Box className={classes.small_img}>small</Box>
-        </Box> */}
       </Grid>
       <Grid item md={6} className="product-info-container">
         <Typography variant="div" className="product-name">{name}</Typography>
@@ -120,7 +110,7 @@ class ProductDetailFemaleJean extends Component {
         <FormHelperText style={{color:"red"}}>{this.state.helperText}</FormHelperText>
         </FormControl>
         <Box>
-          <TextField className="product-quantity" type="number" value={this.state.quantity} onChange={(event)=>{this.setState({quantity:Number(event.target.value)})}}></TextField>
+          <TextField className="product-quantity" type="number" value={this.state.quantity} onChange={(event)=>{this.setState({quantity:Number(event.target.value < 0?(event.target.value=0):event.target.value)})}}></TextField>
           <button className="add-to-cart-button"onClick={this.handleClickBtn}>Add to cart</button>
         </Box>  
       </Grid>
