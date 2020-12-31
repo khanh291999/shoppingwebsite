@@ -1,0 +1,132 @@
+.half{
+    background: linear-gradient(to right, white 50%, #FAFAFA 50%);
+}
+.bill-parent{
+    width: 100%;
+    text-align: center;
+}
+
+.bill-container{
+    margin: 5% 15%;
+    display: flex;
+}
+
+.bill-form {
+    margin-left: -10px;
+    display: grid;
+}
+
+.bill-left{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.bill-right{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10%;
+}
+  
+.info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid var(--color-lighter-gray); */
+  padding: .5rem;
+  border-radius: .25rem;
+  align-items: flex-start;
+}
+
+.info__label {
+  color: var(--color-gray);
+  font-size: 1rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem
+}
+
+.info__input {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  font-weight: bold;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  padding: 0.3rem;
+  background-color: #fff;
+  font-size: 1.1rem;
+}
+
+.product img{
+    max-width: 12%;
+    border-radius: 3px;
+    border: 2px solid #A4A29F;
+}
+
+.product{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.img-container{
+    position: relative;
+    display: flex;
+}
+
+.img-container div{
+    font-size: 0.89rem;
+}
+
+.absolute{
+    position: absolute;
+    top: -15%;
+    margin-left: 9%;
+    background-color: #AC8E56;
+    color: #fff;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    width: 18px;
+    text-align: center;
+}
+
+.product-label{
+    padding-left: 15px;
+}
+
+.product-size{
+    padding-left: 15px;
+    align-self: flex-start;
+}
+
+.product-list{
+    margin-top: 20%;
+}
+
+.line{
+    width: 100%;
+    border: 1px solid #A3A3A3;
+    margin: 22px 0;
+}
+
+.fee-container{
+    width: 100%;
+}
+
+.fee-container table{
+    width: 100%;
+}
+
+.set-right{
+    text-align: right;
+}
+
+.set-left{
+    text-align: left;
+    padding-bottom: 10px;
+}
