@@ -14,12 +14,13 @@ export default class CheckoutForm extends Component {
   static contextType = UserContext
   
   componentWillMount() {
-    const user = this.context.userData.user||this.context.userData;
+    const user = this.context.userData.user;
+    const user1 =this.context.userData
     console.log('userss',this.context.userData);
     console.log('userss11',this.context.userData.user)
     user ? (
       this.setState({
-        name: user.displayName||user,
+        name: user?(user.displayName||user1.displayName):(""),
         address:user.address,
         phone_number:user.phoneNumber,
       })
