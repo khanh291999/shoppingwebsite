@@ -60,11 +60,12 @@ class Cart extends React.Component {
   // }
   handleSendForm = (form) =>{
     const user = this.context.userData.user;
+    const user1 =this.context.userData
     axios.post("http://localhost:8080/cart",{
       ...form,
       id: 'order' +Date.now()+Math.random(),
       product:this.props.cart_data,
-      userid: user.id,
+      userid: user.id||user1.id,
       status:"Waiting for confirm",
       date: this.state.currentDate,
       time: this.state.currentTime

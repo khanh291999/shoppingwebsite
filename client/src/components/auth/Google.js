@@ -14,7 +14,8 @@ export default function Google() {
             token: response.profileObj.googleId,
             displayName: response.profileObj.givenName,
             email:response.profileObj.email,
-            user: response.profileObj.familyName
+            user: response.profileObj.givenName,
+            id: response.profileObj.googleId
           });
           localStorage.setItem("google-token", JSON.stringify(response.googleId));
           history.push("/");

@@ -14,10 +14,11 @@ export default class Status extends Component{
     }
     componentDidMount(){
         const user = this.context.userData.user;
+        const user1 =this.context.userData;
         console.log('userrrrr',user)
         user ? (
             this.setState({
-              useridcontext: user.id,
+              useridcontext: user.id || user1.id,
             })
               ) : (this.setState({
                 useridcontext:"",

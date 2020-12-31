@@ -56,7 +56,7 @@ export default function Facebook() {
             token: response.accessToken,
             displayName: response.name,
             email:response.email,
-            userID: response.userID,
+            id: response.userID,
             user: response.name
           });
           localStorage.setItem("facebook-token", JSON.stringify(response.accessToken));
