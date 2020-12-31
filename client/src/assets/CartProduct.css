@@ -49,6 +49,7 @@
 }
 
 .checkout-btn{
+    width: 100%;
     padding: 8px 20px;
     border-radius: 2px;
     outline: none;
@@ -57,7 +58,6 @@
     cursor: pointer;
     color: #fff;
     font-weight: 600;
-    width: 30%;
     margin: 5px 0px 5px 0px
 }
 

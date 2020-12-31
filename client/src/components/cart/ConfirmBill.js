@@ -15,6 +15,7 @@ import Slide from '@material-ui/core/Slide';
 import { Container, Icon } from '@material-ui/core'
 import ConfirmBillProduct from './ConfirmBillProduct'
 import Paypal from './Paypal'
+import '../../assets/ConfirmBill.css'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -38,7 +39,7 @@ export default function ConfirmBill(props) {
     const {handleClose,handlePay,handlePaypalPay,open,username,useraddress,userphonenumber,total, shippingfee, alltotal} = props;
     const classes = useStyles();
   return (
-      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+      <Dialog className="half" fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar className={classes.appBar}>
           <Toolbar>
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
@@ -52,41 +53,69 @@ export default function ConfirmBill(props) {
             </Button> */}
           </Toolbar>
         </AppBar>
-        <Container>
-        <List component="div" disablePadding>
-          <ListItem>
-            <ListItemText primary="Username" secondary={username} className={classes.nested} />
-          </ListItem>
-          <Divider />
-          <ListItem>
-            <ListItemText primary="Address" secondary={useraddress} className={classes.nested} />
-          </ListItem>
-          <Divider />
-          <ListItem>
-            <ListItemText primary="Phone Number" secondary={userphonenumber} className={classes.nested} />
-          </ListItem>
-          <Divider />
-          <ListItem>
-            <ListItemText primary="Sub Total" secondary={total+"$"} className={classes.nested} />
-          </ListItem>
-          <Divider />
-          <ListItem>
-            <ListItemText primary="Shipping fee" secondary={shippingfee+"$"} className={classes.nested} />
-          </ListItem>
-          <Divider />
-          <ListItem>
-            <ListItemText primary="All total" secondary={alltotal+"$"} className={classes.nested} />
-          </ListItem>
-          <Divider />
-        </List>
-          {props.cart.map(cart_item=>{
-                  return (<ConfirmBillProduct key={cart_item.id_cart}  cart={cart_item} ></ConfirmBillProduct>)
-                })}
-          <button className="checkout-btn" onClick={handlePay}>Buy</button>
-          <br></br>
-          <button className="checkout-btn" onClick={handlePay}>
-          <Paypal handlePaypalPay={handlePaypalPay} alltotal={alltotal}></Paypal>
-          </button>
+        <Container className="half">
+          <div className="bill-parent">
+              <div className="bill-container">
+                  <div className="bill-left">
+                      <h1>K&Q</h1>
+                      <h2>Delivery infomation</h2>
+                      <div className="bill-form">
+                          <label className="info">
+                            <span className="info__label" for="customer_name">Customer Name</span>
+                            <input className="info__input" type="text" id="fname" name="customer_name" value={username} readonly/>
+                          </label>
+                          <label className="info">
+                            <span className="info__label" for="address">Address</span>
+                            <input className="info__input" type="text" id="fname" name="address" value={useraddress} readonly/>
+                          </label>
+                          <label className="info">
+                            <span className="info__label" for="phone_number">Phone Number</span>
+                            <input className="info__input" type="text" id="fname" name="phone_number" value={userphonenumber} readonly/>
+                          </label>
+                      </div>
+                      <div className="payment-container">
+                          <h2 style={{textAlignLast: "start"}}>Payment methods</h2>
+                          <button className="checkout-btn" onClick={handlePay}>Buy</button>
+                          <br></br>
+                          <button className="checkout-btn" onClick={handlePay}>
+                          <Paypal handlePaypalPay={handlePaypalPay} alltotal={alltotal}></Paypal>
+                          </button>
+                      </div>
+                  </div>
+                  
+                  <div class="bill-right">
+                    <div class="product-list">
+                      {props.cart.map(cart_item=>{
+                        return (<ConfirmBillProduct key={cart_item.id_cart}  cart={cart_item} ></ConfirmBillProduct>)
+                      })}
+                    </div>
+
+                    <div class="line"></div>
+
+                    <div class="fee-container">
+                        <table>
+                            <tr>
+                                <th class="set-left">Pre-total</th>
+                                <td class="set-right">{"$" + total}</td>
+                              </tr>
+                              <tr>
+                                <th class="set-left">Shipping</th>
+                                <td class="set-right">{"$" + shippingfee}</td>
+                              </tr>
+                        </table>
+                    </div>
+
+                    <div class="line"></div>
+
+                    <table style={{width:"100%"}}>
+                        <tr>
+                            <th class="set-left">Total</th>
+                            <td class="set-right" style={{fontSize: "1.5em"}}>{"$" + alltotal}</td>
+                        </tr>
+                    </table>
+                </div>
+              </div>
+          </div>
           </Container>
       </Dialog>
       
