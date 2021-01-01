@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '@material-ui/core/Button';
 
 export default function StatusItem(props){
-    const {username,useraddress,userphone_number,name,price,img,size,quantity,date,time,status,paypalstatus} = props
+    const {id,username,useraddress,userphone_number,name,price,img,size,quantity,date,time,status,paypalstatus} = props
     const Waiting = () => {
       const status = "Waiting for confirm"
       props.updateStatusWaiting(props.id,status)
@@ -19,6 +19,9 @@ export default function StatusItem(props){
     }
         return(
             <div className="admin-status-table-rows">
+              <div className="admin-status-table-cell">
+                  {id}
+                </div>
                 <div className="admin-status-table-cell">
                   {username}
                 </div>

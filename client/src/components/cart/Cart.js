@@ -63,7 +63,7 @@ class Cart extends React.Component {
     const user1 =this.context.userData
     axios.post("http://localhost:8080/cart",{
       ...form,
-      id: 'order' +Date.now()+Math.random(),
+      // id: 'order' +Date.now()+Math.random(),
       product:this.props.cart_data,
       userid: user?(user.id||user1.id):(""),
       status:"Waiting for confirm",

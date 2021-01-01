@@ -36,7 +36,7 @@ const CartSchema = new Schema({
      name:String,
      address:String,
      phone_number:String,
-     id:String,
+     id:Number,
      product:Array,
      userid:String,
      status:String,
@@ -44,7 +44,7 @@ const CartSchema = new Schema({
      time:String,
      paypalstatus:String
 })
-
+CartSchema.plugin(AutoIncrement, {id: 'id_cart',inc_field: 'id'});
 // const AdminSchema = new Schema({
 //     id:Number,
 //     username:String,

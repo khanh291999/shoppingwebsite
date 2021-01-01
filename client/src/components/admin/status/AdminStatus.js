@@ -102,6 +102,9 @@ export default class AdminStatus extends Component{
             <div className="content-table">
                     <div className="admin-status-table-headers">
                         <div className="admin-status-table-header">
+                            ID cart
+                        </div>
+                        <div className="admin-status-table-header">
                             User
                         </div>
                         <div className="admin-status-table-header">
