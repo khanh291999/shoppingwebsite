@@ -39,7 +39,8 @@ export default class CheckoutForm extends Component {
       phone_number:"",
       openconfirmbill:false,
       helperText:"",
-      paypalstatus:""
+      paypalstatus:"",
+      status:""
   }
 
   handleClickOpen = () => {
@@ -68,15 +69,20 @@ export default class CheckoutForm extends Component {
       this.setState(new_state);
   }
   handlePay=()=>{
+    this.setState({
+      status:"Paid by COD"
+    })
       this.props.handleSendForm(this.state)
       this.setState({
         name:"",
         address:"",
         phone_number:"",
+        status:""
       })
   }
   handlePaypalPay=()=>{
     this.setState({
+      status:"Delivery",
       paypalstatus:"Paid by paypal"
     })
     this.props.handleSendForm(this.state)
@@ -84,6 +90,7 @@ export default class CheckoutForm extends Component {
       name:"",
       address:"",
       phone_number:"",
+      status:"",
       paypalstatus:""
     })
 }
