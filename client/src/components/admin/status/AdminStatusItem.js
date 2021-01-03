@@ -18,59 +18,68 @@ export default function StatusItem(props){
         props.updateStatusDone(props.id,status)
     }
         return(
-            <div className="admin-status-table-rows">
-              <div className="admin-status-table-cell">
-                  {id}
-                </div>
-                <div className="admin-status-table-cell">
-                  {username}
-                </div>
-                <div className="admin-status-table-cell">
-                  {useraddress}
-                </div>
-                <div className="admin-status-table-cell">
-                  {userphone_number}
-                </div>
-                <div className="admin-status-table-cell">
-                  {name}
-                </div>
-                <div className="admin-status-table-cell">
-                {price}$
-                </div>
-                <div className="admin-status-table-cell">
-                    {size}
-                </div>
-                <div className="admin-status-table-cell">
-                    <img src={img} />
-                </div>
-                <div className="admin-status-table-cell">
-                    {quantity}
-                </div>
-                <div className="admin-status-table-cell">
-                    {date}
-                </div>
-                <div className="admin-status-table-cell">
-                    {time}
-                </div>
-                <div className="admin-status-table-cell">
-                    {paypalstatus}
-                </div>
-                <div className="admin-status-table-cell">
-                    {status}
-                </div>
-                <div className="admin-status-table-cell">
-                    <Button style={{marginRight:"5px"}} variant="outlined" onClick={Waiting}>
-                     Waiting
-                    </Button>
-                    <Button style={{marginRight:"5px"}} variant="outlined" onClick={Delivering}>
-                     Delivering
-                    </Button>
-                    <Button variant="outlined" onClick={Done}>
-                    Done
-                    </Button>
-                </div>
-                
-            </div>
+          <div class="order-background">
+         <div className="order-container">
+              <div class="set-absolute">
+                    id order : #54684135874
+              </div>
+              <div className="order-detail">
+                  <div className="order-detail-left">
+                      <div className="order-info">
+                          <span>Customer name: </span>
+                          <span>{username}</span>
+                      </div>
+                      <div className="order-info">
+                          <span>Phone number: </span>
+                          <span>{userphone_number}</span>
+                      </div>
+                      <div className="order-info">
+                          <span>Paid: </span>
+                          <span>{paypalstatus}</span>
+                      </div>
+                  </div>
+                  <div className="order-detail-right">
+                      <div className="order-info">
+                          <span>Address: </span>
+                          <span>{useraddress}</span>
+                      </div>
+                      <div className="order-info">
+                          <span>Date time: </span>
+                          <span>{date + " " + time}</span>
+                      </div>
+                      <div className="order-info">
+                          <span>Status: </span>
+                          <span>{status}</span>
+                      </div>
+                  </div>
+              </div>
+              <div className="order-product">
+                  <div className="order-product-container">
+                      <div className="order-product-image">
+                          <img src={img}/>
+                      </div>
+                      <div className="order-product-details">
+                          <div className="order-product-details-name">{name}</div>
+                          <div className="order-product-details-sizexquantity">{size} x {quantity}</div>
+                          <div className="order-product-details-price">${price}</div>
+                      </div>
+                  </div>
+              </div>
+              <div className="order-button">
+                  <div class="order-button-container">
+                      <button class="btn-wait" onClick={Waiting}>
+                          WAITING
+                      </button>
+                      <button class="btn-delivery" onClick={Delivering}>
+                          DELIVERING
+                      </button>
+                      <button class="btn-done" onClick={Done}>
+                          DONE
+                      </button>
+                  </div>
+              </div>
+         </div>
+     </div>
         )
    
 

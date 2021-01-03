@@ -99,64 +99,17 @@ export default class AdminStatus extends Component{
       render(){
           return(
               <>
-            <div className="content-table">
-                    <div className="admin-status-table-headers">
-                        <div className="admin-status-table-header">
-                            ID cart
-                        </div>
-                        <div className="admin-status-table-header">
-                            User
-                        </div>
-                        <div className="admin-status-table-header">
-                           Adress
-                        </div>
-                        <div className="admin-status-table-header">
-                            Phone
-                        </div>
-                        <div className="admin-status-able-header">
-                            Product Name
-                        </div>
-                        <div className="admin-status-table-header">
-                            Price
-                        </div>
-                        <div className="admin-status-table-header">
-                            Size
-                        </div>
-                        <div className="admin-status-table-header">
-                            Image
-                        </div>
-                        <div className="admin-status-table-header">
-                            Quantity
-                        </div>
-                        <div className="admin-status-table-header">
-                            Date
-                        </div>
-                        <div className="admin-status-table-header">
-                            Time
-                        </div>
-                        <div className="admin-status-table-header">
-                            Paid
-                        </div>
-                        <div className="admin-status-table-header">
-                            Status
-                        </div>
-                        <div className="admin-status-table-header">
-                            Action
-                        </div>
+            {                 
+                this.state.products.length >0?
+                this.state.products.slice(0).reverse().map((product)=>{
+                    return   (
+                        <div className="order">
+                    <AdminStatusRow updateStatusWaiting={this.updateStatusWaiting} updateStatusDelivering={this.updateStatusDelivering} updateStatusDone={this.updateStatusDone}  key={`product_id_${product.id}`} productss={product}/>
                     </div>
-                </div>
-                {
-                    
-                        this.state.products.length >0?
-                        this.state.products.slice(0).reverse().map((product)=>{
-                            return   (
-                                <div className="order">
-                            <AdminStatusRow updateStatusWaiting={this.updateStatusWaiting} updateStatusDelivering={this.updateStatusDelivering} updateStatusDone={this.updateStatusDone}  key={`product_id_${product.id}`} productss={product}/>
-                            </div>
-                            )
-                        })
-                        :<AdminEmptyStatus/>
-                }
+                    )
+                })
+                :<AdminEmptyStatus/>
+            }
               </>
           )
       }

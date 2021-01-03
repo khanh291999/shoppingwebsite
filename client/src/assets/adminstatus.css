@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 .admin-status-table-headers, .admin-status-table-rows {
     display: grid;
     grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr 1fr 1fr 1.5fr;
@@ -27,4 +28,116 @@
   .order{
     border-bottom: 2px solid black
   }
+=======
+.order-background{
+  position: relative;
+}
+>>>>>>> Stashed changes
 
+.order-container{
+  /* max-width: 50%; */
+  border: 2px solid black;
+  padding: 25px;
+  margin: 80px;
+}
+
+.order-detail{
+  display: flex;
+}
+
+.order-detail-left{
+  width: 50%;
+}
+
+.order-detail-right{
+  width: 50%;
+}
+
+.order-info {
+  padding: 0 0 10px;
+  font-size: 20px;
+}
+.order-info input{
+  border: none;
+  font-size: 20px;
+}
+
+.order-info span:first-child{
+  font-weight: 600;
+}
+
+.order-product{
+  width: 90%;
+  margin: 30px;
+}
+
+.order-product-container{
+  border: 2px solid chocolate;
+  padding: 15px;
+  display: flex;
+}
+
+.order-product-image{
+  width: 30%;
+}
+
+.order-product-image img{
+  width: 60%;
+}
+
+.order-product-details {
+  text-align: right;
+  width: 70%;
+}
+
+.order-product-details-name{
+  font-size: 26px;
+}
+
+.order-product-details-price{
+  font-size: 18px;
+  color: #AC8E56;
+}
+
+.order-status-button{
+  float: right;
+}
+
+.order-button{
+  width: 90%;
+  margin: 30px;
+}
+
+.order-button-container{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.order-button-container button{
+  margin-right: 10px;
+  padding: 20px;
+  width: 120px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+}
+
+.btn-wait{
+  background-color: #ED573C;
+}
+
+.btn-delivery{
+  background-color: #F5BE57;
+}
+
+.btn-done{
+  background-color: #3DAD94;
+}
+
+.set-absolute{
+  border: 2px solid black;
+  width: 17%;
+  font-size: 1.1rem;
+  padding: 10px;
+}
