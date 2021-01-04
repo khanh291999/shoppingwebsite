@@ -32,6 +32,7 @@ import ShoppingAdminDisableTshirt from "./admin/disablet-shirt/ShoppingAdminDisa
 import ShoppingAdminDisableFemaleJacket from "./admin/disablefemalejacket/ShoppingAdminDisableFemaleJacket";
 import ShoppingAdminDisableFemaleJean from "./admin/disablefemalejean/ShoppingAdminDisableFemaleJean";
 import ShoppingAdminDisableFemaleTshirt from "./admin/disablefemalet-shirt/ShoppingAdminDisableFemaleTshirt";
+import GoogleMap from "./cart/GoogleMap"
 
 const style = (theme) => ({
   root: {
@@ -126,6 +127,7 @@ class ShoppingCart extends Component {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/status" component={Status} />
+          <Route path="/googlemap" component={GoogleMap} />
           <Route path="*">
             404 PAGE
           </Route>
