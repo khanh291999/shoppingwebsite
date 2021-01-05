@@ -50,6 +50,17 @@ export default function App() {
 
     }
 
+    const checkadmin = async () =>{
+      let adminlogin = localStorage.getItem("admin-login")
+      console.log('admin',adminlogin);
+      if (adminlogin) {
+        setadminData({
+          admin: JSON.parse(adminlogin)
+        })
+      }
+
+    }
+
     const checkLoggedInAdmin = async () => {
       let token = localStorage.getItem("admin-token");
       if (token === null) {
@@ -72,6 +83,7 @@ export default function App() {
       }
     };
     checkuser();
+    checkadmin();
     checkLoggedIn();
     checkLoggedInAdmin();
   }, []);

@@ -37,6 +37,7 @@ export default function Login() {
         admin: loginRes.data.admin,
       });
       localStorage.setItem("admin-token", loginRes.data.token);
+      localStorage.setItem("admin-login",  JSON.stringify(loginRes.data.admin));
       history.push("/admin");
       console.log("abc");
     } catch (err) {
