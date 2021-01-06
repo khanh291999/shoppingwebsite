@@ -25,6 +25,7 @@ export default function Navbar(props) {
       admin: undefined,
     });
     localStorage.setItem("admin-token","");
+    localStorage.setItem("admin-login","");
     history.push("/")
   }
 

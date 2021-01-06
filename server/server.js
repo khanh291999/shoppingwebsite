@@ -1,4 +1,5 @@
 //Import npm packages
+const Admin = require('./models/adminModel');
 const express = require('express');
 const mongoose = require('mongoose');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
@@ -154,6 +155,13 @@ const DisableFemaleTshirtSchema = new mongoose.Schema({
     size:Array
 });
 
+// const AdminSchema = new mongoose.Schema({
+//     email:String,
+//     password:String,
+//     displayName:String,
+//     type:Number
+// });
+
 const PaypalSchema = new mongoose.Schema({
     orderID:Object
 });
@@ -174,6 +182,7 @@ const FemaleJean = mongoose.model('jeanfemale',FemaleJeanSchema)
 const DisableFemaleJean =mongoose.model('disablefemalejean',DisableFemaleJeanSchema)
 const FemaleTshirt = mongoose.model('t-shirtfemale',FemaleTshirtSchema)
 const DisableFemaleTshirt =mongoose.model('disablefemalet-shirt',DisableFemaleTshirtSchema)
+// const Admin =mongoose.model('admin',AdminSchema)
 const Paypal = mongoose.model('paypal',PaypalSchema)
 
 //Saving data to our mongo database
@@ -195,6 +204,7 @@ const newFemaleJean = new FemaleJean(data);
 const newDisableFemaleJean = new DisableFemaleJean(data)
 const newFemaleTshirt = new FemaleTshirt(data);
 const newDisableFemaleTshirt = new DisableFemaleTshirt(data)
+const newAdmin = new Admin(data)
 const newPaypal = new Paypal(data);
 
 //.save()
@@ -1048,5 +1058,73 @@ app.post('/paypal', (req,res)=>{
         })
     })
 })
+
+//admin
+app.get('/admin', (req, res) =>{
+    const data = {
+    };
+
+    Admin.find({})
+    .then((data)=>{
+        // console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.get('/admin/:id', (req, res) =>{
+    const data = {
+    };
+    Admin.findOne({
+        id:req.params.id
+    })
+    .then((data)=>{
+        // console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.post('/admin', (req,res)=>{
+    const data = req.body;
+
+    const newAdmin = new Admin(data);
+    newAdmin.save((error)=>{
+        if(error){
+            res.status(500).json({msg:'Sorry, internal server errors'});
+        }
+        return res.json({
+            msg: ' Your data has been saved!!!'
+        })
+    })
+})
+
+app.delete('/admin/:id', async (req,res)=>{
+  try{
+    console.log(req.params.id);
+      const removedPost = await Admin.remove({id: req.params.id});
+      res.json(removedPost);
+  }
+  catch(err){
+    res.json({message:err});
+  }
+})
+
+app.patch('/admin/:id', async (req, res)=>{
+   try{
+       const updatePost = await Admin.updateOne(
+           {id: req.params.id},
+           {$set: {name:req.body.name,price:req.body.price,image:req.body.image}}
+       );
+       res.json(updatePost);
+   }catch (err){
+       
+       res.json({message:err});
+   }
+  });
 
 app.listen(PORT, console.log(`Sever is starting at ${PORT}`));

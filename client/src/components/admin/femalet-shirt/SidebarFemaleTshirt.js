@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { List, ListItemIcon, ListSubheader, ListItem, ListItemText, Collapse } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add';
 import CheckIcon from '@material-ui/icons/Check';
@@ -6,7 +6,7 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
-
+import adminContext from "../../../context/adminContext"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +25,8 @@ export default function SidebarFemaleTshirt(){
   const [openfemale, setOpenFemale] = React.useState(true);
   const [openDisable, setOpenDisable] = React.useState(true);
   const [openfemaleDisable, setOpenFemaleDisable] = React.useState(true);
+  const [openStaff, setopenStaff] = React.useState(true);
+  const { adminData, setadminData } = useContext(adminContext);
 
   const handleClick = () => {
     setOpen(!open);
@@ -38,7 +40,11 @@ export default function SidebarFemaleTshirt(){
   const handleClickFemaleDisable = () => {
     setOpenFemaleDisable(!openfemaleDisable);
   };
-    return  <div className="sidebar">
+  const handleClickStaff =() =>{
+    setopenStaff(!openStaff);
+  }
+    return  (
+            <div className="sidebar">
             <List
               component="nav"
               ria-labelledby="nested-list-subheader"
@@ -180,5 +186,45 @@ export default function SidebarFemaleTshirt(){
                 </List>
               </Collapse>
             </List>
-</div>
+              
+              {adminData.admin&&adminData.admin.type==1?(
+                <List
+              component="nav"
+              ria-labelledby="nested-list-subheader"
+              subheader={
+              <ListSubheader component="div" id="nested-list-subheader">
+              Staff & User
+              </ListSubheader>
+              }
+                className={classes.root}
+              >
+              <ListItem button onClick={handleClickStaff}>
+                <ListItemIcon>
+                  <CheckIcon />
+                </ListItemIcon>
+                <ListItemText primary="Account" />
+                {openStaff ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+              <Collapse in={openStaff} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <ListItem button component={Link} to="/staffcontrol"  className={classes.nested}>
+                    <ListItemIcon>
+                      <AddIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Staff" />
+                  </ListItem>
+                </List>
+                <List component="div" disablePadding>
+                  <ListItem button component={Link} to="/usercontrol"  className={classes.nested}>
+                    <ListItemIcon>
+                      <AddIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="User" />
+                  </ListItem>
+                </List>
+              </Collapse>
+            </List>
+              ): ("")}
+    </div>
+  )
 }

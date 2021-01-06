@@ -28,7 +28,8 @@ router.post("/adminlogin", async (req, res) => {
       admin: {
         id: admin._id,
         displayName: admin.displayName,
-        email: admin.email
+        email: admin.email,
+        type: admin.type
       },
     });
   } catch (err) {
