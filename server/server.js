@@ -42,7 +42,8 @@ const CartSchema = new Schema({
      status:String,
      date:String,
      time:String,
-     paypalstatus:String
+     paypalstatus:String,
+     editedby:String
 })
 CartSchema.plugin(AutoIncrement, {id: 'id_cart',inc_field: 'id'});
 // const AdminSchema = new Schema({
@@ -982,7 +983,7 @@ app.patch('/cart/:id', async (req, res)=>{
     try{
         const updatePost = await Cart.updateOne(
             {id: req.params.id},
-            {$set: {status:req.body.status}}
+            {$set: {status:req.body.status, editedby:req.body.editedby}}
         );
         res.json(updatePost);
     }catch (err){

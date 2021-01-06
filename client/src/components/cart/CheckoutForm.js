@@ -15,9 +15,7 @@ export default class CheckoutForm extends Component {
   
   componentWillMount() {
     const user = this.context.userData.user;
-    const user1 =this.context.userData
-    console.log('userss',this.context.userData);
-    console.log('userss11',this.context.userData.user)
+    const user1 =this.context.userData;
     user ? (
       this.setState({
         name: user?(user.displayName||user1.displayName):(""),
@@ -39,8 +37,8 @@ export default class CheckoutForm extends Component {
       phone_number:"",
       openconfirmbill:false,
       helperText:"",
-      paypalstatus:"",
-      status:""
+      paypalstatus:"Paid by COD",
+      status:"Waitting for Confirm"
   }
 
   handleClickOpen = () => {
@@ -68,18 +66,22 @@ export default class CheckoutForm extends Component {
       new_state[event.target.name] = event.target.value; //new_state.name
       this.setState(new_state);
   }
+
   handlePay=()=>{
+    // this.setState({
+    //   status:"Waitting for Confirm",
+    //   paypalstatus:"Paid by COD"
+    // })
+    this.props.handleSendForm(this.state)
     this.setState({
-      status:"Paid by COD"
+      name:"",
+      address:"",
+      phone_number:"",
+      status:"",
+      paypalstatus:""
     })
-      this.props.handleSendForm(this.state)
-      this.setState({
-        name:"",
-        address:"",
-        phone_number:"",
-        status:""
-      })
   }
+
   handlePaypalPay=()=>{
     this.setState({
       status:"Delivery",
@@ -93,7 +95,8 @@ export default class CheckoutForm extends Component {
       status:"",
       paypalstatus:""
     })
-}
+  }
+
     render(){
         const {handleClose,open}=this.props;
         console.log('total',typeof(this.props.alltotal));

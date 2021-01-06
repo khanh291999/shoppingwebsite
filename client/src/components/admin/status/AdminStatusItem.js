@@ -1,21 +1,25 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Button from '@material-ui/core/Button';
+import adminContext from "../../../context/adminContext";
+
 
 export default function StatusItem(props){
-    const {id,username,useraddress,userphone_number,name,price,img,size,quantity,date,time,status,paypalstatus} = props
+  const { adminData, setadminData } = useContext(adminContext);
+    const {id,username,useraddress,userphone_number,name,price,img,size,quantity,date,time,status,paypalstatus,editedby} = props
     const Waiting = () => {
       const status = "Waiting for confirm"
-      props.updateStatusWaiting(props.id,status)
+      const editedby = adminData.admin.displayName
+      props.updateStatusWaiting(props.id,status,editedby)
    }
     const Delivering = () => {
       const status = "Delivering"
-      props.updateStatusDelivering(props.id,status)
-      console.log('id',props.id);
-      
+      const editedby = adminData.admin.displayName
+      props.updateStatusDelivering(props.id,status,editedby)
    }
     const Done = () => {
       const status = "Done"
-        props.updateStatusDone(props.id,status)
+      const editedby = adminData.admin.displayName
+        props.updateStatusDone(props.id,status,editedby)
     }
         return(
             <div className="admin-status-table-rows">
@@ -69,7 +73,9 @@ export default function StatusItem(props){
                     Done
                     </Button>
                 </div>
-                
+                <div className="admin-status-table-cell">
+                    {editedby}
+                </div>
             </div>
         )
    

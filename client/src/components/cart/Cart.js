@@ -68,7 +68,8 @@ class Cart extends React.Component {
       userid: user?(user.id||user1.id):(""),
       // status:"Waiting for confirm",
       date: this.state.currentDate,
-      time: this.state.currentTime
+      time: this.state.currentTime,
+      editedby: ""
     }).then(res=>{
       this.setState({
         // alert:"Purchase Complete!",

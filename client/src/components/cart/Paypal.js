@@ -4,7 +4,6 @@ import { PayPalButton } from "react-paypal-button-v2";
 export default class Paypal extends Component {
   render() {
     const {handlePaypalPay,alltotal} = this.props;
-    
     return (
       <PayPalButton
         createOrder={(data, actions) => {

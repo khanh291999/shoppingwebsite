@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import UserContext from "../../context/adminContext";
+import { useHistory } from "react-router-dom";
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
 import '../../assets/Login.css'

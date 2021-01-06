@@ -20,9 +20,10 @@ export default class AdminStatus extends Component{
             })
       }
 
-      updateStatusWaiting = (id,status) => {
+      updateStatusWaiting = (id,status,editedby) => {
         axios.patch(`http://localhost:8080/cart/${id}`,{
-           status
+           status,
+           editedby
         },{
             headers:{
                 token: window.localStorage.getItem('admin_token')
@@ -45,9 +46,10 @@ export default class AdminStatus extends Component{
         })
     }
 
-      updateStatusDelivering = (id,status) => {
+      updateStatusDelivering = (id,status,editedby) => {
         axios.patch(`http://localhost:8080/cart/${id}`,{
-           status
+           status,
+           editedby
         },{
             headers:{
                 token: window.localStorage.getItem('admin_token')
@@ -70,9 +72,10 @@ export default class AdminStatus extends Component{
         })
     }
 
-    updateStatusDone = (id,status) => {
+    updateStatusDone = (id,status,editedby) => {
         axios.patch(`http://localhost:8080/cart/${id}`,{
-           status
+           status,
+           editedby
         },{
             headers:{
                 token: window.localStorage.getItem('admin_token')
@@ -142,6 +145,9 @@ export default class AdminStatus extends Component{
                         </div>
                         <div className="admin-status-table-header">
                             Action
+                        </div>
+                        <div className="admin-status-table-header">
+                            Edited by
                         </div>
                     </div>
                 </div>

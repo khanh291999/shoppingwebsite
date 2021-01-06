@@ -35,6 +35,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+
+
 export default function ConfirmBill(props) {
     const {handleClose,handlePay,handlePaypalPay,open,username,useraddress,userphonenumber,total, shippingfee, alltotal} = props;
     const classes = useStyles();
@@ -77,7 +79,7 @@ export default function ConfirmBill(props) {
                           <h2 style={{textAlignLast: "start"}}>Payment methods</h2>
                           <button className="checkout-btn" onClick={handlePay}>Buy</button>
                           <br></br>
-                          <button className="checkout-btn" onClick={handlePay}>
+                          <button className="checkout-btn">
                           <Paypal handlePaypalPay={handlePaypalPay} alltotal={alltotal}></Paypal>
                           </button>
                       </div>
