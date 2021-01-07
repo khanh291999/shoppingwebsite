@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../assets/admin.css'
+import '../../../assets/adminstaffcontrol.css'
 import MainContentStaffControl from './MainContentStaffControl';
 import NavbarStaffControl from './NavbarStaffControl';
 import SidebarStaffControl from './SidebarStaffControl';

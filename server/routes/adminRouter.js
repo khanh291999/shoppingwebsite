@@ -38,6 +38,95 @@ router.post("/adminlogin", async (req, res) => {
   }
 });
 
+router.post("/addadmin", async (req, res) => {
+  try {
+    let { email, password, passwordCheck, displayName, type } = req.body;
+    console.log('req.body',req.body);
+    
+    //validate
+    if (!email || !password || !passwordCheck || !displayName )
+    return res.status(400).json({ msg: "Not all fields have been entered." });
+    if (password.length < 5)
+      return res
+        .status(400)
+        .json({ msg: "The password needs to be at least 5 characters long." });
+    if (password !== passwordCheck)
+      return res
+        .status(400)
+        .json({ msg: "Enter the same password twice for verification." });
+    const existingAdmin = await Admin.findOne({ email: email });
+    if (existingAdmin)
+      return res
+        .status(400)
+        .json({ msg: "An account with this email already exists." });
+    if (!displayName) displayName = email;
+
+    const salt = await bcrypt.genSalt();
+    const passwordHash = await bcrypt.hash(password, salt);
+
+    const newAdmin = new Admin({
+      email,
+      password: passwordHash,
+      displayName,
+      type,
+    });
+    const savedAdmin = await newAdmin.save();
+    res.json(savedAdmin);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.patch("/updateadmin/:id", async (req, res) => {
+  try {
+    let { email, password, passwordCheck, displayName, type } = req.body;
+    console.log('req.body',req.body);
+    
+    //validate
+    if (!email || !password || !passwordCheck || !displayName )
+    return res.status(400).json({ msg: "Not all fields have been entered." });
+    if (password.length < 5)
+      return res
+        .status(400)
+        .json({ msg: "The password needs to be at least 5 characters long." });
+    if (password !== passwordCheck)
+      return res
+        .status(400)
+        .json({ msg: "Enter the same password twice for verification." });
+    const existingAdmin = await Admin.findOne({ email: email });
+    
+    const existingAdmin1 = await Admin.findOne(
+      {id:req.params.id},
+      {email:email}
+    )
+    if (existingAdmin1==existingAdmin)
+    {
+      return res
+        .status(400)
+        .json({ msg: "An account with this email already exists." });
+      }
+    if (!displayName) displayName = email;
+
+    const salt = await bcrypt.genSalt();
+    const passwordHash = await bcrypt.hash(password, salt);
+
+    const updateAdmin = await Admin.updateOne(
+      {id: req.params.id},
+      {$set:{email: email,
+        password: passwordHash,
+        displayName: displayName,
+        type:type} }
+      // email,
+      // password: passwordHash,
+      // displayName,
+      // type,
+    );
+    res.json(updateAdmin);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 router.post("/tokenIsValidAdmin", async (req, res) => {
   try {
     const token = req.header("x-auth-token");

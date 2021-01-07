@@ -1,27 +1,30 @@
 import React, { Component } from 'react'
+// import ErrorNotice from '../../misc/ErrorNotice'
 import '../../../assets/modal.css'
 export default class ModalStaffControl extends Component {
     state={
-        name:"PRODUCT NEW",
-        price:20,
-        image_one:"https://www.scotch-soda.com/dw/image/v2/AANA_PRD/on/demandware.static/-/Sites-scotch-master-catalog-FW20/default/dwfd141870/images/xlarge-2D368637-7728-4094-99A7CB28FA38C2EF.png?sw=1125&strip=false&bgcolor=EDEEE5",
-        image_two:"https://www.scotch-soda.com/dw/image/v2/AANA_PRD/on/demandware.static/-/Sites-scotch-master-catalog-FW20/default/dwf45da75a/images/xlarge-42521F82-ED8E-49AA-AFEC0B884601A530.png?sw=1125&strip=false&bgcolor=EDEEE5",
-        image_three:"https://www.scotch-soda.com/dw/image/v2/AANA_PRD/on/demandware.static/-/Sites-scotch-master-catalog-FW20/default/dw20a50f46/images/xlarge-7492426A-F546-499C-9B549EEB85506777.png?sw=1125&strip=false&bgcolor=EDEEE5"
-    
+        email:"quang@gmail.com",
+        password:"quang123",
+        passwordCheck:"quang123",
+        displayName:"quang",
+        type:"0",
+        error:undefined
     }
     handleClose=()=>{
         this.props.toggleModal()
     }
 
     componentDidMount(){
-        if(this.props.editingProduct){
-            const {image,price,name,id} =  this.props.editingProduct
+        if(this.props.editingAdmin){
+            const {id,email,password,displayName,type} =  this.props.editingAdmin
             console.log("MODAL EDIT")
             this.setState({
-                image,
-                price,
-                name,
-                id
+                id,
+                email,
+                password: "",
+                passwordCheck : "",
+                displayName,
+                type
             })
         }else{
             console.log("MODAL CREATE")
@@ -39,67 +42,105 @@ export default class ModalStaffControl extends Component {
         this.props.clearIsEditing()
     }
 
-    handleChange=(event)=>{
-       this.setState({
-        [event.target.name]: event.target.value
-       })
- 
-    }
+    // handleChange=(event)=>{
+    //     this.setState({
+    //      [event.target.name]: event.target.value
+    //     })
+  
+    //  }
+
+    handleEmail=(event)=>{
+        this.setState({
+        email: event.target.value
+        })
+     }
+
+     handlePassword=(event)=>{
+        this.setState({
+        password: event.target.value
+        })
+     }
+
+     handlePasswordCheck=(event)=>{
+        this.setState({
+        passwordCheck: event.target.value
+        })
+     }
+
+     handleDisplayName=(event)=>{
+        this.setState({
+        displayName: event.target.value
+        })
+     }
+
+     handleType=(event)=>{
+        this.setState({
+        type: event.target.value
+        })
+     }
 
     handleSubmit=(event)=>{
         event.preventDefault();
-        const {id,name,price,image_one,image_three,image_two}=this.state
-        const image =[image_one,image_two,image_three]
-        if(this.props.editingProduct){
-            this.props.updateProduct(id,name,image,price)
+        const {id,email,password,passwordCheck,displayName,type}=this.state
+        if(this.props.editingAdmin){
+            this.props.updateAdmin(id,email,password,passwordCheck,displayName,type)
         }else{
-            const size= [
-                "S",
-                "M",
-                "L",
-                "XL",
-                "XXL"
-            ]
-            this.props.addProduct(name,image,price,size)
+            JSON.stringify(type)
+            this.props.addAdmin(email,password,passwordCheck,displayName,type)
         }
-
         this.props.toggleModal()
 
     }
 
+    // handleError=()=>{
+    //     this.setState({
+    //         error:undefined
+    //     })
+    // }
+
     render() {
 
-        const {id,name,price,image_one,image_two,image_three}=this.state
+        const {id,email,password,passwordCheck,displayName,type}=this.state
         return (
             <div className="modal">
                 <div className="content p-3">
                     <button type="button" onClick={this.handleClose} className="close btn btn-outline-primary">
                         Close
                     </button>
-                    <h5>{this.props.editingProduct?'Update':'Create'} Product</h5>
+                    <h5>{this.props.editingAdmin?'Update':'Create'} Admin</h5>
+                    {/* {this.state.error && (
+                        <ErrorNotice message={this.props.error} clearError={() => this.handleError(undefined)} />
+                     )} */}
                     <form onSubmit={this.handleSubmit}>
+                    {this.props.editingAdmin?(
                         <div className="form-group">
-                            <label>Product Name</label>
-                            <input type="text" name="name" className="form-control" placeholder="Product name" value={name} onChange={this.handleChange}/>
+                            <label>Admin Email</label>
+                            <input type="text" disabled name="email" className="form-control" placeholder="Admin Email" value={email} onChange={this.handleEmail}/>
+                        </div>):
+                        (
+                        <div className="form-group">
+                            <label>Admin Email</label>
+                            <input type="text" name="email" className="form-control" placeholder="Admin Email" value={email} onChange={this.handleEmail}/>
+                        </div>
+                        )}
+                        <div className="form-group">
+                            <label>Admin Password</label>
+                            <input type="text" name="password" className="form-control" placeholder="Admin Password" value={password} onChange={this.handlePassword}/>
                         </div>
                         <div className="form-group">
-                            <label>Product Price</label>
-                            <input type="number" name="price" className="form-control" placeholder="Product price" value={price} onChange={this.handleChange}/>
+                            <label>Admin Password Check</label>
+                            <input type="text" name="passwordCheck" className="form-control" placeholder="Admin Password Check" value={passwordCheck} onChange={this.handlePasswordCheck}/>
                         </div>
                         <div className="form-group">
-                            <label>Product Image</label>
-                            <input type="text" name="image_one" className="form-control" placeholder="Product image" value={image_one} onChange={this.handleChange}/>
+                            <label>Admin Display Name</label>
+                            <input type="text" name="displayName" className="form-control" placeholder="Admin Display Name" value={displayName} onChange={this.handleDisplayName}/>
                         </div>
                         <div className="form-group">
-                            <label>Product Image</label>
-                            <input type="text" name="image_two" className="form-control" placeholder="Product image" value={image_two} onChange={this.handleChange}/>
-                        </div>
-                        <div className="form-group">
-                            <label>Product Image</label>
-                            <input type="text" name="image_three" className="form-control" placeholder="Product image" value={image_three} onChange={this.handleChange}/>
+                            <label>Admin Type</label>
+                            <input type="number" min="0" max="1" name="type" className="form-control" placeholder="Admin type" value={type} onChange={this.handleType}/>
                         </div>
                         <button type="submit" class="btnadmin btn-outline-primary-admin">
-                            {this.props.editingProduct?"UPDATE":"ADD"}
+                            {this.props.editingAdmin?"UPDATE":"ADD"}
                         </button>
                     </form>
                 </div>
