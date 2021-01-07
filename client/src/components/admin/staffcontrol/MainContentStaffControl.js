@@ -35,35 +35,7 @@ export default class MainContentStaffControl extends React.Component{
     }
 
     addAdmin= async(email, password, passwordCheck, displayName, type )=>{
-        // axios.post('http://localhost:8080/admin',{
-        //     name,
-        //     image,
-        //     price,
-        //     size
-        // },{
-        //     headers:{
-        //         token: window.localStorage.getItem('admin_token')
-        //     }
-        // })
-        // .then(res=>{
-        //     console.log(res)
-        //     Swal.fire({
-        //         title:"Create Successfully",
-        //         timer:1000,
-        //         icon:'success'
-        //     })
-        // }).catch(err=>{
-        //     console.log(err);
-        //     Swal.fire({
-        //         title:"Create Unsuccessfully",
-        //         text:err.message,
-        //         timer:1000,
-        //         icon:'error'
-        //     })
-        // })
-        // this.e.preventDefault();
         try {
-        //   const newAdmin = { email, password, passwordCheck, displayName, type };
           await axios.post("http://localhost:8080/admins/addadmin", {
             email,
             password,
@@ -82,36 +54,30 @@ export default class MainContentStaffControl extends React.Component{
         }
     }
 
-    updateAdmin = (id,name,image,price) => {
-        axios.patch(`http://localhost:8080/admin/${id}`,{
-            name,
-            image,
-            price
-        },{
-            headers:{
-                token: window.localStorage.getItem('admin_token')
-            }
-        }).then(res=>{
-            console.log(res)
-            this.setState({
-                name: +name,
-                price:+price,
-                image:+image
-            })
+    updateAdmin = async (id,email,password,passwordCheck,displayName,type) => {
+        try {
+            await axios.patch(`http://localhost:8080/admins/updateadmin/${id}`, {
+              email,
+              password,
+              passwordCheck,
+              displayName,
+              type,
+            });
             Swal.fire({
-                title:"Edit Successfully",
-                timer:1000,
-                icon:'success'
-            })
-        }).catch(err=>{
-            console.log(err);
+                      title:"Update Successfully",
+                      timer:1000,
+                      icon:'success'
+                  })
+            console.log("ResponseRegister");
+          } catch (err) {
             Swal.fire({
-                title:"Edit Unsuccessfully",
+                title:"Update Unsuccessfully",
                 text:err.message,
                 timer:1000,
                 icon:'error'
             })
-        })
+            err.response.data.msg && this.setState({error:err.response.data.msg});
+          }
     }
 
     deleteAdmin = (id) => {

@@ -16,13 +16,13 @@ export default class ModalStaffControl extends Component {
 
     componentDidMount(){
         if(this.props.editingAdmin){
-            const {id,email,password,passwordCheck,displayName,type} =  this.props.editingAdmin
+            const {id,email,password,displayName,type} =  this.props.editingAdmin
             console.log("MODAL EDIT")
             this.setState({
                 id,
                 email,
-                password,
-                passwordCheck,
+                password: "",
+                passwordCheck : "",
                 displayName,
                 type
             })
@@ -122,7 +122,7 @@ export default class ModalStaffControl extends Component {
                         </div>
                         <div className="form-group">
                             <label>Admin Password Check</label>
-                            <input type="text" name="passwordCheck" className="form-control" placeholder="Admin Password" value={passwordCheck} onChange={this.handlePasswordCheck}/>
+                            <input type="text" name="passwordCheck" className="form-control" placeholder="Admin Password Check" value={passwordCheck} onChange={this.handlePasswordCheck}/>
                         </div>
                         <div className="form-group">
                             <label>Admin Display Name</label>
