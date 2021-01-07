@@ -132,7 +132,7 @@ export default class MainContentStaffControl extends React.Component{
                        }
                    })
               Swal.fire(
-                'Disable!',
+                'Deleted!',
                 'Your product has been deleted.',
                 'success'
               )

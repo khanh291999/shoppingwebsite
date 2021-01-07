@@ -44,7 +44,7 @@ router.post("/addadmin", async (req, res) => {
     console.log('req.body',req.body);
     
     //validate
-    if (!email || !password || !passwordCheck || !displayName || !type)
+    if (!email || !password || !passwordCheck || !displayName )
     return res.status(400).json({ msg: "Not all fields have been entered." });
     if (password.length < 5)
       return res

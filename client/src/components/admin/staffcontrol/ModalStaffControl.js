@@ -130,7 +130,7 @@ export default class ModalStaffControl extends Component {
                         </div>
                         <div className="form-group">
                             <label>Admin Type</label>
-                            <input type="text" min="0" max="1" name="type" className="form-control" placeholder="Admin type" value={type} onChange={this.handleType}/>
+                            <input type="number" min="0" max="1" name="type" className="form-control" placeholder="Admin type" value={type} onChange={this.handleType}/>
                         </div>
                         <button type="submit" class="btnadmin btn-outline-primary-admin">
                             {this.props.editingAdmin?"UPDATE":"ADD"}
