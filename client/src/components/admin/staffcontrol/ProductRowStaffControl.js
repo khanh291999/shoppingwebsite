@@ -2,40 +2,40 @@ import React from 'react'
 
 export default function ProductRowStaffControl(props){
     const handleUpdate = () => {
-        props.updateIsEditting(props.product.id)
+        props.updateIsEditting(props.admin.id)
     }
     const handleDelete = () => {
-        props.deleteProduct(props.product.id)
+        props.deleteAdmin(props.admin.id)
     }
-    const handleAddDisableProduct = () => {
-        const {name,price,image,size} = props.product
-        props.addDisableProduct(props.product.id,name,image,price,size)
-    }
-    const handleDisable = () =>{
-        handleAddDisableProduct();
-        handleDelete();
-    }   
+    // const handleAddDisableProduct = () => {
+    //     const {name,price,image,size} = props.product
+    //     props.addDisableProduct(props.product.id,name,image,price,size)
+    // }
+    // const handleDisable = () =>{
+    //     handleAddDisableProduct();
+    //     handleDelete();
+    // }   
 
-    const {id,name,price,image} = props.product
+    const {email,password,displayName,type} = props.admin
     return  <div className="table-rows">
     <div className="table-cell">
-        {id}
+        {email}
     </div>
     <div className="table-cell">
-       {name}
+       {password}
     </div>
     <div className="table-cell">
-        {price}$
+        {displayName}
     </div>
     <div className="table-cell">
-        <img src={image} />
+        {type}
     </div>
     <div className="table-cell">
         <button className="btn text-primary" onClick={handleUpdate}>
                 Edit
         </button>
-        <button className="btn text-danger" onClick={handleDisable}>
-                 Disable Product
+        <button className="btn text-danger" onClick={handleDelete}>
+                 Delete 
         </button>
     </div>
  

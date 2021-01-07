@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function EmptyJean(props) {
+export function EmptyStaffControl(props) {
     return (
         <div className="empty">
             <h3>No result!</h3>
