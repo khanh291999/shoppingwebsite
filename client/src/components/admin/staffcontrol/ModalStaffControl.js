@@ -112,10 +112,17 @@ export default class ModalStaffControl extends Component {
                         <ErrorNotice message={this.props.error} clearError={() => this.handleError(undefined)} />
                      )} */}
                     <form onSubmit={this.handleSubmit}>
+                    {this.props.editingAdmin?(
+                        <div className="form-group">
+                            <label>Admin Email</label>
+                            <input type="text" disabled name="email" className="form-control" placeholder="Admin Email" value={email} onChange={this.handleEmail}/>
+                        </div>):
+                        (
                         <div className="form-group">
                             <label>Admin Email</label>
                             <input type="text" name="email" className="form-control" placeholder="Admin Email" value={email} onChange={this.handleEmail}/>
                         </div>
+                        )}
                         <div className="form-group">
                             <label>Admin Password</label>
                             <input type="text" name="password" className="form-control" placeholder="Admin Password" value={password} onChange={this.handlePassword}/>
