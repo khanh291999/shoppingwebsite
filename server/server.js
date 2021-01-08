@@ -1,5 +1,6 @@
 //Import npm packages
 const Admin = require('./models/adminModel');
+const User = require('./models/userModel');
 const express = require('express');
 const mongoose = require('mongoose');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
@@ -205,6 +206,7 @@ const newDisableFemaleJean = new DisableFemaleJean(data)
 const newFemaleTshirt = new FemaleTshirt(data);
 const newDisableFemaleTshirt = new DisableFemaleTshirt(data)
 const newAdmin = new Admin(data)
+const newUser = new User(data)
 const newPaypal = new Paypal(data);
 
 //.save()
@@ -1059,7 +1061,7 @@ app.post('/paypal', (req,res)=>{
     })
 })
 
-//admin
+//control staff
 app.get('/admin', (req, res) =>{
     const data = {
     };
@@ -1117,6 +1119,74 @@ app.delete('/admin/:id', async (req,res)=>{
 app.patch('/admin/:id', async (req, res)=>{
    try{
        const updatePost = await Admin.updateOne(
+           {id: req.params.id},
+           {$set: {name:req.body.name,price:req.body.price,image:req.body.image}}
+       );
+       res.json(updatePost);
+   }catch (err){
+       
+       res.json({message:err});
+   }
+  });
+
+//control user
+app.get('/user', (req, res) =>{
+    const data = {
+    };
+
+    User.find({})
+    .then((data)=>{
+        // console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.get('/user/:id', (req, res) =>{
+    const data = {
+    };
+    User.findOne({
+        id:req.params.id
+    })
+    .then((data)=>{
+        // console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+});
+
+app.post('/user', (req,res)=>{
+    const data = req.body;
+
+    const newUser = new User(data);
+    newUser.save((error)=>{
+        if(error){
+            res.status(500).json({msg:'Sorry, internal server errors'});
+        }
+        return res.json({
+            msg: ' Your data has been saved!!!'
+        })
+    })
+})
+
+app.delete('/user/:id', async (req,res)=>{
+  try{
+    console.log(req.params.id);
+      const removedPost = await User.remove({id: req.params.id});
+      res.json(removedPost);
+  }
+  catch(err){
+    res.json({message:err});
+  }
+})
+
+app.patch('/user/:id', async (req, res)=>{
+   try{
+       const updatePost = await User.updateOne(
            {id: req.params.id},
            {$set: {name:req.body.name,price:req.body.price,image:req.body.image}}
        );
