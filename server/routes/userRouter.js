@@ -81,10 +81,101 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.post("/adduser", async (req, res) => {
+  try {
+    let { email, password, passwordCheck, displayName, address, phoneNumber } = req.body;
+    console.log('req.body',req.body);
+    
+    //validate
+    if (!email || !password || !passwordCheck || !displayName ||!address || !phoneNumber )
+    return res.status(400).json({ msg: "Not all fields have been entered." });
+    if (password.length < 5)
+      return res
+        .status(400)
+        .json({ msg: "The password needs to be at least 5 characters long." });
+    if (password !== passwordCheck)
+      return res
+        .status(400)
+        .json({ msg: "Enter the same password twice for verification." });
+    const existingUser = await User.findOne({ email: email });
+    if (existingUser)
+      return res
+        .status(400)
+        .json({ msg: "An account with this email already exists." });
+    if (!displayName) displayName = email;
+
+    const salt = await bcrypt.genSalt();
+    const passwordHash = await bcrypt.hash(password, salt);
+
+    const newUser = new User({
+      email,
+      password: passwordHash,
+      displayName,
+      address,
+      phoneNumber
+    });
+    const savedUser = await newUser.save();
+    res.json(savedUser);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 router.delete("/delete", auth, async (req, res) => {
   try {
     const deletedUser = await User.findByIdAndDelete(req.user);
     res.json(deletedUser);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.patch("/updateuser/:id", async (req, res) => {
+  try {
+    let { email, password, passwordCheck, displayName, address, phoneNumber } = req.body;
+    console.log('req.body',req.body);
+    
+    //validate
+    if (!email || !password || !passwordCheck || !displayName ||!address || !phoneNumber )
+    return res.status(400).json({ msg: "Not all fields have been entered." });
+    if (password.length < 5)
+      return res
+        .status(400)
+        .json({ msg: "The password needs to be at least 5 characters long." });
+    if (password !== passwordCheck)
+      return res
+        .status(400)
+        .json({ msg: "Enter the same password twice for verification." });
+    const existingUser = await User.findOne({ email: email });
+    
+    const existingUser1 = await User.findOne(
+      {id:req.params.id},
+      {email:email}
+    )
+    if (existingUser1==existingUser)
+    {
+      return res
+        .status(400)
+        .json({ msg: "An account with this email already exists." });
+      }
+    if (!displayName) displayName = email;
+
+    const salt = await bcrypt.genSalt();
+    const passwordHash = await bcrypt.hash(password, salt);
+
+    const updateUser = await User.updateOne(
+      {id: req.params.id},
+      {$set:{email: email,
+        password: passwordHash,
+        displayName: displayName,
+        address:address,
+        phoneNumber:phoneNumber} }
+      // email,
+      // password: passwordHash,
+      // displayName,
+      // type,
+    );
+    res.json(updateUser);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

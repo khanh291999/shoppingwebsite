@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 // import ErrorNotice from '../../misc/ErrorNotice'
 import '../../../assets/modal.css'
-export default class ModalStaffControl extends Component {
+export default class ModalUserControl extends Component {
     state={
         email:"quang@gmail.com",
         password:"quang123",
         passwordCheck:"quang123",
         displayName:"quang",
-        type:"0",
+        address:"1 vo van ngan",
+        phoneNumber:"0939911113",
         error:undefined
     }
     handleClose=()=>{
@@ -15,16 +16,17 @@ export default class ModalStaffControl extends Component {
     }
 
     componentDidMount(){
-        if(this.props.editingAdmin){
-            const {id,email,password,displayName,type} =  this.props.editingAdmin
+        if(this.props.editingUser){
+            const {id,email,displayName,address,phoneNumber} =  this.props.editingUser
             console.log("MODAL EDIT")
             this.setState({
                 id,
                 email,
                 password: "",
-                passwordCheck : "",
+                passwordCheck: "",
                 displayName,
-                type
+                address,
+                phoneNumber
             })
         }else{
             console.log("MODAL CREATE")
@@ -73,20 +75,25 @@ export default class ModalStaffControl extends Component {
         })
      }
 
-     handleType=(event)=>{
+     handleAdress=(event)=>{
         this.setState({
-        type: event.target.value
+        address: event.target.value
+        })
+     }
+
+     handlePhoneNumber=(event)=>{
+        this.setState({
+        phoneNumber: event.target.value
         })
      }
 
     handleSubmit=(event)=>{
         event.preventDefault();
-        const {id,email,password,passwordCheck,displayName,type}=this.state
-        if(this.props.editingAdmin){
-            this.props.updateAdmin(id,email,password,passwordCheck,displayName,type)
+        const {id,email,password,passwordCheck,displayName,address,phoneNumber}=this.state
+        if(this.props.editingUser){
+            this.props.updateUser(id,email,password,passwordCheck,displayName,address,phoneNumber)
         }else{
-            JSON.stringify(type)
-            this.props.addAdmin(email,password,passwordCheck,displayName,type)
+            this.props.addUser(email,password,passwordCheck,displayName,address,phoneNumber)
         }
         this.props.toggleModal()
 
@@ -100,47 +107,51 @@ export default class ModalStaffControl extends Component {
 
     render() {
 
-        const {id,email,password,passwordCheck,displayName,type}=this.state
+        const {id,email,password,passwordCheck,displayName,address,phoneNumber}=this.state
         return (
             <div className="modal">
                 <div className="content p-3">
                     <button type="button" onClick={this.handleClose} className="close btn btn-outline-primary">
                         Close
                     </button>
-                    <h5>{this.props.editingAdmin?'Update':'Create'} Admin</h5>
+                    <h5>{this.props.editingUser?'Update':'Create'} User</h5>
                     {/* {this.state.error && (
                         <ErrorNotice message={this.props.error} clearError={() => this.handleError(undefined)} />
                      )} */}
                     <form onSubmit={this.handleSubmit}>
-                    {this.props.editingAdmin?(
+                    {this.props.editingUser?(
                         <div className="form-group">
-                            <label>Admin Email</label>
-                            <input type="text" disabled  style={{backgroundColor:"#gray"}} name="email" className="form-control" placeholder="Admin Email" value={email} onChange={this.handleEmail}/>
+                            <label>User Email</label>
+                            <input type="text" disabled style={{backgroundColor:"#gray"}} name="email" className="form-control" placeholder="User Email" value={email} onChange={this.handleEmail}/>
                         </div>):
                         (
                         <div className="form-group">
-                            <label>Admin Email</label>
-                            <input type="text" name="email" className="form-control" placeholder="Admin Email" value={email} onChange={this.handleEmail}/>
+                            <label>User Email</label>
+                            <input type="text" name="email" className="form-control" placeholder="User Email" value={email} onChange={this.handleEmail}/>
                         </div>
                         )}
                         <div className="form-group">
-                            <label>Admin Password</label>
-                            <input type="text" name="password" className="form-control" placeholder="Admin Password" value={password} onChange={this.handlePassword}/>
+                            <label>User Password</label>
+                            <input type="text" name="password" className="form-control" placeholder="User Password" value={password} onChange={this.handlePassword}/>
                         </div>
                         <div className="form-group">
-                            <label>Admin Password Check</label>
-                            <input type="text" name="passwordCheck" className="form-control" placeholder="Admin Password Check" value={passwordCheck} onChange={this.handlePasswordCheck}/>
+                            <label>User Password Check</label>
+                            <input type="text" name="passwordCheck" className="form-control" placeholder="User Password Check" value={passwordCheck} onChange={this.handlePasswordCheck}/>
                         </div>
                         <div className="form-group">
-                            <label>Admin Display Name</label>
-                            <input type="text" name="displayName" className="form-control" placeholder="Admin Display Name" value={displayName} onChange={this.handleDisplayName}/>
+                            <label>User Display Name</label>
+                            <input type="text" name="displayName" className="form-control" placeholder="User Display Name" value={displayName} onChange={this.handleDisplayName}/>
                         </div>
                         <div className="form-group">
-                            <label>Admin Type</label>
-                            <input type="number" min="0" max="1" name="type" className="form-control" placeholder="Admin type" value={type} onChange={this.handleType}/>
+                            <label>User Address</label>
+                            <input type="text" name="address" className="form-control" placeholder="User address" value={address} onChange={this.handleAdress}/>
+                        </div>
+                        <div className="form-group">
+                            <label>User Phone Number</label>
+                            <input type="text" name="phoneNumber" className="form-control" placeholder="User phone number" value={phoneNumber} onChange={this.handlePhoneNumber}/>
                         </div>
                         <button type="submit" class="btnadmin btn-outline-primary-admin">
-                            {this.props.editingAdmin?"UPDATE":"ADD"}
+                            {this.props.editingUser?"UPDATE":"ADD"}
                         </button>
                     </form>
                 </div>
