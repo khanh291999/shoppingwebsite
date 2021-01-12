@@ -115,7 +115,7 @@ export default class ModalStaffControl extends Component {
                     {this.props.editingAdmin?(
                         <div className="form-group">
                             <label>Admin Email</label>
-                            <input type="text" disabled  style={{backgroundColor:"#gray"}} name="email" className="form-control" placeholder="Admin Email" value={email} onChange={this.handleEmail}/>
+                            <input type="text" disabled  style={{backgroundColor:"gray"}} name="email" className="form-control" placeholder="Admin Email" value={email} onChange={this.handleEmail}/>
                         </div>):
                         (
                         <div className="form-group">

@@ -122,7 +122,7 @@ export default class ModalUserControl extends Component {
                     {this.props.editingUser?(
                         <div className="form-group">
                             <label>User Email</label>
-                            <input type="text" disabled style={{backgroundColor:"#gray"}} name="email" className="form-control" placeholder="User Email" value={email} onChange={this.handleEmail}/>
+                            <input type="text" disabled style={{backgroundColor:"gray"}} name="email" className="form-control" placeholder="User Email" value={email} onChange={this.handleEmail}/>
                         </div>):
                         (
                         <div className="form-group">
