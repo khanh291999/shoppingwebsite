@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, Typography, Snackbar, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, FormHelperText } from "@material-ui/core";
+import { Box, Container, Grid, FormControl, RadioGroup, FormControlLabel, Radio, FormHelperText } from "@material-ui/core";
 import React from "react";
 import CartProduct from "./CartProduct"
 import {connect} from "react-redux"
@@ -45,7 +45,7 @@ class Cart extends React.Component {
   }
   handleCheckout =() =>{
     const {selected_shipping}= this.state;
-    if(selected_shipping == undefined)
+    if(selected_shipping === undefined)
     {
       this.setState({
         helperText:"Please choose shipping company"
@@ -70,7 +70,7 @@ class Cart extends React.Component {
       date: this.state.currentDate,
       time: this.state.currentTime,
       editedby: ""
-    }).then(res=>{
+    }).then(()=>{
       this.setState({
         // alert:"Purchase Complete!",
         severity:"success",
@@ -126,7 +126,7 @@ class Cart extends React.Component {
         <Grid container spacing={3}> 
           <Grid item md={9}>
             <Box p={2}>
-              {total=="0"?
+              {total==="0"?
               <div className="empty-cart-warning-container">
                 <div className="empty-cart-warning">Your cart is currently empty.</div>
                 <a href="/product" className="continue-shopping-btn">Continue Shopping</a>
@@ -150,7 +150,7 @@ class Cart extends React.Component {
             </Box>
           </Grid>
           <Grid item md={3}>
-            {total=="0"? <></>:
+            {total==="0"? <></>:
             <Box boxShadow="0 0 25px rgba(0,0,0,0.16)" p={2}>
               <div className="summary-title">Cart Total</div>
               {/* <Typography>Subtotal: ${total}</Typography>

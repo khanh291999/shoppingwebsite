@@ -5,8 +5,6 @@ import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
 import '../../assets/Login.css'
 import Grid from '@material-ui/core/Grid'
-import FacebookIcon from '@material-ui/icons/Facebook';
-import GoogleIcon from '../../assets/icons/google_icon.png'
 import Facebook from './Facebook'
 import Google from './Google'
 

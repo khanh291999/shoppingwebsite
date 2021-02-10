@@ -1,5 +1,4 @@
 import React from 'react';
-import {Button} from './Button';
 import '../assets/VideoSection.css'
 import video from '../assets/video/video1.mp4'
 

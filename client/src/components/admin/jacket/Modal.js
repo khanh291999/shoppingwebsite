@@ -1,4 +1,3 @@
-import { red } from '@material-ui/core/colors'
 import React, { Component } from 'react'
 import '../../../assets/modal.css'
 export default class Modal extends Component {
@@ -59,7 +58,7 @@ export default class Modal extends Component {
         event.preventDefault();
         const {id,name,price,image_one,image_three,image_two,helperText}=this.state
         const image =[image_one,image_two,image_three]
-       if (name==""||price==""||image_one==""||image_two==""||image_three=="")
+       if (name === "" || price === ""|| image_one === "" || image_two === "" || image_three === "")
        {
            this.setState({
                helperText:"Field can not be empty!"

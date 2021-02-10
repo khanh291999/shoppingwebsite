@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { Link} from "react-router-dom";
 import {useEffect } from 'react';
 import '../../../assets/Header.css';
-import BarsSolid from '../../../assets/icons/bars-solid'
 
 export default function AdminStatusNavbar(props) {
   const [click, setClick] = useState(false);

@@ -18,7 +18,7 @@ export default function Login() {
     if(token){
         history.push('/admin')
     }
-  }, []);
+  }, [history]);
 
 
   //post login data

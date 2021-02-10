@@ -112,6 +112,7 @@ export default function Register() {
               <img
                 style={{maxWidth: "8%"}} 
                 src={GoogleIcon}
+                alt=""
                 />
               <div style={{margin: "4px"}}>Google</div>
             </button>

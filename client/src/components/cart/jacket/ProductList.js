@@ -7,17 +7,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
-import AddIcon from '@material-ui/icons/Add';
-import CheckIcon from '@material-ui/icons/Check';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
 import { Link } from "react-router-dom";
 import '../../../assets/ProductList.css'
 
@@ -45,7 +38,7 @@ function ProductList(props) {
     window.scrollTo(0, 0);
   }, []);
 
-  const { products, isLoading, page , handleChangePage } = props;
+  const { products, isLoading, page } = props;
   const handleChange = (e,page) => {
     props.handleChangePage(page);
   }

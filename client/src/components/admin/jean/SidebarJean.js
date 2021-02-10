@@ -188,7 +188,7 @@ export default function SidebarJean(){
               </Collapse>
             </List>
               
-              {adminData.admin&&adminData.admin.type==1?(
+              {adminData.admin&&adminData.admin.type===1?(
                 <List
               component="nav"
               ria-labelledby="nested-list-subheader"

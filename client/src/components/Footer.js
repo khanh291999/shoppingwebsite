@@ -1,6 +1,5 @@
 import React from "react";
 import '.././assets/Footer.css';
-import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import PhoneIcon from '@material-ui/icons/Phone';
 import MailIcon from '@material-ui/icons/Mail';

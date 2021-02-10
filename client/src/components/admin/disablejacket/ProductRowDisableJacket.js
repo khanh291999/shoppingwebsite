@@ -25,7 +25,7 @@ export default function ProductRowDisableJacket(props){
         {price}$
     </div>
     <div className="table-cell">
-        <img src={image} />
+        <img alt="" src={image} />
     </div>
     <div className="table-cell">
         <button className="btn text-danger" onClick={handleOnSale}>

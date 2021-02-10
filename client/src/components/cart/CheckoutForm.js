@@ -2,10 +2,7 @@ import React, {Component} from 'react'
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle'
-import { TextField, Typography } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import UserContext from './../../context/userContext'
 import ConfirmBill from './ConfirmBill';
 import '../../assets/CheckOutForm.css'
@@ -42,7 +39,7 @@ export default class CheckoutForm extends Component {
   }
 
   handleClickOpen = () => {
-    if(this.state.name.length == 0 || this.state.address.length == 0 || this.state.phone_number.length == 0)
+    if(this.state.name.length === 0 || this.state.address.length === 0 || this.state.phone_number.length === 0)
     {
       this.setState({
         helperText:"Please input your information"

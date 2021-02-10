@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
-import { Grid, Box, Typography, Button } from "@material-ui/core";
+import React from "react";
+import { Box } from "@material-ui/core";
 import {Link} from 'react-router-dom'
-import UserContext from "../../../context/userContext"
 
 export default function ProductMaleJean(props) {
   // const { userData } = useContext(UserContext);

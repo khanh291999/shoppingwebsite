@@ -14,13 +14,13 @@ function BodySection() {
                   <img 
                     className='img-body-section' 
                     src="https://www.scotch-soda.com/on/demandware.static/-/Sites/default/dw259dcb42/campaigns/WK51_HP_NYE_02_d-2.jpg" 
-                    alt="Gift one image"></img>
+                    alt="Gift one"></img>
                 </Grid>
                 <Grid item xs={6} className='set-relative'>
                 <img 
                     className='img-body-section' 
                     src="https://www.scotch-soda.com/on/demandware.static/-/Sites/default/dwa438167c/campaigns/WK51_HP_NYE_03_d-2.jpg" 
-                    alt="Gift one image"></img>
+                    alt="Gift two"></img>
                 </Grid>
                 <Grid item xs={9} className='set-absolute'>
                   <div className='copy'>
@@ -68,13 +68,13 @@ function BodySection() {
                   <img 
                     className='img-body-section' 
                     src="https://www.scotch-soda.com/on/demandware.static/-/Sites/default/dw23dccba4/campaigns/WK50_HP_04_d.jpg" 
-                    alt="Gift one image"></img>
+                    alt="Gift one"></img>
                 </Grid>
                 <Grid item xs={6} className='set-relative'>
                 <img 
                     className='img-body-section' 
                     src="https://www.scotch-soda.com/on/demandware.static/-/Sites/default/dw8b8e1866/campaigns/WK50_HP_05_d.jpg" 
-                    alt="Gift one image"></img>
+                    alt="Gift one"></img>
                 </Grid>
                 <Grid item xs={6} className='set-absolute'>
                   <div className='copy'>
@@ -119,22 +119,22 @@ function BodySection() {
                 <img 
                   className='img-body-section' 
                   src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5KWWtwa1ZUUm9NSEJNTHc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjEwODB9fX0=" 
-                  alt="Gift one image">
+                  alt="Gift one">
                 </img>
                 <img 
                   className='img-body-section' 
                   src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5KWkc1a1VreElMWHA0THc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjEwODB9fX0=" 
-                  alt="Gift one image">
+                  alt="Gift one">
                 </img>
                 <img 
                     className='img-body-section' 
                     src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5KWVZSU1h6SnFlRXRoTHc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjc1MH19fQ==" 
-                    alt="Gift one image">
+                    alt="Gift one">
                   </img>
                   <img 
                     className='img-body-section' 
                     src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5JVEZOdFFUaG5NWGxXTHc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjc1MH19fQ==" 
-                    alt="Gift one image">
+                    alt="Gift one">
                   </img>
               </div>
             </Grid>
@@ -164,7 +164,7 @@ function BodySection() {
                 placeholder="Your Email Address"
               />
               <button className="button-send">
-                <a>
+                <a href="/">
                   Send
                 </a>
               </button>

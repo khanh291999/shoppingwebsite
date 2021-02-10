@@ -22,7 +22,6 @@ export default function AdminStatusRow(props){
                 userphone_number={phone_number}
                 date={date}
                 time={time}
-                status={status}
                 editedby={editedby}
                 paypalstatus={paypalstatus}
                 updateStatusDelivering={props.updateStatusDelivering}

@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, TextField , Container, Button, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, FormHelperText } from "@material-ui/core";
+import { Box, Grid, Typography, TextField , Container, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, FormHelperText } from "@material-ui/core";
 //import { TextFields } from "@material-ui/icons";
 import React, {Component} from "react";
 import {withStyles, CircularProgress} from '@material-ui/core'
@@ -51,7 +51,7 @@ class ProductDetailMaleJean extends Component {
   }
   handleClickBtn = () =>{
     const {id, name , price ,selected_size ,img, quantity } = this.state;
-    if(selected_size == "")
+    if(selected_size === "")
     {
       this.setState({
         helperText:"Please choose size"

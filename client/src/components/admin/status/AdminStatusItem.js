@@ -45,7 +45,7 @@ export default function StatusItem(props){
                     {size}
                 </div>
                 <div className="admin-status-table-cell">
-                    <img src={img} />
+                    <img alt="" src={img} />
                 </div>
                 <div className="admin-status-table-cell">
                     {quantity}
