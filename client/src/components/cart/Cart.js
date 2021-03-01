@@ -162,14 +162,14 @@ class Cart extends React.Component {
                   <td>${total}</td>
                 </tr>
                 <tr>
-                  <th>Ship</th>
+                  <th>Shipping method</th>
                   {/* <td>Free</td> */}
                   <FormControl component="fieldset">
                     {/* <FormLabel component="legend">Shipping unit</FormLabel> */}
                     <RadioGroup aria-label="unit" name="unit" value={this.value} onChange={this.handleChange}>
-                      <FormControlLabel value="1" control={<Radio />} label="Grab" />
-                      <FormControlLabel value="2" control={<Radio />} label="Now" />
-                      <FormControlLabel value="3" control={<Radio />} label="24h" />
+                      <FormControlLabel value="0" control={<Radio />} label="Freeship" />
+                      <FormControlLabel value="1" control={<Radio />} label="Ho Chi Minh" />
+                      <FormControlLabel value="2" control={<Radio />} label="Nationwide" />
                     </RadioGroup>
                     <FormHelperText style={{color:"red"}}>{this.state.helperText}</FormHelperText>
                   </FormControl>
@@ -186,7 +186,7 @@ class Cart extends React.Component {
                 <button className="summary-btn" onClick={this.handleCheckoutPaypal}>Paypal</button>
               )}
               <br></br> */}
-              <button className="summary-btn" onClick={this.handleCheckout}>Buy</button>
+              <button className="summary-btn" onClick={this.handleCheckout}>Proceed to Checkout</button>
             </Box>}
           </Grid>
         </Grid>

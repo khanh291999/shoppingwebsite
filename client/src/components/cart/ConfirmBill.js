@@ -72,7 +72,7 @@ export default function ConfirmBill(props) {
                       </div>
                       <div className="payment-container">
                           <h2 style={{textAlignLast: "start"}}>Payment methods</h2>
-                          <button className="checkout-btn" onClick={handlePay}>Buy</button>
+                          <button className="checkout-btn" onClick={handlePay}>Cash on Delivery</button>
                           <br></br>
                           <button className="checkout-btn">
                           <Paypal handlePaypalPay={handlePaypalPay} alltotal={alltotal}></Paypal>
@@ -97,7 +97,10 @@ export default function ConfirmBill(props) {
                               </tr>
                               <tr>
                                 <th class="set-left">Shipping</th>
+                                {shippingfee==0?
+                                <td class="set-right">{"Free"}</td>:
                                 <td class="set-right">{"$" + shippingfee}</td>
+                                }
                               </tr>
                         </table>
                     </div>
