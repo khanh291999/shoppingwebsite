@@ -40,53 +40,46 @@ export default class Status extends Component{
           });
           return(
               <>
-              {/* <Container> */}
+            <div className="status-container">
+            <h1>
+                Order History
+            </h1>
             <div className="client-content-table">
-                    <div className="client-table-headers">
-                        <div className="client-table-header">
-                            Name
-                        </div>
-                        <div className="client-table-header">
-                            Price
-                        </div>
-                        <div className="client-table-header">
-                            Size
-                        </div>
-                        <div className="client-table-header">
-                            Image
-                        </div>
-                        <div className="client-table-header">
-                            Quantity
-                        </div>
-                        <div className="client-table-header">
-                            Status
-                        </div>
-                        <div className="client-table-header">
-                            Date
-                        </div>
-                        <div className="client-table-header">
-                            Time
-                        </div>
-                        <div className="client-table-header">
-                            Paid
-                        </div>
+                <div className="client-table-headers">
+                    <div className="client-table-header">
+                        ID
+                    </div>
+                    <div className="client-table-header">
+                        Date
+                    </div>
+                    <div className="client-table-header">
+                        Total
+                    </div>
+                    <div className="client-table-header">
+                        Status
+                    </div>
+                    <div className="client-table-header">
+                        Paid
+                    </div>
+                    <div className="client-table-header">
+                        Action
                     </div>
                 </div>
+            </div>
              
-                {
-                    
-                        matchuser.length >0?
-                        matchuser.slice(0).reverse().map((product)=>{
-                                return(
-                                    <div className="order">
-                                <StatusRow  key={`product_id_${product.id}`} productss={product}/>
-                                </div>
-                            )
-                        })
-                        :<EmptyStatus/>
-                }
-          {/* </Container> */}
-              </>
+            {
+                matchuser.length >0?
+                matchuser.slice(0).reverse().map((product)=>{
+                    return(
+                        <div className="order">
+                            <StatusRow  key={`product_id_${product.id}`} productss={product}/>
+                        </div>
+                    )
+                })
+                :<EmptyStatus/>
+            }
+            </div>
+            </>
           )
       }
 }
