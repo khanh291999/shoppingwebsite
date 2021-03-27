@@ -63,8 +63,15 @@ class Cart extends React.Component {
   //   this.setState({openAlert:false})
   // }
   handleSendForm = (form) => {
+    const { cartItems = [] } = this.props;
+    const { selected_shipping } = this.state;
     const user = this.context.userData.user;
     const user1 = this.context.userData;
+    const total = cartItems.reduce((total, pic) => {
+      return (total = total + pic.quantity * pic.price);
+    }, 0);
+    const allTotal = total + parseInt(selected_shipping);
+
     axios
       .post("http://localhost:8080/cart", {
         ...form,
@@ -75,6 +82,7 @@ class Cart extends React.Component {
         date: this.state.currentDate,
         time: this.state.currentTime,
         editedby: "",
+        allTotal,
       })
       .then((res) => {
         this.setState({
