@@ -6,8 +6,6 @@ const initState = {
 };
 
 function cart(state = initState, action) {
-  console.log("🚀 ~ file: index.js ~ line 9 ~ cart ~ state", state);
-  console.log("🚀 ~ file: index.js ~ line 9 ~ cart ~ action", action);
   switch (action.type) {
     case "ADD_TO_CART": {
       const availableProductIndex = state.cartItems.findIndex((cartProduct) => {
@@ -22,7 +20,6 @@ function cart(state = initState, action) {
           cartItems: new_cart,
         };
       } else {
-        console.log("pass");
         return {
           ...state,
           cartItems: [...state.cartItems, action.payload],
