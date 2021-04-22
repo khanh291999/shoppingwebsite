@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import '../../../assets/modal.css'
-export default class ModalFemaleJean extends Component {
+import '../../assets/modal.css'
+export default class Modal extends Component {
     state={
         name:"PRODUCT NEW",
         price:20,
@@ -56,30 +56,31 @@ export default class ModalFemaleJean extends Component {
 
     handleSubmit=(event)=>{
         event.preventDefault();
-        const {id,name,price,image_one,image_three,image_two}=this.state
+        const {id,name,price,image_one,image_three,image_two,helperText}=this.state
         const image =[image_one,image_two,image_three]
-        if (name===""||price===""||image_one===""||image_two===""||image_three==="")
-        {
-            this.setState({
-                helperText:"Field can not be empty!"
-            })
+       if (name === "" || price === ""|| image_one === "" || image_two === "" || image_three === "")
+       {
+           this.setState({
+               helperText:"Field can not be empty!"
+           })
+       }
+       else{
+        if(this.props.editingProduct){
+            this.props.updateProduct(id,name,image,price)
+        }else{
+            const size= [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL"
+            ]
+            this.props.addProduct(name,image,price,size)
         }
-        else{
-         if(this.props.editingProduct){
-             this.props.updateProduct(id,name,image,price)
-         }else{
-             const size= [
-                 "S",
-                 "M",
-                 "L",
-                 "XL",
-                 "XXL"
-             ]
-             this.props.addProduct(name,image,price,size)
-         }
- 
-         this.props.toggleModal()
-        }
+
+        this.props.toggleModal()
+       }
+
     }
 
     render() {

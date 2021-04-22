@@ -1,5 +1,5 @@
 import React from 'react'
-import {EmptyDisableFemaleTshirt} from './EmptyDisableFemaleTshirt'
+import {Empty} from '../Empty'
 import ProductRowDisableFemaleTshirt from './ProductRowDisableFemaleTshirt'
 import axios from 'axios';
 import Swal from 'sweetalert2'
@@ -118,7 +118,7 @@ export default class MainContentDisableFemaleTshirt extends React.Component{
                         this.state.products.map((product)=>{
                             return <ProductRowDisableFemaleTshirt deleteDisableProduct={this.deleteDisableProduct} addOnSaleProduct={this.addOnSaleProduct} key={`product_id_${product.id}`} product={product}/>
                         })
-                        :<EmptyDisableFemaleTshirt/>
+                        :<Empty/>
                     }
                 </div>
             </main>

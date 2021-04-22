@@ -11,8 +11,17 @@ export default class Status extends Component{
         products:[],
         matchuser:[]
     }
+
+    // constructor(props){
+    //     super(props);
+    //     this.state = {
+    //         userdata: this.context.userData
+    //     }
+    // }
+
     componentDidMount(){
         const user = this.context.userData.user;
+        this.state.data = user;
         const user1 =this.context.userData;
         console.log('userrrrr',user)
         user ? (

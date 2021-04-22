@@ -8,7 +8,7 @@ export default function ContentHeaderUserControl(props) {
     return (
         <>
             <div className="content-header color">
-                <h3>Products</h3>
+                <h3>Users</h3>
                 <Button variant="contained" color="primary" onClick={handleClick}>+ Add</Button>
             </div>
             

@@ -1,5 +1,5 @@
 import React from 'react'
-import {EmptyDisableJacket} from './EmptyDisableJacket'
+import {Empty} from '../Empty'
 import ProductRowDisableJacket from './ProductRowDisableJacket'
 import axios from 'axios';
 import Swal from 'sweetalert2'
@@ -119,7 +119,7 @@ export default class MainContentDisableJacket extends React.Component{
                         this.state.products.map((product)=>{
                             return <ProductRowDisableJacket deleteDisableProduct={this.deleteDisableProduct} addOnSaleProduct={this.addOnSaleProduct} key={`product_id_${product.id}`} product={product}/>
                         })
-                        :<EmptyDisableJacket/>
+                        :<Empty/>
                     }
                 </div>
             </main>

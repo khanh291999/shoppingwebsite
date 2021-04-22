@@ -25,10 +25,13 @@ export default function Google() {
                   <GoogleLogin
                     clientId="54212149291-r1gattdm98fjb9u9kopedvfcosgob7rs.apps.googleusercontent.com"
                     buttonText="Login"
+                    className="btn-gg"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                     cookiePolicy={'single_host_origin'}
-                     />
+                    >
+                      Sign In with Google
+                    </GoogleLogin>
             </div>
         )
 }

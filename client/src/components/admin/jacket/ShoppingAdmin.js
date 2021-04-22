@@ -3,6 +3,7 @@ import '../../../assets/admin.css'
 import MainContent from './MainContent';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 //function return component
 
@@ -25,21 +26,28 @@ export default class ShoppingAdmin extends React.Component {
         }
     }
     render(){
-        return <div className="container-fluid">
-            <div className="row">
-            {/* sidebar dong' => display:none */}
-                <div className="col-md-3 bg" style={{'display':this.state.sidebar_open?'block':'none'}}>
-                    <Sidebar/>
-                </div>
-                {/* side bar dong => col-md-12 */}
-                <div className={this.state.sidebar_open?"col-md-9":"col-md-12"}>
-                    {/* NAVBAR */}
+        return (
+        // <div className="container-fluid">
+        //     <div className="row">
+        //     {/* sidebar dong' => display:none */}
+        //         <div className="col-md-3 bg" style={{'display':this.state.sidebar_open?'block':'none'}}>
+        //             <Sidebar/>
+        //         </div>
+        //         {/* side bar dong => col-md-12 */}
+        //         <div className={this.state.sidebar_open?"col-md-9":"col-md-12"}>
+        //             {/* NAVBAR */}
                    
-                    <Navbar toggleSidebar={this.toggleSidebar}/>
-                    <MainContent></MainContent>
-                </div>
-            </div>
+        //             <Navbar toggleSidebar={this.toggleSidebar}/>
+        //             <MainContent></MainContent>
+        //         </div>
+        //     </div>
+        // </div>
+        <div style={{display:'flex'}}>
+            <CssBaseline />
+            <Navbar/>
+            {/* <Sidebar/> */}
         </div>
+        )
     }
 }
 

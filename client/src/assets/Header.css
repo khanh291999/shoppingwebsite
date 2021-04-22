@@ -105,12 +105,8 @@
   color:white;
   margin-right: 10px;
   position: relative;
+  font-size: 1.22rem;
 }
-
-.user-name:hover #logout-btn{
-  display: block;
-}
-
 
 @media screen and (max-width: 960px) {
   .NavbarItems {
@@ -193,4 +189,8 @@
         transition: 250ms;
     }
     
+}
+
+body{
+  overflow: hidden;
 }

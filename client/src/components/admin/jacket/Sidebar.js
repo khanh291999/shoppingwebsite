@@ -1,230 +1,268 @@
 import React, {useContext} from 'react'
-import { List, ListItemIcon, ListSubheader, ListItem, ListItemText, Collapse } from '@material-ui/core'
-import AddIcon from '@material-ui/icons/Add';
-import CheckIcon from '@material-ui/icons/Check';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import adminContext from "../../../context/adminContext"
+import { mainListItems, secondaryListItems } from '../mainpage/listItem';
+import Menu, { SubMenu, Item as MenuItem, Divider } from 'rc-menu';
+// import CommonMenu from "../mainpage/listItem"
+import clsx from 'clsx';
+import Drawer from '@material-ui/core/Drawer';
+import IconButton from '@material-ui/core/IconButton';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+
+function handleClick(info) {
+  console.log(`clicked ${info.key}`);
+  console.log(info);
+}
+
+const collapseNode = () => ({ height: 0 });
+const expandNode = node => ({ height: node.scrollHeight });
+
+export const inlineMotion = {
+  motionName: 'rc-menu-collapse',
+  onAppearStart: collapseNode,
+  onAppearActive: expandNode,
+  onEnterStart: collapseNode,
+  onEnterActive: expandNode,
+  onLeaveStart: expandNode,
+  onLeaveActive: collapseNode,
+};
+
+const nestSubMenu = (
+  <SubMenu
+    title={<span className="submenu-title-wrapper">offset sub menu 2</span>}
+    key="4"
+    popupOffset={[10, 15]}
+  >
+    <MenuItem key="4-1">inner inner</MenuItem>
+    <Divider />
+    <SubMenu
+      key="4-2"
+      title={<span className="submenu-title-wrapper">sub menu 1</span>}
+    >
+      <SubMenu
+        title={<span className="submenu-title-wrapper">sub 4-2-0</span>}
+        key="4-2-0"
+      >
+        <MenuItem key="4-2-0-1">inner inner</MenuItem>
+        <MenuItem key="4-2-0-2">inner inner2</MenuItem>
+      </SubMenu>
+      <MenuItem key="4-2-1">inn</MenuItem>
+      <SubMenu
+        title={<span className="submenu-title-wrapper">sub menu 4</span>}
+        key="4-2-2"
+      >
+        <MenuItem key="4-2-2-1">inner inner</MenuItem>
+        <MenuItem key="4-2-2-2">inner inner2</MenuItem>
+      </SubMenu>
+      <SubMenu
+        title={<span className="submenu-title-wrapper">sub menu 3</span>}
+        key="4-2-3"
+      >
+        <MenuItem key="4-2-3-1">inner inner</MenuItem>
+        <MenuItem key="4-2-3-2">inner inner2</MenuItem>
+      </SubMenu>
+    </SubMenu>
+  </SubMenu>
+);
+
+function onOpenChange(value) {
+  console.log('onOpenChange', value);
+}
+
+const children1 = [
+  <SubMenu
+    title={<span className="submenu-title-wrapper">sub menu</span>}
+    key="1"
+  >
+    <MenuItem key="1-1">0-1</MenuItem>
+    <MenuItem key="1-2">0-2</MenuItem>
+  </SubMenu>,
+  nestSubMenu,
+  <MenuItem key="2">1</MenuItem>,
+  <MenuItem key="3">outer</MenuItem>,
+  <MenuItem key="5" disabled>
+    disabled
+  </MenuItem>,
+  <MenuItem key="6">outer3</MenuItem>,
+];
+
+const children2 = [
+  <SubMenu
+    title={<span className="submenu-title-wrapper">sub menu</span>}
+    key="1"
+  >
+    <MenuItem key="1-1">0-1</MenuItem>
+    <MenuItem key="1-2">0-2</MenuItem>
+  </SubMenu>,
+  <MenuItem key="2">1</MenuItem>,
+  <MenuItem key="3">outer</MenuItem>,
+];
+
+const customizeIndicator = <span>Add More Items</span>;
+
+export class CommonMenu extends React.Component {
+  state = {
+    children: children1,
+    overflowedIndicator: undefined,
+  };
+
+  toggleChildren = () => {
+    this.setState(({ children }) => ({
+      children: children === children1 ? children2 : children1,
+    }));
+  };
+
+  toggleOverflowedIndicator = () => {
+    this.setState(({ overflowedIndicator }) => ({
+      overflowedIndicator:
+        overflowedIndicator === undefined ? customizeIndicator : undefined,
+    }));
+  };
+
+  render() {
+    const { triggerSubMenuAction } = this.props;
+    const { children, overflowedIndicator } = this.state;
+    return (
+      <div>
+        {this.props.updateChildrenAndOverflowedIndicator && (
+          <div>
+            <button type="button" onClick={this.toggleChildren}>
+              toggle children
+            </button>
+            <button type="button" onClick={this.toggleOverflowedIndicator}>
+              toggle overflowedIndicator
+            </button>
+          </div>
+        )}
+        <Menu
+          onClick={handleClick}
+          triggerSubMenuAction={triggerSubMenuAction}
+          onOpenChange={onOpenChange}
+          selectedKeys={['3']}
+          overflowedIndicator={overflowedIndicator}
+          {...this.props}
+        >
+          {children}
+        </Menu>
+      </div>
+    );
+  }
+}
+
+const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+    display: 'flex',
   },
-  nested: {
-    paddingLeft: theme.spacing(4),
+  toolbar: {
+    paddingRight: 24, // keep right padding when drawer closed
+  },
+  toolbarIcon: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  menuButton: {
+    marginRight: 36,
+  },
+  menuButtonHidden: {
+    display: 'none',
+  },
+  title: {
+    flexGrow: 1,
+  },
+  drawerPaper: {
+    position: 'relative',
+    whiteSpace: 'nowrap',
+    width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  drawerPaperClose: {
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: theme.spacing(7),
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9),
+    },
+  },
+  appBarSpacer: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    height: '100vh',
+    overflow: 'auto',
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+  },
+  fixedHeight: {
+    height: 240,
   },
 }));
 
 export default function Sidebar(){
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-  const [openfemale, setOpenFemale] = React.useState(true);
-  const [openDisable, setOpenDisable] = React.useState(true);
-  const [openfemaleDisable, setOpenFemaleDisable] = React.useState(true);
-  const [openStaff, setopenStaff] = React.useState(true);
   const { adminData, setadminData } = useContext(adminContext);
+  //menu type
+  const verticalMenu = <CommonMenu mode="vertical" openAnimation="zoom" />;
+  //menu event
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
-  const handleClickFemale = () => {
-    setOpenFemale(!openfemale);
-  };
-  const handleClickDisable = () => {
-    setOpenDisable(!openDisable);
-  };
-  const handleClickFemaleDisable = () => {
-    setOpenFemaleDisable(!openfemaleDisable);
-  };
-  const handleClickStaff =() =>{
-    setopenStaff(!openStaff);
-  }
-    return  (
-            <div className="sidebar">
-            <List
-              component="nav"
-              ria-labelledby="nested-list-subheader"
-              subheader={
-              <ListSubheader component="div" id="nested-list-subheader">
-              Product list
-              </ListSubheader>
-              }
-                className={classes.root}
-              >
-              <ListItem button onClick={handleClick}>
-                <ListItemIcon>
-                  <CheckIcon />
-                </ListItemIcon>
-                <ListItemText primary="Male" />
-                {open ? <ExpandLess /> : <ExpandMore />}
-              </ListItem>
-              <Collapse in={open} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  <ListItem button component={Link} to="/admin"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Jacket" />
-                  </ListItem>
-                  <ListItem button component={Link} to="/adminjean"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Jean" />
-                  </ListItem>
-                  <ListItem button component={Link} to="/admint-shirt"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="T-shirt" />
-                  </ListItem>
-                </List>
-              </Collapse>
-              
-              <ListItem button onClick={handleClickFemale}>
-                <ListItemIcon>
-                  <CheckIcon />
-                </ListItemIcon>
-                <ListItemText primary="Female" />
-                {openfemale ? <ExpandLess /> : <ExpandMore />}
-              </ListItem>
-              <Collapse in={openfemale} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                <ListItem button component={Link} to="/adminfemalejacket"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Jacket" />
-                  </ListItem>
-                  <ListItem button component={Link} to="/adminfemalejean"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Jean" />
-                  </ListItem>
-                  <ListItem button component={Link} to="/adminfemalet-shirt"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="T-shirt" />
-                  </ListItem>
-                </List>
-              </Collapse>
-            </List>
-
-            <List
-              component="nav"
-              ria-labelledby="nested-list-subheader"
-              subheader={
-              <ListSubheader component="div" id="nested-list-subheader">
-              Disable Product
-              </ListSubheader>
-              }
-                className={classes.root}
-              >
-              <ListItem button onClick={handleClickDisable}>
-                <ListItemIcon>
-                  <CheckIcon />
-                </ListItemIcon>
-                <ListItemText primary="Male" />
-                {openDisable ? <ExpandLess /> : <ExpandMore />}
-              </ListItem>
-              <Collapse in={openDisable} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  <ListItem button component={Link} to="/disablejacket"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Jacket" />
-                  </ListItem>
-                  <ListItem button component={Link} to="/disablejean"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Jean" />
-                  </ListItem>
-                  <ListItem button component={Link} to="/disablet-shirt"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="T-shirt" />
-                  </ListItem>
-                </List>
-              </Collapse>
-              
-              <ListItem button onClick={handleClickFemaleDisable}>
-                <ListItemIcon>
-                  <CheckIcon />
-                </ListItemIcon>
-                <ListItemText primary="Female" />
-                {openfemaleDisable ? <ExpandLess /> : <ExpandMore />}
-              </ListItem>
-              <Collapse in={openfemaleDisable} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                <ListItem button component={Link} to="/disablefemalejacket"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Jacket" />
-                  </ListItem>
-                  <ListItem button component={Link} to="/disablefemalejean"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Jean" />
-                  </ListItem>
-                  <ListItem button component={Link} to="/disablefemalet-shirt"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="T-shirt" />
-                  </ListItem>
-                </List>
-              </Collapse>
-            </List>
-              
-              {adminData.admin&&adminData.admin.type===1?(
-                <List
-              component="nav"
-              ria-labelledby="nested-list-subheader"
-              subheader={
-              <ListSubheader component="div" id="nested-list-subheader">
-              Staff & User
-              </ListSubheader>
-              }
-                className={classes.root}
-              >
-              <ListItem button onClick={handleClickStaff}>
-                <ListItemIcon>
-                  <CheckIcon />
-                </ListItemIcon>
-                <ListItemText primary="Account" />
-                {openStaff ? <ExpandLess /> : <ExpandMore />}
-              </ListItem>
-              <Collapse in={openStaff} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  <ListItem button component={Link} to="/staffcontrol"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Staff" />
-                  </ListItem>
-                </List>
-                <List component="div" disablePadding>
-                  <ListItem button component={Link} to="/usercontrol"  className={classes.nested}>
-                    <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="User" />
-                  </ListItem>
-                </List>
-              </Collapse>
-            </List>
-              ): ("")}
-    </div>
+  return  (
+    <Drawer
+      variant="permanent"
+      classes={{
+        paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+      }}
+      open={open}
+    >
+      <div className={classes.toolbarIcon}>
+        <IconButton onClick={handleDrawerClose}>
+          <ChevronLeftIcon />
+        </IconButton>
+      </div>
+      <Divider />
+      {/* <List>{mainListItems}</List>
+      <Divider />
+      <List>{secondaryListItems}</List> */}
+      <div style={{ margin: 20, width: 200 }}>{verticalMenu}</div>
+    </Drawer>
   )
 }

@@ -65,11 +65,13 @@ export default function Facebook() {
 
     return (
          <FacebookLogin
-             appId="2694624874123071"
+            appId="2694624874123071"
             autoLoad={false}
             fields="name,email,picture"
+            cssClass="btn-fb"
+            icon="fa-facebook"
             onClick={componentClicked}
-             callback={responseFacebook} />
+            callback={responseFacebook} />
     )
 }
 

@@ -45,6 +45,7 @@ const CartSchema = new Schema({
      date:String,
      time:String,
      paypalstatus:String,
+     alltotal:String,
      editedby:String
 })
 CartSchema.plugin(AutoIncrement, {id: 'id_cart',inc_field: 'id'});

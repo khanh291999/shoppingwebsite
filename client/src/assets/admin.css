@@ -1,6 +1,6 @@
 .table-headers, .table-rows {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 1fr 1.5fr;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
 }
 .modal {
   position: fixed;

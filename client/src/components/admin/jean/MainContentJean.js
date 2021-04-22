@@ -1,10 +1,11 @@
 import React from 'react'
-import ContentHeaderJean from './ContentHeaderJean'
-import {EmptyJean} from './EmptyJean'
-import ModalJean from './ModalJean'
+import ContentHeader from '../ContentHeader'
+import {Empty} from '../Empty'
+import Model from '../Model'
 import ProductRowJean from './ProductRowJean'
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import '../../../assets/MainContent.css'
 export default class MainContentJean extends React.Component{
     state={
         open:false,
@@ -179,8 +180,8 @@ export default class MainContentJean extends React.Component{
 
     render(){
         return  <>
-        <main>
-                <ContentHeaderJean toggleModal={this.toggleModal} addProduct={this.addProduct}/>    
+        <main className='content'>
+                <ContentHeader toggleModal={this.toggleModal} addProduct={this.addProduct}/>    
                 <div className="content-table">
                     <div className="table-headers">
                         <div className="table-header">
@@ -204,12 +205,12 @@ export default class MainContentJean extends React.Component{
                         this.state.products.map((product)=>{
                             return <ProductRowJean updateIsEditting={this.updateIsEditting}  deleteProduct={this.deleteProduct} addDisableProduct={this.addDisableProduct} key={`product_id_${product.id}`} product={product}/>
                         })
-                        :<EmptyJean/>
+                        :<Empty/>
                     }
                 </div>
             </main>
             {
-                this.state.open?<ModalJean updateProduct={this.updateProduct} clearIsEditing={this.clearIsEditing} editingProduct={this.state.products[this.state.isEditting]} addProduct={this.addProduct} toggleModal={this.toggleModal}/>:''
+                this.state.open?<Model updateProduct={this.updateProduct} clearIsEditing={this.clearIsEditing} editingProduct={this.state.products[this.state.isEditting]} addProduct={this.addProduct} toggleModal={this.toggleModal}/>:''
             }
         </>
     }

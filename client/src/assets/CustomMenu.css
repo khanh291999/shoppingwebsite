@@ -1,0 +1,9 @@
+.space ul:first-of-type{
+    width: 123%;
+    margin-left: -26px;
+    margin-top: -25px;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}

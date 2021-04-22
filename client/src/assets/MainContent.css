@@ -1,0 +1,14 @@
+.content{
+    flex-grow: 1;
+    height: 100vh;
+    overflow: hidden;
+    margin: 63px 12px 0 20px;
+}
+
+.content-table{
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+    box-sizing: content-box; /* So the width will be 100% + 17px */
+}

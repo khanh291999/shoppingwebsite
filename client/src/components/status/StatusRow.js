@@ -76,15 +76,15 @@ export default function StatusRow(props){
             </div>
             <div className="client-table-cell">
             <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                Action
+                Detail
             </Button>
             <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
-                <AppBar className={classes.appBar}>
+                <AppBar className={classes.appBar} style={{backgroundColor:"#282828"}}>
                     <Toolbar>
                         <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
                         <CloseIcon />
                         </IconButton>
-                        <Typography variant="h6" className={classes.title}>
+                        <Typography variant="h6" className={classes.title} style={{fontFamily:"Cambria", fontSize:"1.5rem"}}>
                             Order details
                         </Typography>
                     </Toolbar>

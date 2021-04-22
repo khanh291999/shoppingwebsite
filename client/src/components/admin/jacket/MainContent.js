@@ -1,10 +1,12 @@
 import React from 'react'
-import ContentHeader from './ContentHeader'
-import { Empty } from './Empty'
-import Modal from './Modal'
+import ContentHeader from '../ContentHeader'
+import {Empty} from '../Empty'
+import Model from '../Model'
 import ProductRow from './ProductRow'
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import '../../../assets/MainContent.css'
+
 export default class MainContent extends React.Component{
     state={
         open:false,
@@ -20,7 +22,7 @@ export default class MainContent extends React.Component{
 
     componentWillUnmount() {
         clearTimeout(this.intervalID);
-      }
+    }
 
     getData = () =>{
         axios.get("http://localhost:8080/jacket").then(res=>{
@@ -178,7 +180,7 @@ export default class MainContent extends React.Component{
 
     render(){
         return  <>
-        <main>
+        <main className='content'>
                 <ContentHeader toggleModal={this.toggleModal} addProduct={this.addProduct}/>    
                 <div className="content-table">
                     <div className="table-headers">
@@ -208,7 +210,7 @@ export default class MainContent extends React.Component{
                 </div>
             </main>
             {
-                this.state.open?<Modal updateProduct={this.updateProduct} clearIsEditing={this.clearIsEditing} editingProduct={this.state.products[this.state.isEditting]} addProduct={this.addProduct} toggleModal={this.toggleModal}/>:''
+                this.state.open?<Model updateProduct={this.updateProduct} clearIsEditing={this.clearIsEditing} editingProduct={this.state.products[this.state.isEditting]} addProduct={this.addProduct} toggleModal={this.toggleModal}/>:''
             }
         </>
     }

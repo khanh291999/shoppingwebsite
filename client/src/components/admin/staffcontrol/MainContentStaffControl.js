@@ -1,6 +1,6 @@
 import React from 'react'
 import ContentHeaderStaffControl from './ContentHeaderStaffControl'
-import {EmptyStaffControl} from './EmptyStaffControl'
+import {Empty} from '../Empty'
 import ModalStaffControl from './ModalStaffControl'
 import ProductRowStaffControl from './ProductRowStaffControl'
 import axios from 'axios';
@@ -181,7 +181,7 @@ export default class MainContentStaffControl extends React.Component{
                         this.state.admins.map((admin)=>{
                             return <ProductRowStaffControl updateIsEditting={this.updateIsEditting}  deleteAdmin={this.deleteAdmin}  key={`admin_id_${admin.id}`} admin={admin}/>
                         })
-                        :<EmptyStaffControl/>
+                        :<Empty/>
                     }
                 </div>
             </main>

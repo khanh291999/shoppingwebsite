@@ -1,6 +1,6 @@
 import React from 'react'
 import ContentHeaderUserControl from './ContentHeaderUserControl'
-import {EmptyUserControl} from './EmptyUserControl'
+import {Empty} from '../Empty'
 import ModalUserControl from './ModalUserControl'
 import ProductRowUserControl from './ProductRowUserControl'
 import axios from 'axios';
@@ -186,7 +186,7 @@ export default class MainContentUserControl extends React.Component{
                         this.state.users.map((user)=>{
                             return <ProductRowUserControl updateIsEditting={this.updateIsEditting}  deleteUser={this.deleteUser}  key={`user_id_${user.id}`} user={user}/>
                         })
-                        :<EmptyUserControl/>
+                        :<Empty/>
                     }
                 </div>
             </main>

@@ -1,10 +1,11 @@
 import React from 'react'
-import ContentHeaderFemaleTshirt from './ContentHeaderFemaleTshirt'
-import {EmptyFemaleTshirt} from './EmptyFemaleTshirt'
-import ModalFemaleTshirt from './ModalFemaleTshirt'
+import ContentHeader from '../ContentHeader'
+import {Empty} from '../Empty'
+import Model from '../Model'
 import ProductRowFemaleTshirt from './ProductRowFemaleTshirt'
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import '../../../assets/MainContent.css'
 export default class MainContentFemaleTshirt extends React.Component{
     state={
         open:false,
@@ -180,8 +181,8 @@ export default class MainContentFemaleTshirt extends React.Component{
 
     render(){
         return  <>
-        <main>
-                <ContentHeaderFemaleTshirt toggleModal={this.toggleModal} addProduct={this.addProduct}/>    
+        <main className='content'>
+                <ContentHeader toggleModal={this.toggleModal} addProduct={this.addProduct}/>    
                 <div className="content-table">
                     <div className="table-headers">
                         <div className="table-header">
@@ -205,12 +206,12 @@ export default class MainContentFemaleTshirt extends React.Component{
                         this.state.products.map((product)=>{
                             return <ProductRowFemaleTshirt updateIsEditting={this.updateIsEditting}  deleteProduct={this.deleteProduct} addDisableProduct={this.addDisableProduct} key={`product_id_${product.id}`} product={product}/>
                         })
-                        :<EmptyFemaleTshirt/>
+                        :<Empty/>
                     }
                 </div>
             </main>
             {
-                this.state.open?<ModalFemaleTshirt updateProduct={this.updateProduct} clearIsEditing={this.clearIsEditing} editingProduct={this.state.products[this.state.isEditting]} addProduct={this.addProduct} toggleModal={this.toggleModal}/>:''
+                this.state.open?<Model updateProduct={this.updateProduct} clearIsEditing={this.clearIsEditing} editingProduct={this.state.products[this.state.isEditting]} addProduct={this.addProduct} toggleModal={this.toggleModal}/>:''
             }
         </>
     }
