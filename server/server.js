@@ -41,6 +41,7 @@ const opinionSchema = mongoose.Schema({
   username: String,
   email: String,
   address: String,
+  opinion: String,
 });
 
 const CartSchema = new Schema({
@@ -223,7 +224,6 @@ const DisableFemaleTshirt = mongoose.model(
   "disablefemalet-shirt",
   DisableFemaleTshirtSchema
 );
-// const Admin =mongoose.model('admin',AdminSchema)
 const Paypal = mongoose.model("paypal", PaypalSchema);
 
 //Saving data to our mongo database
