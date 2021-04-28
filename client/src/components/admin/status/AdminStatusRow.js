@@ -16,7 +16,7 @@ export default function AdminStatusRow(props){
                 img={productitem.img}
                 size={productitem.size}
                 quantity={productitem.quantity}
-                status={productitem.status}
+                status={status}
                 username={name}
                 useraddress={address}
                 userphone_number={phone_number}

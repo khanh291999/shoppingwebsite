@@ -197,7 +197,7 @@ export default class MainContentTshirt extends React.Component{
                         <div className="table-header">
                             Image
                         </div>
-                        <div className="table-header">
+                        <div className="table-header" style={{justifySelf:'center'}}>
                             Action
                         </div>
                     </div>

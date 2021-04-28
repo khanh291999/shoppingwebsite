@@ -22,6 +22,15 @@ import Tshirt from '../t-shirt/MainContentTshirt'
 import FemaleJacket from '../femalejacket/MainContentFemaleJacket'
 import FemaleJean from '../femalejean/MainContentFemaleJean'
 import FemaleTshirt from '../femalet-shirt/MainContentFemaleTshirt'
+import DeJacket from '../disablejacket/MainContentDisableJacket'
+import DeJean from '../disablejean/MainContentDisableJean'
+import DeTshirt from '../disablet-shirt/MainContentDisableTshirt'
+import DeFemaleJacket from '../disablefemalejacket/MainContentDisableFemaleJacket'
+import DeFemaleJean from '../disablefemalejean/MainContentDisableFemaleJean'
+import DeFemaleTshirt from '../disablefemalet-shirt/MainContentDisableFemaleTshirt'
+import UserManagement from '../usercontrol/MainContentUserControl'
+import StaffManagement from '../staffcontrol/MainContentStaffControl'
+import OrderStatus from '../status/AdminStatus'
 
 
 function Copyright() {
@@ -151,7 +160,7 @@ export default function Navbar(props) {
    
   };
   //
-  const changeActiveProduct = (active) => {
+  const changeActive = (active) => {
     setActive(active);
     console.log("active",active);
   }
@@ -195,7 +204,25 @@ export default function Navbar(props) {
     renderComponent = <FemaleJean/>
   }  else if (active === 'femalet-shirt'){
     renderComponent = <FemaleTshirt/>
-  } 
+  } else if (active === 'de-jacket'){
+    renderComponent = <DeJacket/>
+  } else if (active === 'de-jean'){
+    renderComponent = <DeJean/>;
+  } else if (active === 'de-t-shirt'){
+    renderComponent = <DeTshirt/>
+  } else if (active === 'de-femalejacket'){
+    renderComponent = <DeFemaleJacket/>
+  }  else if (active === 'de-femalejean'){
+    renderComponent = <DeFemaleJean/>
+  }  else if (active === 'de-femalet-shirt'){
+    renderComponent = <DeFemaleTshirt/>
+  } else if (active === 'user'){
+    renderComponent = <UserManagement/>
+  }  else if (active === 'staff'){
+    renderComponent = <StaffManagement/>
+  } else if (active === 'order') {
+    renderComponent = <OrderStatus/>
+  }
 
   return (
     <>
@@ -235,7 +262,7 @@ export default function Navbar(props) {
             <ChevronLeftIcon />
           </IconButton>
         </div>
-        <MenuSideBar changeActiveProduct = {changeActiveProduct}/>    
+        <MenuSideBar changeActive = {changeActive} logout ={logout}/>    
         
       </Drawer>
       {/* Content */}

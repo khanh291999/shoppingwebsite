@@ -155,7 +155,7 @@ export default class MainContentUserControl extends React.Component{
 
     render(){
         return  <>
-        <main>
+        <main className='content'>
                 <ContentHeaderUserControl toggleModal={this.toggleModal} addUser={this.addUser}/>    
                 {this.state.error && (
                         <ErrorNotice message={this.state.error} clearError={() => this.handleError(undefined)} />
@@ -163,13 +163,10 @@ export default class MainContentUserControl extends React.Component{
                 <div className="content-table">
                     <div className="table-headers">
                         <div className="table-header">
-                            Email
-                        </div>
-                        <div className="table-header">
-                            Password
-                        </div>
-                        <div className="table-header">
                             Display Name
+                        </div>
+                        <div className="table-header">
+                            Email
                         </div>
                         <div className="table-header">
                             Address
@@ -177,7 +174,7 @@ export default class MainContentUserControl extends React.Component{
                         <div className="table-header">
                             Phone number
                         </div>
-                        <div className="table-header">
+                        <div className="table-header" style={{justifySelf:'center'}}>
                             Action
                         </div>
                     </div>

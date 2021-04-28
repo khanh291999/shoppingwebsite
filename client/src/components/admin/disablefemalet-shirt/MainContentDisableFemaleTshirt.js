@@ -94,7 +94,7 @@ export default class MainContentDisableFemaleTshirt extends React.Component{
 
     render(){
         return  <>
-        <main> 
+        <main className='content'> 
                 <div className="content-table">
                     <div className="table-headers">
                         <div className="table-header">
@@ -109,7 +109,7 @@ export default class MainContentDisableFemaleTshirt extends React.Component{
                         <div className="table-header">
                             Image
                         </div>
-                        <div className="table-header">
+                        <div className="table-header" style={{justifySelf:'center'}}>
                             Action
                         </div>
                     </div>

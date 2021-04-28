@@ -12,3 +12,13 @@
     padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
     box-sizing: content-box; /* So the width will be 100% + 17px */
 }
+
+.add-button {
+    color: #fff;
+    font-weight: bold;
+    background-color: #282828;
+}
+
+.add-button:hover{
+    background-color: #dbc7ae;
+}

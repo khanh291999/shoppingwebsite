@@ -1,5 +1,6 @@
 import React from 'react'
 import ContentHeaderStaffControl from './ContentHeaderStaffControl'
+import '../../../assets/adminstaffcontrol.css'
 import {Empty} from '../Empty'
 import ModalStaffControl from './ModalStaffControl'
 import ProductRowStaffControl from './ProductRowStaffControl'
@@ -153,7 +154,7 @@ export default class MainContentStaffControl extends React.Component{
 
     render(){
         return  <>
-        <main>
+        <main className='content'>
                 <ContentHeaderStaffControl toggleModal={this.toggleModal} addAdmin={this.addAdmin}/>    
                 {this.state.error && (
                         <ErrorNotice message={this.state.error} clearError={() => this.handleError(undefined)} />
@@ -161,18 +162,18 @@ export default class MainContentStaffControl extends React.Component{
                 <div className="content-table">
                     <div className="table-headers">
                         <div className="table-header">
-                            Email
+                            Display Name
                         </div>
                         <div className="table-header">
                             Password
                         </div>
                         <div className="table-header">
-                            Display Name
+                            Email
                         </div>
                         <div className="table-header">
                             Type
                         </div>
-                        <div className="table-header">
+                        <div className="table-header" style={{justifySelf:'center'}}>
                             Action
                         </div>
                     </div>

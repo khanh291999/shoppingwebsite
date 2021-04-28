@@ -1,5 +1,18 @@
 import React from 'react'
+import { Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
+const ColorButton = withStyles((theme) => ({
+    root: {
+        margin: '0 5px',
+        backgroundColor: '#282828',
+        '&:hover': {
+            backgroundColor: '#fff',
+            color: '#282828'
+        },
+    },
+    }))(Button);
+    
 export default function ProductRowDisableFemaleJean(props){
     const handledeleteDisableProduct = () => {
         props.deleteDisableProduct(props.product.id)
@@ -27,10 +40,10 @@ export default function ProductRowDisableFemaleJean(props){
     <div className="table-cell">
         <img alt="" src={image} />
     </div>
-    <div className="table-cell">
-        <button className="btn text-danger" onClick={handleOnSale}>
-                On sale
-        </button>
+    <div className="table-cell" style={{justifyContent: "center"}}>
+        <ColorButton variant="contained" color="secondary" className="onsale-button" onClick={handleOnSale}>
+            On sale
+        </ColorButton>
     </div>
  
 </div>

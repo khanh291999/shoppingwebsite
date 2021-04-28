@@ -13,6 +13,10 @@ import Menu, { SubMenu, Item as MenuItem } from 'rc-menu';
 import CustomMenu from './CustomMenu'
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
+import PersonIcon from '@material-ui/icons/Person';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import FaceIcon from '@material-ui/icons/Face';
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 
 // export const secondaryListItems = (
 //   <div>
@@ -23,9 +27,29 @@ import Divider from '@material-ui/core/Divider';
 
 export class MenuSideBar extends React.Component{
   handleActiveDashboard = () =>{
-    const {changeActiveProduct} = this.props
-    console.log("abv",changeActiveProduct);
-    changeActiveProduct("dashboard")
+    const {changeActive} = this.props
+    console.log("abv",changeActive);
+    changeActive("dashboard")
+  }
+
+  handleLogOut = () =>{
+    const {logout} = this.props
+    logout()
+  }
+
+  handleUserManagement = () =>{
+    const {changeActive} = this.props
+    changeActive("user")
+  }
+  
+  handleStaffManagement = () =>{
+    const {changeActive} = this.props
+    changeActive("staff")
+  }
+
+  handleOrderStatus = () =>{
+    const {changeActive} = this.props
+    changeActive("order")
   }
 
   render() {
@@ -40,7 +64,7 @@ export class MenuSideBar extends React.Component{
               </ListItemIcon>
               <ListItemText primary="Dashboard" />
             </ListItem>
-            <ListItem button>
+            <ListItem button onClick={this.handleOrderStatus}>
               <ListItemIcon  style={{opacity:"1"}}>
                 <ShoppingCartIcon />
               </ListItemIcon>
@@ -51,25 +75,40 @@ export class MenuSideBar extends React.Component{
         <Divider />
         <List>
           <ListSubheader inset>Products</ListSubheader>
-          <CustomMenu changeActiveProduct={this.props.changeActiveProduct}/>
+          <CustomMenu changeActive={this.props.changeActive}/>
         </List>
         <Divider />
         <List>
           <div>
             <ListSubheader inset>User Management</ListSubheader>
-            <ListItem button>
+            <ListItem button onClick={this.handleUserManagement}>
               <ListItemIcon style={{opacity:"1"}}>
-                <AssignmentIcon />
+                <FaceIcon />
               </ListItemIcon>
               <ListItemText primary="User" />
             </ListItem>
-            <ListItem button>
+            <ListItem button onClick={this.handleStaffManagement}>
               <ListItemIcon style={{opacity:"1"}}>
-                <AssignmentIcon />
+                <AssignmentIndIcon />
               </ListItemIcon>
               <ListItemText primary="Staff" />
             </ListItem>
           </div>  
+        </List>
+        <Divider />
+        <List>
+            <ListItem button>
+              <ListItemIcon style={{opacity:"1"}}>
+                <PersonIcon />
+              </ListItemIcon>
+              <ListItemText primary="Profile" />
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon style={{opacity:"1"}}>
+                <ExitToAppIcon />
+              </ListItemIcon>
+              <ListItemText primary="Log out" onClick={this.handleLogOut}/>
+            </ListItem>
         </List>
       </>
     );

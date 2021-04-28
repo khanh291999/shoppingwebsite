@@ -55,7 +55,7 @@ function onOpenChange(value) {
 }
 
 // function handleActiveJacket(props) {
-//   console.log("zxc",this.props.changeActiveProduct);
+//   console.log("zxc",this.props.changeActive);
 
 // } 
 
@@ -65,34 +65,66 @@ class CommonMenu extends React.Component {
     active: ""
   }
   
+  //Active
   handleActiveJacket = () =>{
-    const {changeActiveProduct} = this.props
-    changeActiveProduct("jacket")
+    const {changeActive} = this.props
+    changeActive("jacket")
   }
 
   handleActiveJean = () =>{
-    const {changeActiveProduct} = this.props
-    changeActiveProduct("jean")
+    const {changeActive} = this.props
+    changeActive("jean")
   }
 
   handleActiveTshirt = () =>{
-    const {changeActiveProduct} = this.props
-    changeActiveProduct("t-shirt")
+    const {changeActive} = this.props
+    changeActive("t-shirt")
   }
 
   handleActiveFemaleJacket = () =>{
-    const {changeActiveProduct} = this.props
-    changeActiveProduct("femalejacket")
+    const {changeActive} = this.props
+    changeActive("femalejacket")
   }
 
   handleActiveFemaleJean = () =>{
-    const {changeActiveProduct} = this.props
-    changeActiveProduct("femalejean")
+    const {changeActive} = this.props
+    changeActive("femalejean")
   }
 
   handleActiveFemaleTshirt = () =>{
-    const {changeActiveProduct} = this.props
-    changeActiveProduct("femalet-shirt")
+    const {changeActive} = this.props
+    changeActive("femalet-shirt")
+  }
+
+  //De-active
+  handleDeactiveJacket = () =>{
+    const {changeActive} = this.props
+    changeActive("de-jacket")
+  }
+
+  handleDeactiveJean = () =>{
+    const {changeActive} = this.props
+    changeActive("de-jean")
+  }
+
+  handleDeactiveTshirt = () =>{
+    const {changeActive} = this.props
+    changeActive("de-t-shirt")
+  }
+
+  handleDeactiveFemaleJacket = () =>{
+    const {changeActive} = this.props
+    changeActive("de-femalejacket")
+  }
+
+  handleDeactiveFemaleJean = () =>{
+    const {changeActive} = this.props
+    changeActive("de-femalejean")
+  }
+
+  handleDeactiveFemaleTshirt = () =>{
+    const {changeActive} = this.props
+    changeActive("de-femalet-shirt")
   }
 
   render() {
@@ -145,17 +177,17 @@ class CommonMenu extends React.Component {
               key="4-1"
               title={<span className="submenu-title-wrapper">Men's Fashion</span>}
             >
-              <MenuItem key="4-1-0">Jacket</MenuItem>
-              <MenuItem key="4-1-1">Jean</MenuItem>
-              <MenuItem key="4-1-2">T-shirt</MenuItem>
+              <MenuItem key="4-1-0" onClick={this.handleDeactiveJacket}>Jacket</MenuItem>
+              <MenuItem key="4-1-1" onClick={this.handleDeactiveJean}>Jean</MenuItem>
+              <MenuItem key="4-1-2" onClick={this.handleDeactiveTshirt}>T-shirt</MenuItem>
             </SubMenu>
             <SubMenu
               key="4-2"
               title={<span className="submenu-title-wrapper">Woman's fashion</span>}
             >
-              <MenuItem key="4-2-0">Jacket</MenuItem>
-              <MenuItem key="4-2-1">Jean</MenuItem>
-              <MenuItem key="4-2-2">T-shirt</MenuItem>
+              <MenuItem key="4-2-0" onClick={this.handleDeactiveFemaleJacket}>Jacket</MenuItem>
+              <MenuItem key="4-2-1" onClick={this.handleDeactiveFemaleJean}>Jean</MenuItem>
+              <MenuItem key="4-2-2" onClick={this.handleDeactiveFemaleTshirt}>T-shirt</MenuItem>
             </SubMenu>
           </SubMenu>
         </Menu>
@@ -189,7 +221,7 @@ export default class CustomMenu extends React.Component{
         style={{ margin: "0px 15px"}}
       >
          <CommonMenu
-        changeActiveProduct={this.props.changeActiveProduct}
+        changeActive={this.props.changeActive}
         mode="vertical"
         openAnimation="zoom"
         />

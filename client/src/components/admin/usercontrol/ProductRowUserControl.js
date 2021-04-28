@@ -1,4 +1,17 @@
 import React from 'react'
+import { Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+const ColorButton = withStyles((theme) => ({
+    root: {
+        margin: '0 5px',
+        backgroundColor: '#282828',
+        '&:hover': {
+            backgroundColor: '#fff',
+            color: '#282828'
+        },
+    },
+    }))(Button);
 
 export default function ProductRowUserControl(props){
     const handleUpdate = () => {
@@ -19,13 +32,10 @@ export default function ProductRowUserControl(props){
     const {email,password,displayName,address,phoneNumber} = props.user
     return  <div className="table-rows">
     <div className="table-cell">
-        {email}
-    </div>
-    <div className="table-cell">
-       {password}
-    </div>
-    <div className="table-cell">
         {displayName}
+    </div>
+    <div className="table-cell">
+        {email}
     </div>
     <div className="table-cell">
         {address}
@@ -33,13 +43,13 @@ export default function ProductRowUserControl(props){
     <div className="table-cell">
         {phoneNumber}
     </div>
-    <div className="table-cell">
-        <button className="btn text-primary" onClick={handleUpdate}>
+    <div className="table-cell" style={{placeSelf: 'center'}}>
+        <ColorButton variant="contained" color="secondary" className="edit-button" onClick={handleUpdate}>
                 Edit
-        </button>
-        <button className="btn text-danger" onClick={handleDelete}>
-                 Delete 
-        </button>
+        </ColorButton>
+        <ColorButton variant="contained" color="primary" className="disable-button" onClick={handleDelete}>
+                Delete
+        </ColorButton>
     </div>
  
 </div>
