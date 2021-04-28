@@ -1,22 +1,22 @@
-import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
-import {connect} from "react-redux"
-import UserContext from "../context/userContext";
-import { useState, useEffect } from 'react';
-import '../assets/Header.css';
-//
-import LocalMallIcon from '@material-ui/icons/LocalMall';
-import IconButton from "@material-ui/core/IconButton";
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Badge } from "@material-ui/core";
-import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import IconButton from "@material-ui/core/IconButton";
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import { fade, makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+//
+import LocalMallIcon from '@material-ui/icons/LocalMall';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import get from "lodash/get";
+import React, { useContext, useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import '../assets/Header.css';
+import UserContext from "../context/userContext";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -104,7 +104,7 @@ function Header(props) {
       user: undefined,
     });
     localStorage.setItem("auth-token", "");
-    localStorage.setItem("user-login","");
+    localStorage.setItem("user-login", "");
   };
   //show/hide button if width to small
   const showButton = () => {
@@ -291,13 +291,16 @@ function Header(props) {
   );
 }
 
-const mapStateToProps = state =>{
-  const quantity = state.cart.reduce((count,product_in_cart)=>{
-    return (count = count + product_in_cart.quantity);
-  }, 0);
+const mapStateToProps = (state) => {
+  const quantity = get(state, ["cart", "cartItems"], []).reduce(
+    (count, cartProduct) => {
+      return (count += cartProduct.quantity);
+    },
+    0
+  );
   return {
-    quantity: quantity
-  }
-}
+    quantity,
+  };
+};
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps)(Header);
