@@ -1,11 +1,15 @@
 import React, { useState, useEffect }  from "react";
 import ShoppingCart from "./components/ShoppingCart";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import {createStore} from "redux"
+import {createStore, applyMiddleware} from "redux"
+import promiseMiddleware from 'redux-promise';
+import ReduxThunk from 'redux-thunk';
 import {Provider} from "react-redux"
 import Axios from "axios";
 import UserContext from "./context/userContext"
 import adminContext from "./context/adminContext"
+import rootReducer from './components/chatbotsection/_reducers';
+import ReactDOM from "react-dom";
 
 export default function App() {
   const [userData, setUserData] = useState({
@@ -96,70 +100,18 @@ const theme = createMuiTheme({
   }
 })
 
-const initState={
-  cart: []
-}
-
-const rootReducer = (state = initState, action) =>{
-  switch (action.type) {
-    case "ADD_TO_CART":{
-      const available_product_index= state.cart.findIndex(product_in_cart=>{
-        return product_in_cart.id_product === action.payload.id_product
-      })
-      if(available_product_index>=0){
-        const new_cart = [...state.cart];
-        new_cart[available_product_index].quantity = new_cart[available_product_index].quantity + action.payload.quantity;
-        return{
-          ...state,
-          cart:new_cart
-        }
-      }
-      else{
-        return {
-          ...state,
-          cart:[...state.cart,action.payload]
-              }
-          }
-     
-      }
-      case "UPDATE_CART":{
-        const update_product_index = state.cart.findIndex(pic=>{
-          return pic.id_cart = action.payload.id_cart;
-        })
-        const new_cart = [...state.cart];
-        new_cart[update_product_index].quantity = Number(action.payload.value)
-        return{
-          ...state,
-          cart:new_cart
-        }
-      }
-      case "DELETE_CART": {
-        const new_cart = state.cart.filter((pic) => {
-          return pic.id_cart !== action.payload;
-        });
-        return {
-          ...state,
-          cart: new_cart,
-        }
-      }
-      case "CLEAR_CART": {
-        return{
-          ...state,
-          cart:[]
-        }
-      }
-
-    default:
-      return state;
-  }
-}
-
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-
+console.log(`store`, store.getState())
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 
   return (
     <Provider store={store}>
- 
+        {/* <Provider
+          store={createStoreWithMiddleware(
+          Reducer,
+          window.__REDUX_DEVTOOLS_EXTENSION__ &&
+          window.__REDUX_DEVTOOLS_EXTENSION__()
+        )}> */}
       <ThemeProvider theme={theme}>
       <div className="App">
         <adminContext.Provider value={{adminData,setadminData}}>
@@ -169,10 +121,12 @@ const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && wi
       </adminContext.Provider>
       </div>
       </ThemeProvider>
-      
+      {/* </Provider> */}
     </Provider>
   );
 
 }
+
+
 
 //export default App;

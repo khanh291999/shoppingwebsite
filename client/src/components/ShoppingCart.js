@@ -34,6 +34,7 @@ import ShoppingAdminDisableFemaleJean from "./admin/disablefemalejean/ShoppingAd
 import ShoppingAdminDisableFemaleTshirt from "./admin/disablefemalet-shirt/ShoppingAdminDisableFemaleTshirt";
 import ShoppingAdminStaffControl from "./admin/staffcontrol/ShoppingAdminStaffControl";
 import ShoppingAdminUserControl from "./admin/usercontrol/ShoppingAdminUserControl";
+import Chatbotsection from "./chatbotsection/Chatbotsection"
 
 const style = (theme) => ({
   root: {
@@ -108,6 +109,9 @@ class ShoppingCart extends Component {
             products={[...this.state.products].splice((page-1)*limit,limit)}
             handleChangePage = {this.handleChangePage}
             ></ProductList>
+          </Route>
+          <Route path="/chatbot">
+            <Chatbotsection></Chatbotsection>
           </Route>
           <Route path="/jean">
             <MaleJean></MaleJean>

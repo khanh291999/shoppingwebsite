@@ -7,6 +7,8 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 const morgan = require('morgan');
 const cors = require('cors')
 const path = require('path');
+const bodyParser = require("body-parser");
+const config = require("./config/keys");
 const { post } = require('./routes/userRouter');
 const { exec } = require('child_process');
 
@@ -33,6 +35,15 @@ const Schema = mongoose.Schema;
 //     price:Number,
 //     size:Array,
 // });
+
+//Opinion
+const opinionSchema =  mongoose.Schema({
+    username: String,
+    email: String,
+    address: String
+  });
+  
+
 
 const CartSchema = new Schema({
      name:String,
@@ -169,6 +180,7 @@ const PaypalSchema = new mongoose.Schema({
 });
 
 //Model
+const Opinion = mongoose.model('opinion', opinionSchema);
 // const BlogPost = mongoose.model('BlogPost', BlogPostSchema);
 const Cart = mongoose.model('cart',CartSchema)
 // const Admin = mongoose.model('admin',AdminSchema)
@@ -226,7 +238,47 @@ app.use(cors());
 app.use(morgan('tiny'))
 app.use("/users", require("./routes/userRouter"));
 app.use("/admins", require("./routes/adminRouter"));
+app.use("/api/dialogflow", require("./routes/dialogflow"));
 
+// Serve static assets if in production
+if (process.env.NODE_ENV === "production") {
+
+  // Set static folder
+  app.use(express.static("client/build"));
+
+  // index.html for all page routes
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
+//Opinion
+app.get('/opinion', (req, res) =>{
+    const data = {
+    };
+  
+    Opinion.find({})
+    .then((data)=>{
+        // console.log('Data: ', data);
+        res.json(data);
+    })
+    .catch((error)=>{
+        console.log('error: ', daerrorta)
+    })
+  });
+
+  app.post('/opinion', (req,res)=>{
+    const data = req.body;
+
+    const newOpinion = new Opinion(data);
+    newOpinion.save((error)=>{
+        if(error){
+            res.status(500).json({msg:'Sorry, internal server errors'});
+        }
+        return res.json({
+            msg: ' Your data has been saved!!!'
+        })
+    })
+})
 
 //Jacket
 app.get('/jacket', (req, res) =>{
