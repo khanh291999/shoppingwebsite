@@ -217,7 +217,7 @@ class Cart extends React.Component {
               )}
               <br></br> */}
               <button className="summary-btn" onClick={this.handleCheckout}>Proceed to Checkout</button>
-            </Box>}
+            </Box>)}
           </Grid>
         </Grid>
         <CheckoutForm
