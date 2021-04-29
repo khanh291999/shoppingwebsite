@@ -71,6 +71,7 @@ class Cart extends React.Component {
       return (total = total + pic.quantity * pic.price);
     }, 0);
     const allTotal = total + parseInt(selected_shipping);
+    const shippingfee = parseInt(selected_shipping);
 
     axios
       .post("http://localhost:8080/cart", {
@@ -82,6 +83,8 @@ class Cart extends React.Component {
         date: this.state.currentDate,
         time: this.state.currentTime,
         editedby: "",
+        shippingfee,
+        total,
         allTotal,
       })
       .then((res) => {

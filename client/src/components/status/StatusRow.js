@@ -29,7 +29,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function StatusRow(props){
-    const {username,useraddress,userphonenumber, shippingfee, alltotal} = props;
+    // const {username,useraddress,userphonenumber, shippingfee, alltotal} = props;
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
   
@@ -43,7 +43,7 @@ export default function StatusRow(props){
 
 
 
-    const {id,status,total,date,paypalstatus} = props.productss
+    const {id,name,address,phone_number,status,total,allTotal,date,shippingfee,paypalstatus} = props.productss
     return  (
         // product.map(productitem=>{
         //     return(
@@ -66,7 +66,7 @@ export default function StatusRow(props){
                 {date}
             </div>
             <div className="client-table-cell">
-                ${total}
+                ${allTotal}
             </div>
             <div className="client-table-cell">
                 {status}
@@ -98,15 +98,15 @@ export default function StatusRow(props){
                                 <div className="bill-form">
                                     <label className="info">
                                         <span className="info__label" for="customer_name">Customer Name</span>
-                                        <input className="info__input" type="text" id="fname" name="customer_name" value={username} readonly/>
+                                        <input className="info__input" type="text" id="fname" name="customer_name" value={name} readonly/>
                                     </label>
                                     <label className="info">
                                         <span className="info__label" for="address">Address</span>
-                                        <input className="info__input" type="text" id="fname" name="address" value={useraddress} readonly/>
+                                        <input className="info__input" type="text" id="fname" name="address" value={address} readonly/>
                                     </label>
                                     <label className="info">
                                         <span className="info__label" for="phone_number">Phone Number</span>
-                                        <input className="info__input" type="text" id="fname" name="phone_number" value={userphonenumber} readonly/>
+                                        <input className="info__input" type="text" id="fname" name="phone_number" value={phone_number} readonly/>
                                     </label>
                                 </div>
                                 <div className="payment-container">
@@ -146,7 +146,7 @@ export default function StatusRow(props){
                                 <table style={{width:"100%"}}>
                                     <tr>
                                         <th class="set-left">Total</th>
-                                        <td class="set-right" style={{fontSize: "1.5em"}}>{"$" + alltotal}</td>
+                                        <td class="set-right" style={{fontSize: "1.5em"}}>{"$" + allTotal}</td>
                                     </tr>
                                 </table>
                             </div>
