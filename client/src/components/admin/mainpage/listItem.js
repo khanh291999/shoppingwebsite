@@ -51,6 +51,11 @@ export class MenuSideBar extends React.Component{
     const {changeActive} = this.props
     changeActive("order")
   }
+  
+  handleProfile = () =>{
+    const {changeActive} = this.props
+    changeActive("profile")
+  }
 
   render() {
     return(
@@ -97,7 +102,7 @@ export class MenuSideBar extends React.Component{
         </List>
         <Divider />
         <List>
-            <ListItem button>
+            <ListItem button onClick={this.handleProfile}>
               <ListItemIcon style={{opacity:"1"}}>
                 <PersonIcon />
               </ListItemIcon>
