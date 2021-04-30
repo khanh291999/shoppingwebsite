@@ -111,8 +111,8 @@ export default function StatusRow(props){
                                 </div>
                                 <div className="payment-container">
                                     <h2 style={{textAlignLast: "start"}}>Status</h2>
-                                    <h3>Shipping: Delivering</h3>
-                                    <h3>Payment: Not Paid</h3>
+                                    <h3>Shipping: {status}</h3>
+                                    <h3>Payment: {paypalstatus}</h3>
                                 </div>
                             </div>
                             
