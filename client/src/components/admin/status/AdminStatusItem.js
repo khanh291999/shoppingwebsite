@@ -42,7 +42,7 @@ const ColorButton = withStyles((theme) => ({
 export default function StatusItem(props){
   const { adminData, setadminData } = useContext(adminContext);
   const classes = useStyles();
-    const {id,username,useraddress,userphone_number,name,date,status,paypalstatus,editedby,shippingfee,total,allTotal} = props
+    const {id,name,price,img,size,quantity,username,useraddress,userphone_number,date,status,paypalstatus,editedby,shippingfee,total,allTotal} = props
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
       setOpen(true);
@@ -80,7 +80,7 @@ export default function StatusItem(props){
                     {paypalstatus}
                 </div>
                 <div className="admin-status-table-cell">
-                  Total Price
+                    {allTotal}
                 </div>
                 <div className="admin-status-table-cell">
                   {userphone_number}
@@ -128,7 +128,7 @@ export default function StatusItem(props){
                                       <div className="bill-form">
                                           <label className="info">
                                               <span className="info__label" for="customer_name">Customer Name</span>
-                                              <input className="info__input" type="text" id="fname" name="customer_name" value={name} readonly/>
+                                              <input className="info__input" type="text" id="fname" name="customer_name" value={username} readonly/>
                                           </label>
                                           <label className="info">
                                               <span className="info__label" for="address">Address</span>
@@ -148,9 +148,19 @@ export default function StatusItem(props){
                                   
                                   <div class="bill-right">
                                       <div class="product-list">
-                                      {/* {props.cart.map(cart_item=>{
-                                          return (<ConfirmBillProduct key={cart_item.id_cart}  cart={cart_item} ></ConfirmBillProduct>)
-                                      })} */}
+                                      <div class="product">
+                                          <div>
+                                              <div class="img-container">
+                                                  <img src={img} alt="cart img"/>
+                                                  <div style={{display:"flex", flexDirection:"column", justifyContent: "center"}}>
+                                                      <div class="product-label">{name}</div>
+                                                      <div class="product-size">{"Size: " + size}</div>
+                                                  </div>
+                                                  <div class="absolute">{quantity}</div>
+                                              </div>
+                                          </div>
+                                          <div style={{alignSelf:"center"}}>{"$" + price*quantity}</div>
+                                      </div>
                                       </div>
 
                                       <div class="line"></div>
