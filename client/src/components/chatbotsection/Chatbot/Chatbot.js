@@ -103,7 +103,18 @@ function Chatbot() {
       textQuery(e.target.value);
 
       e.target.value = "";
-    }
+    } 
+  };
+
+  const sendMessHanlder = () => {
+      var value = document.getElementById('input-message').value;
+      if (!value) {
+        return alert("you need to type somthing first");
+      }
+      //we will send request to text query route
+      textQuery(value);
+
+      document.getElementById('input-message').value = '';
   };
 
   const renderCards = (cards) => {
@@ -155,28 +166,41 @@ function Chatbot() {
   return (
     <div
       style={{
-        height: 700,
-        width: 700,
-        border: "3px solid black",
-        borderRadius: "7px",
+        height: '100%',
+        width: '100%',
+        overflow: 'hidden'
       }}
     >
-      <div style={{ height: 644, width: "100%", overflow: "auto" }}>
+      <div style={{ height: "200px", width: "100%", overflow: "auto" }} id="chat-message-list">
         {renderMessage(messagesFromRedux)}
       </div>
-      <input
-        style={{
-          margin: 0,
-          width: "100%",
-          height: 50,
-          borderRadius: "4px",
-          padding: "5px",
-          fontSize: "1rem",
-        }}
-        placeholder="Send a message..."
-        onKeyPress={keyPressHanlder}
-        type="text"
-      />
+      <div style={{display:'flex'}}>
+        <input
+          style={{
+            margin: 0,
+            width: "100%",
+            height: 50,
+            borderRadius: "4px",
+            padding: "5px",
+            fontSize: "1rem",
+          }}
+          id="input-message"
+          placeholder="Type a message..."
+          onKeyPress={keyPressHanlder}
+          type="text"
+        />
+        <button 
+            onClick={sendMessHanlder}
+            type="submit" 
+            class="primary-button" 
+            style={{
+              width: '15%',
+              backgroundColor: '#242424',
+              color: '#fff',
+              fontWeight: 'bold',
+              borderRadius: '0 5px 5px 0'
+            }}>Send</button>
+      </div>
     </div>
   );
 }
