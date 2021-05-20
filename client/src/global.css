@@ -134,7 +134,7 @@ body {
 #myBtn {
   display: none; 
   position: fixed; 
-  bottom: 3%;
+  bottom: 12%;
   right: 14px;
   z-index: 99; 
   border: none; 

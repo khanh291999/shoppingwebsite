@@ -165,11 +165,7 @@ function Chatbot() {
 
   return (
     <div
-      style={{
-        height: '100%',
-        width: '100%',
-        overflow: 'hidden'
-      }}
+      id="scroll-bottom-container"
     >
       <div style={{ height: "200px", width: "100%", overflow: "auto" }} id="chat-message-list">
         {renderMessage(messagesFromRedux)}

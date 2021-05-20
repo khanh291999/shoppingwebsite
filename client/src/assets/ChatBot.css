@@ -16,7 +16,7 @@ body{
     position: fixed;
     /* right: 30px;
     bottom: 20px; */
-    bottom: 11%;
+    bottom: 2%;
     right: 14px;
     height: 57px;
     width: 57px;
@@ -55,11 +55,8 @@ body{
 }
 
 .wrapper{
-    /* position: absolute; */
     position: fixed;
-    right: 30px;   
-    /* bottom: 0px; */
-    bottom: 21%;
+    right: 6%;  
     max-width: 400px;
     background: #fff;
     border-radius: 15px;
@@ -71,7 +68,7 @@ body{
 
 #click:checked ~ .wrapper{
     opacity: 1;
-    /* bottom: 85px; */
+    bottom: 3%;
     pointer-events: all;
 }
 
@@ -88,4 +85,17 @@ body{
 .wrapper .chat-bot{
     padding: 10px;
     width: 100%;
+}
+
+#scroll-bottom-container{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    /* overflow-y: scroll; */
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y proximity;
+}
+
+#scroll-bottom-container > #chat-message-list > .message-row:last-child  {
+    scroll-snap-align: end;
 }
