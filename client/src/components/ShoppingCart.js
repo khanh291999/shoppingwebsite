@@ -41,13 +41,14 @@ import ShoppingAdminStaffControl from "./admin/staffcontrol/ShoppingAdminStaffCo
 import ShoppingAdminUserControl from "./admin/usercontrol/ShoppingAdminUserControl";
 import Chatbotsection from "./chatbotsection/Chatbotsection";
 //
-import Fab from '@material-ui/core/Fab';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import Fab from "@material-ui/core/Fab";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 //
-import '../assets/ChatBot.css'
-import Chatbot from './chatbotsection/Chatbot/Chatbot'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStore, faTimes } from '@fortawesome/free-solid-svg-icons'
+import "../assets/ChatBot.css";
+import Chatbot from "./chatbotsection/Chatbot/Chatbot";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStore, faTimes } from "@fortawesome/free-solid-svg-icons";
+import AlanTrigger from "../components/voiceAI/useAlan";
 
 const style = (theme) => ({
   root: {
@@ -56,20 +57,20 @@ const style = (theme) => ({
 });
 
 const Chat = () => {
-  return(
+  return (
     <>
-      <input type="checkbox" id="click"/>
+      <input type="checkbox" id="click" />
       <label id="chatbot-icon" for="click">
-          <i class="fab fa-facebook-messenger"></i>
-          <FontAwesomeIcon id="chat-inactivate" icon={faStore} />
-          <i class="fas fa-times"></i>
-          <FontAwesomeIcon id="chat-activate" icon={faTimes} />
+        <i class="fab fa-facebook-messenger"></i>
+        <FontAwesomeIcon id="chat-inactivate" icon={faStore} />
+        <i class="fas fa-times"></i>
+        <FontAwesomeIcon id="chat-activate" icon={faTimes} />
       </label>
       <div class="wrapper">
-          <div class="head-text">K&Q</div>
-          <div class="chat-bot">
-            <Chatbot/>
-          </div>
+        <div class="head-text">K&Q</div>
+        <div class="chat-bot">
+          <Chatbot />
+        </div>
       </div>
     </>
   );
@@ -77,9 +78,14 @@ const Chat = () => {
 
 const Layout = ({ children }) => {
   var mybutton = document.getElementById("myBtn");
-  window.onscroll = function() {scrollFunction()};
+  window.onscroll = function () {
+    scrollFunction();
+  };
   function scrollFunction() {
-    if (document.body.scrollTop > 25 || document.documentElement.scrollTop > 25) {
+    if (
+      document.body.scrollTop > 25 ||
+      document.documentElement.scrollTop > 25
+    ) {
       mybutton.style.display = "block";
     } else {
       mybutton.style.display = "none";
@@ -89,17 +95,19 @@ const Layout = ({ children }) => {
   const ScrollTop = () => {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-};
+  };
 
+  // useAlan.WrappedComponent({});
   return (
     <section>
+      <AlanTrigger />
       <Header fixed />
       {children}
       <Fab onClick={ScrollTop} id="myBtn" aria-label="scroll back to top">
         <KeyboardArrowUpIcon />
       </Fab>
       <Footer />
-      <Chat/>
+      <Chat />
     </section>
   );
 };

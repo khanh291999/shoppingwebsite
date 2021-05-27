@@ -1,6 +1,6 @@
 //Import npm packages
 const Admin = require("./models/adminModel");
-const User = require("./models/userModel")
+const User = require("./models/userModel");
 const express = require("express");
 const mongoose = require("mongoose");
 const AutoIncrement = require("mongoose-sequence")(mongoose);
@@ -58,7 +58,7 @@ const CartSchema = new Schema({
   paypalstatus: String,
   editedby: String,
   shippingfee: Number,
-  total:Number,
+  total: Number,
   allTotal: Number,
 });
 CartSchema.plugin(AutoIncrement, { id: "id_cart", inc_field: "id" });
@@ -207,6 +207,13 @@ const Opinion = mongoose.model("opinion", opinionSchema);
 const Cart = mongoose.model("cart", CartSchema);
 // const Admin = mongoose.model('admin',AdminSchema)
 const Jacket = mongoose.model("jacket", JacketSchema);
+
+// Create a change stream. The 'change' event gets emitted when there's a
+// change in the database
+Jacket.watch().on("change", (data) =>
+  console.log(new Date(), JSON.stringify(data))
+);
+
 const DisableJacket = mongoose.model("disablejacket", DisableJacketSchema);
 const Jean = mongoose.model("jean", JeanSchema);
 const DisableJean = mongoose.model("disablejean", DisableJeanSchema);
