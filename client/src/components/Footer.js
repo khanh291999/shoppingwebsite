@@ -5,32 +5,38 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import MailIcon from '@material-ui/icons/Mail';
 
 export default function Footer() {
+  const handleClickFB = () =>{
+    window.open("https://www.facebook.com/do2999");
+  }
+  const handleClickIG = () =>{
+    window.open("https://www.instagram.com/azk.tt/");
+  }
   return (
     <div className='footer-container'>
       <div class='footer-links'>
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
-            <h2>About Us</h2>
-            <Link to='/about'>About Us</Link>
-            <Link to='/'>Contact Us</Link>
-            <Link to='/'>Careers</Link>
+            <h2>Information</h2>
+            <Link to='/about'>About K&Q</Link>
+            <Link to='/about'>Contact Us</Link>
           </div>
           <div class='footer-link-items'>
-            <h2>Information</h2>
-            <Link to='/'>Terms & Conditions</Link>
-            <Link to='/'>Store Location</Link>
+            <h2>Orders</h2>
+            <Link to='/orderhelp'>Ordering</Link>
+            <Link to='/deliveryhelp'>Delivery</Link>
+            <Link to='/returnhelp'>Returning</Link>
           </div>
         </div>
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
             <h2>Help</h2>
-            <Link to='/'>Privacy Policy</Link>
-            <Link to='/'>Shipping Details</Link>
+            <Link to='/privacypolicy'>Privacy Policy</Link>
+            <Link to='/shippingdetails'>Shipping Details</Link>
           </div>
           <div class='footer-link-items'>
             <h2>Contact us</h2>
-            <Link to='/'>Instagram</Link>
-            <Link to='/'>Facebook</Link>
+            <Link onClick={handleClickIG}>Instagram</Link>
+            <Link onClick={handleClickFB}>Facebook</Link>
             <Link to='/'>
               <PhoneIcon></PhoneIcon>
               +84 963 339 696
@@ -48,12 +54,6 @@ export default function Footer() {
       </div>
       <section class='social-media'>
         <div class='social-media-wrap'>
-          <div class='footer-logo'>
-            <Link to='/' className='social-logo'>
-              K&Q
-              <i class='fab fa-typo3' />
-            </Link>
-          </div>
           <small class='website-rights'>K&Q © 2020</small>
           <div class='social-icons'>
             <Link

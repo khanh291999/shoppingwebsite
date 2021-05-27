@@ -1,0 +1,63 @@
+#order-help-header{
+    width: 100%;
+    text-align-last: center;
+}
+
+#help-header-container{
+    margin-top: -3%;
+    margin-bottom: 6%;
+}
+
+#help-header-container h1{
+    font-size: 32px;
+    font-family: "Cambria";
+}
+
+#help-header-container p{
+    font-size: 14px;
+    font-family: "Cambria";
+}
+
+.tab{
+    cursor: pointer;
+}
+
+.tab h3{
+    font-size: 36px;
+}
+
+.tab p{
+    font-size: 14px;
+    font-style: italic;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+.liner{
+    border: 0.3px solid #000;
+}
+
+#expand-icon{
+    position: absolute;
+    right: 3%;
+    top: 41%;
+}
+
+.main-list{
+    text-align: -webkit-left;
+    text-align: left;
+}
+
+.main-list a{
+    cursor: pointer;
+    color: #000;
+    font-weight: 600;
+}
+
+.main-list a:hover{
+    color: #bd7f32;
+}
+
+.help-detail-information{
+    color: #000;
+}

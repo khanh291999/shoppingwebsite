@@ -10,6 +10,11 @@ import ProductDetail from "./cart/jacket/ProductDetail";
 import axios from "axios";
 //import SignUp from './SignUp'
 import AboutUs from "./AboutUs";
+import OrderHelp from './OrderHelp'
+import DeliveryHelp from './DeliveryHelp'
+import ReturningHelp from './ReturningHelp'
+import PrivacyPolicy from './PrivacyPolicy'
+import ShippingDetails from './ShippingDetail'
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import MaleJean from "./cart/jean/MaleJean";
@@ -218,6 +223,11 @@ class ShoppingCart extends Component {
                 <Femalejean></Femalejean>
               </Route>
               <Route path="/about" component={AboutUs}></Route>
+              <Route path="/orderhelp" component={OrderHelp}></Route>
+              <Route path="/deliveryhelp" component={DeliveryHelp}></Route>
+              <Route path="/returnhelp" component={ReturningHelp}></Route>
+              <Route path="/privacypolicy" component={PrivacyPolicy}></Route>
+              <Route path="/shippingdetails" component={ShippingDetails}></Route>
               <Route path="/cart" component={Cart}></Route>
               {/* <Route path="/signup" component={SignUp}></Route> */}
               <Route path="/login" component={Login} />

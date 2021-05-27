@@ -8,6 +8,7 @@ import GridContainer from "./components/GridContainer.js";
 import CustomInput from "./components/CustomInput.js";
 import Button from "./components/Button.js";
 import Card from "./components/Card.js";
+import { Link } from 'react-router-dom';
 import CardHeader from "./components/CardHeader.js";
 import CardAvatar from "./components/CardAvatar.js";
 import CardBody from "./components/CardBody.js";
@@ -50,38 +51,6 @@ export default function UserProfile(props) {
                 </CardHeader>
                 <CardBody>
                 <GridContainer>
-                    <GridItem xs={12} sm={12} md={5}>
-                    <CustomInput
-                        labelText="Company (disabled)"
-                        id="company-disabled"
-                        formControlProps={{
-                        fullWidth: true,
-                        }}
-                        inputProps={{
-                        disabled: true,
-                        }}
-                    />
-                    </GridItem>
-                    <GridItem xs={12} sm={12} md={3}>
-                    <CustomInput
-                        labelText="Username"
-                        id="username"
-                        formControlProps={{
-                        fullWidth: true,
-                        }}
-                    />
-                    </GridItem>
-                    <GridItem xs={12} sm={12} md={4}>
-                    <CustomInput
-                        labelText="Email address"
-                        id="email-address"
-                        formControlProps={{
-                        fullWidth: true,
-                        }}
-                    />
-                    </GridItem>
-                </GridContainer>
-                <GridContainer>
                     <GridItem xs={12} sm={12} md={6}>
                     <CustomInput
                         labelText="First Name"
@@ -102,6 +71,35 @@ export default function UserProfile(props) {
                     </GridItem>
                 </GridContainer>
                 <GridContainer>
+                    <GridItem xs={12} sm={12} md={3}>
+                    <CustomInput
+                        labelText="Username"
+                        id="username"
+                        formControlProps={{
+                        fullWidth: true,
+                        }}
+                    />
+                    </GridItem>
+                    <GridItem xs={12} sm={12} md={4}>
+                    <CustomInput
+                        labelText="Email address"
+                        id="email-address"
+                        formControlProps={{
+                        fullWidth: true,
+                        }}
+                    />
+                    </GridItem>
+                    <GridItem xs={12} sm={12} md={4}>
+                    <CustomInput
+                        labelText="Phone number"
+                        id="phone-number"
+                        formControlProps={{
+                        fullWidth: true,
+                        }}
+                    />
+                    </GridItem>
+                </GridContainer>
+                <GridContainer>
                     <GridItem xs={12} sm={12} md={4}>
                     <CustomInput
                         labelText="City"
@@ -115,15 +113,6 @@ export default function UserProfile(props) {
                     <CustomInput
                         labelText="Country"
                         id="country"
-                        formControlProps={{
-                        fullWidth: true,
-                        }}
-                    />
-                    </GridItem>
-                    <GridItem xs={12} sm={12} md={4}>
-                    <CustomInput
-                        labelText="Postal Code"
-                        id="postal-code"
                         formControlProps={{
                         fullWidth: true,
                         }}
@@ -157,19 +146,21 @@ export default function UserProfile(props) {
                 <CardAvatar profile>
                 <a href="#pablo" onClick={(e) => e.preventDefault()}>
                     {/* <img src={avatar} alt="..." /> */}
-                    <img src="https://lh3.googleusercontent.com/proxy/KBk7Hl5pe8lZqM5Zlg6Ba-Vp4uXull0z5ayWCjx2s8fOtJyZ6ri0yfG4IFdal6RXdifQtZDZJ4jdJXUkMkvqBpnW9Ea8Dd3ecDBed0izwfGIAPpC" />
+                    <img src="https://scontent-xsp1-1.xx.fbcdn.net/v/t1.6435-9/57128382_1080220895519208_2983454892787499008_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=TjBsOw1Cx6AAX9pdB8X&_nc_ht=scontent-xsp1-1.xx&oh=c0029b77880f86032c2920f81fdc2ab2&oe=60CF59AC" />
                 </a>
                 </CardAvatar>
                 <CardBody profile className='set-padding'>
                 <h6 className={classes.cardCategory} style={{fontSize:'0.9rem'}}>CEO / CO-FOUNDER</h6>
-                <h4 className={classes.cardTitle} style={{fontSize:'1.5rem'}}>Alec Thompson</h4>
+                <h4 className={classes.cardTitle} style={{fontSize:'1.5rem'}}>khanh1</h4>
                 <p className={classes.description}>
                     Don{"'"}t be scared of the truth because we need to restart the
                     human foundation in truth And I love you like Kanye loves Kanye
                     I love Rick Owens’ bed design but the back is...
                 </p>
                 <Button color="primary" round>
-                    Follow
+                    <Link style={{color:'white'}} to={{
+                    pathname: "https://www.facebook.com/do2999"
+                    }}>Follow</Link>
                 </Button>
                 </CardBody>
             </Card>
