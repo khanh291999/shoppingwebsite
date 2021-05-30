@@ -10,11 +10,11 @@ import ProductDetail from "./cart/jacket/ProductDetail";
 import axios from "axios";
 //import SignUp from './SignUp'
 import AboutUs from "./AboutUs";
-import OrderHelp from './OrderHelp'
-import DeliveryHelp from './DeliveryHelp'
-import ReturningHelp from './ReturningHelp'
-import PrivacyPolicy from './PrivacyPolicy'
-import ShippingDetails from './ShippingDetail'
+import OrderHelp from "./OrderHelp";
+import DeliveryHelp from "./DeliveryHelp";
+import ReturningHelp from "./ReturningHelp";
+import PrivacyPolicy from "./PrivacyPolicy";
+import ShippingDetails from "./ShippingDetail";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import MaleJean from "./cart/jean/MaleJean";
@@ -40,15 +40,14 @@ import ShoppingAdminDisableFemaleTshirt from "./admin/disablefemalet-shirt/Shopp
 import ShoppingAdminStaffControl from "./admin/staffcontrol/ShoppingAdminStaffControl";
 import ShoppingAdminUserControl from "./admin/usercontrol/ShoppingAdminUserControl";
 import Chatbotsection from "./chatbotsection/Chatbotsection";
-//
 import Fab from "@material-ui/core/Fab";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-//
 import "../assets/ChatBot.css";
 import Chatbot from "./chatbotsection/Chatbot/Chatbot";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStore, faTimes } from "@fortawesome/free-solid-svg-icons";
 import AlanTrigger from "../components/voiceAI/useAlan";
+import ScrollToTop from "./ScrollToTop";
 
 const style = (theme) => ({
   root: {
@@ -140,6 +139,7 @@ class ShoppingCart extends Component {
     const { page, limit } = this.state;
     return (
       <div>
+        <ScrollToTop />
         <Switch>
           <Route path="/adlogin" component={AdLogin}></Route>
           <Route path="/admin" component={ShoppingAdmin}></Route>
@@ -235,7 +235,10 @@ class ShoppingCart extends Component {
               <Route path="/deliveryhelp" component={DeliveryHelp}></Route>
               <Route path="/returnhelp" component={ReturningHelp}></Route>
               <Route path="/privacypolicy" component={PrivacyPolicy}></Route>
-              <Route path="/shippingdetails" component={ShippingDetails}></Route>
+              <Route
+                path="/shippingdetails"
+                component={ShippingDetails}
+              ></Route>
               <Route path="/cart" component={Cart}></Route>
               {/* <Route path="/signup" component={SignUp}></Route> */}
               <Route path="/login" component={Login} />
