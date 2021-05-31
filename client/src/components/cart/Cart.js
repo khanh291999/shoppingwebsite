@@ -1,4 +1,13 @@
-import { Box, Container, FormControl, FormControlLabel, FormHelperText, Grid, Radio, RadioGroup } from "@material-ui/core";
+import {
+  Box,
+  Container,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+  Grid,
+  Radio,
+  RadioGroup,
+} from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 import axios from "axios";
 import React from "react";
@@ -141,7 +150,7 @@ class Cart extends React.Component {
     const alltotal = total + parseInt(selected_shipping);
 
     return (
-      <Container>
+      <Container style={{ userSelect: "none", height: "402px" }}>
         <Grid container spacing={3}>
           <Grid item md={9}>
             <Box p={2}>
@@ -189,38 +198,60 @@ class Cart extends React.Component {
                 {/* <Typography>Subtotal: ${total}</Typography>
               <Typography>Ship: </Typography>
               <Typography>Total: ${total}</Typography> */}
-              <table class="summary-table">
-                <tr>
-                  <th>Subtotal</th>
-                  <td>${total}</td>
-                </tr>
-                <tr>
-                  <th>Shipping method</th>
-                  {/* <td>Free</td> */}
-                  <FormControl component="fieldset">
-                    {/* <FormLabel component="legend">Shipping unit</FormLabel> */}
-                    <RadioGroup aria-label="unit" name="unit" value={this.value} onChange={this.handleChange}>
-                      <FormControlLabel value="0" control={<Radio />} label="Freeship" />
-                      <FormControlLabel value="1" control={<Radio />} label="Ho Chi Minh" />
-                      <FormControlLabel value="2" control={<Radio />} label="Nationwide" />
-                    </RadioGroup>
-                    <FormHelperText style={{color:"red"}}>{this.state.helperText}</FormHelperText>
-                  </FormControl>
-                  <td>${this.state.selected_shipping}</td>
-                </tr>
-                <tr>
-                  <th>Total</th>
-                  <td>${alltotal}</td>
-                </tr>
-              </table>
-              {/* {this.state.checkout ? (
+                <table class="summary-table">
+                  <tr>
+                    <th>Subtotal</th>
+                    <td>${total}</td>
+                  </tr>
+                  <tr>
+                    <th>Shipping method</th>
+                    {/* <td>Free</td> */}
+                    <FormControl component="fieldset">
+                      {/* <FormLabel component="legend">Shipping unit</FormLabel> */}
+                      <RadioGroup
+                        aria-label="unit"
+                        name="unit"
+                        value={this.value}
+                        onChange={this.handleChange}
+                      >
+                        <FormControlLabel
+                          value="0"
+                          control={<Radio />}
+                          label="Freeship"
+                        />
+                        <FormControlLabel
+                          value="1"
+                          control={<Radio />}
+                          label="Ho Chi Minh"
+                        />
+                        <FormControlLabel
+                          value="2"
+                          control={<Radio />}
+                          label="Nationwide"
+                        />
+                      </RadioGroup>
+                      <FormHelperText style={{ color: "red" }}>
+                        {this.state.helperText}
+                      </FormHelperText>
+                    </FormControl>
+                    <td>${this.state.selected_shipping}</td>
+                  </tr>
+                  <tr>
+                    <th>Total</th>
+                    <td>${alltotal}</td>
+                  </tr>
+                </table>
+                {/* {this.state.checkout ? (
               <Paypal alltotal={alltotal}></Paypal>
               ):(
                 <button className="summary-btn" onClick={this.handleCheckoutPaypal}>Paypal</button>
               )}
               <br></br> */}
-              <button className="summary-btn" onClick={this.handleCheckout}>Proceed to Checkout</button>
-            </Box>)}
+                <button className="summary-btn" onClick={this.handleCheckout}>
+                  Proceed to Checkout
+                </button>
+              </Box>
+            )}
           </Grid>
         </Grid>
         <CheckoutForm

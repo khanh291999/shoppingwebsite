@@ -1,142 +1,187 @@
-import React, {Component} from 'react'
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import { TextField } from '@material-ui/core';
-import UserContext from './../../context/userContext'
-import ConfirmBill from './ConfirmBill';
-import '../../assets/CheckOutForm.css'
+import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import { TextField } from "@material-ui/core";
+import UserContext from "./../../context/userContext";
+import ConfirmBill from "./ConfirmBill";
+import "../../assets/CheckOutForm.css";
 
 export default class CheckoutForm extends Component {
-  static contextType = UserContext
-  
+  static contextType = UserContext;
+
   componentWillMount() {
     const user = this.context.userData.user;
-    const user1 =this.context.userData;
-    user ? (
-      this.setState({
-        name: user?(user.displayName||user1.displayName):(""),
-        address:user.address,
-        phone_number:user.phoneNumber,
-      })
-        ) : (this.setState({
-          name:"",
-          address:"",
-          phone_number:""
-        }))
-      // console.log('userdata', user);
+    const user1 = this.context.userData;
+    user
+      ? this.setState({
+          name: user ? user.displayName || user1.displayName : "",
+          address: user.address,
+          phone_number: user.phoneNumber,
+        })
+      : this.setState({
+          name: "",
+          address: "",
+          phone_number: "",
+        });
+    // console.log('userdata', user);
   }
-  
 
-  state={
-      name:"",
-      address:"",
-      phone_number:"",
-      openconfirmbill:false,
-      helperText:"",
-      paypalstatus:"Paid by COD",
-      status:"Waitting for Confirm"
-  }
+  state = {
+    name: "",
+    address: "",
+    phone_number: "",
+    openconfirmbill: false,
+    helperText: "",
+    paypalstatus: "Paid by COD",
+    status: "Waitting for Confirm",
+  };
 
   handleClickOpen = () => {
-    if(this.state.name.length === 0 || this.state.address.length === 0 || this.state.phone_number.length === 0)
-    {
+    if (
+      this.state.name.length === 0 ||
+      this.state.address.length === 0 ||
+      this.state.phone_number.length === 0
+    ) {
       this.setState({
-        helperText:"Please input your information"
-      })
-    } 
-    else(
-    this.setState({
-      openconfirmbill:true
-    })
-    )
+        helperText: "Please input your information",
+      });
+    } else
+      this.setState({
+        openconfirmbill: true,
+      });
   };
 
   handleClose = () => {
     this.setState({
-      openconfirmbill:false
-    })
+      openconfirmbill: false,
+    });
   };
 
-  handleChange=(event)=>{
-      const new_state = {...this.state};
-      new_state[event.target.name] = event.target.value; //new_state.name
-      this.setState(new_state);
-  }
+  handleChange = (event) => {
+    const new_state = { ...this.state };
+    new_state[event.target.name] = event.target.value; //new_state.name
+    this.setState(new_state);
+  };
 
-  handlePay=()=>{
+  handlePay = () => {
     // this.setState({
     //   status:"Waitting for Confirm",
     //   paypalstatus:"Paid by COD"
     // })
-    this.props.handleSendForm(this.state)
+    this.props.handleSendForm(this.state);
     this.setState({
-      name:"",
-      address:"",
-      phone_number:"",
-      status:"",
-      paypalstatus:""
-    })
-  }
+      name: "",
+      address: "",
+      phone_number: "",
+      status: "",
+      paypalstatus: "",
+    });
+  };
 
-  handlePaypalPay=()=>{
+  handlePaypalPay = () => {
     this.setState({
-      status:"Delivery",
-      paypalstatus:"Paid by paypal"
-    })
-    this.props.handleSendForm(this.state)
+      status: "Delivery",
+      paypalstatus: "Paid by paypal",
+    });
+    this.props.handleSendForm(this.state);
     this.setState({
-      name:"",
-      address:"",
-      phone_number:"",
-      status:"",
-      paypalstatus:""
-    })
-  }
+      name: "",
+      address: "",
+      phone_number: "",
+      status: "",
+      paypalstatus: "",
+    });
+  };
 
-    render(){
-        const {handleClose,open}=this.props;
-        console.log('total',typeof(this.props.alltotal));
-        
-        return(
-            <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-            >
-                    <div class="container">
-                    <h1>Shipping</h1>
-                    <p>Please enter your shipping details.</p>
-                    <hr/>
-                    <div class="form">
-                      <label class="field">
-                        <span class="field__label" for="customer_name">Customer Name</span>
-                        <TextField class="field__input" type="text" id="customername" onChange={this.handleChange} helperText={this.state.helperText}  error ={this.state.helperText.length === 0 ? false : true } name="name" value={this.state.name} />
-                      </label>
-                      <label class="field">
-                        <span class="field__label" for="address">Address</span>
-                        <TextField class="field__input" type="text" id="address" onChange={this.handleChange} helperText={this.state.helperText}  error ={this.state.helperText.length === 0 ? false : true } name="address" value={this.state.address}/>
-                      </label>
-                      <label class="field">
-                        <span class="field__label" for="phone_number">Phone Number</span>
-                        <TextField class="field__input" type="text" id="phone_number" onChange={this.handleChange} helperText={this.state.helperText}  error ={this.state.helperText.length === 0 ? false : true } name="phone_number" value={this.state.phone_number}/>
-                      </label>
-                    </div>
-                    <hr/>
-                  </div>
-              <DialogActions>
-                <Button onClick={handleClose} color="black">
-                  Back
-                </Button>
-                <Button onClick={this.handleClickOpen} color="black" autoFocus>
-                  Continue
-                </Button>
-              </DialogActions>
-                  <ConfirmBill total={this.props.total} shippingfee={this.props.shippingfee} alltotal={this.props.alltotal} open={this.state.openconfirmbill} handlePay={this.handlePay} handlePaypalPay={this.handlePaypalPay} handleClose={this.handleClose} cart={this.props.cart} username={this.state.name} useraddress={this.state.address} userphonenumber={this.state.phone_number} ></ConfirmBill>)
-          </Dialog>
+  render() {
+    const { handleClose, open } = this.props;
+    console.log("total", typeof this.props.alltotal);
+
+    return (
+      <Dialog
+        style={{ userSelect: "none" }}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <div class="container">
+          <h1>Shipping</h1>
+          <p>Please enter your shipping details.</p>
+          <hr />
+          <div class="form">
+            <label class="field">
+              <span class="field__label" for="customer_name">
+                Customer Name
+              </span>
+              <TextField
+                class="field__input"
+                type="text"
+                id="customername"
+                onChange={this.handleChange}
+                helperText={this.state.helperText}
+                error={this.state.helperText.length === 0 ? false : true}
+                name="name"
+                value={this.state.name}
+              />
+            </label>
+            <label class="field">
+              <span class="field__label" for="address">
+                Address
+              </span>
+              <TextField
+                class="field__input"
+                type="text"
+                id="address"
+                onChange={this.handleChange}
+                helperText={this.state.helperText}
+                error={this.state.helperText.length === 0 ? false : true}
+                name="address"
+                value={this.state.address}
+              />
+            </label>
+            <label class="field">
+              <span class="field__label" for="phone_number">
+                Phone Number
+              </span>
+              <TextField
+                class="field__input"
+                type="text"
+                id="phone_number"
+                onChange={this.handleChange}
+                helperText={this.state.helperText}
+                error={this.state.helperText.length === 0 ? false : true}
+                name="phone_number"
+                value={this.state.phone_number}
+              />
+            </label>
+          </div>
+          <hr />
+        </div>
+        <DialogActions>
+          <Button onClick={handleClose} color="black">
+            Back
+          </Button>
+          <Button onClick={this.handleClickOpen} color="black" autoFocus>
+            Continue
+          </Button>
+        </DialogActions>
+        <ConfirmBill
+          total={this.props.total}
+          shippingfee={this.props.shippingfee}
+          alltotal={this.props.alltotal}
+          open={this.state.openconfirmbill}
+          handlePay={this.handlePay}
+          handlePaypalPay={this.handlePaypalPay}
+          handleClose={this.handleClose}
+          cart={this.props.cart}
+          username={this.state.name}
+          useraddress={this.state.address}
+          userphonenumber={this.state.phone_number}
+        ></ConfirmBill>
         )
-
-     
-    }
+      </Dialog>
+    );
+  }
 }

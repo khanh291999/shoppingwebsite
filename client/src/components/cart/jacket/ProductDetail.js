@@ -1,4 +1,18 @@
-import { Box, CircularProgress, Container, FormControl, FormControlLabel, FormHelperText, FormLabel, Grid, Radio, RadioGroup, TextField, Typography, withStyles } from "@material-ui/core";
+import {
+  Box,
+  CircularProgress,
+  Container,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+  FormLabel,
+  Grid,
+  Radio,
+  RadioGroup,
+  TextField,
+  Typography,
+  withStyles,
+} from "@material-ui/core";
 import axios from "axios";
 //import { TextFields } from "@material-ui/icons";
 import React, { Component } from "react";
@@ -69,9 +83,9 @@ class ProductDetail extends Component {
     const { classes } = this.props;
     const { id, name, price, size, img } = this.state;
     return (
-      <>
+      <div className="product-detail-container">
         {this.state.loading === false ? (
-          <Container style={{ marginTop: "50px" }}>
+          <Container>
             <Grid container>
               <Grid item md={6}>
                 <ImageContainer items={img} />
@@ -156,7 +170,7 @@ class ProductDetail extends Component {
             <CircularProgress />
           </Box>
         )}
-      </>
+      </div>
     );
   }
 }

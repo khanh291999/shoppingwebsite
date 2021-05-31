@@ -38,7 +38,7 @@ function AlanTrigger(props) {
     } else {
       props.addToCart({
         id_cart: "cart_" + Date.now() + Math.random(),
-        id_product: item.id,
+        id_product: item._id,
         name,
         price: item.price,
         img: item.image[0],
