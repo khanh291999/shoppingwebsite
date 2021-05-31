@@ -40,12 +40,13 @@ import ShoppingAdminDisableFemaleTshirt from "./admin/disablefemalet-shirt/Shopp
 import ShoppingAdminStaffControl from "./admin/staffcontrol/ShoppingAdminStaffControl";
 import ShoppingAdminUserControl from "./admin/usercontrol/ShoppingAdminUserControl";
 import Chatbotsection from "./chatbotsection/Chatbotsection";
-import Fab from "@material-ui/core/Fab";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import "../assets/ChatBot.css";
-import Chatbot from "./chatbotsection/Chatbot/Chatbot";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStore, faTimes } from "@fortawesome/free-solid-svg-icons";
+import UserProfile from "./UserProfile"
+import Fab from '@material-ui/core/Fab';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import '../assets/ChatBot.css'
+import Chatbot from './chatbotsection/Chatbot/Chatbot'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStore, faTimes } from '@fortawesome/free-solid-svg-icons'
 import AlanTrigger from "../components/voiceAI/useAlan";
 import ScrollToTop from "./ScrollToTop";
 
@@ -235,10 +236,8 @@ class ShoppingCart extends Component {
               <Route path="/deliveryhelp" component={DeliveryHelp}></Route>
               <Route path="/returnhelp" component={ReturningHelp}></Route>
               <Route path="/privacypolicy" component={PrivacyPolicy}></Route>
-              <Route
-                path="/shippingdetails"
-                component={ShippingDetails}
-              ></Route>
+              <Route path="/shippingdetails" component={ShippingDetails}></Route>
+              <Route path="/userprofile" component={UserProfile}></Route>
               <Route path="/cart" component={Cart}></Route>
               {/* <Route path="/signup" component={SignUp}></Route> */}
               <Route path="/login" component={Login} />

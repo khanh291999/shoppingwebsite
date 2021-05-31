@@ -31,7 +31,7 @@ import DeFemaleTshirt from '../disablefemalet-shirt/MainContentDisableFemaleTshi
 import UserManagement from '../usercontrol/MainContentUserControl'
 import StaffManagement from '../staffcontrol/MainContentStaffControl'
 import OrderStatus from '../status/AdminStatus'
-import UserProfile from '../UserProfile/UserProfile'
+import AdminProfile from '../UserProfile/AdminProfile'
 
 
 function Copyright() {
@@ -225,7 +225,7 @@ export default function Navbar(props) {
   } else if (active === 'order') {
     renderComponent = <OrderStatus/>
   } else if (active === 'profile') {
-    renderComponent = <UserProfile/>
+    renderComponent = <AdminProfile/>
   }
 
   return (

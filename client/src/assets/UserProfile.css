@@ -1,3 +1,16 @@
-.set-padding > * {
-    padding: 3%;
+.user-info-container{
+    display: flex;
+    padding: 10px 0;
+}
+
+.user-info-title{
+    min-width: 13vw;
+    color: #000;
+    font-weight: 700;
+}
+
+.user-name-left{
+    font-weight: 600;
+    color: #000;
+    padding: 10px 0;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -9,11 +9,12 @@ import CustomInput from "./components/CustomInput.js";
 import Button from "./components/Button.js";
 import Card from "./components/Card.js";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import CardHeader from "./components/CardHeader.js";
 import CardAvatar from "./components/CardAvatar.js";
 import CardBody from "./components/CardBody.js";
 import CardFooter from "./components/CardFooter.js";
-import '../../../assets/UserProfile.css'
+import '../../../assets/AdminProfile.css'
 
 // import avatar from "";
 
@@ -40,6 +41,27 @@ const useStyles = makeStyles(styles);
 
 export default function UserProfile(props) {
     const classes = useStyles();
+    const [admins, handleAdmin] = useState(0);
+
+    useEffect(() => {
+        axios({
+            "method": "GET",
+            "url": "http://localhost:8080/admin",
+            "params": {
+            "language_code": "en"
+            }
+        })
+        .then((response) => {
+            handleAdmin(response.data)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    });
+
+    const handleFB = () =>{
+        window.open("https://www.facebook.com/do2999")
+    }
     return (
     <div>
         <GridContainer style={{paddingTop:'11%', width:'99%', paddingLeft:'4%'}}>
@@ -58,7 +80,9 @@ export default function UserProfile(props) {
                         formControlProps={{
                         fullWidth: true,
                         }}
-                    />
+                    >
+                        {admins.displayName}
+                    </CustomInput>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={6}>
                     <CustomInput
@@ -158,9 +182,7 @@ export default function UserProfile(props) {
                     I love Rick Owens’ bed design but the back is...
                 </p>
                 <Button color="primary" round>
-                    <Link style={{color:'white'}} to={{
-                    pathname: "https://www.facebook.com/do2999"
-                    }}>Follow</Link>
+                    <Link style={{color:'#fff'}} onClick={handleFB}>Follow</Link>
                 </Button>
                 </CardBody>
             </Card>
