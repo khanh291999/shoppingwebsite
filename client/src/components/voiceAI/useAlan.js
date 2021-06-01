@@ -10,6 +10,15 @@ const COMMANDS = {
   CLOSE_CART: "close-cart",
   ADD_ITEM: "add-item",
   REMOVE_ITEM: "remove-item",
+  SHOW_CATEGORY: "show-category",
+  SHOW_ORDER: "show-order",
+  SHOW_PROFILE: "show-profile",
+  SHOW_CONTACT: "show-contact",
+  SHOW_HELP: "show-help",
+  SHOW_PRODUCTSHIPPINGTIME: "show-productshippingtime",
+  SHOW_RETURN: "show-return",
+  SHOW_PRIVACY: "show-privacy",
+  SHOW_DELIVERY: "show-delivery",
   // PURCHASE_ITEMS: "purchase-items"
 };
 function AlanTrigger(props) {
@@ -61,6 +70,53 @@ function AlanTrigger(props) {
     }
   };
 
+  const showCategory = useCallback(() => {
+    alanInstance.playText("Showing product");
+    history.push("/product");
+  }, [alanInstance]);
+
+  const showOrder = useCallback(() => {
+    alanInstance.playText("Showing order history");
+    history.push("/status");
+  }, [alanInstance]);
+
+  const showProfile = useCallback(() => {
+    alanInstance.playText("Showing your profile");
+    history.push("/userprofile");
+  }, [alanInstance]);
+
+  const showContact = useCallback(() => {
+    alanInstance.playText("Showing our contact and our team member");
+    history.push("/about");
+  }, [alanInstance]);
+
+  const showHelp = useCallback(() => {
+    alanInstance.playText("Showing our FAQ");
+    history.push("/orderhelp");
+  }, [alanInstance]);
+
+  const showProductshippingtime = useCallback(() => {
+    alanInstance.playText(
+      "Your package will be delivered within 2 to 7 working days after you place an order"
+    );
+    history.push("/deliveryhelp");
+  }, [alanInstance]);
+
+  const showReturn = useCallback(() => {
+    alanInstance.playText("Showing our returning condition");
+    history.push("/returnhelp");
+  }, [alanInstance]);
+
+  const showPrivacy = useCallback(() => {
+    alanInstance.playText("Showing our Privacy statement");
+    history.push("/privacypolicy");
+  }, [alanInstance]);
+
+  const showDelivery = useCallback(() => {
+    alanInstance.playText("Showing our shipping fee");
+    history.push("/shippingdetails");
+  }, [alanInstance]);
+
   // const purchaseItems = useCallback(() => {
   //   if (isCartEmpty) {
   //     alanInstance.playText("Your cart is empty")
@@ -83,17 +139,52 @@ function AlanTrigger(props) {
     window.addEventListener(COMMANDS.CLOSE_CART, closeCart);
     window.addEventListener(COMMANDS.ADD_ITEM, addItem);
     window.addEventListener(COMMANDS.REMOVE_ITEM, removeItem);
-    // window.addEventListener(COMMANDS.PURCHASE_ITEMS, purchaseItems)
-
+    window.addEventListener(COMMANDS.SHOW_CATEGORY, showCategory);
+    window.addEventListener(COMMANDS.SHOW_ORDER, showOrder);
+    window.addEventListener(COMMANDS.SHOW_PROFILE, showProfile);
+    window.addEventListener(COMMANDS.SHOW_CONTACT, showContact);
+    window.addEventListener(COMMANDS.SHOW_HELP, showHelp);
+    window.addEventListener(
+      COMMANDS.SHOW_PRODUCTSHIPPINGTIME,
+      showProductshippingtime
+    );
+    window.addEventListener(COMMANDS.SHOW_RETURN, showReturn);
+    window.addEventListener(COMMANDS.SHOW_PRIVACY, showPrivacy);
+    window.addEventListener(COMMANDS.SHOW_DELIVERY, showDelivery);
     return () => {
       window.removeEventListener(COMMANDS.OPEN_CART, openCart);
       window.removeEventListener(COMMANDS.CLOSE_CART, closeCart);
       window.removeEventListener(COMMANDS.ADD_ITEM, addItem);
       window.removeEventListener(COMMANDS.REMOVE_ITEM, removeItem);
-      // window.removeEventListener(COMMANDS.PURCHASE_ITEMS, purchaseItems)
+      window.removeEventListener(COMMANDS.SHOW_CATEGORY, showCategory);
+      window.removeEventListener(COMMANDS.SHOW_ORDER, showOrder);
+      window.removeEventListener(COMMANDS.SHOW_PROFILE, showProfile);
+      window.removeEventListener(COMMANDS.SHOW_CONTACT, showContact);
+      window.removeEventListener(COMMANDS.SHOW_HELP, showHelp);
+      window.removeEventListener(
+        COMMANDS.SHOW_PRODUCTSHIPPINGTIME,
+        showProductshippingtime
+      );
+      window.removeEventListener(COMMANDS.SHOW_RETURN, showReturn);
+      window.removeEventListener(COMMANDS.SHOW_PRIVACY, showPrivacy);
+      window.removeEventListener(COMMANDS.SHOW_DELIVERY, showDelivery);
     };
-  }, [openCart, closeCart, addItem, removeItem]);
-  // [openCart, closeCart, addItem, removeItem, purchaseItems]
+  }, [
+    openCart,
+    closeCart,
+    addItem,
+    removeItem,
+    showCategory,
+    showOrder,
+    showProfile,
+    showContact,
+    showHelp,
+    showProductshippingtime,
+    showReturn,
+    showPrivacy,
+    showDelivery,
+  ]);
+
   useEffect(() => {
     if (alanInstance != null) return;
     setAlanInstance(
