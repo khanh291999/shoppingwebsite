@@ -11,42 +11,50 @@ function BodySection(props) {
         <div className='body-one-container'>
           <div className='body-one-wrapper'>
             <Grid container spacing={0} className="center">
-                <Grid item xs={6} className='set-relative'>
+                {/* <Grid item xs={6} className='set-relative'>
                   <img 
                     className='img-body-section' 
                     src="https://www.scotch-soda.com/on/demandware.static/-/Sites/default/dw259dcb42/campaigns/WK51_HP_NYE_02_d-2.jpg" 
                     alt="Gift one"></img>
                 </Grid>
                 <Grid item xs={6} className='set-relative'>
-                <img 
+                  <img 
                     className='img-body-section' 
                     src="https://www.scotch-soda.com/on/demandware.static/-/Sites/default/dwa438167c/campaigns/WK51_HP_NYE_03_d-2.jpg" 
                     alt="Gift two"></img>
+                </Grid> */}
+                <Grid item xs={12} className='set-relative'>
+                  <img 
+                    className='img-body-section' 
+                    src="https://www.scotch-soda.com/on/demandware.static/-/Sites/default/dwa13f52f5/campaigns/Fall21_WK23_HP_Women_New_Arrivals_d.jpg" 
+                    alt="One"></img>
                 </Grid>
                 <Grid item xs={9} className='set-absolute'>
                   <div className='copy'>
-                    <h2>5...4...3...2...</h2>
-                    <div>This New Year's Eve may be different. But the countdown's still on. So let's embrace the spirit and get dressed up – because if nothing else, it sure feels good.</div>
+                  <h2>Look ahead</h2>
+                    <div>Styles to take you on all your adventures.</div>
                     <section className='buttons'>
                     <Link to="/femalejacket">
                     <Button
                         className='btns'
-                        buttonStyle='btn--outline'
+                        buttonStyle='btn--primary'
                         buttonSize='btn--large'
+                        style={{maxWidth:'190px'}}
                       >
-                        Shop Woman
+                        Shop now
                       </Button>
                     </Link>
                     <Link to="/product">
                       <Button
                         className='btns'
-                        buttonStyle='btn--outline'
+                        buttonStyle='btn--primary'
                         buttonSize='btn--large'
+                        style={{maxWidth:'190px'}}
                       >
-                        Shop Man
+                        Read more
                       </Button>
-                      </Link>
-                      <Link to="/product">
+                    </Link>
+                      {/* <Link to="/product">
                       <Button
                         className='btns'
                         buttonStyle='btn--outline'
@@ -54,7 +62,7 @@ function BodySection(props) {
                       >
                         See more
                       </Button>
-                      </Link>
+                      </Link> */}
                     </section>
                   </div>
                 </Grid>
@@ -65,7 +73,7 @@ function BodySection(props) {
         <div className='body-two-container'>
           <div className='body-two-wrapper'>
           <Grid container spacing={0} className="center">
-                <Grid item xs={6} className='set-relative'>
+                {/* <Grid item xs={6} className='set-relative'>
                   <img 
                     className='img-body-section' 
                     src="https://www.scotch-soda.com/on/demandware.static/-/Sites/default/dw23dccba4/campaigns/WK50_HP_04_d.jpg" 
@@ -76,32 +84,39 @@ function BodySection(props) {
                     className='img-body-section' 
                     src="https://www.scotch-soda.com/on/demandware.static/-/Sites/default/dw8b8e1866/campaigns/WK50_HP_05_d.jpg" 
                     alt="Gift one"></img>
+                </Grid> */}
+                <Grid item xs={12} className='set-relative'>
+                  <img 
+                    className='img-body-section' 
+                    src="https://www.scotch-soda.com/on/demandware.static/-/Sites/default/dw99632fb4/campaigns/Fall21_WK23_HP_Women_Earthy_Shades_d.jpg" 
+                    alt="Gift one"></img>
                 </Grid>
-                <Grid item xs={6} className='set-absolute'>
+                {/* <Grid item xs={6} className='set-absolute'> */}
+                <Grid item xs={6} style={{position:'absolute', bottom:'5%'}}>
                   <div className='copy'>
-                    <h2>Let's get ready to party</h2>
-                    <div>Special outfits we've been waiting to wear all year.</div>
-                    <section className='buttons'>
-                    <Link to="/femalejacket">
-                    <Button
-                        className='btns'
-                        buttonStyle='btn--outline'
-                        buttonSize='btn--large'
-                        onClick={console.log('woman clothes')}
-                      >
-                        Shop girls 
-                      </Button>
+                    <h2>Earthy shades</h2>
+                    {/* <div>Styles to take you on all your adventures.</div> */}
+                    <section className='buttons' style={{bottom: '5%'}}>
+                      <Link to="/femalejacket">
+                        <Button
+                          className='btns'
+                          buttonStyle='btn--outline'
+                          buttonSize='btn--large'
+                          onClick={console.log('woman clothes')}
+                        >
+                          Shop now
+                        </Button>
                       </Link>
-                      <Link to="/product">
-                      <Button
-                        className='btns'
-                        buttonStyle='btn--outline'
-                        buttonSize='btn--large'
-                        onClick={console.log('man clothes')}
-                      >
-                        Shop boys
-                      </Button>
-                      </Link>
+                      {/* <Link to="/product">
+                        <Button
+                          className='btns'
+                          buttonStyle='btn--outline'
+                          buttonSize='btn--large'
+                          onClick={console.log('man clothes')}
+                        >
+                          Shop boys
+                        </Button>
+                      </Link> */}
                     </section>
                   </div>
                 </Grid>
@@ -119,22 +134,22 @@ function BodySection(props) {
               <div item xs={6} className="set-center">
                 <img 
                   className='img-body-section' 
-                  src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5KWWtwa1ZUUm9NSEJNTHc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjEwODB9fX0=" 
+                  src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5RV1hadE5uVklUbFk0THc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjQ4MH19fQ==" 
                   alt="Gift one">
                 </img>
                 <img 
                   className='img-body-section' 
-                  src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5KWkc1a1VreElMWHA0THc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjEwODB9fX0=" 
+                  src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5RVVRGUFdrNXFaRWMyTHc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjY0MH19fQ==" 
                   alt="Gift one">
                 </img>
                 <img 
                     className='img-body-section' 
-                    src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5KWVZSU1h6SnFlRXRoTHc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjc1MH19fQ==" 
+                    src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5RVEhoUlMyZHdWMVJaTHc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjY0MH19fQ==" 
                     alt="Gift one">
                   </img>
                   <img 
                     className='img-body-section' 
-                    src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5JVEZOdFFUaG5NWGxXTHc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjc1MH19fQ==" 
+                    src="https://d2rfa446ja7yzb.cloudfront.net/eyJidWNrZXQiOiJtaXJyb3IuZ2V0Zmxvd2JveC5jb20uZXUtd2VzdC0xLmxpdmUiLCJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMME5RUjIxSE5ubE5lbHBzTHc9PS90aHVtYm5haWwiLCJlZGl0cyI6eyJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjY0MH19fQ==" 
                     alt="Gift one">
                   </img>
               </div>

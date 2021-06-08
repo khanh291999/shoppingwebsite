@@ -31,8 +31,8 @@ h5,
 h6,
 p,
 ul,
-ol,
-li {
+ol
+{
   margin-top: 1em;
   margin-bottom: 1em;
 }

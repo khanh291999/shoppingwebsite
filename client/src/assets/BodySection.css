@@ -1,5 +1,5 @@
 .background {
-  padding: 4rem 0rem;
+  padding-bottom: 4rem;
   background: #FAF8F6;
 }
 
@@ -27,7 +27,7 @@
 
 .set-absolute {
   position: absolute;
-  bottom: 10px;
+  top: 30%;
 }
 
 .center {
@@ -37,11 +37,12 @@
 }
 
 .copy h2 {
-  font-weight: bold;
   text-align: center;
   font-family: Alegreya;
-  font-size: 33px;
+  font-size: 3.5vw;
+  font-weight: 100;
   color: white;
+  margin-bottom: 10px;
 }
 
 .copy div {
@@ -62,6 +63,7 @@
   margin: 14px 3px;
   font-size: medium;
   font-weight: bold;
+  width: 190px;
   font-family: Alegreya;
 }
 
@@ -116,8 +118,7 @@
 }
 
 .set-center img{
-  max-width: 209px;
-  /* max-height: 209px; */
+  max-width: 22.5%;
   margin: 0px 15px;
 }
 

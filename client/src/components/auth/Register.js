@@ -7,6 +7,8 @@ import '../../assets/Register.css'
 import FacebookIcon from '@material-ui/icons/Facebook';
 import GoogleIcon from '../../assets/icons/google_icon.png'
 import Grid from '@material-ui/core/Grid'
+import Facebook from './Facebook'
+import Google from './Google'
 
 export default function Register() {
   const [email, setEmail] = useState();
@@ -89,7 +91,7 @@ export default function Register() {
             </Grid>
               
             <Grid item xs={6} className="col1">
-            <label htmlFor="register-display-name">Display name</label>
+            <label htmlFor="register-display-name">User name</label>
             <input
               id="register-display-name"
               type="text"
@@ -105,16 +107,10 @@ export default function Register() {
               Or, sign up with
             </span>
             <button id="fb-login-btn">
-              <FacebookIcon></FacebookIcon>
-              <div style={{margin: "4px"}}>Facebook</div>
+              <Facebook/>
             </button>
             <button id="gg-login-btn">
-              <img
-                style={{maxWidth: "8%"}} 
-                src={GoogleIcon}
-                alt=""
-                />
-              <div style={{margin: "4px"}}>Google</div>
+              <Google/>
             </button>
 
             <div className='register-in-login-container'>

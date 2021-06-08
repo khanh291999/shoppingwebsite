@@ -23,6 +23,7 @@
 }
 
 #login-btn{
+    width: 112%;
     margin: 5px;
     background-color: #4CAF50;
     border: none;
@@ -46,7 +47,7 @@
     text-align: center;
     margin:5px;
     margin-bottom: 10px;
-    width: 200px;
+    width: 280px;
     height: 45px;
 }
 
@@ -61,12 +62,12 @@
 
 .btn-gg{
     margin: 5px;
-    width: 200px;
+    width: 280px;
+    place-content: center;
 }
 
 #gg-login-btn{
     margin: 5px;
-    background-color: #D34836;
     border: none;
     color: white;
     padding: 12px 40px;

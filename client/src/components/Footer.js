@@ -63,7 +63,7 @@ export default function Footer() {
               target="_blank"
               aria-label="Facebook"
             >
-              <i class="fab fa-facebook-f" />
+              <i class="fa fa-facebook-square" aria-hidden="true"></i>
             </Link>
             <Link
               class="social-icon-link instagram"
@@ -71,7 +71,7 @@ export default function Footer() {
               target="_blank"
               aria-label="Instagram"
             >
-              <i class="fab fa-instagram" />
+              <i class="fa fa-instagram" aria-hidden="true"></i>
             </Link>
             <Link
               class="social-icon-link youtube"
@@ -79,7 +79,7 @@ export default function Footer() {
               target="_blank"
               aria-label="Youtube"
             >
-              <i class="fab fa-youtube" />
+              <i class="fa fa-youtube-play" aria-hidden="true"></i>
             </Link>
             <Link
               class="social-icon-link twitter"
@@ -87,7 +87,7 @@ export default function Footer() {
               target="_blank"
               aria-label="Twitter"
             >
-              <i class="fab fa-twitter" />
+              <i class="fa fa-twitter" aria-hidden="true"></i>
             </Link>
             <Link
               class="social-icon-link twitter"
@@ -95,7 +95,7 @@ export default function Footer() {
               target="_blank"
               aria-label="LinkedIn"
             >
-              <i class="fab fa-linkedin" />
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
             </Link>
           </div>
         </div>

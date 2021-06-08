@@ -77,6 +77,7 @@ export default function OrderHelp() {
     const [openTab23, setopenTab23] = React.useState(false);
     const [openTab24, setopenTab24] = React.useState(false);
     const [openTab25, setopenTab25] = React.useState(false);
+    const [openTab26, setopenTab26] = React.useState(false);
 
     const handleClickTab1 = () => {
         if(openTab2 == true){
@@ -126,6 +127,7 @@ export default function OrderHelp() {
                 setopenTab23(false)
                 setopenTab24(false)
                 setopenTab25(false)
+                setopenTab26(false)
                 break;
             case "openTab22":
                 setopenTab21(false)
@@ -133,6 +135,7 @@ export default function OrderHelp() {
                 setopenTab23(false)
                 setopenTab24(false)
                 setopenTab25(false)
+                setopenTab26(false)
                 break;
             case "openTab23":
                 setopenTab21(false)
@@ -140,6 +143,7 @@ export default function OrderHelp() {
                 setopenTab23(true)
                 setopenTab24(false)
                 setopenTab25(false)
+                setopenTab26(false)
                 break;
             case "openTab24":
                 setopenTab21(false)
@@ -147,6 +151,7 @@ export default function OrderHelp() {
                 setopenTab23(false)
                 setopenTab24(true)
                 setopenTab25(false)
+                setopenTab26(false)
                 break;
             case "openTab25":
                 setopenTab21(false)
@@ -154,8 +159,16 @@ export default function OrderHelp() {
                 setopenTab23(false)
                 setopenTab24(false)
                 setopenTab25(true)
+                setopenTab26(false)
                 break;
-
+            case "openTab26":
+                setopenTab21(false)
+                setopenTab22(false)
+                setopenTab23(false)
+                setopenTab24(false)
+                setopenTab25(false)
+                setopenTab26(true)
+                break;
         }
     }
     //tab11 content
@@ -616,6 +629,75 @@ export default function OrderHelp() {
             </Accordion>
         </div>
     )
+    //tab26 content
+    const Tab26 = () => (
+        <div className={classes.root}>
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                >
+                    <Typography className={classes.heading}>Commands for cart</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography className="help-detail-information">
+                        To open cart say: <i>Open cart</i><br/>
+                        To close cart say: <i>Close cart</i>
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                >
+                    <Typography className={classes.heading}>Commands for buying product</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography className="help-detail-information">
+                        To add item to cart say: <i>Add {"<name product>"} to cart</i><br/>
+                        To chose which size of the product say: <i>S or M or L or XL or XXL</i><br/>
+                        To remove item from cart say: <i>Remove or delete {"<name product>"} from cart</i>
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                >
+                    <Typography className={classes.heading}>Other commands</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography className="help-detail-information">
+                        <i>What are you selling</i> -- To ask the product that website are selling <br/>
+                        <i>Show product</i> -- The website will redirect to shopping page <br/>
+                        <i>What are you selling</i> -- To ask the product that website are selling <br/>
+                        <i>What are the categies or Type of clothes</i> -- To ask the product type that website are selling <br/>
+                        <i>Show order status or order history</i> -- To open user order history <br/>
+                        <i>Show profile</i> -- To open user profile<br/>
+                        <i>What is the opening hour</i> -- To ask the store working time<br/>
+                        <i>How to conact the store</i> -- To open contact page<br/>
+                        <i>Show assistant or help me</i> -- To open FAQ page<br/>
+                        <i>How long is the delivery</i> -- To ask how long will delivery package arrives to you<br/>
+                        <i>How can I return sth</i> -- To ask for a refund or something simlar to that<br/>
+                        <i>Show privacy policy</i> -- To open Privacy policy page<br/>
+                        <i>What are the shipping fee</i> -- To open shipping charge page<br/>
+
+                        You can also ask about: 
+                        <li><i>The time</i></li>
+                        <li><i>Weather</i></li>
+                        <li><i>News</i></li>
+                        <li><i>Calculate</i></li>
+                        <li><i>etc.</i></li>
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+        </div>
+    )
 
     return(
         <div style={{backgroundColor:'#faf8f6', padding:'5%'}}>
@@ -776,6 +858,13 @@ export default function OrderHelp() {
                                                     <a style={{color:"#000"}}>Contact</a>
                                                 }
                                             </li>
+                                            <li onClick={() => showComponent("openTab26")}>
+                                                {openTab26?
+                                                    <a style={{color:"#bd7f32"}}>Alan Command</a>
+                                                    :
+                                                    <a style={{color:"#000"}}>Alan Command</a>
+                                                }
+                                            </li>
                                         </div>
                                     </div>
                                 </Grid>
@@ -786,6 +875,7 @@ export default function OrderHelp() {
                                         {openTab23 && <Tab23/>}
                                         {openTab24 && <Tab24/>}
                                         {openTab25 && <Tab25/>}
+                                        {openTab26 && <Tab26/>}
                                     </div>
                                 </Grid>
                             </Grid>
