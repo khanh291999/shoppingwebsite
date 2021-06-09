@@ -25,18 +25,7 @@ import ShoppingAdmin from "./admin/jacket/ShoppingAdmin";
 import AdLogin from "./admin/AdLogin";
 import FemaleTshirt from "./cart/femalet-shirt/FemaleTshirt";
 import Status from "./status/Status";
-import ShoppingAdminJean from "./admin/jean/ShoppingAdminJean";
-import ShoppingAdminTshirt from "./admin/t-shirt/ShoppingAdminTshirt";
 import AdminShoppingStatus from "./admin/status/AdminShoppingStatus";
-import ShoppingAdminFemaleJacket from "./admin/femalejacket/ShoppingAdminFemaleJacket";
-import ShoppingAdminFemaleJean from "./admin/femalejean/ShoppingAdminFemaleJean";
-import ShoppingAdminFemaleTshirt from "./admin/femalet-shirt/ShoppingAdminFemaleTshirt";
-import ShoppingAdminDisableJacket from "./admin/disablejacket/ShoppingAdminDisableJacket";
-import ShoppingAdminDisableJean from "./admin/disablejean/ShoppingAdminDisableJean";
-import ShoppingAdminDisableTshirt from "./admin/disablet-shirt/ShoppingAdminDisableTshirt";
-import ShoppingAdminDisableFemaleJacket from "./admin/disablefemalejacket/ShoppingAdminDisableFemaleJacket";
-import ShoppingAdminDisableFemaleJean from "./admin/disablefemalejean/ShoppingAdminDisableFemaleJean";
-import ShoppingAdminDisableFemaleTshirt from "./admin/disablefemalet-shirt/ShoppingAdminDisableFemaleTshirt";
 import ShoppingAdminStaffControl from "./admin/staffcontrol/ShoppingAdminStaffControl";
 import ShoppingAdminUserControl from "./admin/usercontrol/ShoppingAdminUserControl";
 import Chatbotsection from "./chatbotsection/Chatbotsection";
@@ -144,45 +133,7 @@ class ShoppingCart extends Component {
         <Switch>
           <Route path="/adlogin" component={AdLogin}></Route>
           <Route path="/admin" component={ShoppingAdmin}></Route>
-          <Route path="/adminjean" component={ShoppingAdminJean}></Route>
-          <Route path="/admint-shirt" component={ShoppingAdminTshirt}></Route>
           <Route path="/adminstatus" component={AdminShoppingStatus}></Route>
-          <Route
-            path="/adminfemalejacket"
-            component={ShoppingAdminFemaleJacket}
-          ></Route>
-          <Route
-            path="/adminfemalejean"
-            component={ShoppingAdminFemaleJean}
-          ></Route>
-          <Route
-            path="/adminfemalet-shirt"
-            component={ShoppingAdminFemaleTshirt}
-          ></Route>
-          <Route
-            path="/disablejacket"
-            component={ShoppingAdminDisableJacket}
-          ></Route>
-          <Route
-            path="/disablejean"
-            component={ShoppingAdminDisableJean}
-          ></Route>
-          <Route
-            path="/disablet-shirt"
-            component={ShoppingAdminDisableTshirt}
-          ></Route>
-          <Route
-            path="/disablefemalejacket"
-            component={ShoppingAdminDisableFemaleJacket}
-          ></Route>
-          <Route
-            path="/disablefemalejean"
-            component={ShoppingAdminDisableFemaleJean}
-          ></Route>
-          <Route
-            path="/disablefemalet-shirt"
-            component={ShoppingAdminDisableFemaleTshirt}
-          ></Route>
           <Route
             path="/staffcontrol"
             component={ShoppingAdminStaffControl}
