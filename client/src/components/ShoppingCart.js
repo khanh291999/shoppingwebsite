@@ -29,13 +29,13 @@ import AdminShoppingStatus from "./admin/status/AdminShoppingStatus";
 import ShoppingAdminStaffControl from "./admin/staffcontrol/ShoppingAdminStaffControl";
 import ShoppingAdminUserControl from "./admin/usercontrol/ShoppingAdminUserControl";
 import Chatbotsection from "./chatbotsection/Chatbotsection";
-import UserProfile from "./UserProfile"
-import Fab from '@material-ui/core/Fab';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import '../assets/ChatBot.css'
-import Chatbot from './chatbotsection/Chatbot/Chatbot'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStore, faTimes } from '@fortawesome/free-solid-svg-icons'
+import UserProfile from "./UserProfile";
+import Fab from "@material-ui/core/Fab";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import "../assets/ChatBot.css";
+import Chatbot from "./chatbotsection/Chatbot/Chatbot";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStore, faTimes } from "@fortawesome/free-solid-svg-icons";
 import AlanTrigger from "../components/voiceAI/useAlan";
 import ScrollToTop from "./ScrollToTop";
 
@@ -112,7 +112,7 @@ class ShoppingCart extends Component {
     //promise
     this.setState({ isLoading: true });
     axios
-      .get("http://localhost:8080/jacket")
+      .get("http://localhost:8080/product")
       .then((res) => {
         const { data } = res;
         this.setState({ products: data, isLoading: false });
@@ -127,6 +127,9 @@ class ShoppingCart extends Component {
 
   render() {
     const { page, limit } = this.state;
+    let productss = this.state.products.filter(function (category) {
+      return category.category == "jacket" && category.sex == 0;
+    });
     return (
       <div>
         <ScrollToTop />
@@ -148,19 +151,16 @@ class ShoppingCart extends Component {
               <Route
                 path="/product/:masanpham"
                 render={() => (
-                  <ProductDetail products={this.state.product}></ProductDetail>
+                  <ProductDetail products={productss}></ProductDetail>
                 )}
               ></Route>
               <Route path="/product">
                 <ProductList
                   isLoading={this.state.isLoading}
-                  total={this.state.products.length}
+                  total={productss.length}
                   limit={this.state.limit}
                   page={this.state.page}
-                  products={[...this.state.products].splice(
-                    (page - 1) * limit,
-                    limit
-                  )}
+                  products={[...productss].splice((page - 1) * limit, limit)}
                   handleChangePage={this.handleChangePage}
                 ></ProductList>
               </Route>
@@ -187,7 +187,10 @@ class ShoppingCart extends Component {
               <Route path="/deliveryhelp" component={DeliveryHelp}></Route>
               <Route path="/returnhelp" component={ReturningHelp}></Route>
               <Route path="/privacypolicy" component={PrivacyPolicy}></Route>
-              <Route path="/shippingdetails" component={ShippingDetails}></Route>
+              <Route
+                path="/shippingdetails"
+                component={ShippingDetails}
+              ></Route>
               <Route path="/userprofile" component={UserProfile}></Route>
               <Route path="/cart" component={Cart}></Route>
               {/* <Route path="/signup" component={SignUp}></Route> */}

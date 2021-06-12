@@ -27,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
 
 function ProductListMaleJean(props) {
   const [searchTerm, setSearchTerm] = useState("");
+  const { products, isLoading, page, handleChangePage } = props;
+
   let total = 0;
   if (props.total % props.limit > 0) {
     total = Math.floor(props.total / props.limit) + 1;
@@ -34,7 +36,6 @@ function ProductListMaleJean(props) {
     total = props.total / props.limit;
   }
 
-  const { products, isLoading, page } = props;
   const handleChange = (e, page) => {
     props.handleChangePage(page);
   };
@@ -171,10 +172,10 @@ function ProductListMaleJean(props) {
                     <ProductMaleJean
                       name={product.name}
                       price={product.price}
-                      key={product.id}
+                      key={product._id}
                       img={product.image[0]}
                       img1={product.image[1]}
-                      id={product.id}
+                      _id={product._id}
                       addToCart={props.addToCart}
                     />
                   );

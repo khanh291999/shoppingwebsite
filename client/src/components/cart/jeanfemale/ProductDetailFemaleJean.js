@@ -43,13 +43,11 @@ class ProductDetailFemaleJean extends Component {
       loading: true,
     });
     axios
-      .get(
-        `http://localhost:8080/femalejean/${this.props.match.params.masanpham}`
-      )
+      .get(`http://localhost:8080/product/${this.props.match.params.masanpham}`)
       .then((res) => {
-        const { id, name, price, size, image } = res.data;
+        const { _id, name, price, size, image } = res.data;
         this.setState({
-          id,
+          _id,
           name,
           price,
           size,
@@ -62,7 +60,7 @@ class ProductDetailFemaleJean extends Component {
       });
   }
   handleClickBtn = () => {
-    const { id, name, price, selected_size, img, quantity } = this.state;
+    const { _id, name, price, selected_size, img, quantity } = this.state;
     if (selected_size === "") {
       this.setState({
         helperText: "Please choose size",
@@ -70,7 +68,7 @@ class ProductDetailFemaleJean extends Component {
     } else {
       this.props.addToCart({
         id_cart: "cart_" + Date.now() + Math.random(),
-        id_product: id,
+        id_product: _id,
         name,
         price,
         img,
@@ -81,7 +79,7 @@ class ProductDetailFemaleJean extends Component {
   };
   render() {
     const { classes } = this.props;
-    const { id, name, price, size, img } = this.state;
+    const { _id, name, price, size, img } = this.state;
     return (
       <div className="product-detail-container">
         {this.state.loading === false ? (

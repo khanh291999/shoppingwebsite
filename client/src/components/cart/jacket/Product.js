@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@material-ui/core";
-import {Link} from 'react-router-dom'
-import '../../../assets/Product.css'
+import { Link } from "react-router-dom";
+import "../../../assets/Product.css";
 
 export default function Product(props) {
   // const { userData } = useContext(UserContext);
@@ -14,21 +14,19 @@ export default function Product(props) {
   //     price,
   //     quantity:1,
   //     img,
-      
+
   //   })
   // }
-  const { id, name, price, img, img1 } = props;
+  const { _id, name, price, img, img1 } = props;
   return (
-    <Box
-    component={Link} to={"/product/"+id}
-    >
+    <Box component={Link} to={"/product/" + _id}>
       <div className="product-container">
         <img
           className="product-list-img"
           alt="product"
           src={img}
-          onMouseOver={e => (e.currentTarget.src=img1)}
-          onMouseOut={e=> (e.currentTarget.src=img)}
+          onMouseOver={(e) => (e.currentTarget.src = img1)}
+          onMouseOut={(e) => (e.currentTarget.src = img)}
         />
         <div className="product-list-name">{name}</div>
         <div className="product-list-price">$ {price}</div>

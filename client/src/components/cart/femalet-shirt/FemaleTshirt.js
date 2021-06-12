@@ -22,7 +22,7 @@ class FemaleTshirt extends Component {
     //promise
     this.setState({ isLoading: true });
     axios
-      .get("http://localhost:8080/femalet-shirt")
+      .get("http://localhost:8080/product")
       .then((res) => {
         const { data } = res;
         this.setState({ products: data, isLoading: false });
@@ -36,6 +36,9 @@ class FemaleTshirt extends Component {
   };
   render() {
     const { page, limit } = this.state;
+    let productss = this.state.products.filter(function (category) {
+      return category.category == "t-shirt" && category.sex == 1;
+    });
     return (
       <div>
         {/* <Header fixed /> */}
@@ -44,20 +47,17 @@ class FemaleTshirt extends Component {
             path="/femalet-shirt/:masanpham"
             render={() => (
               <ProductDetailFemaleTshirt
-                products={this.state.product}
+                products={productss}
               ></ProductDetailFemaleTshirt>
             )}
           ></Route>
           <Route path="/femalet-shirt">
             <ProductListFemaleTshirt
               isLoading={this.state.isLoading}
-              total={this.state.products.length}
+              total={productss.length}
               limit={this.state.limit}
               page={this.state.page}
-              products={[...this.state.products].splice(
-                (page - 1) * limit,
-                limit
-              )}
+              products={[...productss].splice((page - 1) * limit, limit)}
               handleChangePage={this.handleChangePage}
             ></ProductListFemaleTshirt>
           </Route>

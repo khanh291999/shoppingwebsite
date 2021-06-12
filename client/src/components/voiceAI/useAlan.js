@@ -128,9 +128,7 @@ function AlanTrigger(props) {
 
   useEffect(() => {
     const getAllProduct = async () => {
-      const result = await axios.get(
-        "https://myauthapi1.herokuapp.com/allproduct"
-      );
+      const result = await axios.get("http://localhost:8080/product");
       setData(result.data);
     };
     getAllProduct();
