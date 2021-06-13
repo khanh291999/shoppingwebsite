@@ -260,15 +260,22 @@ function Header(props) {
             </Typography>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton 
-                color="inherit" 
-                style={{backgroundColor: 'transparent', textDecoration: 'none'}}>
+              <IconButton
+                color="inherit"
+                style={{
+                  backgroundColor: "transparent",
+                  textDecoration: "none",
+                }}
+              >
                 <Link to="/product" className="nav-links">
                   <LocalMallIcon />
                 </Link>
               </IconButton>
               <IconButton
-                style={{backgroundColor: 'transparent', textDecoration: 'none'}}
+                style={{
+                  backgroundColor: "transparent",
+                  textDecoration: "none",
+                }}
                 aria-label="show number of product in cart"
                 color="inherit"
               >
@@ -285,7 +292,11 @@ function Header(props) {
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
                 color="inherit"
-                style={{ padding: "15px 30px 15px" , backgroundColor: 'transparent', textDecoration: 'none'}}
+                style={{
+                  padding: "15px 30px 15px",
+                  backgroundColor: "transparent",
+                  textDecoration: "none",
+                }}
               >
                 <AccountCircle />
               </IconButton>
@@ -305,22 +316,40 @@ function Header(props) {
         </AppBar>
         {renderMobileMenu}
         {renderMenu}
-        <div style={{textAlign: '-webkit-center', backgroundColor: '#f0ede8'}}>
+        <div
+          style={{ textAlign: "-webkit-center", backgroundColor: "#f0ede8" }}
+        >
           <ul id="nav-main-list">
             <li class="nav-main-sublist dropdown">
-              <a href="javascript:void(0)" class="dropbtn">Man</a>
+              <a href="javascript:void(0)" class="dropbtn">
+                Man
+              </a>
               <div class="dropdown-content">
-                <a href="/product">Jacket</a>
-                <a href="/jean">Jean</a>
-                <a href="/t-shirt">T-shirt</a>
+                <Link to="/product">
+                  <a href="/product">Jacket</a>
+                </Link>
+                <Link to="/jean">
+                  <a href="/jean">Jean</a>
+                </Link>
+                <Link to="/t-shirt">
+                  <a href="/t-shirt">T-shirt</a>
+                </Link>
               </div>
             </li>
             <li class="nav-main-sublist dropdown">
-              <a href="javascript:void(0)" class="dropbtn">Woman</a>
+              <a href="javascript:void(0)" class="dropbtn">
+                Woman
+              </a>
               <div class="dropdown-content">
-                <a href="/femalejacket">Jacket</a>
-                <a href="/femalejean">Jean</a>
-                <a href="/femalet-shirt">T-shirt</a>
+                <Link to="/femalejacket">
+                  <a href="/femalejacket">Jacket</a>
+                </Link>
+                <Link to="/femalejean">
+                  <a href="/femalejean">Jean</a>
+                </Link>
+                <Link to="/femalet-shirt">
+                  <a href="/femalet-shirt">T-shirt</a>
+                </Link>
               </div>
             </li>
           </ul>

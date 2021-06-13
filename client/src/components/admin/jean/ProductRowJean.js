@@ -1,57 +1,75 @@
-import React from 'react'
-import { Button } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import React from "react";
+import { Button } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
 
 const ColorButton = withStyles((theme) => ({
-    root: {
-        margin: '0 5px',
-        backgroundColor: '#282828',
-        '&:hover': {
-            backgroundColor: '#fff',
-            color: '#282828'
-        },
+  root: {
+    margin: "0 5px",
+    backgroundColor: "#282828",
+    "&:hover": {
+      backgroundColor: "#fff",
+      color: "#282828",
     },
-    }))(Button);
+  },
+}))(Button);
 
-export default function ProductRowJean(props){
-    const handleUpdate = () => {
-        props.updateIsEditting(props.product.id)
-    }
-    const handleDelete = () => {
-        props.deleteProduct(props.product.id)
-    }
-    const handleAddDisableProduct = () => {
-        const {name,price,image,size} = props.product
-        props.addDisableProduct(props.product.id,name,image,price,size)
-    }
-    const handleDisable = () =>{
-        handleAddDisableProduct();
-        handleDelete();
-    }   
+export default function ProductRowJean(props) {
+  const handleUpdate = () => {
+    props.updateIsEditting(props.product._id);
+  };
+  const handleDelete = () => {
+    props.deleteProduct(props.product._id);
+  };
+  const handleAddDisableProduct = () => {
+    const size = ["S", "M", "L", "XL", "XXL"];
+    const { name, price, image, sex, category, S, M, L, XL, XXL } =
+      props.product;
+    props.addDisableProduct(
+      name,
+      image,
+      price,
+      size,
+      category,
+      sex,
+      S,
+      M,
+      L,
+      XL,
+      XXL
+    );
+  };
+  const handleDisable = () => {
+    handleAddDisableProduct();
+    handleDelete();
+  };
 
-    const {id,name,price,image} = props.product
-    return  <div className="table-rows">
-    <div className="table-cell">
-        {id}
-    </div>
-    <div className="table-cell">
-       {name}
-    </div>
-    <div className="table-cell">
-        {price}$
-    </div>
-    <div className="table-cell">
+  const { _id, name, price, image } = props.product;
+  return (
+    <div className="table-rows">
+      <div className="table-cell">{_id}</div>
+      <div className="table-cell">{name}</div>
+      <div className="table-cell">{price}$</div>
+      <div className="table-cell">
         <img alt="" src={image} />
-    </div>
-    <div className="table-cell" style={{placeSelf: 'center'}}>
-        <ColorButton variant="contained" color="secondary" className="edit-button" onClick={handleUpdate}>
-                Edit
+      </div>
+      <div className="table-cell" style={{ placeSelf: "center" }}>
+        <ColorButton
+          variant="contained"
+          color="secondary"
+          className="edit-button"
+          onClick={handleUpdate}
+        >
+          Edit
         </ColorButton>
-        <ColorButton variant="contained" color="primary" className="disable-button" onClick={handleDisable}>
-                Disable
+        <ColorButton
+          variant="contained"
+          color="primary"
+          className="disable-button"
+          onClick={handleDisable}
+        >
+          Disable
         </ColorButton>
+      </div>
     </div>
- 
-</div>
-
+  );
 }

@@ -171,10 +171,10 @@ function ProductListFemaleTshirt(props) {
                     <ProductFemaleTshirt
                       name={product.name}
                       price={product.price}
-                      key={product.id}
+                      key={product._id}
                       img={product.image[0]}
                       img1={product.image[1]}
-                      id={product.id}
+                      _id={product._id}
                       addToCart={props.addToCart}
                     />
                   );
