@@ -1,5 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
-import adminContext from "../../../context/adminContext"
+import React, { useState, useEffect } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -42,22 +41,23 @@ const useStyles = makeStyles(styles);
 
 export default function UserProfile(props) {
     const classes = useStyles();
-    const { adminData, setadminData } = useContext(adminContext);
-    const [ adminDisplayName , setAdminDisplayName ] = useState("");
-    const [ adminAddress, setAdminAddress ] = useState("");
-    const [ adminPhoneNumber, setAdminPhoneNumber ] = useState("");
-    const [ adminEmail, setAdminEmail ] = useState("");
-
-    const getAdminData = () => {
-        setAdminDisplayName(adminData.admin ? adminData.admin.displayName||adminData.displayName : "");
-        setAdminAddress(adminData.admin ? adminData.admin.address: "");
-        setAdminPhoneNumber(adminData.admin ? adminData.admin.phoneNumber: "");
-        setAdminEmail(adminData.admin ? adminData.admin.email: "");
-    };
+    const [admins, handleAdmin] = useState(0);
 
     useEffect(() => {
-        getAdminData();
-    }, [])
+        axios({
+            "method": "GET",
+            "url": "http://localhost:8080/admin",
+            "params": {
+            "language_code": "en"
+            }
+        })
+        .then((response) => {
+            handleAdmin(response.data)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    });
 
     const handleFB = () =>{
         window.open("https://www.facebook.com/do2999")
@@ -80,7 +80,9 @@ export default function UserProfile(props) {
                         formControlProps={{
                         fullWidth: true,
                         }}
-                    />
+                    >
+                        {admins.displayName}
+                    </CustomInput>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={6}>
                     <CustomInput
@@ -122,10 +124,19 @@ export default function UserProfile(props) {
                     </GridItem>
                 </GridContainer>
                 <GridContainer>
-                    <GridItem xs={12} sm={12} md={12}>
+                    <GridItem xs={12} sm={12} md={4}>
                     <CustomInput
-                        labelText="Address"
-                        id="address"
+                        labelText="City"
+                        id="city"
+                        formControlProps={{
+                        fullWidth: true,
+                        }}
+                    />
+                    </GridItem>
+                    <GridItem xs={12} sm={12} md={4}>
+                    <CustomInput
+                        labelText="Country"
+                        id="country"
                         formControlProps={{
                         fullWidth: true,
                         }}
@@ -159,28 +170,20 @@ export default function UserProfile(props) {
                 <CardAvatar profile>
                 <a href="#pablo" onClick={(e) => e.preventDefault()}>
                     {/* <img src={avatar} alt="..." /> */}
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png" />
+                    <img src="https://scontent-xsp1-1.xx.fbcdn.net/v/t1.6435-9/57128382_1080220895519208_2983454892787499008_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=TjBsOw1Cx6AAX9pdB8X&_nc_ht=scontent-xsp1-1.xx&oh=c0029b77880f86032c2920f81fdc2ab2&oe=60CF59AC" />
                 </a>
                 </CardAvatar>
                 <CardBody profile className='set-padding'>
-                    <h4 style={{marginBottom:'-12%'}}>Display name:</h4>
-                    <p className={classes.cardTitle} style={{fontSize:'1.5rem'}}>{adminDisplayName}</p>
-                    <h4 className={classes.cardTitle}>Personal Info:</h4>
-                    <p style={{fontSize:'0.9rem', marginTop:'-9%'}}>
-                        {adminDisplayName}
-                        <br/>
-                        {adminEmail}
-                        <br/>
-                        {adminPhoneNumber}
-                    </p>
-                    <p className={classes.description}>
-                        Don{"'"}t be scared of the truth because we need to restart the
-                        human foundation in truth And I love you like Kanye loves Kanye
-                        I love Rick Owens’ bed design but the back is...
-                    </p>
-                    {/* <Button color="primary" round>
-                        <Link style={{color:'#fff'}} onClick={handleFB}>Follow</Link>
-                    </Button> */}
+                <h6 className={classes.cardCategory} style={{fontSize:'0.9rem'}}>CEO / CO-FOUNDER</h6>
+                <h4 className={classes.cardTitle} style={{fontSize:'1.5rem'}}>khanh1</h4>
+                <p className={classes.description}>
+                    Don{"'"}t be scared of the truth because we need to restart the
+                    human foundation in truth And I love you like Kanye loves Kanye
+                    I love Rick Owens’ bed design but the back is...
+                </p>
+                <Button color="primary" round>
+                    <Link style={{color:'#fff'}} onClick={handleFB}>Follow</Link>
+                </Button>
                 </CardBody>
             </Card>
             </GridItem>

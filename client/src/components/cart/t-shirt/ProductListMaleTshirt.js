@@ -51,39 +51,6 @@ function ProductListMaleTshirt(props) {
   };
   return (
     <Container maxWidth={false} className="background">
-      {/* Categories */}
-      <div style={{textAlign: '-webkit-center', backgroundColor: '#f0ede8', margin: '0 -1.7%'}}>
-        <ul id="nav-main-list">
-          <li class="nav-main-sublist dropdown">
-            <a href="javascript:void(0)" class="dropbtn" style={{backgroundColor: '#fffefa', color: '#bd7f32'}}>Man</a>
-            <div class="dropdown-content">
-              <Link to="/product">
-                <a href="/product">Jacket</a>
-              </Link>
-              <Link to="/jean">
-                <a href="/jean">Jean</a>
-              </Link>
-              <Link to="/t-shirt">
-                <a href="/t-shirt">T-shirt</a>
-              </Link>
-            </div>
-          </li>
-          <li class="nav-main-sublist dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Woman</a>
-            <div class="dropdown-content">
-              <Link to="/femalejacket">
-                <a href="/femalejacket">Jacket</a>
-              </Link>
-              <Link to="/femalejean">
-                <a href="/femalejean">Jean</a>
-              </Link>
-              <Link to="/femalet-shirt">
-                <a href="/femalet-shirt">T-shirt</a>
-              </Link>
-            </div>
-          </li>
-        </ul>
-      </div>
       <form style={{ overflow: "hidden" }}>
         <input
           style={{ width: "15%", float: "right", clear: "both" }}

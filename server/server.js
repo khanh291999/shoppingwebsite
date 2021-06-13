@@ -1261,10 +1261,9 @@ app.patch("/user/:id", async (req, res) => {
       { id: req.params.id },
       {
         $set: {
-          email: req.body.email,
-          displayName: req.body.displayName,
-          address: req.body.address,
-          phoneNumber: req.body.phoneNumber,
+          name: req.body.name,
+          price: req.body.price,
+          image: req.body.image,
         },
       }
     );
