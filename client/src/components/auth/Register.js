@@ -4,8 +4,6 @@ import UserContext from "../../context/userContext";
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
 import '../../assets/Register.css'
-import FacebookIcon from '@material-ui/icons/Facebook';
-import GoogleIcon from '../../assets/icons/google_icon.png'
 import Grid from '@material-ui/core/Grid'
 import Facebook from './Facebook'
 import Google from './Google'

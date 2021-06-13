@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true, minlength: 5 },
   displayName: { type: String },
   address: {type:String},
-  phoneNumber: {type:String}
+  phoneNumber: {type:String},
+  // fullName: {type: String}
 });
 userSchema.plugin(AutoIncrement, {id: 'id_user',inc_field: 'id', start_seq:'5'});
 module.exports = User = mongoose.model("user", userSchema);
