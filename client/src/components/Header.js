@@ -103,6 +103,7 @@ function Header(props) {
       token: undefined,
       user: undefined,
     });
+    history.push("/");
     localStorage.setItem("auth-token", "");
     localStorage.setItem("user-login", "");
   };
@@ -156,8 +157,8 @@ function Header(props) {
             Welcome, {userData.user.displayName || userData.displayName}
           </MenuItem>
           <MenuItem onClick={handleMenuClose}>
-            <Link to="/userprofile" style={{ color: "black" }}>
-              Profile
+            <Link to="/userprofile">
+              <a style={{ color: "black" }}>Profile</a>
             </Link>
           </MenuItem>
           <MenuItem onClick={handleMenuClose}>
@@ -316,44 +317,6 @@ function Header(props) {
         </AppBar>
         {renderMobileMenu}
         {renderMenu}
-        <div
-          style={{ textAlign: "-webkit-center", backgroundColor: "#f0ede8" }}
-        >
-          <ul id="nav-main-list">
-            <li class="nav-main-sublist dropdown">
-              <a href="javascript:void(0)" class="dropbtn">
-                Man
-              </a>
-              <div class="dropdown-content">
-                <Link to="/product">
-                  <a href="/product">Jacket</a>
-                </Link>
-                <Link to="/jean">
-                  <a href="/jean">Jean</a>
-                </Link>
-                <Link to="/t-shirt">
-                  <a href="/t-shirt">T-shirt</a>
-                </Link>
-              </div>
-            </li>
-            <li class="nav-main-sublist dropdown">
-              <a href="javascript:void(0)" class="dropbtn">
-                Woman
-              </a>
-              <div class="dropdown-content">
-                <Link to="/femalejacket">
-                  <a href="/femalejacket">Jacket</a>
-                </Link>
-                <Link to="/femalejean">
-                  <a href="/femalejean">Jean</a>
-                </Link>
-                <Link to="/femalet-shirt">
-                  <a href="/femalet-shirt">T-shirt</a>
-                </Link>
-              </div>
-            </li>
-          </ul>
-        </div>
       </div>
     </>
   );
