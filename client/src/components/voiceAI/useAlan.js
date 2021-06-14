@@ -1,9 +1,11 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useContext } from "react";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import get from "lodash/get";
 import axios from "axios";
+import Swal from "sweetalert2";
+import UserContext from "./../../context/userContext";
 
 const COMMANDS = {
   OPEN_CART: "open-cart",
@@ -19,13 +21,24 @@ const COMMANDS = {
   SHOW_RETURN: "show-return",
   SHOW_PRIVACY: "show-privacy",
   SHOW_DELIVERY: "show-delivery",
-  // PURCHASE_ITEMS: "purchase-items"
+  BUY_PRODUCT: "buy-product",
 };
 function AlanTrigger(props) {
   const history = useHistory();
   const [alanInstance, setAlanInstance] = useState();
   const [data, setData] = useState();
+  const { userData, setUserData } = useContext(UserContext);
 
+  var today = new Date(),
+    date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+  var timer = new Date(),
+    time =
+      timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds();
   const openCart = useCallback(() => {
     if (props.quantity == 0) {
       alanInstance.playText("You have no items in your cart");
@@ -117,14 +130,64 @@ function AlanTrigger(props) {
     history.push("/shippingdetails");
   }, [alanInstance]);
 
-  // const purchaseItems = useCallback(() => {
-  //   if (isCartEmpty) {
-  //     alanInstance.playText("Your cart is empty")
-  //   } else {
-  //     alanInstance.playText("Checking out")
-  //     checkout()
-  //   }
-  // }, [alanInstance, isCartEmpty, checkout])
+  const buyProduct = ({ detail: { shipping_fee } }) => {
+    let shippingfee = undefined;
+    if (shipping_fee == "Free Ship") {
+      shippingfee = 0;
+    } else if (shipping_fee == "Ho Chi Minh") {
+      shippingfee = 1;
+    } else if (shipping_fee == "Nationwide") {
+      shippingfee = 2;
+    }
+    const { cartItems = [] } = props;
+    const total = cartItems.reduce((total, pic) => {
+      return (total = total + pic.quantity * pic.price);
+    }, 0);
+    const allTotal = total + shippingfee;
+    if (!userData.user) {
+      alanInstance.playText(
+        `Please login before you can buy product through me`
+      );
+    } else if (props.quantity == 0) {
+      alanInstance.playText(
+        "You have no items in your cart, Please add some product before you can purchase"
+      );
+    } else {
+      axios
+        .post("http://localhost:8080/cart", {
+          name: userData.user.displayName,
+          address: userData.user.address,
+          phoneNumber: userData.user.phoneNumber,
+          paypalstatus: "Paid by COD",
+          status: "Waitting for Confirm",
+          product: props.cartItems,
+          userid: userData.user.id,
+          date: date,
+          time: time,
+          editedby: "",
+          shippingfee,
+          total,
+          allTotal,
+        })
+        .then((res) => {
+          Swal.fire({
+            title: "Purchase Successfully",
+            timer: 1000,
+            icon: "success",
+          });
+          props.clearCart();
+        })
+        .catch((err) => {
+          Swal.fire({
+            title: "Purchase Unsuccessfully, Please contact our admin",
+            text: err.message,
+            timer: 1000,
+            icon: "error",
+          });
+        });
+      alanInstance.playText(`Thanks for your purchase`);
+    }
+  };
 
   useEffect(() => {
     const getAllProduct = async () => {
@@ -149,6 +212,7 @@ function AlanTrigger(props) {
     window.addEventListener(COMMANDS.SHOW_RETURN, showReturn);
     window.addEventListener(COMMANDS.SHOW_PRIVACY, showPrivacy);
     window.addEventListener(COMMANDS.SHOW_DELIVERY, showDelivery);
+    window.addEventListener(COMMANDS.BUY_PRODUCT, buyProduct);
     return () => {
       window.removeEventListener(COMMANDS.OPEN_CART, openCart);
       window.removeEventListener(COMMANDS.CLOSE_CART, closeCart);
@@ -166,6 +230,7 @@ function AlanTrigger(props) {
       window.removeEventListener(COMMANDS.SHOW_RETURN, showReturn);
       window.removeEventListener(COMMANDS.SHOW_PRIVACY, showPrivacy);
       window.removeEventListener(COMMANDS.SHOW_DELIVERY, showDelivery);
+      window.removeEventListener(COMMANDS.BUY_PRODUCT, buyProduct);
     };
   }, [
     openCart,
@@ -181,6 +246,7 @@ function AlanTrigger(props) {
     showReturn,
     showPrivacy,
     showDelivery,
+    buyProduct,
   ]);
 
   useEffect(() => {
@@ -220,6 +286,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     deleteCart: (id_cart) => {
       dispatch({ type: "DELETE_CART", payload: id_cart });
+    },
+    clearCart: () => {
+      dispatch({ type: "CLEAR_CART" });
     },
   };
 };

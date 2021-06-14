@@ -156,16 +156,12 @@ function Header(props) {
           <MenuItem>
             Welcome, {userData.user.displayName || userData.displayName}
           </MenuItem>
-          <MenuItem onClick={handleMenuClose}>
-            <Link to="/userprofile">
-              <a style={{ color: "black" }}>Profile</a>
-            </Link>
-          </MenuItem>
-          <MenuItem onClick={handleMenuClose}>
-            <Link to="/status" style={{ color: "black" }}>
-              Order Status
-            </Link>
-          </MenuItem>
+          <Link to="/userprofile" style={{ color: "black" }}>
+            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+          </Link>
+          <Link to="/status" style={{ color: "black" }}>
+            <MenuItem onClick={handleMenuClose}>Order Status</MenuItem>
+          </Link>
           <MenuItem onClick={logout}>Log out</MenuItem>
         </div>
       ) : (

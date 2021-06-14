@@ -29,14 +29,6 @@ mongoose.connection.on("connected", () => {
 });
 //Schema
 const Schema = mongoose.Schema;
-// const BlogPostSchema = new Schema({
-//     id:Number,
-//     name:String,
-//     src:String,
-//     price:Number,
-//     size:Array,
-// });
-
 //Opinion
 const opinionSchema = mongoose.Schema({
   username: String,
@@ -68,15 +60,6 @@ CartSchema.plugin(AutoIncrement, { id: "id_cart", inc_field: "id" });
 //     password:String
 // })
 
-const JacketSchema = new mongoose.Schema({
-  id: Number,
-  name: String,
-  image: Array,
-  price: Number,
-  size: Array,
-});
-JacketSchema.plugin(AutoIncrement, { inc_field: "id", start_seq: "6" });
-
 const DisableJacketSchema = new mongoose.Schema({
   name: String,
   image: Array,
@@ -89,19 +72,6 @@ const DisableJacketSchema = new mongoose.Schema({
   L: Number,
   XL: Number,
   XXL: Number,
-});
-
-const JeanSchema = new Schema({
-  id: Number,
-  name: String,
-  image: Array,
-  price: Number,
-  size: Array,
-});
-JeanSchema.plugin(AutoIncrement, {
-  id: "id_jean",
-  inc_field: "id",
-  start_seq: "9",
 });
 
 const DisableJeanSchema = new mongoose.Schema({
@@ -119,19 +89,6 @@ const DisableJeanSchema = new mongoose.Schema({
   XXL: Number,
 });
 
-const TshirtSchema = new Schema({
-  id: Number,
-  name: String,
-  image: Array,
-  price: Number,
-  size: Array,
-});
-TshirtSchema.plugin(AutoIncrement, {
-  id: "id_t-shirt",
-  inc_field: "id",
-  start_seq: "35",
-});
-
 const DisableTshirtSchema = new mongoose.Schema({
   id: Number,
   name: String,
@@ -145,19 +102,6 @@ const DisableTshirtSchema = new mongoose.Schema({
   L: Number,
   XL: Number,
   XXL: Number,
-});
-
-const FemaleJacketSchema = new Schema({
-  id: Number,
-  name: String,
-  image: Array,
-  price: Number,
-  size: Array,
-});
-FemaleJacketSchema.plugin(AutoIncrement, {
-  id: "id_femalejacket",
-  inc_field: "id",
-  start_seq: "9",
 });
 
 const DisableFemaleJacketSchema = new mongoose.Schema({
@@ -175,19 +119,6 @@ const DisableFemaleJacketSchema = new mongoose.Schema({
   XXL: Number,
 });
 
-const FemaleJeanSchema = new Schema({
-  id: Number,
-  name: String,
-  image: Array,
-  price: Number,
-  size: Array,
-});
-FemaleJeanSchema.plugin(AutoIncrement, {
-  id: "id_femalejean",
-  inc_field: "id",
-  start_seq: "9",
-});
-
 const DisableFemaleJeanSchema = new mongoose.Schema({
   id: Number,
   name: String,
@@ -201,19 +132,6 @@ const DisableFemaleJeanSchema = new mongoose.Schema({
   L: Number,
   XL: Number,
   XXL: Number,
-});
-
-const FemaleTshirtSchema = new Schema({
-  id: Number,
-  name: String,
-  image: Array,
-  price: Number,
-  size: Array,
-});
-FemaleTshirtSchema.plugin(AutoIncrement, {
-  id: "id_femalet-shirt",
-  inc_field: "id",
-  start_seq: "11",
 });
 
 const DisableFemaleTshirtSchema = new mongoose.Schema({
@@ -230,13 +148,6 @@ const DisableFemaleTshirtSchema = new mongoose.Schema({
   XL: Number,
   XXL: Number,
 });
-
-// const AdminSchema = new mongoose.Schema({
-//     email:String,
-//     password:String,
-//     displayName:String,
-//     type:Number
-// });
 
 const PaypalSchema = new mongoose.Schema({
   orderID: Object,
@@ -272,33 +183,18 @@ const ProductSchema = new Schema({
 
 //Model
 const Opinion = mongoose.model("opinion", opinionSchema);
-// const BlogPost = mongoose.model('BlogPost', BlogPostSchema);
 const Cart = mongoose.model("cart", CartSchema);
-// const Admin = mongoose.model('admin',AdminSchema)
-const Jacket = mongoose.model("jacket", JacketSchema);
-
-// Create a change stream. The 'change' event gets emitted when there's a
-// change in the database
-Jacket.watch().on("change", (data) =>
-  console.log(new Date(), JSON.stringify(data))
-);
-
 const DisableJacket = mongoose.model("disablejacket", DisableJacketSchema);
-const Jean = mongoose.model("jean", JeanSchema);
 const DisableJean = mongoose.model("disablejean", DisableJeanSchema);
-const Tshirt = mongoose.model("t-shirt", TshirtSchema);
 const DisableTshirt = mongoose.model("disablet-shirt", DisableTshirtSchema);
-const FemaleJacket = mongoose.model("femalejacket", FemaleJacketSchema);
 const DisableFemaleJacket = mongoose.model(
   "disablefemalejacket",
   DisableFemaleJacketSchema
 );
-const FemaleJean = mongoose.model("jeanfemale", FemaleJeanSchema);
 const DisableFemaleJean = mongoose.model(
   "disablefemalejean",
   DisableFemaleJeanSchema
 );
-const FemaleTshirt = mongoose.model("t-shirtfemale", FemaleTshirtSchema);
 const DisableFemaleTshirt = mongoose.model(
   "disablefemalet-shirt",
   DisableFemaleTshirtSchema
@@ -308,32 +204,17 @@ const Product = mongoose.model("product", ProductSchema);
 //Saving data to our mongo database
 const data = {};
 
-// const newBlogPost = new BlogPost(data);
-const newCart = new Cart(data); // instance of the model
-// const newAdmin = new Admin(data);
-const newJacket = new Jacket(data);
+// instance of the model
+const newCart = new Cart(data);
 const newDisableJacket = new DisableJacket(data);
-const newJean = new Jean(data);
 const newDisableJean = new DisableJean(data);
-const newTshirt = new Tshirt(data);
 const newDisableTshirt = new DisableTshirt(data);
-const newFemaleJacket = new FemaleJacket(data);
 const newDisableFemaleJacket = new DisableFemaleJacket(data);
-const newFemaleJean = new FemaleJean(data);
 const newDisableFemaleJean = new DisableFemaleJean(data);
-const newFemaleTshirt = new FemaleTshirt(data);
 const newDisableFemaleTshirt = new DisableFemaleTshirt(data);
 const newAdmin = new Admin(data);
 const newPaypal = new Paypal(data);
 const newProduct = new Product(data);
-//.save()
-// newBlogPost.save((error)=>{
-//     if(error){
-//         console.log('Ooops, something happened');
-//     }else{
-//         console.log('Data has been saved!!!')
-//     }
-// })
 
 //HTTP request logger
 app.use(express.json());
@@ -383,75 +264,6 @@ app.post("/opinion", (req, res) => {
 });
 
 //Jacket
-app.get("/jacket", (req, res) => {
-  const data = {};
-
-  Jacket.find({})
-    .then((data) => {
-      // console.log('Data: ', data);
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error: ", daerrorta);
-    });
-});
-
-app.get("/jacket/:id", (req, res) => {
-  const data = {};
-  Jacket.findOne({
-    id: req.params.id,
-  })
-    .then((data) => {
-      // console.log('Data: ', data);
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error: ", daerrorta);
-    });
-});
-
-app.post("/jacket", (req, res) => {
-  const data = req.body;
-
-  const newJacket = new Jacket(data);
-  newJacket.save((error) => {
-    if (error) {
-      res.status(500).json({ msg: "Sorry, internal server errors" });
-    }
-    return res.json({
-      msg: " Your data has been saved!!!",
-    });
-  });
-});
-
-app.delete("/jacket/:id", async (req, res) => {
-  try {
-    console.log(req.params.id);
-    const removedPost = await Jacket.remove({ id: req.params.id });
-    res.json(removedPost);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
-
-app.patch("/jacket/:id", async (req, res) => {
-  try {
-    const updatePost = await Jacket.updateOne(
-      { id: req.params.id },
-      {
-        $set: {
-          name: req.body.name,
-          price: req.body.price,
-          image: req.body.image,
-        },
-      }
-    );
-    res.json(updatePost);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
-
 app.get("/disablejacket", (req, res) => {
   const data = {};
 
@@ -504,75 +316,6 @@ app.delete("/disablejacket/:_id", async (req, res) => {
 });
 
 //Jean
-app.get("/jean", (req, res) => {
-  const data = {};
-
-  Jean.find({})
-    .then((data) => {
-      // console.log('Data: ', data);
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error: ", daerrorta);
-    });
-});
-
-app.get("/jean/:id", (req, res) => {
-  const data = {};
-  Jean.findOne({
-    id: req.params.id,
-  })
-    .then((data) => {
-      // console.log('Data: ', data);
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error: ", daerrorta);
-    });
-});
-
-app.post("/jean", (req, res) => {
-  const data = req.body;
-
-  const newJean = new Jean(data);
-  newJean.save((error) => {
-    if (error) {
-      res.status(500).json({ msg: "Sorry, internal server errors" });
-    }
-    return res.json({
-      msg: " Your data has been saved!!!",
-    });
-  });
-});
-
-app.delete("/jean/:id", async (req, res) => {
-  try {
-    console.log(req.params.id);
-    const removedPost = await Jean.remove({ id: req.params.id });
-    res.json(removedPost);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
-
-app.patch("/jean/:id", async (req, res) => {
-  try {
-    const updatePost = await Jean.updateOne(
-      { id: req.params.id },
-      {
-        $set: {
-          name: req.body.name,
-          price: req.body.price,
-          image: req.body.image,
-        },
-      }
-    );
-    res.json(updatePost);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
-
 app.get("/disablejean", (req, res) => {
   const data = {};
 
@@ -625,75 +368,6 @@ app.delete("/disablejean/:_id", async (req, res) => {
 });
 
 //T-shirt
-app.get("/t-shirt", (req, res) => {
-  const data = {};
-
-  Tshirt.find({})
-    .then((data) => {
-      // console.log('Data: ', data);
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error: ", daerrorta);
-    });
-});
-
-app.get("/t-shirt/:id", (req, res) => {
-  const data = {};
-  Tshirt.findOne({
-    id: req.params.id,
-  })
-    .then((data) => {
-      // console.log('Data: ', data);
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error: ", daerrorta);
-    });
-});
-
-app.post("/t-shirt", (req, res) => {
-  const data = req.body;
-
-  const newTshirt = new Tshirt(data);
-  newTshirt.save((error) => {
-    if (error) {
-      res.status(500).json({ msg: "Sorry, internal server errors" });
-    }
-    return res.json({
-      msg: " Your data has been saved!!!",
-    });
-  });
-});
-
-app.delete("/t-shirt/:id", async (req, res) => {
-  try {
-    console.log(req.params.id);
-    const removedPost = await Tshirt.remove({ id: req.params.id });
-    res.json(removedPost);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
-
-app.patch("/t-shirt/:id", async (req, res) => {
-  try {
-    const updatePost = await Tshirt.updateOne(
-      { id: req.params.id },
-      {
-        $set: {
-          name: req.body.name,
-          price: req.body.price,
-          image: req.body.image,
-        },
-      }
-    );
-    res.json(updatePost);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
-
 app.get("/disablet-shirt", (req, res) => {
   const data = {};
 
@@ -746,75 +420,6 @@ app.delete("/disablet-shirt/:_id", async (req, res) => {
 });
 
 //FemaleJacket
-app.get("/femalejacket", (req, res) => {
-  const data = {};
-
-  FemaleJacket.find({})
-    .then((data) => {
-      // console.log('Data: ', data);
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error: ", daerrorta);
-    });
-});
-
-app.get("/femalejacket/:id", (req, res) => {
-  const data = {};
-  FemaleJacket.findOne({
-    id: req.params.id,
-  })
-    .then((data) => {
-      // console.log('Data: ', data);
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error: ", daerrorta);
-    });
-});
-
-app.post("/femalejacket", (req, res) => {
-  const data = req.body;
-
-  const newFemaleJacket = new FemaleJacket(data);
-  newFemaleJacket.save((error) => {
-    if (error) {
-      res.status(500).json({ msg: "Sorry, internal server errors" });
-    }
-    return res.json({
-      msg: " Your data has been saved!!!",
-    });
-  });
-});
-
-app.delete("/femalejacket/:id", async (req, res) => {
-  try {
-    console.log(req.params.id);
-    const removedPost = await FemaleJacket.remove({ id: req.params.id });
-    res.json(removedPost);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
-
-app.patch("/femalejacket/:id", async (req, res) => {
-  try {
-    const updatePost = await FemaleJacket.updateOne(
-      { id: req.params.id },
-      {
-        $set: {
-          name: req.body.name,
-          price: req.body.price,
-          image: req.body.image,
-        },
-      }
-    );
-    res.json(updatePost);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
-
 app.get("/disablefemalejacket", (req, res) => {
   const data = {};
 
@@ -869,75 +474,6 @@ app.delete("/disablefemalejacket/:_id", async (req, res) => {
 });
 
 //FemaleJean
-app.get("/femalejean", (req, res) => {
-  const data = {};
-
-  FemaleJean.find({})
-    .then((data) => {
-      // console.log('Data: ', data);
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error: ", daerrorta);
-    });
-});
-
-app.get("/femalejean/:id", (req, res) => {
-  const data = {};
-  FemaleJean.findOne({
-    id: req.params.id,
-  })
-    .then((data) => {
-      // console.log('Data: ', data);
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error: ", daerrorta);
-    });
-});
-
-app.post("/femalejean", (req, res) => {
-  const data = req.body;
-
-  const newFemaleJean = new FemaleJean(data);
-  newFemaleJean.save((error) => {
-    if (error) {
-      res.status(500).json({ msg: "Sorry, internal server errors" });
-    }
-    return res.json({
-      msg: " Your data has been saved!!!",
-    });
-  });
-});
-
-app.delete("/femalejean/:id", async (req, res) => {
-  try {
-    console.log(req.params.id);
-    const removedPost = await FemaleJean.remove({ id: req.params.id });
-    res.json(removedPost);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
-
-app.patch("/femalejean/:id", async (req, res) => {
-  try {
-    const updatePost = await FemaleJean.updateOne(
-      { id: req.params.id },
-      {
-        $set: {
-          name: req.body.name,
-          price: req.body.price,
-          image: req.body.image,
-        },
-      }
-    );
-    res.json(updatePost);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
-
 app.get("/disablefemalejean", (req, res) => {
   const data = {};
 
@@ -991,75 +527,6 @@ app.delete("/disablefemalejean/:_id", async (req, res) => {
 });
 
 //FemaleT-shirt
-app.get("/femalet-shirt", (req, res) => {
-  const data = {};
-
-  FemaleTshirt.find({})
-    .then((data) => {
-      // console.log('Data: ', data);
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error: ", daerrorta);
-    });
-});
-
-app.get("/femalet-shirt/:id", (req, res) => {
-  const data = {};
-  FemaleTshirt.findOne({
-    id: req.params.id,
-  })
-    .then((data) => {
-      // console.log('Data: ', data);
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error: ", daerrorta);
-    });
-});
-
-app.post("/femalet-shirt", (req, res) => {
-  const data = req.body;
-
-  const newFemaleTshirt = new FemaleTshirt(data);
-  newFemaleTshirt.save((error) => {
-    if (error) {
-      res.status(500).json({ msg: "Sorry, internal server errors" });
-    }
-    return res.json({
-      msg: " Your data has been saved!!!",
-    });
-  });
-});
-
-app.delete("/femalet-shirt/:id", async (req, res) => {
-  try {
-    console.log(req.params.id);
-    const removedPost = await FemaleTshirt.remove({ id: req.params.id });
-    res.json(removedPost);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
-
-app.patch("/femalet-shirt/:id", async (req, res) => {
-  try {
-    const updatePost = await FemaleTshirt.updateOne(
-      { id: req.params.id },
-      {
-        $set: {
-          name: req.body.name,
-          price: req.body.price,
-          image: req.body.image,
-        },
-      }
-    );
-    res.json(updatePost);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
-
 app.get("/disablefemalet-shirt", (req, res) => {
   const data = {};
 
@@ -1151,19 +618,6 @@ app.patch("/cart/:id", async (req, res) => {
     res.json({ message: err });
   }
 });
-
-// app.get('/admin', (req, res) =>{
-//     const data = {
-//     };
-//     Admin.find({})
-//     .then((data)=>{
-//         console.log('Data: ', data);
-//         res.json(data);
-//     })
-//     .catch((error)=>{
-//         console.log('error: ', daerrorta)
-//     })
-// });
 
 //paypal
 app.get("/paypal", (req, res) => {
@@ -1329,10 +783,10 @@ app.delete("/user/:id", async (req, res) => {
   }
 });
 
-app.patch("/user/:id", async (req, res) => {
+app.patch("/user/:_id", async (req, res) => {
   try {
     const updatePost = await User.updateOne(
-      { id: req.params.id },
+      { _id: req.params._id },
       {
         $set: {
           email: req.body.email,
@@ -1351,12 +805,8 @@ app.patch("/user/:id", async (req, res) => {
 //Product
 app.get("/product", (req, res) => {
   const data = {};
-
-  console.time("start product");
   Product.find({})
     .then((data) => {
-      // console.log('Data: ', data);
-      console.timeEnd("start product");
       res.json(data);
     })
     .catch((error) => {
