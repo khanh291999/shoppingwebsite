@@ -703,25 +703,26 @@ app.post("/admin", (req, res) => {
   });
 });
 
-app.delete("/admin/:id", async (req, res) => {
+app.delete("/admin/:_id", async (req, res) => {
   try {
-    console.log(req.params.id);
-    const removedPost = await Admin.remove({ id: req.params.id });
+    const removedPost = await Admin.remove({ _id: req.params._id });
     res.json(removedPost);
   } catch (err) {
     res.json({ message: err });
   }
 });
 
-app.patch("/admin/:id", async (req, res) => {
+app.patch("/admin/:_id", async (req, res) => {
   try {
     const updatePost = await Admin.updateOne(
-      { id: req.params.id },
+      { _id: req.params._id },
       {
         $set: {
-          name: req.body.name,
-          price: req.body.price,
-          image: req.body.image,
+          email: req.body.email,
+          displayName: req.body.displayName,
+          address: req.body.address,
+          phoneNumber: req.body.phoneNumber,
+          description: req.body.description,
         },
       }
     );

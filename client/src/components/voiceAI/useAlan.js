@@ -53,7 +53,7 @@ function AlanTrigger(props) {
     history.push("/");
   }, [alanInstance]);
 
-  const addItem = ({ detail: { name, size } }) => {
+  const addItem = ({ detail: { name, quantity, size } }) => {
     const item = data?.find((i) => i.name.toLowerCase() === name.toLowerCase());
     if (item == null) {
       alanInstance.playText(`I cannot find the ${name} item`);
@@ -64,7 +64,7 @@ function AlanTrigger(props) {
         name,
         price: item.price,
         img: item.image[0],
-        quantity: 1,
+        quantity: quantity,
         size,
       });
       alanInstance.playText(`Add ${size} of the ${name} item to your cart`);
