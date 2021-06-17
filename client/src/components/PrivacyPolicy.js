@@ -49,7 +49,7 @@ export default function PrivacyPolicy() {
                         <b>1. Who we are</b>
                         <br/>
                         <span>K&Q E-commerce B.V. is responsible for the processing of your personal data and acts as the “data controller,” which means we make the decisions regarding the personal data we collect from you.
-                        If you have any questions, feedback or want to know more about how your personal data is processed, or if you want to access, correct or remove your personal data, please contact us at consumercare@scotch-soda.com. You may also write to us at: K&Q E-commerce B.V., Parellaan 76, 2132 WS, Hoofddorp, the Netherlands (department web store).</span>
+                        If you have any questions, feedback or want to know more about how your personal data is processed, or if you want to access, correct or remove your personal data, please contact us at 17110071@student.hcmute.edu.vn. You may also write to us at: K&Q E-commerce B.V., 1 Võ Văn Ngân, Linh Chiểu, Thủ Đức, Ho Chi Minh, Vietnam (department web store).</span>
                     </div>
                     <br/>
                     <div>
@@ -76,7 +76,7 @@ export default function PrivacyPolicy() {
                             <i>Contact customer service</i>
                             <li>If you contact our customer service, we will collect your name and e-mail address (and any additional data you may provide us with) to be able to respond to your questions or comments or to provide better service.</li>
                             <i>Recommend products you may be interested in</i>
-                            <li>We will inform our customers (or potential customers after their consent) on new products, specials and other promotional activities by sending you our newsletter. If you no longer want to receive this newsletter, you can unsubscribe by use of the relevant opt-out button in the newsletter or send an e-mail to consumercare@scotch-soda.com.</li>
+                            <li>We will inform our customers (or potential customers after their consent) on new products, specials and other promotional activities by sending you our newsletter. If you no longer want to receive this newsletter, you can unsubscribe by use of the relevant opt-out button in the newsletter or send an e-mail to 17110071@student.hcmute.edu.vn.</li>
                             <i>Apply for a job</i>
                             <li>If you apply for a job at K&Q through our Web Services, we will collect your name, e-mail address, phone number, CV/resume, photo, and cover letter.</li>
                             <i>Choosing a digital receipt</i>
@@ -89,14 +89,14 @@ export default function PrivacyPolicy() {
                         <p style={{color:'#000'}}>We only collect and further process your personal data for the purposes mentioned in the previous section.</p>
                         <p style={{color:'#000'}}>Unless the further use of your data is compatible with the original purpose for which the data was collected, we will ask for your consent before using your personal data for purposes other than those listed above. We will inform you of, and, if necessary ask your consent for, any changes in the use of your personal data.</p>
                         <p style={{color:'#000'}}>We may use your data for decisions based on automated decision-making, including profiling. For instance, we may use previous purchase data and or browsing data to suggest matching products to those previous purchases. By obtaining your consent, we are able to use automated decision-making both in advertising and on our Web Services.</p>
-                        <p style={{color:'#000'}}>We will inform you of new products, specials and other promotional activities by sending you our newsletter. If you no longer want to receive this newsletter, you can unsubscribe by use of the relevant opt-out button in the newsletter or send an e-mail to consumercare@scotch-soda.com.</p>
+                        <p style={{color:'#000'}}>We will inform you of new products, specials and other promotional activities by sending you our newsletter. If you no longer want to receive this newsletter, you can unsubscribe by use of the relevant opt-out button in the newsletter or send an e-mail to 17110071@student.hcmute.edu.vn.</p>
                     </div>
                     <br/>
                     <b>4. How we may share your data</b>
                     <div>
                         <p style={{color:'#000'}}>We will not share your personal data with third parties except as disclosed below or with your additional consent. We may share your personal data with our third-party service providers, including, but not limited to:</p>
                         <br/>
-                        <div style={{lineHeight:'1', paddingLeft:'10px'}}>
+                        <div style={{lineHeight:'1.5', paddingLeft:'10px'}}>
                             <i>Functional</i>
                             <li>Simplybook.it - to help us set up an appointment with you when you book a styling session.</li>
                             <li>Paazl - to provide the labels for the packages that we send to you</li>
@@ -130,7 +130,7 @@ export default function PrivacyPolicy() {
                     <div>
                         <i>Consent</i>
                         <div>By the following acts you give us your consent to process your personal data:</div>
-                        <div style={{lineHeight:'0.5'}}>
+                        <div style={{lineHeight:'1.5'}}>
                             <li>Creating an online account</li>
                             <li>Booking a styling session</li>
                             <li>Writing a review</li>
@@ -144,7 +144,7 @@ export default function PrivacyPolicy() {
                         <br/><i>Legitimate interests</i>
                         <div>We may process your personal data for the purposes of our legitimate interests, except where such interests are overridden by your interests or fundamental rights and freedoms.</div>
                         <div>For our legitimate business interests, we may process your personal data to:</div>
-                        <div style={{lineHeight:'0.5'}}>
+                        <div style={{lineHeight:'1.5'}}>
                             <li>Personalize our Web Services</li>
                             <li>Recommend products that you may be interested in</li>
                             <li>Optimize our marketing</li>
@@ -152,12 +152,12 @@ export default function PrivacyPolicy() {
                         </div>
                         <br/>
                         <div>To opt out of receiving interest-based advertising from third parties, you may click on either of the following links, or see more information in our Cookie Statement:</div>
-                        <div style={{lineHeight:'0.5'}}>
+                        <div style={{lineHeight:'1.5'}}>
                             <li>www.networkadvertising.org</li>
                             <li>www.aboutads.info</li>
                         </div>
                         <br/>
-                        <div>In addition, you have the right to object to processing your personal data for interest-based advertising. If you would like to exercise this right, please contact us at consumercare@scotch-soda.com. Please note that if you exercise such right accordingly, this may limit us to process your data for your benefit as set out above.</div>
+                        <div>In addition, you have the right to object to processing your personal data for interest-based advertising. If you would like to exercise this right, please contact us at 17110071@student.hcmute.edu.vn. Please note that if you exercise such right accordingly, this may limit us to process your data for your benefit as set out above.</div>
                     </div>
                     <br/>
                     <b>6. Your data is safe at K&Q (online security)</b>
@@ -177,7 +177,7 @@ export default function PrivacyPolicy() {
                         <div>We retain the information you used to sign up for our newsletter until you unsubscribe or we decide to cancel our newsletter service, whichever occurs first.</div>
                         <br/>
                         <div>In any other circumstances, we will retain your information for no longer than necessary, taking into account the following:</div>
-                        <div style={{lineHeight:'1.2', paddingLeft:'10px'}}>
+                        <div style={{lineHeight:'1.5', paddingLeft:'10px'}}>
                             <li>The purposes and use of your information both now and in the future (such as whether it is necessary to continue to store that information in order to continue to perform our obligations under an agreement with you or to contact you in the future).</li>
                             <li>Whether we have any legal obligation to continue to process your information (such as any record-keeping obligations imposed by relevant law or regulations).</li>
                             <li>Whether we have any legal basis to continue to process your information (such as your consent).</li>
@@ -223,13 +223,13 @@ export default function PrivacyPolicy() {
                     <br/>
                     <b>13. Objection and complaints</b>
                     <div>
-                        <div>If we have collected personal data from you on the basis of our legitimate interests, you can at all times object to the processing of your personal data by contacting us at consumercare@scotch-soda.com. Unless we have compelling legal grounds for the processing which override your interest to stop the processing, we will stop processing your personal data.</div>
+                        <div>If we have collected personal data from you on the basis of our legitimate interests, you can at all times object to the processing of your personal data by contacting us at 17110071@student.hcmute.edu.vn. Unless we have compelling legal grounds for the processing which override your interest to stop the processing, we will stop processing your personal data.</div>
                         <br/>
                         <div>If you do not agree with our decision in relation to your personal data, you have the following options:</div>
-                        <div style={{lineHeight:'1', paddingLeft:'10px'}}>
+                        <div style={{lineHeight:'1.5', paddingLeft:'10px'}}>
                             <li>Contact us, so that we can try to resolve the issue together. You will find our contact details below.</li>
-                            <li>Lodge a complaint with the Dutch supervisory authority (Autoriteit Persoonsgegevens) at www.autoriteitpersoonsgegevens.nl.</li>
-                            <li>Ask the Dutch supervisory authority to mediate to resolve the issue.</li>
+                            <li>Lodge a complaint with the Vietnam supervisory authority (Autoriteit Persoonsgegevens) at www.autoriteitpersoonsgegevens.nl.</li>
+                            <li>Ask the Vietnam supervisory authority to mediate to resolve the issue.</li>
                         </div>
                     </div>
                     <br/>

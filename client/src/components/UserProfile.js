@@ -89,8 +89,8 @@ export default function UserProfile() {
                 <Paper className={classes.paper}>
                   <div style={{ textAlign: "-webkit-center" }}>
                     <Avatar
-                      alt="Remy Sharp"
-                      src="https://scontent-sin6-2.xx.fbcdn.net/v/t1.6435-9/57128382_1080220895519208_2983454892787499008_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=z6-YmPykJ9QAX_0lhOD&_nc_ht=scontent-sin6-2.xx&oh=cde695428b154dae14bb2faa70fb382d&oe=60D34E2C"
+                      alt="Avatar"
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png"
                       className={classes.avatar}
                     />
                     <Typography

@@ -1,21 +1,13 @@
 import React from "react";
 import '../assets/OrderHelp.css'
-import ListSubheader from '@material-ui/core/ListSubheader';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
-import Paper from '@material-ui/core/Paper';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from "@material-ui/core/styles";
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import Accordion from '@material-ui/core/Accordion';
@@ -657,9 +649,12 @@ export default function OrderHelp() {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography className="help-detail-information">
-                        To add item to cart say: <i>Add {"<name product>"} to cart</i><br/>
+                        To add item to cart say: <i>Add {"<quantity> <product name>"} to cart</i><br/>
                         To chose which size of the product say: <i>S or M or L or XL or XXL</i><br/>
-                        To remove item from cart say: <i>Remove or delete {"<name product>"} from cart</i>
+                        To remove item from cart say: <i>Remove or delete {"<name product>"} from cart</i><br/>
+                        To complete the transactions say: <i>Buy Product</i> - and then choose what shipping fee you would like<br/><br/>
+                        
+                        Caution: In order to buy the product you must login first.
                     </Typography>
                 </AccordionDetails>
             </Accordion>

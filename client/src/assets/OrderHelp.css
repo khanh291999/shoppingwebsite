@@ -61,3 +61,7 @@
 .help-detail-information{
     color: #000;
 }
+
+.main-list li{
+    padding: 5px 0;
+}

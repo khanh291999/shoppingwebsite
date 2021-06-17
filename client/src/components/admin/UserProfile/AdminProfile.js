@@ -19,7 +19,6 @@ import "../../../assets/AdminProfile.css";
 import TextField from "@material-ui/core/TextField";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
-// import avatar from "";
 
 const styles = {
   cardCategoryWhite: {
@@ -38,6 +37,15 @@ const styles = {
     marginBottom: "3px",
     textDecoration: "none",
   },
+  textInput: {
+    width: "100%",
+    '& label.Mui-focused': {
+      color: '#bd7f32',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#bd7f32',
+    },
+  }
 };
 
 const useStyles = makeStyles(styles);
@@ -96,21 +104,21 @@ export default function UserProfile(props) {
   };
 
   return (
-    <div>
+    <div style={{width:"100%"}}>
       <GridContainer
-        style={{ paddingTop: "11%", width: "99%", paddingLeft: "4%" }}
+        style={{ paddingTop: "11%", width: "100%", paddingLeft: "4%" }}
       >
         <GridItem xs={10} sm={12} md={8}>
           <Card>
-            {/* <CardHeader color="primary">
+            <CardHeader color="primary">
               <h4 className={classes.cardTitleWhite}>Edit Profile</h4>
               <p className={classes.cardCategoryWhite}>Complete your profile</p>
-            </CardHeader> */}
+            </CardHeader>
             <CardBody>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={4}>
                   <TextField
-                    style={{ width: "100%" }}
+                    className={classes.textInput}
                     required
                     id="username"
                     label="User Name"
@@ -123,7 +131,7 @@ export default function UserProfile(props) {
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
                   <TextField
-                    style={{ width: "100%" }}
+                    className={classes.textInput}
                     required
                     id="email"
                     label="Email Address"
@@ -136,7 +144,7 @@ export default function UserProfile(props) {
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
                   <TextField
-                    style={{ width: "100%" }}
+                    className={classes.textInput}
                     required
                     id="phonenumber"
                     label="Phone Number"
@@ -149,7 +157,7 @@ export default function UserProfile(props) {
                 </GridItem>
                 <GridItem xs={12} sm={12} md={12}>
                   <TextField
-                    style={{ width: "100%" }}
+                    className={classes.textInput}
                     required
                     id="address"
                     label="Address"
@@ -164,7 +172,7 @@ export default function UserProfile(props) {
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
                   <TextField
-                    style={{ width: "100%" }}
+                    className={classes.textInput}
                     required
                     id="description"
                     label="Description"
@@ -188,7 +196,6 @@ export default function UserProfile(props) {
           <Card profile>
             <CardAvatar profile>
               <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                {/* <img src={avatar} alt="..." /> */}
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png" />
               </a>
             </CardAvatar>

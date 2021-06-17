@@ -30,7 +30,8 @@ export default function Deposits() {
       setData(res.data)
   })
   }, []);
-  const allTotal = data.reduce((a,v) =>  a = a + v.allTotal , 0 )
+  let allTotal = data.reduce((a,v) =>  a = a + v.allTotal , 0 )
+  allTotal = Math.round(allTotal * 100)/100;
   
   return (
     <React.Fragment>
