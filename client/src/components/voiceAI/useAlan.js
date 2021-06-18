@@ -22,6 +22,7 @@ const COMMANDS = {
   SHOW_PRIVACY: "show-privacy",
   SHOW_DELIVERY: "show-delivery",
   BUY_PRODUCT: "buy-product",
+  CHECK_SIZE: "check-size",
 };
 function AlanTrigger(props) {
   const history = useHistory();
@@ -189,6 +190,35 @@ function AlanTrigger(props) {
     }
   };
 
+  const checkSize = ({ detail: { name, size } }) => {
+    const item = data?.find((i) => i.name.toLowerCase() === name.toLowerCase());
+    if (item == null) {
+      alanInstance.playText(`I cannot find the ${name} item`);
+    } else if (item.S > 0 && size.toLowerCase() == "s") {
+      alanInstance.playText(`Size S of ${name} is still available`);
+    } else if (item.S <= 0 && size.toLowerCase() == "s") {
+      alanInstance.playText(`Size S of ${name} is out of stock`);
+    } else if (item.M > 0 && size.toLowerCase() == "m") {
+      alanInstance.playText(`Size M of ${name} is still available`);
+    } else if (item.M <= 0 && size.toLowerCase() == "m") {
+      alanInstance.playText(`Size M of ${name} is out of stock`);
+    } else if (item.L > 0 && size.toLowerCase() == "l") {
+      alanInstance.playText(`Size L of ${name} is still available`);
+    } else if (item.L <= 0 && size.toLowerCase() == "l") {
+      alanInstance.playText(`Size L of ${name} is out of stock`);
+    } else if (item.XL > 0 && size.toLowerCase() == "xl") {
+      alanInstance.playText(`Size XL of ${name} is still available`);
+    } else if (item.XL <= 0 && size.toLowerCase() == "xl") {
+      alanInstance.playText(`Size XL of ${name} is out of stock`);
+    } else if (item.XXL > 0 && size.toLowerCase() == "xxl") {
+      alanInstance.playText(`Size XXL of ${name} is still available`);
+    } else if (item.XXL <= 0 && size.toLowerCase() == "xxl") {
+      alanInstance.playText(`Size XXL of ${name} is out of stock`);
+    } else {
+      alanInstance.playText(`Please check again the product name and size`);
+    }
+  };
+
   useEffect(() => {
     const getAllProduct = async () => {
       const result = await axios.get("http://localhost:8080/product");
@@ -213,6 +243,7 @@ function AlanTrigger(props) {
     window.addEventListener(COMMANDS.SHOW_PRIVACY, showPrivacy);
     window.addEventListener(COMMANDS.SHOW_DELIVERY, showDelivery);
     window.addEventListener(COMMANDS.BUY_PRODUCT, buyProduct);
+    window.addEventListener(COMMANDS.CHECK_SIZE, checkSize);
     return () => {
       window.removeEventListener(COMMANDS.OPEN_CART, openCart);
       window.removeEventListener(COMMANDS.CLOSE_CART, closeCart);
@@ -231,6 +262,7 @@ function AlanTrigger(props) {
       window.removeEventListener(COMMANDS.SHOW_PRIVACY, showPrivacy);
       window.removeEventListener(COMMANDS.SHOW_DELIVERY, showDelivery);
       window.removeEventListener(COMMANDS.BUY_PRODUCT, buyProduct);
+      window.removeEventListener(COMMANDS.CHECK_SIZE, checkSize);
     };
   }, [
     openCart,
@@ -247,6 +279,7 @@ function AlanTrigger(props) {
     showPrivacy,
     showDelivery,
     buyProduct,
+    checkSize,
   ]);
 
   useEffect(() => {
