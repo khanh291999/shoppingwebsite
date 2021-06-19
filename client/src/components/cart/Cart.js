@@ -16,8 +16,18 @@ import Swal from "sweetalert2";
 import "../../assets/Cart.css";
 import "../../assets/CartProduct.css";
 import UserContext from "./../../context/userContext";
+import { withStyles } from '@material-ui/core/styles';
 import CartProduct from "./CartProduct";
 import CheckoutForm from "./CheckoutForm";
+
+const CustomRadio = withStyles({
+  root: {
+    '&$checked': {
+      color: '#BD7F32',
+    },
+  },
+  checked: {},
+})((props) => <Radio color="default" {...props} />);
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -216,21 +226,21 @@ class Cart extends React.Component {
                       >
                         <FormControlLabel
                           value="0"
-                          control={<Radio />}
+                          control={<CustomRadio />}
                           label="Freeship"
                         />
                         <FormControlLabel
                           value="1"
-                          control={<Radio />}
+                          control={<CustomRadio />}
                           label="Ho Chi Minh"
                         />
                         <FormControlLabel
                           value="2"
-                          control={<Radio />}
+                          control={<CustomRadio />}
                           label="Nationwide"
                         />
                       </RadioGroup>
-                      <FormHelperText style={{ color: "red" }}>
+                      <FormHelperText style={{ color: "#BD7F32" }}>
                         {this.state.helperText}
                       </FormHelperText>
                     </FormControl>

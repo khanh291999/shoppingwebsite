@@ -21,6 +21,15 @@ import ImageContainer from "../ImageContainer";
 import "../../../assets/ProductDetail.css";
 //import Spinner from "reactstrap"
 
+const CustomRadio = withStyles({
+  root: {
+    '&$checked': {
+      color: '#BD7F32',
+    },
+  },
+  checked: {},
+})((props) => <Radio color="default" {...props} />);
+
 const styles = (theme) => ({
   img_container: {
     boxShadow: theme.shadows[3],
@@ -123,7 +132,7 @@ class ProductDetailMaleTshirt extends Component {
                           <FormControlLabel
                             key={index}
                             value={s}
-                            control={<Radio />}
+                            control={<CustomRadio />}
                             label={s}
                           />
                         );
