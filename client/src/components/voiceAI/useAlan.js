@@ -23,6 +23,7 @@ const COMMANDS = {
   SHOW_DELIVERY: "show-delivery",
   BUY_PRODUCT: "buy-product",
   CHECK_SIZE: "check-size",
+  VIEW_PRODUCT: "view-product",
 };
 function AlanTrigger(props) {
   const history = useHistory();
@@ -219,6 +220,15 @@ function AlanTrigger(props) {
     }
   };
 
+  const viewProduct = ({ detail: { name } }) => {
+    const item = data?.find((i) => i.name.toLowerCase() === name.toLowerCase());
+    if (item == null) {
+      alanInstance.playText(`I cannot find the ${name} item`);
+    } else {
+      alanInstance.playText(`Showing product ${name} detail `);
+      history.push(`/product/${item._id}`);
+    }
+  };
   useEffect(() => {
     const getAllProduct = async () => {
       const result = await axios.get("http://localhost:8080/product");
@@ -244,6 +254,7 @@ function AlanTrigger(props) {
     window.addEventListener(COMMANDS.SHOW_DELIVERY, showDelivery);
     window.addEventListener(COMMANDS.BUY_PRODUCT, buyProduct);
     window.addEventListener(COMMANDS.CHECK_SIZE, checkSize);
+    window.addEventListener(COMMANDS.VIEW_PRODUCT, viewProduct);
     return () => {
       window.removeEventListener(COMMANDS.OPEN_CART, openCart);
       window.removeEventListener(COMMANDS.CLOSE_CART, closeCart);
@@ -263,6 +274,7 @@ function AlanTrigger(props) {
       window.removeEventListener(COMMANDS.SHOW_DELIVERY, showDelivery);
       window.removeEventListener(COMMANDS.BUY_PRODUCT, buyProduct);
       window.removeEventListener(COMMANDS.CHECK_SIZE, checkSize);
+      window.removeEventListener(COMMANDS.VIEW_PRODUCT, viewProduct);
     };
   }, [
     openCart,
@@ -280,6 +292,7 @@ function AlanTrigger(props) {
     showDelivery,
     buyProduct,
     checkSize,
+    viewProduct,
   ]);
 
   useEffect(() => {
