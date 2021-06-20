@@ -153,18 +153,6 @@ const PaypalSchema = new mongoose.Schema({
   orderID: Object,
 });
 
-//allproducts
-const AllProductSchema = new Schema({
-  name: String,
-  image: Array,
-  price: Number,
-  size: Array,
-  S: Number,
-  M: Number,
-  L: Number,
-  XL: Number,
-  XXL: Number,
-});
 
 //product
 const ProductSchema = new Schema({
