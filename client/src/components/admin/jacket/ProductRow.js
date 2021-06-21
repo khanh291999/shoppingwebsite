@@ -45,7 +45,7 @@ export default function ProductRow(props) {
   const { _id, name, price, image } = props.product;
   return (
     <div className="table-rows">
-      <div className="table-cell">{_id}</div>
+      <div className="table-cell">{_id.substring(0,20)}...</div>
       <div className="table-cell">{name}</div>
       <div className="table-cell">{price}$</div>
       <div className="table-cell">

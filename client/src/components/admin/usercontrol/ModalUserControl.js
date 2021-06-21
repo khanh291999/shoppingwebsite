@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 import '../../../assets/modal.css'
 export default class ModalUserControl extends Component {
     state={
-        email:"quang@gmail.com",
-        password:"quang123",
-        passwordCheck:"quang123",
-        displayName:"quang",
+        email:"user@gmail.com",
+        password:"user123",
+        passwordCheck:"user123",
+        displayName:"user",
         address:"1 vo van ngan",
         phoneNumber:"0939911113",
         error:undefined

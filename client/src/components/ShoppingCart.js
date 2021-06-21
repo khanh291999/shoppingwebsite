@@ -25,9 +25,6 @@ import ShoppingAdmin from "./admin/jacket/ShoppingAdmin";
 import AdLogin from "./admin/AdLogin";
 import FemaleTshirt from "./cart/femalet-shirt/FemaleTshirt";
 import Status from "./status/Status";
-import AdminShoppingStatus from "./admin/status/AdminShoppingStatus";
-import ShoppingAdminStaffControl from "./admin/staffcontrol/ShoppingAdminStaffControl";
-import ShoppingAdminUserControl from "./admin/usercontrol/ShoppingAdminUserControl";
 import Chatbotsection from "./chatbotsection/Chatbotsection";
 import UserProfile from "./UserProfile";
 import Fab from "@material-ui/core/Fab";
@@ -136,15 +133,6 @@ class ShoppingCart extends Component {
         <Switch>
           <Route path="/adlogin" component={AdLogin}></Route>
           <Route path="/admin" component={ShoppingAdmin}></Route>
-          <Route path="/adminstatus" component={AdminShoppingStatus}></Route>
-          <Route
-            path="/staffcontrol"
-            component={ShoppingAdminStaffControl}
-          ></Route>
-          <Route
-            path="/usercontrol"
-            component={ShoppingAdminUserControl}
-          ></Route>
           <Layout>
             <Switch>
               <Route exact path="/" component={Home}></Route>

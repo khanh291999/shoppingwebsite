@@ -143,7 +143,7 @@ function ProductList(props) {
             ria-labelledby="nested-list-subheader"
             subheader={
               <ListSubheader component="div" id="nested-list-subheader">
-                <div>Product Categories</div>
+                Product Categories
               </ListSubheader>
             }
             className={classes.root}
