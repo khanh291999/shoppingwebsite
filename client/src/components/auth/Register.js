@@ -1,14 +1,22 @@
 import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
+import {
+  TextField,
+  Typography,
+} from '@material-ui/core';
 import UserContext from "../../context/userContext";
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
-import '../../assets/Register.css'
-import FacebookIcon from '@material-ui/icons/Facebook';
-import GoogleIcon from '../../assets/icons/google_icon.png'
 import Grid from '@material-ui/core/Grid'
 import Facebook from './Facebook'
 import Google from './Google'
+import IconButton from '@material-ui/core/IconButton';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import '../../assets/Register.css'
 
 export default function Register() {
   const [email, setEmail] = useState();
@@ -18,6 +26,42 @@ export default function Register() {
   const [address, setAddress] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
   const [error, setError] = useState();
+
+  const [values, setValues] = React.useState({
+    amount: '',
+    password: '',
+    repassword: '',
+    weight: '',
+    weightRange: '',
+    showPassword: false,
+    showRePassword: false,
+  });
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+    setPassword(event.target.value)
+  };
+
+  const handleChange1 = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+    setPasswordCheck(event.target.value)
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const handleClickShowPassword1 = () => {
+    setValues({ ...values, showRePassword: !values.showRePassword });
+  };
+
+  const handleMouseDownPassword1 = (event) => {
+    event.preventDefault();
+  };
 
   const { setUserData } = useContext(UserContext);
   const history = useHistory();
@@ -48,56 +92,89 @@ export default function Register() {
   return (
     <div className="background">
       <div className='register-form-container'>
-        <h2>Register</h2>
         {error && (
           <ErrorNotice message={error} clearError={() => setError(undefined)} />
         )}
-        <form className="form" onSubmit={submit}>
-          <Grid container spacing={2} className="grid-container">
-            <Grid item xs={6} className="col1">
-              <label htmlFor="register-email">Email</label>
-                <input
-                  id="register-email"
-                  type="email"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+      
+        <h2>CREATE AN ACCOUNT</h2>
 
-              <label htmlFor="register-password">Password</label>
-                <input
-                  id="register-password"
-                  type="password"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <input
-                  type="password"
-                  placeholder="Verify password"
-                  onChange={(e) => setPasswordCheck(e.target.value)}
-                />
-              
-              <label htmlFor="register-address">Adress</label>
-                <input
-                  id="register-address"
-                  type="text"
-                  onChange={(e) => setAddress(e.target.value)}
-                />
+        <FormControl onSubmit={submit}>
 
-                <label htmlFor="register-phone-number">Phone Number</label>
-                <input
-                  id="register-phone-number"
-                  type="text"
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                />
+          <Typography component="subtitle1">Username *</Typography>
 
-            </Grid>
-              
-            <Grid item xs={6} className="col1">
-            <label htmlFor="register-display-name">User name</label>
-            <input
-              id="register-display-name"
-              type="text"
-              onChange={(e) => setDisplayName(e.target.value)}
-            />
-            <button type="submit" id="register-btn">Register</button>
+          <TextField 
+            id="outlined-basic" 
+            variant="outlined" 
+            onChange={(e) => setEmail(e.target.value)}
+            style={{margin:'2% 0', width:'200%'}} />
+
+          <Typography component="subtitle1">Address *</Typography>
+
+          <TextField 
+            id="outlined-basic" 
+            variant="outlined" 
+            onChange={(e) => setAddress(e.target.value)}
+            style={{margin:'2% 0', width:'200%'}} />
+
+          <Typography component="subtitle1">Phone number *</Typography>
+
+          <TextField 
+            id="outlined-basic" 
+            variant="outlined" 
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            style={{margin:'2% 0', width:'200%'}} />
+
+          <Typography component="subtitle1">Email *</Typography>
+
+          <TextField 
+            id="outlined-basic" 
+            variant="outlined" 
+            onChange={(e) => setEmail(e.target.value)}
+            style={{margin:'2% 0', width:'200%'}} />
+
+          <Typography component="subtitle1">Password *</Typography>
+
+          <OutlinedInput
+            id="outlined-adornment-password"
+            style={{margin:'2% 0', width:'200%', backgroundColor:'#fff'}}
+            type={values.showPassword ? 'text' : 'password'}
+            value={values.password}
+            onChange={handleChange('password')}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+
+          <OutlinedInput
+            id="outlined-adornment-password"
+            style={{margin:'2% 0', width:'200%', backgroundColor:'#fff'}}
+            type={values.showRePassword ? 'text' : 'password'}
+            value={values.repassword}
+            onChange={handleChange1('repassword')}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword1}
+                  onMouseDown={handleMouseDownPassword1}
+                  edge="end"
+                >
+                  {values.showRePassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+
+            <button type="submit" id="register-btn" onClick={submit}>Register</button>
             <span
                 style={{fontFamily: "Titillium",
                 paddingLeft: "5px", 
@@ -113,18 +190,7 @@ export default function Register() {
               <Google/>
             </button>
 
-            <div className='register-in-login-container'>
-                Already have an account?
-                <Link
-                  to='/login'
-                  className='login-in-register'
-                >
-                  Login
-                </Link>
-              </div>
-            </Grid>
-          </Grid>
-        </form>
+        </FormControl>
       </div>
     </div>
   );

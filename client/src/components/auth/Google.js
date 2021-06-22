@@ -30,7 +30,7 @@ export default function Google() {
                     onFailure={responseGoogle}
                     cookiePolicy={'single_host_origin'}
                     >
-                      Sign In with Google
+                      Login with Google
                     </GoogleLogin>
             </div>
         )
