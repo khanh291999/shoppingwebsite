@@ -24,6 +24,7 @@ const COMMANDS = {
   BUY_PRODUCT: "buy-product",
   CHECK_SIZE: "check-size",
   VIEW_PRODUCT: "view-product",
+  GIVE_OPINION: "give-opinion",
 };
 function AlanTrigger(props) {
   const history = useHistory();
@@ -229,6 +230,42 @@ function AlanTrigger(props) {
       history.push(`/product/${item._id}`);
     }
   };
+
+  const giveOpinion = ({ detail: { opinion } }) => {
+    if (!userData.user) {
+      alanInstance.playText(
+        `Please login before you can give your opinion about our website`
+      );
+    } else {
+      axios
+        .post("http://localhost:8080/opinion", {
+          username: userData.user.displayName,
+          email: userData.user.email,
+          address: userData.user.address,
+          opinion: opinion,
+        })
+        .then((res) => {
+          Swal.fire({
+            title: "Thanks for your opinion",
+            timer: 1000,
+            icon: "success",
+          });
+          props.clearCart();
+        })
+        .catch((err) => {
+          Swal.fire({
+            title: "Give opinion fail, Please contact our admin",
+            text: err.message,
+            timer: 1000,
+            icon: "error",
+          });
+        });
+      alanInstance.playText(
+        `Thanks for your opinion we will try to improve our website`
+      );
+    }
+  };
+
   useEffect(() => {
     const getAllProduct = async () => {
       const result = await axios.get("http://localhost:8080/product");
@@ -255,6 +292,7 @@ function AlanTrigger(props) {
     window.addEventListener(COMMANDS.BUY_PRODUCT, buyProduct);
     window.addEventListener(COMMANDS.CHECK_SIZE, checkSize);
     window.addEventListener(COMMANDS.VIEW_PRODUCT, viewProduct);
+    window.addEventListener(COMMANDS.GIVE_OPINION, giveOpinion);
     return () => {
       window.removeEventListener(COMMANDS.OPEN_CART, openCart);
       window.removeEventListener(COMMANDS.CLOSE_CART, closeCart);
@@ -275,6 +313,7 @@ function AlanTrigger(props) {
       window.removeEventListener(COMMANDS.BUY_PRODUCT, buyProduct);
       window.removeEventListener(COMMANDS.CHECK_SIZE, checkSize);
       window.removeEventListener(COMMANDS.VIEW_PRODUCT, viewProduct);
+      window.removeEventListener(COMMANDS.GIVE_OPINION, giveOpinion);
     };
   }, [
     openCart,
@@ -293,6 +332,7 @@ function AlanTrigger(props) {
     buyProduct,
     checkSize,
     viewProduct,
+    giveOpinion,
   ]);
 
   useEffect(() => {
