@@ -55,26 +55,26 @@ export default function UserProfile() {
           address,
           phoneNumber,
         });
+        history.push("/");
+        setUserData({
+          token: undefined,
+          user: undefined,
+        });
+        localStorage.setItem("auth-token", "");
+        localStorage.setItem("user-login", "");
         Swal.fire({
           title: "Update Successfully, Please log in again",
-          timer: 1000,
+          timer: 3000,
           icon: "success",
         });
       } catch (err) {
         Swal.fire({
           title: "Update Unsuccessfully",
           text: err.message,
-          timer: 1000,
+          timer: 3000,
           icon: "error",
         });
       }
-      history.push("/");
-      setUserData({
-        token: undefined,
-        user: undefined,
-      });
-      localStorage.setItem("auth-token", "");
-      localStorage.setItem("user-login", "");
     }
   };
 

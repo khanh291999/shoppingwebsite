@@ -159,6 +159,9 @@ function Header(props) {
           <Link to="/userprofile" style={{ color: "black" }}>
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
           </Link>
+          <Link to="/changepassword" style={{ color: "black" }}>
+            <MenuItem onClick={handleMenuClose}>Change Password</MenuItem>
+          </Link>
           <Link to="/status" style={{ color: "black" }}>
             <MenuItem onClick={handleMenuClose}>Order Status</MenuItem>
           </Link>

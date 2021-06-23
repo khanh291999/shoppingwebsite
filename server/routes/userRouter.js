@@ -6,7 +6,8 @@ const User = require("../models/userModel");
 
 router.post("/register", async (req, res) => {
   try {
-    let { email, password, passwordCheck, displayName, address, phoneNumber } = req.body;
+    let { email, password, passwordCheck, displayName, address, phoneNumber } =
+      req.body;
 
     // validate
 
@@ -37,7 +38,7 @@ router.post("/register", async (req, res) => {
       password: passwordHash,
       displayName,
       address,
-      phoneNumber
+      phoneNumber,
     });
     const savedUser = await newUser.save();
     res.json(savedUser);
@@ -61,18 +62,21 @@ router.post("/login", async (req, res) => {
         .json({ msg: "No account with this email has been registered." });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ msg: "Invalid credentials." });
- 
-    const JWT_SECRET='*e>xn8f?994tn>gen5gQL;Nt"pdpjDVM5Q8[7"3a@_T}<69z[K'
-    const token = jwt.sign({ id: user._id },JWT_SECRET);
+    if (!isMatch)
+      return res
+        .status(400)
+        .json({ msg: "Please check again your email or password" });
+
+    const JWT_SECRET = '*e>xn8f?994tn>gen5gQL;Nt"pdpjDVM5Q8[7"3a@_T}<69z[K';
+    const token = jwt.sign({ id: user._id }, JWT_SECRET);
     res.json({
-       token,
+      token,
       user: {
         id: user._id,
         displayName: user.displayName,
         email: user.email,
         address: user.address,
-        phoneNumber: user.phoneNumber
+        phoneNumber: user.phoneNumber,
       },
     });
   } catch (err) {
@@ -83,12 +87,20 @@ router.post("/login", async (req, res) => {
 
 router.post("/adduser", async (req, res) => {
   try {
-    let { email, password, passwordCheck, displayName, address, phoneNumber } = req.body;
-    console.log('req.body',req.body);
-    
+    let { email, password, passwordCheck, displayName, address, phoneNumber } =
+      req.body;
+    console.log("req.body", req.body);
+
     //validate
-    if (!email || !password || !passwordCheck || !displayName ||!address || !phoneNumber )
-    return res.status(400).json({ msg: "Not all fields have been entered." });
+    if (
+      !email ||
+      !password ||
+      !passwordCheck ||
+      !displayName ||
+      !address ||
+      !phoneNumber
+    )
+      return res.status(400).json({ msg: "Not all fields have been entered." });
     if (password.length < 5)
       return res
         .status(400)
@@ -112,7 +124,7 @@ router.post("/adduser", async (req, res) => {
       password: passwordHash,
       displayName,
       address,
-      phoneNumber
+      phoneNumber,
     });
     const savedUser = await newUser.save();
     res.json(savedUser);
@@ -132,12 +144,20 @@ router.delete("/delete", auth, async (req, res) => {
 
 router.patch("/updateuser/:id", async (req, res) => {
   try {
-    let { email, password, passwordCheck, displayName, address, phoneNumber } = req.body;
-    console.log('req.body',req.body);
-    
+    let { email, password, passwordCheck, displayName, address, phoneNumber } =
+      req.body;
+    console.log("req.body", req.body);
+
     //validate
-    if (!email || !password || !passwordCheck || !displayName ||!address || !phoneNumber )
-    return res.status(400).json({ msg: "Not all fields have been entered." });
+    if (
+      !email ||
+      !password ||
+      !passwordCheck ||
+      !displayName ||
+      !address ||
+      !phoneNumber
+    )
+      return res.status(400).json({ msg: "Not all fields have been entered." });
     if (password.length < 5)
       return res
         .status(400)
@@ -147,33 +167,70 @@ router.patch("/updateuser/:id", async (req, res) => {
         .status(400)
         .json({ msg: "Enter the same password twice for verification." });
     const existingUser = await User.findOne({ email: email });
-    
+
     const existingUser1 = await User.findOne(
-      {id:req.params.id},
-      {email:email}
-    )
-    if (existingUser1==existingUser)
-    {
+      { id: req.params.id },
+      { email: email }
+    );
+    if (existingUser1 == existingUser) {
       return res
         .status(400)
         .json({ msg: "An account with this email already exists." });
-      }
+    }
     if (!displayName) displayName = email;
 
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
 
     const updateUser = await User.updateOne(
-      {id: req.params.id},
-      {$set:{email: email,
-        password: passwordHash,
-        displayName: displayName,
-        address:address,
-        phoneNumber:phoneNumber} }
+      { id: req.params.id },
+      {
+        $set: {
+          email: email,
+          password: passwordHash,
+          displayName: displayName,
+          address: address,
+          phoneNumber: phoneNumber,
+        },
+      }
       // email,
       // password: passwordHash,
       // displayName,
       // type,
+    );
+    res.json(updateUser);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.patch("/changepassword/:_id", async (req, res) => {
+  try {
+    let { email, password, newpassword, reenternewpassword } = req.body;
+    const user = await User.findOne({ email: email });
+    const isMatch = await bcrypt.compare(password, user.password);
+    console.log("req.body", req.body);
+
+    //validate
+    if (!email || !password || !newpassword || !reenternewpassword)
+      return res.status(400).json({ msg: "Not all fields have been entered." });
+    if (!isMatch)
+      return res.status(400).json({ msg: "Current password incorrect" });
+    if (newpassword.length < 5)
+      return res
+        .status(400)
+        .json({ msg: "The password needs to be at least 5 characters long." });
+    if (newpassword !== reenternewpassword)
+      return res
+        .status(400)
+        .json({ msg: "Enter the same password twice for verification." });
+
+    const salt = await bcrypt.genSalt();
+    const newpasswordHash = await bcrypt.hash(newpassword, salt);
+
+    const updateUser = await User.updateOne(
+      { _id: req.params._id },
+      { $set: { email: email, password: newpasswordHash } }
     );
     res.json(updateUser);
   } catch (err) {
