@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import {
   TextField,
   Typography,
+  Button,
 } from '@material-ui/core';
 import UserContext from "../../context/userContext";
 import Axios from "axios";
@@ -92,7 +93,7 @@ export default function Login() {
         
         <div style={{width: '50%', float:'right'}}>
           <Grid item xs={6}>
-            <FormControl onSubmit={submit}>
+            <form onSubmit={submit}>
               <h3>LOGIN</h3>
               <Typography component="subtitle1">Email *</Typography>
 
@@ -106,7 +107,7 @@ export default function Login() {
 
               <OutlinedInput
                 id="outlined-adornment-password"
-                style={{margin:'2% 0', width:'150%', backgroundColor:'#fff'}}
+                style={{margin:'2% 0 8% 0', width:'150%', backgroundColor:'#fff'}}
                 type={values.showPassword ? 'text' : 'password'}
                 value={values.password}
                 onChange={handleChange('password')}
@@ -124,10 +125,12 @@ export default function Login() {
                 }
               />
 
-              <Typography component="caption" style={{textDecoration:'underline', cursor: 'pointer', textAlignLast: 'left', padding: '20px 0'}}> Forget password </Typography>
+                <Link to="/forgot" style={{color:'#000',textDecoration:'underline', textAlignLast: 'left', padding: '20px 0'}}>  
+                  Forget password 
+                </Link>
 
-              <div style={{display:'flex', flexDirection:'column'}}>
-                <button type="submit" id="login-btn" onClick={submit}>Log in</button>
+              <Grid style={{display:'flex', flexDirection:'column', marginTop:'5%'}}>
+                <Button type="submit" id="login-btn">Log in</Button>
                 <span
                     style={{fontFamily: "Titillium",
                     paddingLeft: "5px", 
@@ -138,9 +141,9 @@ export default function Login() {
                 </span>
                 <Facebook/>
                 <Google/>
-              </div>
+              </Grid>
 
-            </FormControl>
+            </form>
             
           </Grid>
         </div>
