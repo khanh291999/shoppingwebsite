@@ -30,7 +30,7 @@ export default class MainContentStaffControl extends React.Component {
         admins: res.data,
       });
     });
-    this.intervalID = setTimeout(this.getData.bind(this), 5000);
+    this.intervalID = setTimeout(this.getData.bind(this), 30000);
   };
 
   addAdmin = async (email, password, passwordCheck, displayName, type) => {

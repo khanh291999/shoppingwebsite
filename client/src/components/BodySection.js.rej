@@ -1,9 +1,9 @@
-diff a/client/src/components/BodySection.js b/client/src/components/BodySection.js	(rejected hunks)
-@@ -8,6 +8,7 @@
-   return (
-     <>
-     <div className='background'>
-+
-       <div style={{textAlign: '-webkit-center', backgroundColor: '#f0ede8'}}>
-         <ul id="nav-main-list">
-           <li class="nav-main-sublist dropdown">
+# diff a/client/src/components/BodySection.js b/client/src/components/BodySection.js	(rejected hunks)
+# @@ -8,6 +8,7 @@
+#    return (
+#      <>
+#      <div className='background'>
+# +
+#        <div style={{textAlign: '-webkit-center', backgroundColor: '#f0ede8'}}>
+#          <ul id="nav-main-list">
+#            <li class="nav-main-sublist dropdown">

@@ -3,7 +3,20 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const auth = require("../middleware/auth");
 const User = require("../models/userModel");
+const nodemailer = require("nodemailer");
+const sendgridTransport = require("nodemailer-sendgrid-transport");
+const crypto = require("crypto");
 
+const transporter = nodemailer.createTransport(
+  sendgridTransport({
+    auth: {
+      api_key:
+        "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",
+    },
+  })
+);
+
+//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
 router.post("/register", async (req, res) => {
   try {
     let { email, password, passwordCheck, displayName, address, phoneNumber } =
@@ -236,6 +249,58 @@ router.patch("/changepassword/:_id", async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+});
+
+router.post("/resetpassword", (req, res) => {
+  crypto.randomBytes(32, (err, buffer) => {
+    if (err) {
+      console.log(err);
+    }
+    const token = buffer.toString("hex");
+    User.findOne({ email: req.body.email }).then((user) => {
+      if (!user) {
+        return res.status(422).json({ msg: "User don't exists" });
+      }
+      user.resetToken = token;
+      user.expireToken = Date.now() + 3600000;
+      user.save().then((result) => {
+        transporter.sendMail({
+          to: user.email,
+          from: "khanh451754@gmail.com",
+          subject: "password reset",
+          html: `
+                  <p>You requested for password reset</p>
+                  <h5>click in this <a href="https://localhost:3000/reset/${token}">link</a> to reset password</h5>
+                  `,
+        });
+        console.log("Passs send mail");
+
+        res.json({ message: "check your email" });
+      });
+    });
+  });
+});
+
+router.post("/newpassword", (req, res) => {
+  const newPassword = req.body.password;
+  const sentToken = req.body.token;
+  User.findOne({ resetToken: sentToken, expireToken: { $gt: Date.now() } })
+    .then((user) => {
+      if (!user) {
+        return res.status(422).json({ msg: "Try again session expired" });
+      }
+      bcrypt.hash(newPassword, 12).then((hashedpassword) => {
+        user.password = hashedpassword;
+        user.resetToken = undefined;
+        user.expireToken = undefined;
+        user.save().then((saveduser) => {
+          res.json({ message: "password updated success" });
+        });
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 router.post("/tokenIsValid", async (req, res) => {

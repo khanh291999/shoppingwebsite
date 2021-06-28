@@ -28,6 +28,8 @@ import Status from "./status/Status";
 import Chatbotsection from "./chatbotsection/Chatbotsection";
 import UserProfile from "./UserProfile";
 import Changepassword from "./Changepassword";
+import Reset from "./Reset";
+import Newpassword from "./Newpassword";
 import Fab from "@material-ui/core/Fab";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import "../assets/ChatBot.css";
@@ -182,6 +184,8 @@ class ShoppingCart extends Component {
               ></Route>
               <Route path="/userprofile" component={UserProfile}></Route>
               <Route path="/changepassword" component={Changepassword}></Route>
+              <Route path="/reset/:token" component={Newpassword}></Route>
+              <Route exact path="/reset" component={Reset}></Route>
               <Route path="/cart" component={Cart}></Route>
               {/* <Route path="/signup" component={SignUp}></Route> */}
               <Route path="/login" component={Login} />

@@ -57,6 +57,7 @@ function AlanTrigger(props) {
   }, [alanInstance]);
 
   const addItem = ({ detail: { name, quantity, size } }) => {
+    getAllProduct();
     const item = data?.find((i) => i.name.toLowerCase() === name.toLowerCase());
     if (item == null) {
       alanInstance.playText(`I cannot find the ${name} item`);
@@ -193,6 +194,7 @@ function AlanTrigger(props) {
   };
 
   const checkSize = ({ detail: { name, size } }) => {
+    getAllProduct();
     const item = data?.find((i) => i.name.toLowerCase() === name.toLowerCase());
     if (item == null) {
       alanInstance.playText(`I cannot find the ${name} item`);
@@ -222,6 +224,7 @@ function AlanTrigger(props) {
   };
 
   const viewProduct = ({ detail: { name } }) => {
+    getAllProduct();
     const item = data?.find((i) => i.name.toLowerCase() === name.toLowerCase());
     if (item == null) {
       alanInstance.playText(`I cannot find the ${name} item`);
@@ -266,13 +269,12 @@ function AlanTrigger(props) {
     }
   };
 
-  useEffect(() => {
-    const getAllProduct = async () => {
-      const result = await axios.get("http://localhost:8080/product");
-      setData(result.data);
-    };
-    getAllProduct();
+  const getAllProduct = async () => {
+    const result = await axios.get("http://localhost:8080/product");
+    setData(result.data);
+  };
 
+  useEffect(() => {
     window.addEventListener(COMMANDS.OPEN_CART, openCart);
     window.addEventListener(COMMANDS.CLOSE_CART, closeCart);
     window.addEventListener(COMMANDS.ADD_ITEM, addItem);
