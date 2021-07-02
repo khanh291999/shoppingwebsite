@@ -25,15 +25,12 @@ import ShoppingAdmin from "./admin/jacket/ShoppingAdmin";
 import AdLogin from "./admin/AdLogin";
 import FemaleTshirt from "./cart/femalet-shirt/FemaleTshirt";
 import Status from "./status/Status";
-import Chatbotsection from "./chatbotsection/Chatbotsection";
 import UserProfile from "./UserProfile";
 import Changepassword from "./Changepassword";
 import Reset from "./Reset";
 import Newpassword from "./Newpassword";
 import Fab from "@material-ui/core/Fab";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import "../assets/ChatBot.css";
-import Chatbot from "./chatbotsection/Chatbot/Chatbot";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStore, faTimes } from "@fortawesome/free-solid-svg-icons";
 import AlanTrigger from "../components/voiceAI/useAlan";
@@ -44,26 +41,6 @@ const style = (theme) => ({
     background: "black",
   },
 });
-
-const Chat = () => {
-  return (
-    <>
-      <input type="checkbox" id="click" />
-      <label id="chatbot-icon" for="click">
-        <i class="fab fa-facebook-messenger"></i>
-        <FontAwesomeIcon id="chat-inactivate" icon={faStore} />
-        <i class="fas fa-times"></i>
-        <FontAwesomeIcon id="chat-activate" icon={faTimes} />
-      </label>
-      <div class="wrapper">
-        <div class="head-text">K&Q</div>
-        <div class="chat-bot">
-          <Chatbot />
-        </div>
-      </div>
-    </>
-  );
-};
 
 const Layout = ({ children }) => {
   var mybutton = document.getElementById("myBtn");
@@ -96,7 +73,6 @@ const Layout = ({ children }) => {
         <KeyboardArrowUpIcon />
       </Fab>
       <Footer />
-      <Chat />
     </section>
   );
 };
@@ -154,9 +130,6 @@ class ShoppingCart extends Component {
                   products={[...productss].splice((page - 1) * limit, limit)}
                   handleChangePage={this.handleChangePage}
                 ></ProductList>
-              </Route>
-              <Route path="/chatbot">
-                <Chatbotsection></Chatbotsection>
               </Route>
               <Route path="/jean">
                 <MaleJean></MaleJean>

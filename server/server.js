@@ -8,7 +8,6 @@ const morgan = require("morgan");
 const cors = require("cors");
 const path = require("path");
 const bodyParser = require("body-parser");
-const config = require("./config/keys");
 const { post } = require("./routes/userRouter");
 const { exec } = require("child_process");
 
@@ -153,7 +152,6 @@ const PaypalSchema = new mongoose.Schema({
   orderID: Object,
 });
 
-
 //product
 const ProductSchema = new Schema({
   name: String,
@@ -211,7 +209,6 @@ app.use(cors());
 app.use(morgan("tiny"));
 app.use("/users", require("./routes/userRouter"));
 app.use("/admins", require("./routes/adminRouter"));
-app.use("/api/dialogflow", require("./routes/dialogflow"));
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
