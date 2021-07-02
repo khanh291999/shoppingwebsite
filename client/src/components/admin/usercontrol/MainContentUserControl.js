@@ -23,7 +23,7 @@ export default class MainContentUserControl extends React.Component {
   }
 
   getData = () => {
-    axios.get("http://localhost:8080/user").then((res) => {
+    axios.get("https://myauthapi1.herokuapp.com/user").then((res) => {
       console.log(res);
       this.setState({
         users: res.data,
@@ -41,7 +41,7 @@ export default class MainContentUserControl extends React.Component {
     phoneNumber
   ) => {
     try {
-      await axios.post("http://localhost:8080/users/adduser", {
+      await axios.post("https://myauthapi1.herokuapp.com/users/adduser", {
         email,
         password,
         passwordCheck,
@@ -70,14 +70,17 @@ export default class MainContentUserControl extends React.Component {
     phoneNumber
   ) => {
     try {
-      await axios.patch(`http://localhost:8080/users/updateuser/${id}`, {
-        email,
-        password,
-        passwordCheck,
-        displayName,
-        address,
-        phoneNumber,
-      });
+      await axios.patch(
+        `https://myauthapi1.herokuapp.com/users/updateuser/${id}`,
+        {
+          email,
+          password,
+          passwordCheck,
+          displayName,
+          address,
+          phoneNumber,
+        }
+      );
       Swal.fire({
         title: "Update Successfully",
         timer: 1000,
@@ -107,7 +110,7 @@ export default class MainContentUserControl extends React.Component {
       .then((result) => {
         if (result.value) {
           axios.delete(
-            `http://localhost:8080/user/${id}`,
+            `https://myauthapi1.herokuapp.com/user/${id}`,
             {
               id,
             },

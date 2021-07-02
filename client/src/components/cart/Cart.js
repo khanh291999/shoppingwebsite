@@ -16,14 +16,14 @@ import Swal from "sweetalert2";
 import "../../assets/Cart.css";
 import "../../assets/CartProduct.css";
 import UserContext from "./../../context/userContext";
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 import CartProduct from "./CartProduct";
 import CheckoutForm from "./CheckoutForm";
 
 const CustomRadio = withStyles({
   root: {
-    '&$checked': {
-      color: '#BD7F32',
+    "&$checked": {
+      color: "#BD7F32",
     },
   },
   checked: {},
@@ -93,7 +93,7 @@ class Cart extends React.Component {
     const shippingfee = parseInt(selected_shipping);
 
     axios
-      .post("http://localhost:8080/cart", {
+      .post("https://myauthapi1.herokuapp.com/cart", {
         ...form,
         // id: 'order' +Date.now()+Math.random(),
         product: this.props.cartItems,

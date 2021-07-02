@@ -158,7 +158,7 @@ function AlanTrigger(props) {
       );
     } else {
       axios
-        .post("http://localhost:8080/cart", {
+        .post("https://myauthapi1.herokuapp.com/cart", {
           name: userData.user.displayName,
           address: userData.user.address,
           phoneNumber: userData.user.phoneNumber,
@@ -241,7 +241,7 @@ function AlanTrigger(props) {
       );
     } else {
       axios
-        .post("http://localhost:8080/opinion", {
+        .post("https://myauthapi1.herokuapp.com/opinion", {
           username: userData.user.displayName,
           email: userData.user.email,
           address: userData.user.address,
@@ -270,7 +270,7 @@ function AlanTrigger(props) {
   };
 
   const getAllProduct = async () => {
-    const result = await axios.get("http://localhost:8080/product");
+    const result = await axios.get("https://myauthapi1.herokuapp.com/product");
     setData(result.data);
   };
 

@@ -19,7 +19,7 @@ export default class MainContentDisableJean extends React.Component {
   }
 
   getData = () => {
-    axios.get("http://localhost:8080/disablejean").then((res) => {
+    axios.get("https://myauthapi1.herokuapp.com/disablejean").then((res) => {
       console.log(res);
       this.setState({
         products: res.data,
@@ -40,7 +40,7 @@ export default class MainContentDisableJean extends React.Component {
       .then((result) => {
         if (result.value) {
           axios.delete(
-            `http://localhost:8080/disablejean/${_id}`,
+            `https://myauthapi1.herokuapp.com/disablejean/${_id}`,
             {
               _id,
             },
@@ -88,7 +88,7 @@ export default class MainContentDisableJean extends React.Component {
   ) => {
     axios
       .post(
-        "http://localhost:8080/product",
+        "https://myauthapi1.herokuapp.com/product",
         {
           name,
           image,

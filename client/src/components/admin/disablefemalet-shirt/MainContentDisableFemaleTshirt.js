@@ -19,12 +19,14 @@ export default class MainContentDisableFemaleTshirt extends React.Component {
   }
 
   getData = () => {
-    axios.get("http://localhost:8080/disablefemalet-shirt").then((res) => {
-      console.log(res);
-      this.setState({
-        products: res.data,
+    axios
+      .get("https://myauthapi1.herokuapp.com/disablefemalet-shirt")
+      .then((res) => {
+        console.log(res);
+        this.setState({
+          products: res.data,
+        });
       });
-    });
     this.intervalID = setTimeout(this.getData.bind(this), 30000);
   };
 
@@ -40,7 +42,7 @@ export default class MainContentDisableFemaleTshirt extends React.Component {
       .then((result) => {
         if (result.value) {
           axios.delete(
-            `http://localhost:8080/disablefemalet-shirt/${_id}`,
+            `https://myauthapi1.herokuapp.com/disablefemalet-shirt/${_id}`,
             {
               _id,
             },
@@ -88,7 +90,7 @@ export default class MainContentDisableFemaleTshirt extends React.Component {
   ) => {
     axios
       .post(
-        "http://localhost:8080/product",
+        "https://myauthapi1.herokuapp.com/product",
         {
           name,
           image,

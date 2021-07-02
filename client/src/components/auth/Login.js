@@ -50,7 +50,7 @@ export default function Login() {
     try {
       const loginUser = { email, password };
       const loginRes = await Axios.post(
-        "http://localhost:8080/users/login",
+        "https://myauthapi1.herokuapp.com/users/login",
         loginUser
       );
       console.log("Response");

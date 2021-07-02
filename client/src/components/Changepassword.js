@@ -88,7 +88,7 @@ export default function Changepassword() {
         reenternewpassword,
       };
       await Axios.patch(
-        `http://localhost:8080/users/changepassword/${userData.user.id}`,
+        `https://myauthapi1.herokuapp.com/users/changepassword/${userData.user.id}`,
         changePasswordUser
       );
       history.push("/");

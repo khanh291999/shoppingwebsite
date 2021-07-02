@@ -20,7 +20,7 @@ export default function Reset() {
         email: email,
       };
       await Axios.post(
-        `http://localhost:8080/users/resetpassword`,
+        `https://myauthapi1.herokuapp.com/users/resetpassword`,
         resetPasswordUser
       );
       history.push("/");

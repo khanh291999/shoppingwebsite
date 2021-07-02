@@ -23,7 +23,7 @@ export default class MainContent extends React.Component {
   }
 
   getData = () => {
-    axios.get("http://localhost:8080/product").then((res) => {
+    axios.get("https://myauthapi1.herokuapp.com/product").then((res) => {
       console.log(res);
       this.setState({
         products: res.data,
@@ -35,7 +35,7 @@ export default class MainContent extends React.Component {
   addProduct = (name, image, price, size, sex, category, S, M, L, XL, XXL) => {
     axios
       .post(
-        "http://localhost:8080/product",
+        "https://myauthapi1.herokuapp.com/product",
         {
           name,
           image,
@@ -89,7 +89,7 @@ export default class MainContent extends React.Component {
   ) => {
     axios
       .patch(
-        `http://localhost:8080/product/${_id}`,
+        `https://myauthapi1.herokuapp.com/product/${_id}`,
         {
           name,
           image,
@@ -144,7 +144,7 @@ export default class MainContent extends React.Component {
       .then((result) => {
         if (result.value) {
           axios.delete(
-            `http://localhost:8080/product/${_id}`,
+            `https://myauthapi1.herokuapp.com/product/${_id}`,
             {
               _id,
             },
@@ -188,7 +188,7 @@ export default class MainContent extends React.Component {
   ) => {
     axios
       .post(
-        "http://localhost:8080/disablejacket",
+        "https://myauthapi1.herokuapp.com/disablejacket",
         {
           name,
           image,

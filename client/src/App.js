@@ -1,14 +1,14 @@
-import React, { useState, useEffect }  from "react";
+import React, { useState, useEffect } from "react";
 import ShoppingCart from "./components/ShoppingCart";
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import {createStore, applyMiddleware} from "redux"
-import promiseMiddleware from 'redux-promise';
-import ReduxThunk from 'redux-thunk';
-import {Provider} from "react-redux"
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createStore, applyMiddleware } from "redux";
+import promiseMiddleware from "redux-promise";
+import ReduxThunk from "redux-thunk";
+import { Provider } from "react-redux";
 import Axios from "axios";
-import UserContext from "./context/userContext"
-import adminContext from "./context/adminContext"
-import rootReducer from './components/chatbotsection/_reducers';
+import UserContext from "./context/userContext";
+import adminContext from "./context/adminContext";
+import rootReducer from "./components/chatbotsection/_reducers";
 import ReactDOM from "react-dom";
 
 export default function App() {
@@ -29,41 +29,42 @@ export default function App() {
         token = "";
       }
       const tokenRes = await Axios.post(
-        "http://localhost:8080/users/tokenIsValid",
+        "https://myauthapi1.herokuapp.com/users/tokenIsValid",
         null,
         { headers: { "x-auth-token": token } }
       );
       if (tokenRes.data) {
-        const userRes = await Axios.get("http://localhost:8080/users/", {
-          headers: { "x-auth-token": token },
-        });
+        const userRes = await Axios.get(
+          "https://myauthapi1.herokuapp.com/users/",
+          {
+            headers: { "x-auth-token": token },
+          }
+        );
         setUserData({
           token,
           user: userRes.data,
         });
       }
     };
-    const checkuser = async () =>{
-      let userlogin = localStorage.getItem("user-login")
-      console.log('user',userlogin);
+    const checkuser = async () => {
+      let userlogin = localStorage.getItem("user-login");
+      console.log("user", userlogin);
       if (userlogin) {
         setUserData({
-          user: JSON.parse(userlogin)
-        })
+          user: JSON.parse(userlogin),
+        });
       }
+    };
 
-    }
-
-    const checkadmin = async () =>{
-      let adminlogin = localStorage.getItem("admin-login")
-      console.log('admin',adminlogin);
+    const checkadmin = async () => {
+      let adminlogin = localStorage.getItem("admin-login");
+      console.log("admin", adminlogin);
       if (adminlogin) {
         setadminData({
-          admin: JSON.parse(adminlogin)
-        })
+          admin: JSON.parse(adminlogin),
+        });
       }
-
-    }
+    };
 
     const checkLoggedInAdmin = async () => {
       let token = localStorage.getItem("admin-token");
@@ -72,14 +73,17 @@ export default function App() {
         token = "";
       }
       const tokenRes = await Axios.post(
-        "http://localhost:8080/admins/tokenIsValidAdmin",
+        "https://myauthapi1.herokuapp.com/admins/tokenIsValidAdmin",
         null,
         { headers: { "x-admin-token": token } }
       );
       if (tokenRes.data) {
-        const adminRes = await Axios.get("http://localhost:8080/admins/", {
-          headers: { "x-auth-token": token },
-        });
+        const adminRes = await Axios.get(
+          "https://myauthapi1.herokuapp.com/admins/",
+          {
+            headers: { "x-auth-token": token },
+          }
+        );
         setadminData({
           token,
           admin: adminRes.data,
@@ -92,41 +96,44 @@ export default function App() {
     checkLoggedInAdmin();
   }, []);
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#e74c3c"
-    }
-  }
-})
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: "#e74c3c",
+      },
+    },
+  });
 
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-console.log(`store`, store.getState())
-const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
+  const store = createStore(
+    rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
+  console.log(`store`, store.getState());
+  const createStoreWithMiddleware = applyMiddleware(
+    promiseMiddleware,
+    ReduxThunk
+  )(createStore);
 
   return (
     <Provider store={store}>
-        {/* <Provider
+      {/* <Provider
           store={createStoreWithMiddleware(
           Reducer,
           window.__REDUX_DEVTOOLS_EXTENSION__ &&
           window.__REDUX_DEVTOOLS_EXTENSION__()
         )}> */}
       <ThemeProvider theme={theme}>
-      <div className="App">
-        <adminContext.Provider value={{adminData,setadminData}}>
-      <UserContext.Provider value={{ userData, setUserData }}>
-        <ShoppingCart /> 
-      </UserContext.Provider>
-      </adminContext.Provider>
-      </div>
+        <div className="App">
+          <adminContext.Provider value={{ adminData, setadminData }}>
+            <UserContext.Provider value={{ userData, setUserData }}>
+              <ShoppingCart />
+            </UserContext.Provider>
+          </adminContext.Provider>
+        </div>
       </ThemeProvider>
       {/* </Provider> */}
     </Provider>
   );
-
 }
-
-
 
 //export default App;

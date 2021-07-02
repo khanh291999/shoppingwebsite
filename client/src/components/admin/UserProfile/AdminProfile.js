@@ -39,13 +39,13 @@ const styles = {
   },
   textInput: {
     width: "100%",
-    '& label.Mui-focused': {
-      color: '#bd7f32',
+    "& label.Mui-focused": {
+      color: "#bd7f32",
     },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: '#bd7f32',
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "#bd7f32",
     },
-  }
+  },
 };
 
 const useStyles = makeStyles(styles);
@@ -73,13 +73,16 @@ export default function UserProfile(props) {
       setHelperText("Please input your information");
     } else {
       try {
-        await axios.patch(`http://localhost:8080/admin/${adminData.admin.id}`, {
-          email,
-          displayName,
-          address,
-          phoneNumber,
-          description,
-        });
+        await axios.patch(
+          `https://myauthapi1.herokuapp.com/admin/${adminData.admin.id}`,
+          {
+            email,
+            displayName,
+            address,
+            phoneNumber,
+            description,
+          }
+        );
         Swal.fire({
           title: "Update Successfully, Please log in again",
           timer: 1000,
@@ -104,7 +107,7 @@ export default function UserProfile(props) {
   };
 
   return (
-    <div style={{width:"100%"}}>
+    <div style={{ width: "100%" }}>
       <GridContainer
         style={{ paddingTop: "11%", width: "100%", paddingLeft: "4%" }}
       >

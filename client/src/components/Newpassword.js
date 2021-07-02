@@ -21,7 +21,7 @@ export default function Newpassword() {
         token,
       };
       await Axios.post(
-        `http://localhost:8080/users/newpassword`,
+        `https://myauthapi1.herokuapp.com/users/newpassword`,
         resetPasswordUser
       );
       history.push("/");

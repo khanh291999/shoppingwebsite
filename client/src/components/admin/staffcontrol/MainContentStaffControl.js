@@ -24,7 +24,7 @@ export default class MainContentStaffControl extends React.Component {
   }
 
   getData = () => {
-    axios.get("http://localhost:8080/admin").then((res) => {
+    axios.get("https://myauthapi1.herokuapp.com/admin").then((res) => {
       console.log(res);
       this.setState({
         admins: res.data,
@@ -35,7 +35,7 @@ export default class MainContentStaffControl extends React.Component {
 
   addAdmin = async (email, password, passwordCheck, displayName, type) => {
     try {
-      await axios.post("http://localhost:8080/admins/addadmin", {
+      await axios.post("https://myauthapi1.herokuapp.com/admins/addadmin", {
         email,
         password,
         passwordCheck,
@@ -62,13 +62,16 @@ export default class MainContentStaffControl extends React.Component {
     type
   ) => {
     try {
-      await axios.patch(`http://localhost:8080/admins/updateadmin/${id}`, {
-        email,
-        password,
-        passwordCheck,
-        displayName,
-        type,
-      });
+      await axios.patch(
+        `https://myauthapi1.herokuapp.com/admins/updateadmin/${id}`,
+        {
+          email,
+          password,
+          passwordCheck,
+          displayName,
+          type,
+        }
+      );
       Swal.fire({
         title: "Update Successfully",
         timer: 1000,
@@ -98,7 +101,7 @@ export default class MainContentStaffControl extends React.Component {
       .then((result) => {
         if (result.value) {
           axios.delete(
-            `http://localhost:8080/admin/${id}`,
+            `https://myauthapi1.herokuapp.com/admin/${id}`,
             {
               id,
             },

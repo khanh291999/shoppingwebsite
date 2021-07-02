@@ -22,7 +22,7 @@ class FemaleTshirt extends Component {
     //promise
     this.setState({ isLoading: true });
     axios
-      .get("http://localhost:8080/product")
+      .get("https://myauthapi1.herokuapp.com/product")
       .then((res) => {
         const { data } = res;
         this.setState({ products: data, isLoading: false });

@@ -49,12 +49,15 @@ export default function UserProfile() {
       setHelperText("Please input your information");
     } else {
       try {
-        await axios.patch(`http://localhost:8080/user/${userData.user.id}`, {
-          email,
-          displayName,
-          address,
-          phoneNumber,
-        });
+        await axios.patch(
+          `https://myauthapi1.herokuapp.com/user/${userData.user.id}`,
+          {
+            email,
+            displayName,
+            address,
+            phoneNumber,
+          }
+        );
         history.push("/");
         setUserData({
           token: undefined,

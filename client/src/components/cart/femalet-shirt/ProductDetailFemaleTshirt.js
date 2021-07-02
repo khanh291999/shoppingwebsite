@@ -23,8 +23,8 @@ import "../../../assets/ProductDetail.css";
 
 const CustomRadio = withStyles({
   root: {
-    '&$checked': {
-      color: '#BD7F32',
+    "&$checked": {
+      color: "#BD7F32",
     },
   },
   checked: {},
@@ -52,7 +52,9 @@ class ProductDetailFemaleTshirt extends Component {
       loading: true,
     });
     axios
-      .get(`http://localhost:8080/product/${this.props.match.params.masanpham}`)
+      .get(
+        `https://myauthapi1.herokuapp.com/product/${this.props.match.params.masanpham}`
+      )
       .then((res) => {
         const { _id, name, price, size, image } = res.data;
         this.setState({
