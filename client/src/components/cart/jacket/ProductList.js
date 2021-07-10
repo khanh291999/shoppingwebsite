@@ -13,13 +13,13 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import { Link } from "react-router-dom";
 import "../../../assets/ProductList.css";
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import DirectionsIcon from '@material-ui/icons/Directions';
+import Paper from "@material-ui/core/Paper";
+import InputBase from "@material-ui/core/InputBase";
+import Divider from "@material-ui/core/Divider";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import SearchIcon from "@material-ui/icons/Search";
+import DirectionsIcon from "@material-ui/icons/Directions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,9 +31,9 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(4),
   },
   inputContainer: {
-    padding: '2px 4px',
-    display: 'flex',
-    alignItems: 'center',
+    padding: "2px 4px",
+    display: "flex",
+    alignItems: "center",
     width: 400,
   },
   input: {
@@ -80,10 +80,22 @@ function ProductList(props) {
   return (
     <Container maxWidth={false} className="background">
       {/* Categories */}
-      <div style={{textAlign: '-webkit-center', backgroundColor: '#f0ede8', margin: '0 -1.7%'}}>
+      <div
+        style={{
+          textAlign: "-webkit-center",
+          backgroundColor: "#f0ede8",
+          margin: "0 -1.7%",
+        }}
+      >
         <ul id="nav-main-list">
           <li class="nav-main-sublist dropdown">
-            <a href="javascript:void(0)" class="dropbtn" style={{backgroundColor: '#fffefa', color: '#bd7f32'}}>Man</a>
+            <a
+              href="javascript:void(0)"
+              class="dropbtn"
+              style={{ backgroundColor: "#fffefa", color: "#bd7f32" }}
+            >
+              Man
+            </a>
             <div class="dropdown-content">
               <Link to="/product">
                 <a href="/product">Jacket</a>
@@ -97,7 +109,9 @@ function ProductList(props) {
             </div>
           </li>
           <li class="nav-main-sublist dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Woman</a>
+            <a href="javascript:void(0)" class="dropbtn">
+              Woman
+            </a>
             <div class="dropdown-content">
               <Link to="/femalejacket">
                 <a href="/femalejacket">Jacket</a>
@@ -248,6 +262,7 @@ function ProductList(props) {
                       key={product._id}
                       img={product.image[0]}
                       img1={product.image[1]}
+                      PID={product.PID}
                       _id={product._id}
                       addToCart={props.addToCart}
                     />

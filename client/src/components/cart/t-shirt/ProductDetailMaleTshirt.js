@@ -23,8 +23,8 @@ import "../../../assets/ProductDetail.css";
 
 const CustomRadio = withStyles({
   root: {
-    '&$checked': {
-      color: '#BD7F32',
+    "&$checked": {
+      color: "#BD7F32",
     },
   },
   checked: {},
@@ -54,13 +54,14 @@ class ProductDetailMaleTshirt extends Component {
     axios
       .get(`http://localhost:8080/product/${this.props.match.params.masanpham}`)
       .then((res) => {
-        const { _id, name, price, size, image, description } = res.data;
+        const { _id, name, price, size, image, PID, description } = res.data;
         this.setState({
           _id,
           name,
           price,
           size,
           img: image,
+          PID,
           loading: false,
           description,
         });
@@ -89,7 +90,7 @@ class ProductDetailMaleTshirt extends Component {
   };
   render() {
     const { classes } = this.props;
-    const { _id, name, price, size, img, description } = this.state;
+    const { _id, name, price, size, img, description, PID } = this.state;
     return (
       <div className="product-detail-container">
         {this.state.loading === false ? (
@@ -101,6 +102,9 @@ class ProductDetailMaleTshirt extends Component {
               <Grid item md={6} className="product-info-container">
                 <Typography variant="div" className="product-name">
                   {name}
+                </Typography>
+                <Typography variant="div" className="product-name">
+                  {PID}
                 </Typography>
                 <Typography variant="div" className="product-price">
                   ${price}

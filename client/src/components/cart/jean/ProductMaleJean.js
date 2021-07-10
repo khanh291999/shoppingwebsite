@@ -15,7 +15,7 @@ export default function ProductMaleJean(props) {
   //     img,
   //   })
   // }
-  const { _id, name, price, img, img1 } = props;
+  const { _id, name, price, img, img1, PID } = props;
   return (
     <Box component={Link} to={"/jean/" + _id}>
       <div className="product-container">
@@ -26,7 +26,9 @@ export default function ProductMaleJean(props) {
           onMouseOver={(e) => (e.currentTarget.src = img1)}
           onMouseOut={(e) => (e.currentTarget.src = img)}
         />
-        <div className="product-list-name">{name}</div>
+        <div className="product-list-name">
+          {name} | {PID}
+        </div>
         <div className="product-list-price">$ {price}</div>
       </div>
     </Box>

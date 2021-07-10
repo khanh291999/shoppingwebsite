@@ -53,10 +53,22 @@ function ProductListMaleJean(props) {
   return (
     <Container maxWidth={false} className="background">
       {/* Categories */}
-      <div style={{textAlign: '-webkit-center', backgroundColor: '#f0ede8', margin: '0 -1.7%'}}>
+      <div
+        style={{
+          textAlign: "-webkit-center",
+          backgroundColor: "#f0ede8",
+          margin: "0 -1.7%",
+        }}
+      >
         <ul id="nav-main-list">
           <li class="nav-main-sublist dropdown">
-            <a href="javascript:void(0)" class="dropbtn" style={{backgroundColor: '#fffefa', color: '#bd7f32'}}>Man</a>
+            <a
+              href="javascript:void(0)"
+              class="dropbtn"
+              style={{ backgroundColor: "#fffefa", color: "#bd7f32" }}
+            >
+              Man
+            </a>
             <div class="dropdown-content">
               <Link to="/product">
                 <a href="/product">Jacket</a>
@@ -70,7 +82,9 @@ function ProductListMaleJean(props) {
             </div>
           </li>
           <li class="nav-main-sublist dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Woman</a>
+            <a href="javascript:void(0)" class="dropbtn">
+              Woman
+            </a>
             <div class="dropdown-content">
               <Link to="/femalejacket">
                 <a href="/femalejacket">Jacket</a>
@@ -208,6 +222,7 @@ function ProductListMaleJean(props) {
                       key={product._id}
                       img={product.image[0]}
                       img1={product.image[1]}
+                      PID={product.PID}
                       _id={product._id}
                       addToCart={props.addToCart}
                     />

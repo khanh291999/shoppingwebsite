@@ -17,7 +17,7 @@ export default function Product(props) {
 
   //   })
   // }
-  const { _id, name, price, img, img1 } = props;
+  const { _id, name, price, img, img1, PID } = props;
   return (
     <Box component={Link} to={"/product/" + _id}>
       <div className="product-container">
@@ -28,7 +28,9 @@ export default function Product(props) {
           onMouseOver={(e) => (e.currentTarget.src = img1)}
           onMouseOut={(e) => (e.currentTarget.src = img)}
         />
-        <div className="product-list-name">{name}</div>
+        <div className="product-list-name">
+          {name} | {PID}
+        </div>
         <div className="product-list-price">$ {price}</div>
       </div>
     </Box>
