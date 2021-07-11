@@ -58,9 +58,10 @@
 
 .product-info {
   font-family: LibreBaskervilleBold, Georgia, Times, serif;
+  margin-top: 10px;
 }
 
-.product-info li{
+.product-info li {
   margin-top: 1em;
   margin-bottom: 1em;
 }

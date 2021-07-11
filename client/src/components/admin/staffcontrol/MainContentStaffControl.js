@@ -47,7 +47,6 @@ export default class MainContentStaffControl extends React.Component {
         timer: 1000,
         icon: "success",
       });
-      console.log("ResponseRegister");
     } catch (err) {
       err.response.data.msg && this.setState({ error: err.response.data.msg });
     }
@@ -74,7 +73,6 @@ export default class MainContentStaffControl extends React.Component {
         timer: 1000,
         icon: "success",
       });
-      console.log("ResponseRegister");
     } catch (err) {
       Swal.fire({
         title: "Update Unsuccessfully",

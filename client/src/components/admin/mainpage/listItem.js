@@ -29,7 +29,6 @@ export class MenuSideBar extends React.Component {
   static contextType = AdminContext;
   handleActiveDashboard = () => {
     const { changeActive } = this.props;
-    console.log("abv", changeActive);
     changeActive("dashboard");
   };
 

@@ -82,7 +82,6 @@ class Modal extends Component {
     if (this.props.editingProduct) {
       const { _id, image, price, name, sex, category, S, M, L, XL, XXL } =
         this.props.editingProduct;
-      console.log("MODAL EDIT");
       this.setState({
         _id,
         image,
@@ -97,16 +96,12 @@ class Modal extends Component {
         XXL,
       });
     } else {
-      console.log("MODAL CREATE");
     }
   }
 
-  componentDidUpdate() {
-    console.log("MODAL=-----DID UPDATE");
-  }
+  componentDidUpdate() {}
 
   componentWillUnmount() {
-    console.log("MODAL=-----WILL UNMOUNT");
     this.props.clearIsEditing();
   }
 
@@ -159,7 +154,14 @@ class Modal extends Component {
       XL,
       XXL,
     } = this.state;
-    const image = [image_one, image_two, image_three,image_four,image_five,image_six];
+    const image = [
+      image_one,
+      image_two,
+      image_three,
+      image_four,
+      image_five,
+      image_six,
+    ];
     if (
       name === "" ||
       price === "" ||
@@ -262,7 +264,12 @@ class Modal extends Component {
                   Cancel
                 </button>
               </div>
-              <Grid container alignItems="flex-start" spacing={2} style={{marginTop: '2%'}}>
+              <Grid
+                container
+                alignItems="flex-start"
+                spacing={2}
+                style={{ marginTop: "2%" }}
+              >
                 {/* Product Name */}
                 <Grid item xs={6}>
                   <TextField
@@ -351,7 +358,7 @@ class Modal extends Component {
                   </TextField>
                 </Grid>
                 {/* Product Image */}
-                <Grid item xs={12} style={{ display: "flex" , marginTop: '2%'}}>
+                <Grid item xs={12} style={{ display: "flex", marginTop: "2%" }}>
                   <Grid item xs={2}>
                     <Typography>Product Image</Typography>
                   </Grid>
@@ -419,7 +426,7 @@ class Modal extends Component {
                   </Grid>
                 </Grid>
                 {/* Quantity */}
-                <Grid item xs={12} style={{ display: "flex" , marginTop: '2%'}}>
+                <Grid item xs={12} style={{ display: "flex", marginTop: "2%" }}>
                   <Grid item xs={2}>
                     <Typography>Quantity</Typography>
                   </Grid>
@@ -489,13 +496,13 @@ class Modal extends Component {
                   </Grid>
                 </Grid>
               </Grid>
-              
+
               <button
-                  type="submit"
-                  class="btnadmin btn-outline-primary-admin"
-                  onClick={this.handleSubmit}
-                >
-                  {this.props.editingProduct ? "UPDATE" : "ADD"}
+                type="submit"
+                class="btnadmin btn-outline-primary-admin"
+                onClick={this.handleSubmit}
+              >
+                {this.props.editingProduct ? "UPDATE" : "ADD"}
               </button>
             </Paper>
           </FormControl>

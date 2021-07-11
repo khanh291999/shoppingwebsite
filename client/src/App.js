@@ -1,15 +1,12 @@
-import React, { useState, useEffect }  from "react";
+import React, { useState, useEffect } from "react";
 import ShoppingCart from "./components/ShoppingCart";
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import {createStore, applyMiddleware} from "redux"
-import promiseMiddleware from 'redux-promise';
-import ReduxThunk from 'redux-thunk';
-import {Provider} from "react-redux"
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 import Axios from "axios";
-import UserContext from "./context/userContext"
-import adminContext from "./context/adminContext"
-import rootReducer from './components/chatbotsection/_reducers';
-import ReactDOM from "react-dom";
+import UserContext from "./context/userContext";
+import adminContext from "./context/adminContext";
+import rootReducer from "./components/chatbotsection/_reducers";
 
 export default function App() {
   const [userData, setUserData] = useState({
@@ -43,27 +40,23 @@ export default function App() {
         });
       }
     };
-    const checkuser = async () =>{
-      let userlogin = localStorage.getItem("user-login")
-      console.log('user',userlogin);
+    const checkuser = async () => {
+      let userlogin = localStorage.getItem("user-login");
       if (userlogin) {
         setUserData({
-          user: JSON.parse(userlogin)
-        })
+          user: JSON.parse(userlogin),
+        });
       }
+    };
 
-    }
-
-    const checkadmin = async () =>{
-      let adminlogin = localStorage.getItem("admin-login")
-      console.log('admin',adminlogin);
+    const checkadmin = async () => {
+      let adminlogin = localStorage.getItem("admin-login");
       if (adminlogin) {
         setadminData({
-          admin: JSON.parse(adminlogin)
-        })
+          admin: JSON.parse(adminlogin),
+        });
       }
-
-    }
+    };
 
     const checkLoggedInAdmin = async () => {
       let token = localStorage.getItem("admin-token");
@@ -92,41 +85,37 @@ export default function App() {
     checkLoggedInAdmin();
   }, []);
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#e74c3c"
-    }
-  }
-})
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: "#e74c3c",
+      },
+    },
+  });
 
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-console.log(`store`, store.getState())
-const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
+  const store = createStore(
+    rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
+  // const createStoreWithMiddleware = applyMiddleware(
+  //   promiseMiddleware,
+  //   ReduxThunk
+  // )(createStore);
 
   return (
     <Provider store={store}>
-        {/* <Provider
-          store={createStoreWithMiddleware(
-          Reducer,
-          window.__REDUX_DEVTOOLS_EXTENSION__ &&
-          window.__REDUX_DEVTOOLS_EXTENSION__()
-        )}> */}
       <ThemeProvider theme={theme}>
-      <div className="App">
-        <adminContext.Provider value={{adminData,setadminData}}>
-      <UserContext.Provider value={{ userData, setUserData }}>
-        <ShoppingCart /> 
-      </UserContext.Provider>
-      </adminContext.Provider>
-      </div>
+        <div className="App">
+          <adminContext.Provider value={{ adminData, setadminData }}>
+            <UserContext.Provider value={{ userData, setUserData }}>
+              <ShoppingCart />
+            </UserContext.Provider>
+          </adminContext.Provider>
+        </div>
       </ThemeProvider>
       {/* </Provider> */}
     </Provider>
   );
-
 }
-
-
 
 //export default App;

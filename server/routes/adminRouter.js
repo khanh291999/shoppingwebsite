@@ -44,8 +44,6 @@ router.post("/adminlogin", async (req, res) => {
 router.post("/addadmin", async (req, res) => {
   try {
     let { email, password, passwordCheck, displayName, type } = req.body;
-    console.log("req.body", req.body);
-
     //validate
     if (!email || !password || !passwordCheck || !displayName)
       return res.status(400).json({ msg: "Not all fields have been entered." });
@@ -83,7 +81,6 @@ router.post("/addadmin", async (req, res) => {
 router.patch("/updateadmin/:id", async (req, res) => {
   try {
     let { email, password, passwordCheck, displayName, type } = req.body;
-    console.log("req.body", req.body);
 
     //validate
     if (!email || !password || !passwordCheck || !displayName)

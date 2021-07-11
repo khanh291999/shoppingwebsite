@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { TextField, Typography } from "@material-ui/core";
 import UserContext from "../context/userContext";
 import Axios from "axios";
@@ -16,7 +16,6 @@ import Swal from "sweetalert2";
 
 export default function Changepassword() {
   const { userData, setUserData } = useContext(UserContext);
-  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [newpassword, setNewpassword] = useState();
   const [reenternewpassword, setReenternewpassword] = useState();

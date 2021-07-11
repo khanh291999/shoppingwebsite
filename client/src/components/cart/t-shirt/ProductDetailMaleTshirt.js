@@ -39,13 +39,18 @@ class ProductDetailMaleTshirt extends Component {
   //state-hook
   state = {
     selected_size: "",
+    selected_color: "",
     quantity: 1,
     img: [],
     loading: undefined,
     helperText: "",
+    helperTextColor: "",
   };
   handleChange = (event) => {
     this.setState({ selected_size: event.target.value });
+  };
+  handleChangeColor = (event) => {
+    this.setState({ selected_color: event.target.value });
   };
   componentDidMount() {
     this.setState({
@@ -54,7 +59,17 @@ class ProductDetailMaleTshirt extends Component {
     axios
       .get(`http://localhost:8080/product/${this.props.match.params.masanpham}`)
       .then((res) => {
-        const { _id, name, price, size, image, PID, description } = res.data;
+        const {
+          _id,
+          name,
+          price,
+          size,
+          image,
+          PID,
+          description,
+          color,
+          colorHex,
+        } = res.data;
         this.setState({
           _id,
           name,
@@ -62,6 +77,8 @@ class ProductDetailMaleTshirt extends Component {
           size,
           img: image,
           PID,
+          color,
+          colorHex,
           loading: false,
           description,
         });
@@ -71,10 +88,15 @@ class ProductDetailMaleTshirt extends Component {
       });
   }
   handleClickBtn = () => {
-    const { _id, name, price, selected_size, img, quantity } = this.state;
+    const { _id, name, price, selected_size, selected_color, img, quantity } =
+      this.state;
     if (selected_size === "") {
       this.setState({
         helperText: "Please choose size",
+      });
+    } else if (selected_color === "") {
+      this.setState({
+        helperTextColor: "Please choose color",
       });
     } else {
       this.props.addToCart({
@@ -84,13 +106,15 @@ class ProductDetailMaleTshirt extends Component {
         price,
         img,
         size: selected_size,
+        color: selected_color,
         quantity,
       });
     }
   };
   render() {
     const { classes } = this.props;
-    const { _id, name, price, size, img, description, PID } = this.state;
+    const { _id, name, price, size, img, description, PID, color, colorHex } =
+      this.state;
     return (
       <div className="product-detail-container">
         {this.state.loading === false ? (
@@ -109,6 +133,19 @@ class ProductDetailMaleTshirt extends Component {
                 <Typography variant="div" className="product-price">
                   ${price}
                 </Typography>
+                <FormHelperText style={{ color: "red" }}>
+                  {this.state.helperTextColor}
+                </FormHelperText>
+                <div className="product-list-color">
+                  {colorHex.map((color, index) => (
+                    <button
+                      key={index}
+                      value={color}
+                      style={{ background: color }}
+                      onClick={this.handleChangeColor}
+                    ></button>
+                  ))}
+                </div>
                 <div className="product-info">
                   <div>
                     The Charm is 70’s inspired with a high waist and kick flare.

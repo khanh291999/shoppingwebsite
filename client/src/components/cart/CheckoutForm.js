@@ -24,7 +24,6 @@ export default class CheckoutForm extends Component {
           address: "",
           phone_number: "",
         });
-    // console.log('userdata', user);
   }
 
   state = {
@@ -96,8 +95,6 @@ export default class CheckoutForm extends Component {
 
   render() {
     const { handleClose, open } = this.props;
-    console.log("total", typeof this.props.alltotal);
-
     return (
       <Dialog
         style={{ userSelect: "none" }}

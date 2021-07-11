@@ -7,7 +7,6 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-//
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -84,14 +83,10 @@ const useStyles = makeStyles((theme) => ({
 function Header(props) {
   // const classes = useStyles(props);
   const { userData, setUserData } = useContext(UserContext);
-  const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
-  const handleClick = () => setClick(!click);
-
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 

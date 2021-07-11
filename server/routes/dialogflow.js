@@ -34,7 +34,6 @@ router.post("/textQuery", async (req, res) => {
 
   // Send request and log result
   const responses = await sessionClient.detectIntent(request);
-  console.log("Detected intent text");
   const result = responses[0].queryResult;
   const result1 = responses[0].queryResult.queryText;
   const result2 = responses[0].queryResult.fulfillmentText;
@@ -67,7 +66,6 @@ router.post("/textQuery", async (req, res) => {
       })
       .then((res) => {
         console.log("res", res);
-        console.log("array", array);
       })
       .catch((err) => {
         console.log(err);
@@ -77,52 +75,24 @@ router.post("/textQuery", async (req, res) => {
   if (result2.includes("name") === true) {
     username = result1;
     array.push(`${result1}`);
-    console.log("Usernameeeeeeeeeeeeeeeeeeeeee", username);
   }
   if (result2.includes("email") === true) {
     email = result1;
     array.push(`${result1}`);
-    console.log("Emaillllllllllllllll", email);
   }
   if (result2.includes("live") === true) {
     address = result1;
     array.push(`${result1}`);
-    console.log("Addressssssssss", address);
   }
   if (result2.includes("impression ") === true) {
     opinion = result1;
     array.push(`${result1}`);
-    console.log("Opinion", opinion);
   }
   if (result2.includes("Thank you") === true) {
     array.push(`${result1}`);
     postdata(username, email, address, opinion);
     array = [];
-    // res.send(result)
   }
-
-  // console.log('array', array)
-  // console.log('Query text',result1);
-  // console.log('fulfillment',result2);
-  // console.log(`  Query: ${result.queryText}`);
-  // console.log(`  Response: ${result.fulfillmentText}`);
-
-  // if (responses[0].queryResult.queryText == "give opinion"){
-  //     console.log("aaaaaaaaaaaaaaaaaaaaaaa");
-  //     console.log("aaaaaaaaaaaaaaaaaaaaaaa");
-  //     console.log("aaaaaaaaaaaaaaaaaaaaaaa");
-  // }
-
-  // axios.post('http://localhost:5000/opinion',{
-  //     result1,
-  //     result2
-  // },)
-  // .then(res=>{
-  //     console.log('res',res)
-  // }).catch(err=>{
-  //     console.log(err);
-  // })
-
   res.send(result);
 });
 
@@ -145,21 +115,7 @@ router.post("/eventQuery", async (req, res) => {
 
   // Send request and log result
   const responses = await sessionClient.detectIntent(request);
-  console.log("Detected intent event");
   const result = responses[0].queryResult;
-  console.log(`  Query: ${result.queryText}`);
-  console.log(`  Response: ${result.fulfillmentText}`);
-
-  console.log(`  Intent: ${result.intent}`);
-  console.log(`  fulfill: ${result.fulfillmentMessages}`);
-  console.log(`  para: ${result.parameters}`);
-  console.log(`  output: ${result.outputContext}`);
-
-  // console.log(result.intent);
-  // console.log(result.fulfillmentMessages);
-  // console.log(result.parameters);
-  // console.log(result.outputContext);
-
   res.send(result);
 });
 

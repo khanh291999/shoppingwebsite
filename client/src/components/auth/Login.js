@@ -53,14 +53,12 @@ export default function Login() {
         "http://localhost:8080/users/login",
         loginUser
       );
-      console.log("Response");
       setUserData({
         token: loginRes.data.token,
         user: loginRes.data.user,
       });
       localStorage.setItem("auth-token", loginRes.data.token);
       localStorage.setItem("user-login", JSON.stringify(loginRes.data.user));
-      // console.log(loginRes.data.user);
       history.push("/");
     } catch (err) {
       err.response.data.msg && setError(err.response.data.msg);

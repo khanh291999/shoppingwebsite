@@ -2,60 +2,62 @@ import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
-import '../../assets/Login.css'
+import "../../assets/Login.css";
 import adminContext from "../../context/adminContext";
 
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Link from "@material-ui/core/Link";
+import Paper from "@material-ui/core/Paper";
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://localhost:3000/">
         K&Q
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh',
+    height: "100vh",
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundRepeat: 'no-repeat',
+    backgroundImage: "url(https://source.unsplash.com/random)",
+    backgroundRepeat: "no-repeat",
     backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+      theme.palette.type === "light"
+        ? theme.palette.grey[50]
+        : theme.palette.grey[900],
+    backgroundSize: "cover",
+    backgroundPosition: "center",
   },
   paper: {
     margin: theme.spacing(8, 4),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -69,16 +71,15 @@ export default function Login() {
   const [password, setPassword] = useState();
   const [error, setError] = useState();
 
-  const  {setadminData}  = useContext(adminContext);
+  const { setadminData } = useContext(adminContext);
   const history = useHistory();
 
   useEffect(() => {
-    const token = window.localStorage.getItem('admin-token');
-    if(token){
-        history.push('/admin')
+    const token = window.localStorage.getItem("admin-token");
+    if (token) {
+      history.push("/admin");
     }
   }, [history]);
-
 
   //post login data
   const submit = async (e) => {
@@ -89,15 +90,13 @@ export default function Login() {
         "http://localhost:8080/admins/adminlogin",
         loginAdmin
       );
-      console.log("Response")
       setadminData({
         token: loginRes.data.token,
         admin: loginRes.data.admin,
       });
       localStorage.setItem("admin-token", loginRes.data.token);
-      localStorage.setItem("admin-login",  JSON.stringify(loginRes.data.admin));
+      localStorage.setItem("admin-login", JSON.stringify(loginRes.data.admin));
       history.push("/admin");
-      console.log("abc");
     } catch (err) {
       err.response.data.msg && setError(err.response.data.msg);
     }
@@ -152,7 +151,10 @@ export default function Login() {
               <Copyright />
             </Box>
             {error && (
-              <ErrorNotice message={error} clearError={() => setError(undefined)} />
+              <ErrorNotice
+                message={error}
+                clearError={() => setError(undefined)}
+              />
             )}
           </form>
         </div>

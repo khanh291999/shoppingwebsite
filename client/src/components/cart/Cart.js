@@ -16,14 +16,14 @@ import Swal from "sweetalert2";
 import "../../assets/Cart.css";
 import "../../assets/CartProduct.css";
 import UserContext from "./../../context/userContext";
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 import CartProduct from "./CartProduct";
 import CheckoutForm from "./CheckoutForm";
 
 const CustomRadio = withStyles({
   root: {
-    '&$checked': {
-      color: '#BD7F32',
+    "&$checked": {
+      color: "#BD7F32",
     },
   },
   checked: {},
@@ -136,21 +136,6 @@ class Cart extends React.Component {
       });
   };
 
-  // handleCheckoutPaypal=()=>{
-  //   const {selected_shipping}= this.state;
-  //   console.log('selected_shipping',selected_shipping);
-
-  //   if(selected_shipping == undefined)
-  //   {
-  //     this.setState({
-  //       helperText:"Please choose shipping company"
-  //     })
-  //   }
-  //   else{
-  //     this.setState({checkout:true})
-  //   }
-  // }
-
   render() {
     const { selected_shipping } = this.state;
     const { cartItems = [] } = this.props;
@@ -182,6 +167,7 @@ class Cart extends React.Component {
                       <th style={{ width: "11%" }}>Size</th>
                       <th style={{ width: "13%" }}>Quantity</th>
                       <th style={{ width: "13%" }}>Price</th>
+                      <th style={{ width: "7%" }}>Color</th>
                       <th style={{ width: "13%" }}>Remove</th>
                     </tr>
                   </thead>

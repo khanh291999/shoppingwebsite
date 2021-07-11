@@ -263,6 +263,8 @@ function ProductList(props) {
                       img={product.image[0]}
                       img1={product.image[1]}
                       PID={product.PID}
+                      color={product.color}
+                      colorHex={product.colorHex}
                       _id={product._id}
                       addToCart={props.addToCart}
                     />

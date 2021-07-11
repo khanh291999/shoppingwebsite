@@ -1,77 +1,39 @@
-import React,  { useState, useContext } from 'react'
-import FacebookLogin from 'react-facebook-login'
+import React, { useState, useContext } from "react";
+import FacebookLogin from "react-facebook-login";
 import UserContext from "../../context/userContext";
-import {useHistory } from "react-router-dom";
-
-// export default function Facebook {
-
-
-  
-//     componentClicked = () => {
-//         console.log('clicked')
-//     }
-
-//     responseFacebook = (response) =>{
-//         console.log(response);
-//     }
-
-//     render() {
-//         let fbContent;
-
-//         if(this.state.isLoggedIn){
-//             fbContent = null;
-//         }else{
-//             fbContent= (
-//                 <FacebookLogin
-//                 appId="2694624874123071"
-//                 autoLoad={false}
-//                 fields="name,email,picture"
-//                 onClick={this.componentClicked}
-//                 callback={this.responseFacebook} />
-//             )
-//         }
-//         return (
-//             <div>
-//                 {fbContent}
-//             </div>
-//         )
-//     }
-// }
-
-// import React from 'react'
+import { useHistory } from "react-router-dom";
 
 export default function Facebook() {
-    const [isLoggedIn,setisLoggedIn] = useState(false);
-    const { setUserData } = useContext(UserContext);
-    const history = useHistory();
+  const [isLoggedIn, setisLoggedIn] = useState(false);
+  const { setUserData } = useContext(UserContext);
+  const history = useHistory();
 
-    const componentClicked = () => {
-        console.log('clicked')
-    }
+  const componentClicked = () => {};
 
-     const responseFacebook = (response) =>{
-         console.log(response);
-         
-        setUserData({
-            token: response.accessToken,
-            displayName: response.name,
-            email:response.email,
-            id: response.userID,
-            user: response.name
-          });
-          localStorage.setItem("facebook-token", JSON.stringify(response.accessToken));
-          history.push("/");
-    }
+  const responseFacebook = (response) => {
+    setUserData({
+      token: response.accessToken,
+      displayName: response.name,
+      email: response.email,
+      id: response.userID,
+      user: response.name,
+    });
+    localStorage.setItem(
+      "facebook-token",
+      JSON.stringify(response.accessToken)
+    );
+    history.push("/");
+  };
 
-    return (
-         <FacebookLogin
-            appId="2694624874123071"
-            autoLoad={false}
-            fields="name,email,picture"
-            cssClass="btn-fb"
-            icon="fa-facebook"
-            onClick={componentClicked}
-            callback={responseFacebook} />
-    )
+  return (
+    <FacebookLogin
+      appId="2694624874123071"
+      autoLoad={false}
+      fields="name,email,picture"
+      cssClass="btn-fb"
+      icon="fa-facebook"
+      onClick={componentClicked}
+      callback={responseFacebook}
+    />
+  );
 }
-

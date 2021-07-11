@@ -102,7 +102,6 @@ router.post("/adduser", async (req, res) => {
   try {
     let { email, password, passwordCheck, displayName, address, phoneNumber } =
       req.body;
-    console.log("req.body", req.body);
 
     //validate
     if (
@@ -159,7 +158,6 @@ router.patch("/updateuser/:id", async (req, res) => {
   try {
     let { email, password, passwordCheck, displayName, address, phoneNumber } =
       req.body;
-    console.log("req.body", req.body);
 
     //validate
     if (
@@ -222,7 +220,6 @@ router.patch("/changepassword/:_id", async (req, res) => {
     let { email, password, newpassword, reenternewpassword } = req.body;
     const user = await User.findOne({ email: email });
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log("req.body", req.body);
 
     //validate
     if (!email || !password || !newpassword || !reenternewpassword)
@@ -273,7 +270,6 @@ router.post("/resetpassword", (req, res) => {
                   <h5>click in this <a href="https://localhost:3000/reset/${token}">link</a> to reset password</h5>
                   `,
         });
-        console.log("Passs send mail");
 
         res.json({ message: "check your email" });
       });

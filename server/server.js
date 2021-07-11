@@ -153,7 +153,6 @@ const PaypalSchema = new mongoose.Schema({
   orderID: Object,
 });
 
-
 //product
 const ProductSchema = new Schema({
   name: String,
@@ -229,7 +228,6 @@ app.get("/opinion", (req, res) => {
 
   Opinion.find({})
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -257,7 +255,6 @@ app.get("/disablejacket", (req, res) => {
 
   DisableJacket.find({})
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -271,7 +268,6 @@ app.get("/disablejacket/:_id", (req, res) => {
     _id: req.params._id,
   })
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -309,7 +305,6 @@ app.get("/disablejean", (req, res) => {
 
   DisableJean.find({})
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -323,7 +318,6 @@ app.get("/disablejean/:_id", (req, res) => {
     _id: req.params._id,
   })
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -361,7 +355,6 @@ app.get("/disablet-shirt", (req, res) => {
 
   DisableTshirt.find({})
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -375,7 +368,6 @@ app.get("/disablet-shirt/:_id", (req, res) => {
     _id: req.params._id,
   })
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -413,7 +405,6 @@ app.get("/disablefemalejacket", (req, res) => {
 
   DisableFemaleJacket.find({})
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -427,7 +418,6 @@ app.get("/disablefemalejacket/:_id", (req, res) => {
     _id: req.params._id,
   })
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -467,7 +457,6 @@ app.get("/disablefemalejean", (req, res) => {
 
   DisableFemaleJean.find({})
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -481,7 +470,6 @@ app.get("/disablefemalejean/:_id", (req, res) => {
     _id: req.params._id,
   })
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -520,7 +508,6 @@ app.get("/disablefemalet-shirt", (req, res) => {
 
   DisableFemaleTshirt.find({})
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -534,7 +521,6 @@ app.get("/disablefemalet-shirt/:_id", (req, res) => {
     _id: req.params._id,
   })
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -573,7 +559,6 @@ app.get("/cart", (req, res) => {
   const data = {};
   Cart.find({})
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -613,7 +598,6 @@ app.get("/paypal", (req, res) => {
 
   Paypal.find({})
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -627,7 +611,6 @@ app.get("/paypal/:id", (req, res) => {
     id: req.params.id,
   })
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -655,7 +638,6 @@ app.get("/admin", (req, res) => {
 
   Admin.find({})
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -669,7 +651,6 @@ app.get("/admin/:id", (req, res) => {
     id: req.params.id,
   })
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -726,7 +707,6 @@ app.get("/user", (req, res) => {
 
   User.find({})
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -740,7 +720,6 @@ app.get("/user/:id", (req, res) => {
     id: req.params.id,
   })
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
@@ -764,7 +743,6 @@ app.post("/user", (req, res) => {
 
 app.delete("/user/:id", async (req, res) => {
   try {
-    console.log(req.params.id);
     const removedPost = await User.remove({ id: req.params.id });
     res.json(removedPost);
   } catch (err) {
@@ -809,7 +787,6 @@ app.get("/product/:_id", (req, res) => {
     _id: req.params._id,
   })
     .then((data) => {
-      // console.log('Data: ', data);
       res.json(data);
     })
     .catch((error) => {
