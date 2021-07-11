@@ -60,7 +60,7 @@ export class MenuSideBar extends React.Component {
   render() {
     const admin = this.context.adminData.admin;
     if (admin == undefined) {
-      window.location.replace("https://localhost:3000/adlogin");
+      window.location.replace("https://localhost:3001/adlogin");
     }
 
     return (
