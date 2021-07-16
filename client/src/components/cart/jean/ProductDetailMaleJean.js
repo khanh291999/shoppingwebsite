@@ -126,7 +126,12 @@ class ProductDetailMaleJean extends Component {
                 <FormHelperText style={{ color: "red" }}>
                   {this.state.helperTextColor}
                 </FormHelperText>
-                <div className="product-list-color">
+                <div className="product-list-color-name">
+                  {color.map((color) => (
+                    <p>{color}</p>
+                  ))}
+                </div>
+                <div className="product-list-color-detail">
                   {colorHex.map((color, index) => (
                     <button
                       key={index}
