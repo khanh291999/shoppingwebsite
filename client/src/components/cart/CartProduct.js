@@ -9,7 +9,13 @@ export default function CartProduct(props) {
     if (Number(event.target.value) === 0) {
       return props.deleteCart(props.cart.id_cart);
     }
-    props.updateCart(props.cart.id_product,props.cart.color,props.cart.size, props.cart.id_cart, event.target.value);
+    props.updateCart(
+      props.cart.id_product,
+      props.cart.color,
+      props.cart.size,
+      props.cart.id_cart,
+      event.target.value
+    );
   };
   const handleDeleteFromCart = () => {
     props.deleteCart(props.cart.id_cart);

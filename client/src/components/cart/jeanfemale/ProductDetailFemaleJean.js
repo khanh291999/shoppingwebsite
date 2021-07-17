@@ -45,12 +45,16 @@ class ProductDetailFemaleJean extends Component {
     loading: undefined,
     helperText: "",
     helperTextColor: "",
+    selectedColorIndex: -1,
   };
   handleChange = (event) => {
     this.setState({ selected_size: event.target.value });
   };
-  handleChangeColor = (event) => {
-    this.setState({ selected_color: event.target.value });
+  handleChangeColor = (selected_color, selectedColorIndex) => {
+    this.setState({
+      selected_color,
+      selectedColorIndex,
+    });
   };
   componentDidMount() {
     this.setState({
@@ -78,8 +82,17 @@ class ProductDetailFemaleJean extends Component {
       });
   }
   handleClickBtn = () => {
-    const { _id, name, price, selected_size, selected_color, img, quantity } =
-      this.state;
+    const {
+      _id,
+      name,
+      price,
+      selected_size,
+      selected_color,
+      img,
+      quantity,
+      selectedColorIndex,
+      color,
+    } = this.state;
     if (selected_size === "") {
       this.setState({
         helperText: "Please choose size",
@@ -97,13 +110,24 @@ class ProductDetailFemaleJean extends Component {
         img,
         size: selected_size,
         color: selected_color,
+        colorName: color[selectedColorIndex],
         quantity,
       });
     }
   };
   render() {
     const { classes } = this.props;
-    const { _id, name, price, size, PID, img, color, colorHex } = this.state;
+    const {
+      _id,
+      name,
+      price,
+      size,
+      PID,
+      img,
+      color,
+      colorHex,
+      selectedColorIndex,
+    } = this.state;
     return (
       <div className="product-detail-container">
         {this.state.loading === false ? (
@@ -134,9 +158,16 @@ class ProductDetailFemaleJean extends Component {
                   {colorHex.map((color, index) => (
                     <button
                       key={index}
-                      value={color}
-                      style={{ background: color }}
-                      onClick={this.handleChangeColor}
+                      style={{
+                        background: color,
+                        border:
+                          selectedColorIndex === index
+                            ? "2px solid #e74c04"
+                            : "none",
+                      }}
+                      onClick={() => {
+                        this.handleChangeColor(color, index);
+                      }}
                     ></button>
                   ))}
                 </div>

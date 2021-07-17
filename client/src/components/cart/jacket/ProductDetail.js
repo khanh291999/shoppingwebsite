@@ -46,7 +46,7 @@ class ProductDetail extends Component {
     loading: undefined,
     helperText: "",
     helperTextColor: "",
-    selectedColorIndex: -1
+    selectedColorIndex: -1,
   };
   handleChange = (event) => {
     this.setState({ selected_size: event.target.value });
@@ -54,7 +54,7 @@ class ProductDetail extends Component {
   handleChangeColor = (selected_color, selectedColorIndex) => {
     this.setState({
       selected_color,
-      selectedColorIndex
+      selectedColorIndex,
     });
   };
   componentDidMount() {
@@ -83,8 +83,17 @@ class ProductDetail extends Component {
       });
   }
   handleClickBtn = () => {
-    const { _id, name, price, selected_size, selected_color, img, quantity } =
-      this.state;
+    const {
+      _id,
+      name,
+      price,
+      selected_size,
+      selected_color,
+      img,
+      quantity,
+      selectedColorIndex,
+      color,
+    } = this.state;
     if (selected_size == "") {
       this.setState({
         helperText: "Please choose size",
@@ -102,6 +111,7 @@ class ProductDetail extends Component {
         img,
         size: selected_size,
         color: selected_color,
+        colorName: color[selectedColorIndex],
         quantity,
       });
     }
@@ -109,8 +119,17 @@ class ProductDetail extends Component {
 
   render() {
     const { classes } = this.props;
-    const { _id, name, price, size, PID, img, color, colorHex, selectedColorIndex } = this.state;
-    console.log(`selectedColorIndex`, selectedColorIndex)
+    const {
+      _id,
+      name,
+      price,
+      size,
+      PID,
+      img,
+      color,
+      colorHex,
+      selectedColorIndex,
+    } = this.state;
     return (
       <div className="product-detail-container">
         {this.state.loading === false ? (
@@ -141,8 +160,16 @@ class ProductDetail extends Component {
                   {colorHex.map((color, index) => (
                     <button
                       key={index}
-                      style={{ background: color, border: selectedColorIndex === index ? '2px solid #e74c04' : 'none' }}
-                      onClick={() => { this.handleChangeColor(color, index) }}
+                      style={{
+                        background: color,
+                        border:
+                          selectedColorIndex === index
+                            ? "2px solid #e74c04"
+                            : "none",
+                      }}
+                      onClick={() => {
+                        this.handleChangeColor(color, index);
+                      }}
                     ></button>
                   ))}
                 </div>

@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function ConfirmBillProduct(props) {
-  const { img, name, price, size, quantity, color } = props.cart;
+  const { img, name, price, size, quantity, color, colorName } = props.cart;
   return (
     <div class="product">
       <div>
@@ -16,6 +16,7 @@ export default function ConfirmBillProduct(props) {
           >
             <div class="product-label">{name}</div>
             <div class="product-size">{"Size: " + size}</div>
+            <div class="product-size">{"Color: " + colorName}</div>
             <div className="product-list-color">
               <button style={{ background: color }}></button>
             </div>
