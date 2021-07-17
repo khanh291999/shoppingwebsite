@@ -9,7 +9,7 @@ function cart(state = initState, action) {
   switch (action.type) {
     case "ADD_TO_CART": {
       const availableProductIndex = state.cartItems.findIndex((cartProduct) => {
-        return cartProduct.id_product === action.payload.id_product;
+        return (cartProduct.id_product === action.payload.id_product && cartProduct.color === action.payload.color && cartProduct.size === action.payload.size);
       });
       if (availableProductIndex >= 0) {
         const new_cart = [...state.cartItems];
@@ -28,7 +28,7 @@ function cart(state = initState, action) {
     }
     case "UPDATE_CART": {
       const update_product_index = state.cartItems.findIndex((pic) => {
-        return (pic.id_cart = action.payload.id_cart);
+        return (pic.id_product === action.payload.id_product && pic.color === action.payload.color && pic.size === action.payload.size);
       });
       const new_cart = [...state.cartItems];
       new_cart[update_product_index].quantity = Number(action.payload.value);

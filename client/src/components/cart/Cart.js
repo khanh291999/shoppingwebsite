@@ -275,8 +275,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateCart: (id_cart, value) => {
-      dispatch({ type: "UPDATE_CART", payload: { id_cart, value } });
+    updateCart: (id_product,color, size, id_cart, value) => {
+      dispatch({ type: "UPDATE_CART", payload: { id_product,color, size, id_cart, value } });
     },
     deleteCart: (id_cart) => {
       dispatch({ type: "DELETE_CART", payload: id_cart });
