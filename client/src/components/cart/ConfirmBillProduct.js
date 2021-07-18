@@ -17,9 +17,6 @@ export default function ConfirmBillProduct(props) {
             <div class="product-label">{name}</div>
             <div class="product-size">{"Size: " + size}</div>
             <div class="product-size">{"Color: " + colorName}</div>
-            <div className="product-list-color">
-              <button style={{ background: color }}></button>
-            </div>
           </div>
           <div class="absolute">{quantity}</div>
         </div>

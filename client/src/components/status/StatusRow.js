@@ -98,7 +98,7 @@ export default function StatusRow(props) {
               <div className="bill-container">
                 <div className="bill-left">
                   <h1>K&Q</h1>
-                  <h2>Delivery infomation</h2>
+                  <h2>Delivery information</h2>
                   <div className="bill-form">
                     <label className="info">
                       <span className="info__label" for="customer_name">
@@ -143,7 +143,7 @@ export default function StatusRow(props) {
                   <div className="payment-container">
                     <h2 style={{ textAlignLast: "start" }}>Status</h2>
                     <h3>Shipping: {status}</h3>
-                    <h3>Payment: {paypalstatus}</h3>
+                    <h3 style={{textAlign:'left'}}>Payment: {paypalstatus}</h3>
                   </div>
                 </div>
 

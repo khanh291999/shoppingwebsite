@@ -113,7 +113,7 @@ export default function Changepassword() {
     }
   };
   return (
-    <div className="background" style={{ height: "80vh" }}>
+    <div className="background" style={{ height: "85vh" }}>
       <div className="login-form-container">
         {error && (
           <ErrorNotice message={error} clearError={() => setError(undefined)} />

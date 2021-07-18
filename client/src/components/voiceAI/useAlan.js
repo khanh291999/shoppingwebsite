@@ -58,14 +58,18 @@ function AlanTrigger(props) {
 
   const addItem = ({ detail: { name, quantity, size } }) => {
     getAllProduct();
-    const item = data?.find((i) => i.name.toLowerCase() === name.toLowerCase());
+    // const productname = data?.find((i) => (i.name.toLowerCase() === name.toLowerCase()|| i.PID.toLowerCase() == name.toLowerCase()));
+    const item = data?.find((i) => (i.name.toLowerCase() === name.toLowerCase()|| i.PID.toLowerCase() == name.toLowerCase()));
+    console.log('item', item);
     if (item == null) {
       alanInstance.playText(`I cannot find the ${name} item`);
     } else {
       props.addToCart({
         id_cart: "cart_" + Date.now() + Math.random(),
         id_product: item._id,
-        name,
+        name: item.name,
+        color: item.colorHex[0],
+        colorName: item.color[0],
         price: item.price,
         img: item.image[0],
         quantity: quantity,

@@ -145,7 +145,13 @@ class Cart extends React.Component {
     const alltotal = total + parseInt(selected_shipping);
 
     return (
-      <Container style={{ userSelect: "none", height: "402px" }}>
+      <Container 
+        style={{ 
+          userSelect: "none", 
+          height: cartItems.length < 3
+          ? "402px"
+          : "100%", 
+          }}>
         <Grid container spacing={3}>
           <Grid item md={9}>
             <Box p={2}>
@@ -197,7 +203,7 @@ class Cart extends React.Component {
                 <table class="summary-table">
                   <tr>
                     <th>Subtotal</th>
-                    <td>${total}</td>
+                    <td>${total.toFixed(2)}</td>
                   </tr>
                   <tr>
                     <th>Shipping method</th>
@@ -234,7 +240,7 @@ class Cart extends React.Component {
                   </tr>
                   <tr>
                     <th>Total</th>
-                    <td>${alltotal}</td>
+                    <td>${alltotal.toFixed(2)}</td>
                   </tr>
                 </table>
                 {/* {this.state.checkout ? (

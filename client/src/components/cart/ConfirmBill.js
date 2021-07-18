@@ -76,7 +76,7 @@ export default function ConfirmBill(props) {
           <div className="bill-container">
             <div className="bill-left">
               <h1>K&Q</h1>
-              <h2>Delivery infomation</h2>
+              <h2>Delivery information</h2>
               <div className="bill-form">
                 <label className="info">
                   <span className="info__label" for="customer_name">
@@ -151,7 +151,7 @@ export default function ConfirmBill(props) {
                 <table>
                   <tr>
                     <th class="set-left">Pre-total</th>
-                    <td class="set-right">{"$" + total}</td>
+                    <td class="set-right">{"$" + total.toFixed(2)}</td>
                   </tr>
                   <tr>
                     <th class="set-left">Shipping</th>
@@ -170,7 +170,7 @@ export default function ConfirmBill(props) {
                 <tr>
                   <th class="set-left">Total</th>
                   <td class="set-right" style={{ fontSize: "1.5em" }}>
-                    {"$" + alltotal}
+                    {"$" + alltotal.toFixed(2)}
                   </td>
                 </tr>
               </table>

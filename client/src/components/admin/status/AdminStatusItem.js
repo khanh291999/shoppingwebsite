@@ -124,7 +124,7 @@ export default function StatusItem(props){
                               <div className="bill-container">
                                   <div className="bill-left">
                                       <h1>K&Q</h1>
-                                      <h2>Delivery infomation</h2>
+                                      <h2>Delivery information</h2>
                                       <div className="bill-form">
                                           <label className="info">
                                               <span className="info__label" for="customer_name">Customer Name</span>
