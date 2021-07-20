@@ -44,6 +44,7 @@ export default function Orders() {
       setData(res.data)
   })
   }, []);
+  const cartArray = data.slice(0).reverse();
   return (
     <React.Fragment>
       <Title>Recent Orders</Title>
@@ -58,13 +59,13 @@ export default function Orders() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row) => (
+          {cartArray.slice(0,7).map((row) => (
             <TableRow key={row.id}>
               <TableCell>{row.date}</TableCell>
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.address}</TableCell>
               <TableCell>{row.paypalstatus}</TableCell>
-              <TableCell align="right">{row.allTotal}</TableCell>
+              <TableCell align="right">{row.allTotal.toFixed(2)}</TableCell>
             </TableRow>
           ))}
         </TableBody>

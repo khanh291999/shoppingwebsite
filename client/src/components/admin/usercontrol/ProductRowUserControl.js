@@ -32,16 +32,28 @@ export default function ProductRowUserControl(props){
     const {email,password,displayName,address,phoneNumber} = props.user
     return  <div className="table-rows">
     <div className="table-cell">
-        {displayName}
+        {displayName.length > 18 ? 
+            displayName.substring(0,18) + "...":
+            displayName
+        }
     </div>
     <div className="table-cell">
-        {email}
+        {email.length > 18 ? 
+            email.substring(0,18) + "...":
+            email
+        }
     </div>
     <div className="table-cell">
-        {address}
+        {address.length > 18 ? 
+            address.substring(0,18) + "...":
+            address
+        }
     </div>
     <div className="table-cell">
-        {phoneNumber}
+        {phoneNumber.length > 18 ? 
+            phoneNumber.substring(0,18) + "...":
+            phoneNumber
+        }
     </div>
     <div className="table-cell" style={{placeSelf: 'center'}}>
         <ColorButton variant="contained" color="secondary" className="edit-button" onClick={handleUpdate}>

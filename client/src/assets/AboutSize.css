@@ -1,0 +1,54 @@
+.table-about-size, .table-row-about-size td, .table-row-about-size th {
+    border: 1px solid #000;
+    text-align: center;
+    color: #000;
+}
+
+.table-about-size {
+    border-collapse: collapse;
+    width: 50%;
+    margin-bottom: 2vh;
+}
+
+.clothes-type-title{
+    margin-bottom: 2vh;
+    color: #000;
+    font-family: Roxborough,Times New Roman,times,serif;
+    font-weight: 600;
+    line-height: 1.071;
+    font-size: 4vh;
+}
+
+.size-container{
+    text-align: left;
+}
+
+.data-switch-container{
+    display: flex;
+}
+
+.data-switch-value{
+    border: 1px solid #000;
+    width: 10vw;
+    height: 5vh;
+    text-align: center;
+    cursor: pointer;
+}
+
+.data-switch{
+    margin-bottom: 2vh;
+    color: #000;
+}
+
+.size-instruction{
+    color: #000;
+}
+
+.size-instruction > p{
+    color: #000;
+}
+
+td.diagonalRising
+{
+	background: linear-gradient(to right bottom, #faf8f6 0%,#faf8f6 49.9%,#000000 50%,#000000 51%,#faf8f6 51.1%,#faf8f6 100%);
+}

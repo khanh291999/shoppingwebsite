@@ -58,8 +58,9 @@ function AlanTrigger(props) {
 
   const addItem = ({ detail: { name, quantity, size } }) => {
     getAllProduct();
-    // const productname = data?.find((i) => (i.name.toLowerCase() === name.toLowerCase()|| i.PID.toLowerCase() == name.toLowerCase()));
-    const item = data?.find((i) => (i.name.toLowerCase() === name.toLowerCase()|| i.PID.toLowerCase() == name.toLowerCase()));
+    const productShortVer = name.replace(/[^a-zA-Z0-9]/g, '');
+    console.log('hahhahhaha',productShortVer);
+    const item = data?.find((i) => (i.name.toLowerCase() === name.toLowerCase() || i.PID.toLowerCase() == productShortVer.toLowerCase()));
     console.log('item', item);
     if (item == null) {
       alanInstance.playText(`I cannot find the ${name} item`);
@@ -73,7 +74,7 @@ function AlanTrigger(props) {
         price: item.price,
         img: item.image[0],
         quantity: quantity,
-        size,
+        size: size.toUpperCase(),
       });
       alanInstance.playText(`Add ${size} of the ${name} item to your cart`);
     }
@@ -140,11 +141,11 @@ function AlanTrigger(props) {
 
   const buyProduct = ({ detail: { shipping_fee } }) => {
     let shippingfee = undefined;
-    if (shipping_fee == "Free Ship") {
+    if (shipping_fee == "0") {
       shippingfee = 0;
-    } else if (shipping_fee == "Ho Chi Minh") {
+    } else if (shipping_fee == "1") {
       shippingfee = 1;
-    } else if (shipping_fee == "Nationwide") {
+    } else if (shipping_fee == "2") {
       shippingfee = 2;
     }
     const { cartItems = [] } = props;

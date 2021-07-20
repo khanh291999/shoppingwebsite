@@ -15,6 +15,7 @@ import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
 import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import AboutSize, {WomanSize} from "./AboutSize";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,6 +57,7 @@ export default function OrderHelp() {
   //tab
   const [openTab1, setopenTab1] = React.useState(false);
   const [openTab2, setopenTab2] = React.useState(false);
+  const [openTab3, setopenTab3] = React.useState(false);
   //tab1 - handler
   const [openTab11, setopenTab11] = React.useState(false);
   const [openTab12, setopenTab12] = React.useState(false);
@@ -69,10 +71,16 @@ export default function OrderHelp() {
   const [openTab25, setopenTab25] = React.useState(false);
   const [openTab26, setopenTab26] = React.useState(false);
   const [openTab27, setopenTab27] = React.useState(false);
+  //tab3 -handler
+  const [openTab31, setopenTab31] = React.useState(true);
+  const [openTab32, setopenTab32] = React.useState(false);
 
   const handleClickTab1 = () => {
     if (openTab2 === true) {
       setopenTab2(false);
+    }
+    if (openTab3 === true) {
+      setopenTab3(false);
     }
     setopenTab1(!openTab1);
   };
@@ -81,7 +89,20 @@ export default function OrderHelp() {
     if (openTab1 === true) {
       setopenTab1(false);
     }
+    if (openTab3 === true) {
+      setopenTab3(false);
+    }
     setopenTab2(!openTab2);
+  };
+
+  const handleClickTab3 = () => {
+    if (openTab1 === true) {
+      setopenTab1(false);
+    }
+    if (openTab2 === true) {
+      setopenTab2(false);
+    }
+    setopenTab3(!openTab3);
   };
 
   //show or hide component
@@ -174,8 +195,18 @@ export default function OrderHelp() {
         setopenTab26(false);
         setopenTab27(true);
         break;
+      case "openTab31":
+        setopenTab31(true);
+        setopenTab32(false);
+        break;
+      case "openTab32":
+        setopenTab31(false);
+        setopenTab32(true);
+        break;
     }
   };
+  //Tab 1
+  //#region 
   //tab11 content
   const Tab11 = () => (
     <div className={classes.root}>
@@ -596,6 +627,10 @@ export default function OrderHelp() {
       </Accordion>
     </div>
   );
+  //#endregion
+
+  //Tab2
+  //#region 
   //tab21 content
   const Tab21 = () => (
     <div className={classes.root}>
@@ -961,6 +996,23 @@ export default function OrderHelp() {
       </Accordion>
     </div>
   );
+  //#endregion
+
+  //Tab3
+  //#region 
+  //tab31 content
+  const Tab31 = () => (
+    <div>
+      <WomanSize/>
+    </div>
+  );
+  //tab32 content
+  const Tab32 = () => (
+    <div>
+      <AboutSize/>
+    </div>
+  );
+  //#endregion
 
   return (
     <div style={{ backgroundColor: "#faf8f6", padding: "5%" }}>
@@ -980,6 +1032,7 @@ export default function OrderHelp() {
           aria-labelledby="nested-list-subheader"
           className={classes.root}
         >
+          {/* Tab 1 */}
           <ListItem
             button
             onClick={handleClickTab1}
@@ -1066,6 +1119,78 @@ export default function OrderHelp() {
             </Grid>
           </Collapse>
 
+          {/* Tab 3 */}
+          <ListItem
+            button
+            onClick={handleClickTab3}
+            style={{ background: "none" }}
+          >
+            {openTab3 ? (
+              <>
+                <div style={{ width: "100%" }}>
+                  <ListItemText>
+                    <div className="tab">
+                      <h3 style={{ color: "#bd7f32" }}>Size guide</h3>
+                      <p style={{ color: "#bd7f32" }}>
+                        How K&Q fits.
+                      </p>
+                      <Divider
+                        style={{ backgroundColor: "#000", height: "1.5px" }}
+                      />
+                    </div>
+                  </ListItemText>
+                  <ExpandLess id="expand-icon" />
+                </div>
+              </>
+            ) : (
+              <div style={{ width: "100%" }}>
+                <ListItemText>
+                  <div className="tab">
+                    <h3 style={{ color: "#000" }}>Size guide</h3>
+                    <p style={{ color: "#000" }}>
+                      How K&Q fits.
+                    </p>
+                    <Divider
+                      style={{ backgroundColor: "#000", height: "1.5px" }}
+                    />
+                  </div>
+                </ListItemText>
+                <ExpandMore id="expand-icon" />
+              </div>
+            )}
+          </ListItem>
+          <Collapse in={openTab3} timeout="auto" unmountOnExit>
+            <Grid container spacing={3}>
+              <Grid item xs={3}>
+                <div className={classes.paper}>
+                  <div className="main-list">
+                    <li onClick={() => showComponent("openTab31")}>
+                      {openTab31 ? (
+                        <a style={{ color: "#bd7f32" }}>Woman</a>
+                      ) : (
+                        <a style={{ color: "#000" }}>Woman</a>
+                      )}
+                    </li>
+                    <li onClick={() => showComponent("openTab32")}>
+                      {openTab32 ? (
+                        <a style={{ color: "#bd7f32" }}>Man</a>
+                      ) : (
+                        <a style={{ color: "#000" }}>Man</a>
+                      )}
+                    </li>
+                  </div>
+                </div>
+              </Grid>
+              <Grid item xs={9} style={{ marginLeft: "-2%" }}>
+                <div className={classes.paper}>
+                  {openTab31 && <Tab31 />}
+                  {openTab32 && <Tab32 />}
+                </div>
+              </Grid>
+            </Grid>
+          </Collapse>
+
+          {/* Tab 2 */}
           <ListItem
             button
             onClick={handleClickTab2}

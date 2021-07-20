@@ -32,6 +32,8 @@ export default function Footer() {
             <h2>Help</h2>
             <Link to="/privacypolicy">Privacy Policy</Link>
             <Link to="/shippingdetails">Shipping Details</Link>
+            <Link to="/orderhelp">Size guide</Link>
+            <Link to="/orderhelp">FAQ</Link>
           </div>
           <div class="footer-link-items">
             <h2>Contact us</h2>

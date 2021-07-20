@@ -58,7 +58,7 @@ export default function StatusRow(props) {
     <div className="client-table-rows">
       <div className="client-table-cell">{id}</div>
       <div className="client-table-cell">{date}</div>
-      <div className="client-table-cell">${allTotal}</div>
+      <div className="client-table-cell">${allTotal.toFixed(2)}</div>
       <div className="client-table-cell">{status}</div>
       <div className="client-table-cell">{paypalstatus}</div>
       <div className="client-table-cell">
@@ -165,7 +165,7 @@ export default function StatusRow(props) {
                     <table>
                       <tr>
                         <th class="set-left">Pre-total</th>
-                        <td class="set-right">{"$" + total}</td>
+                        <td class="set-right">{"$" + total.toFixed(2)}</td>
                       </tr>
                       <tr>
                         <th class="set-left">Shipping</th>
@@ -184,7 +184,7 @@ export default function StatusRow(props) {
                     <tr>
                       <th class="set-left">Total</th>
                       <td class="set-right" style={{ fontSize: "1.5em" }}>
-                        {"$" + allTotal}
+                        {"$" + allTotal.toFixed(2)}
                       </td>
                     </tr>
                   </table>
