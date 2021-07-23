@@ -52,9 +52,18 @@ class Cart extends React.Component {
         (today.getMonth() + 1) +
         "-" +
         today.getDate();
-    var timer = new Date(),
-      time =
-        timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds();
+    var timer = new Date(), time;
+    var hour = timer.getHours(), minute = timer.getMinutes(), second = timer.getSeconds();
+    if(hour < "10"){
+      hour = "0" + hour;
+    }
+    if(minute < "10"){
+      minute = "0" + minute;
+    }
+    if(second < "10"){
+      second = "0" + second;
+    }
+    time = hour + ":" + minute + ":" + second;
     this.state = {
       currentTime: time,
       currentDate: date,
@@ -147,10 +156,7 @@ class Cart extends React.Component {
     return (
       <Container 
         style={{ 
-          userSelect: "none", 
-          height: cartItems.length < 3
-          ? "402px"
-          : "100%", 
+          userSelect: "none" 
           }}>
         <Grid container spacing={3}>
           <Grid item md={9}>

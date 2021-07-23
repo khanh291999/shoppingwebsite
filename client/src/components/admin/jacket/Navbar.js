@@ -32,6 +32,7 @@ import UserManagement from '../usercontrol/MainContentUserControl'
 import StaffManagement from '../staffcontrol/MainContentStaffControl'
 import OrderStatus from '../status/AdminStatus'
 import AdminProfile from '../UserProfile/AdminProfile'
+import Opinion from '../opinion/MainContentOpinionControl'
 
 
 function Copyright() {
@@ -93,6 +94,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   drawerPaper: {
+    height: '100vh',
     position: 'relative',
     whiteSpace: 'nowrap',
     width: drawerWidth,
@@ -226,6 +228,8 @@ export default function Navbar(props) {
     renderComponent = <OrderStatus/>
   } else if (active === 'profile') {
     renderComponent = <AdminProfile/>
+  } else if (active === 'opinion') {
+    renderComponent = <Opinion/>
   }
 
   return (

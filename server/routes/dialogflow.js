@@ -80,7 +80,7 @@ router.post("/textQuery", async (req, res) => {
     email = result1;
     array.push(`${result1}`);
   }
-  if (result2.includes("live") === true) {
+  if (result2.includes("address") === true) {
     address = result1;
     array.push(`${result1}`);
   }
@@ -89,7 +89,7 @@ router.post("/textQuery", async (req, res) => {
     array.push(`${result1}`);
   }
   if (result2.includes("Thank you") === true) {
-    array.push(`${result1}`);
+    array.push(`${result1}`); 
     postdata(username, email, address, opinion);
     array = [];
   }

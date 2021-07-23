@@ -18,6 +18,8 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import FaceIcon from "@material-ui/icons/Face";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import AdminContext from "../../../context/adminContext";
+import ContactSupportIcon from '@material-ui/icons/ContactSupport';
+
 // export const secondaryListItems = (
 //   <div>
 //     <ListSubheader inset>Products</ListSubheader>
@@ -46,6 +48,11 @@ export class MenuSideBar extends React.Component {
     const { changeActive } = this.props;
     changeActive("staff");
   };
+
+  handleOpinionManagement = () => {
+    const { changeActive } = this.props;
+    changeActive("opinion");
+  }
 
   handleOrderStatus = () => {
     const { changeActive } = this.props;
@@ -104,6 +111,12 @@ export class MenuSideBar extends React.Component {
                 </ListItemIcon>
                 <ListItemText primary="Staff" />
               </ListItem>
+              <ListItem button onClick={this.handleOpinionManagement}>
+                <ListItemIcon style={{ opacity: "1" }}>
+                  <ContactSupportIcon />
+                </ListItemIcon>
+                <ListItemText primary="Opinion" />
+              </ListItem>
             </div>
           </List>
         ) : (
@@ -115,6 +128,12 @@ export class MenuSideBar extends React.Component {
                   <FaceIcon />
                 </ListItemIcon>
                 <ListItemText primary="User" />
+              </ListItem>
+              <ListItem button onClick={this.handleOpinionManagement}>
+                <ListItemIcon style={{ opacity: "1" }}>
+                  <ContactSupportIcon />
+                </ListItemIcon>
+                <ListItemText primary="Opinion" />
               </ListItem>
             </div>
           </List>

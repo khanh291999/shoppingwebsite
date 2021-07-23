@@ -30,8 +30,29 @@ export default function Deposits() {
       setData(res.data)
   })
   }, []);
-  let allTotal = data.reduce((a,v) =>  a = a + v.allTotal , 0 )
+  let todayData = data.filter(function (item) {
+    return item.date == date;
+  });
+  let allTotal = todayData.reduce((a,v) =>  a = a + v.allTotal , 0 )
   allTotal = Math.round(allTotal * 100)/100;
+
+  // const classes = useStyles();
+  // const [data, setData] = useState([]);
+  // const [todayData, setTodayData] = useState([]);
+  // useEffect(() => {
+  //   axios.get("http://localhost:8080/cart").then(res=>{
+  //     setData(res.data)
+  // })
+  // }, []);
+
+  // data.map((item)=>{
+  //   if (item.date === today){
+  //     todayData.push(item);
+  //   }
+  // })
+
+  // let allTotal = todayData.reduce((a,v) =>  a = a + v.allTotal , 0 )
+  // allTotal = Math.round(allTotal * 100)/100;
   
   return (
     <React.Fragment>
