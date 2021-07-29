@@ -51,7 +51,7 @@ export default class MainContentDisableTshirt extends React.Component {
             }
           );
           Swal.fire(
-            "Disable!",
+            "On sale!",
             "Your product has been push On Sale.",
             "success"
           );
@@ -80,6 +80,8 @@ export default class MainContentDisableTshirt extends React.Component {
     size,
     category,
     sex,
+    color,
+    colorHex,
     S,
     M,
     L,
@@ -96,6 +98,8 @@ export default class MainContentDisableTshirt extends React.Component {
           size,
           category,
           sex,
+          color,
+          colorHex,
           S,
           M,
           L,

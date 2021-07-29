@@ -54,6 +54,8 @@ class Modal extends Component {
     price: 20,
     sex: 0,
     category: "jacket",
+    color: "white",
+    colorHex: "#ffffff",
     S: 10,
     M: 10,
     L: 10,
@@ -80,8 +82,21 @@ class Modal extends Component {
 
   componentDidMount() {
     if (this.props.editingProduct) {
-      const { _id, image, price, name, sex, category, S, M, L, XL, XXL } =
-        this.props.editingProduct;
+      const {
+        _id,
+        image,
+        price,
+        name,
+        sex,
+        category,
+        color,
+        colorHex,
+        S,
+        M,
+        L,
+        XL,
+        XXL,
+      } = this.props.editingProduct;
       this.setState({
         _id,
         image,
@@ -89,6 +104,8 @@ class Modal extends Component {
         name,
         sex,
         category,
+        color,
+        colorHex,
         S,
         M,
         L,
@@ -133,6 +150,18 @@ class Modal extends Component {
     });
   };
 
+  handleColor = (event) => {
+    this.setState({
+      [event.target.name]: event.target.name,
+    });
+  };
+
+  handleColorHex = (event) => {
+    this.setState({
+      [event.target.name]: event.target.name,
+    });
+  };
+
   handleSubmit = (event) => {
     event.preventDefault();
     const {
@@ -148,6 +177,8 @@ class Modal extends Component {
       helperText,
       sex,
       category,
+      color,
+      colorHex,
       S,
       M,
       L,
@@ -173,6 +204,8 @@ class Modal extends Component {
       image_six === "" ||
       sex === "" ||
       category === "" ||
+      color === "" ||
+      colorHex === "" ||
       S === "" ||
       M === "" ||
       L === "" ||
@@ -191,6 +224,8 @@ class Modal extends Component {
           price,
           sex,
           category,
+          color,
+          colorHex,
           S,
           M,
           L,
@@ -206,6 +241,8 @@ class Modal extends Component {
           size,
           sex,
           category,
+          color,
+          colorHex,
           S,
           M,
           L,
@@ -237,6 +274,8 @@ class Modal extends Component {
       image_six,
       sex,
       category,
+      color,
+      colorHex,
       S,
       M,
       L,
@@ -271,7 +310,7 @@ class Modal extends Component {
                 style={{ marginTop: "2%" }}
               >
                 {/* Product Name */}
-                <Grid item xs={6}>
+                <Grid item xs={5}>
                   <TextField
                     required
                     fullWidth
@@ -298,7 +337,31 @@ class Modal extends Component {
                     type="number"
                     name="price"
                     value={price}
-                    onChange={this.handlePrice}
+                    onChange={this.handleChange}
+                  />
+                </Grid>
+                <Grid item xs={2}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="color"
+                    type="text"
+                    value={color}
+                    id="standard-required"
+                    onChange={this.handleChange}
+                    label="Color"
+                  />
+                </Grid>
+                <Grid item xs={2}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="colorHex"
+                    type="text"
+                    value={colorHex}
+                    id="standard-required"
+                    onChange={this.handleChangeImageUrl}
+                    label="Color Hex"
                   />
                 </Grid>
                 {/* Sex */}

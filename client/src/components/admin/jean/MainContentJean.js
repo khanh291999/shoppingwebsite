@@ -31,7 +31,21 @@ export default class MainContentJean extends React.Component {
     this.intervalID = setTimeout(this.getData.bind(this), 30000);
   };
 
-  addProduct = (name, image, price, size, sex, category, S, M, L, XL, XXL) => {
+  addProduct = (
+    name,
+    image,
+    price,
+    size,
+    sex,
+    category,
+    color,
+    colorHex,
+    S,
+    M,
+    L,
+    XL,
+    XXL
+  ) => {
     axios
       .post(
         "http://localhost:8080/product",
@@ -42,6 +56,8 @@ export default class MainContentJean extends React.Component {
           size,
           sex,
           category,
+          color,
+          colorHex,
           S,
           M,
           L,
@@ -80,6 +96,8 @@ export default class MainContentJean extends React.Component {
     price,
     sex,
     category,
+    color,
+    colorHex,
     S,
     M,
     L,
@@ -95,6 +113,8 @@ export default class MainContentJean extends React.Component {
           price,
           sex,
           category,
+          color,
+          colorHex,
           S,
           M,
           L,
@@ -179,6 +199,8 @@ export default class MainContentJean extends React.Component {
     size,
     category,
     sex,
+    color,
+    colorHex,
     S,
     M,
     L,
@@ -195,6 +217,8 @@ export default class MainContentJean extends React.Component {
           size,
           category,
           sex,
+          color,
+          colorHex,
           S,
           M,
           L,
