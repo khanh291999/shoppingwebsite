@@ -192,7 +192,7 @@ export default function StatusItem(props) {
                       <div className="payment-container">
                         <h2 style={{ textAlignLast: "start" }}>Status</h2>
                         <h3>Shipping: {status}</h3>
-                        <h3 style={{marginLeft: "-26%"}}>Payment: {paypalstatus}</h3>
+                        <h3>Payment: {paypalstatus}</h3>
                       </div>
                     </div>
 

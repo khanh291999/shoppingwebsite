@@ -19,7 +19,6 @@ import UserContext from "./../../context/userContext";
 import { withStyles } from "@material-ui/core/styles";
 import CartProduct from "./CartProduct";
 import CheckoutForm from "./CheckoutForm";
-import emailjs from "emailjs-com";
 
 const CustomRadio = withStyles({
   root: {
@@ -92,7 +91,6 @@ class Cart extends React.Component {
   //   this.setState({openAlert:false})
   // }
   handleSendForm = (form) => {
-    const sendTrigger = document.getElementById('emailForm');
     const { cartItems = [] } = this.props;
     const { selected_shipping } = this.state;
     const user = this.context.userData.user;
@@ -130,7 +128,6 @@ class Cart extends React.Component {
           icon: "success",
         });
         this.props.clearCart();
-        sendTrigger.querySelector('input[type="submit"]').click();
       })
       .catch((err) => {
         this.setState({
@@ -148,19 +145,6 @@ class Cart extends React.Component {
       });
   };
 
-  //send email
-  sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs.sendForm('service_o45eeao', 'template_ycv955e', e.target, 'user_bC3rsl7XER7fkEvk1VU3G')
-    .then((result) => {
-        console.log(result.text);
-    }, (error) => {
-        console.log(error.text);
-    });
-    e.target.reset()
-  }
-
   render() {
     const { selected_shipping } = this.state;
     const { cartItems = [] } = this.props;
@@ -168,7 +152,6 @@ class Cart extends React.Component {
       return (total = total + pic.quantity * pic.price);
     }, 0);
     const alltotal = total + parseInt(selected_shipping);
-    const userData = this.context.userData.user;
 
     return (
       <Container 
@@ -293,14 +276,6 @@ class Cart extends React.Component {
             {this.state.alert}
           </Alert>
         </Snackbar> */}
-        <form 
-          id = "emailForm"
-          style={{display:'none'}}
-          onSubmit={this.sendEmail}>
-            <input type="text" placeholder="Name" name="name" value={userData.displayName}/>
-            <input type="email"  placeholder="Email Address" name="email" value={userData.email}/>
-            <input type="submit" value="Send Message"></input>
-        </form>
       </Container>
     );
   }
