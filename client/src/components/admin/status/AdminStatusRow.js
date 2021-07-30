@@ -36,7 +36,7 @@ export default function AdminStatusRow(props) {
         total={total}
         shippingfee={shippingfee}
         paypalstatus={paypalstatus}
-        allTotal={allTotal}
+        allTotal={allTotal.toFixed(2)}
         updateStatusDelivering={props.updateStatusDelivering}
         updateStatusDone={props.updateStatusDone}
         updateStatusWaiting={props.updateStatusWaiting}
