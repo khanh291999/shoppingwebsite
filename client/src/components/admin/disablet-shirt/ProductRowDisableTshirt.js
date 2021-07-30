@@ -19,8 +19,20 @@ export default function ProductRowDisableTshirt(props) {
   };
   const handleaddOnSaleProduct = () => {
     const size = ["S", "M", "L", "XL", "XXL"];
-    const { name, price, image, sex, category, S, M, L, XL, XXL } =
-      props.product;
+    const {
+      name,
+      price,
+      image,
+      sex,
+      category,
+      color,
+      colorHex,
+      S,
+      M,
+      L,
+      XL,
+      XXL,
+    } = props.product;
     props.addOnSaleProduct(
       name,
       image,
@@ -28,6 +40,8 @@ export default function ProductRowDisableTshirt(props) {
       size,
       category,
       sex,
+      color,
+      colorHex,
       S,
       M,
       L,
@@ -42,7 +56,7 @@ export default function ProductRowDisableTshirt(props) {
   const { _id, name, price, image } = props.product;
   return (
     <div className="table-rows">
-      <div className="table-cell">{_id.substring(0,20)}...</div>
+      <div className="table-cell">{_id.substring(0, 20)}...</div>
       <div className="table-cell">{name}</div>
       <div className="table-cell">{price}$</div>
       <div className="table-cell">

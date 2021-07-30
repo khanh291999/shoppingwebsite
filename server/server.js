@@ -67,6 +67,8 @@ const DisableJacketSchema = new mongoose.Schema({
   size: Array,
   category: String,
   sex: Number,
+  color: Array,
+  colorHex: Array,
   S: Number,
   M: Number,
   L: Number,
@@ -82,6 +84,8 @@ const DisableJeanSchema = new mongoose.Schema({
   size: Array,
   category: String,
   sex: Number,
+  color: Array,
+  colorHex: Array,
   S: Number,
   M: Number,
   L: Number,
@@ -97,6 +101,8 @@ const DisableTshirtSchema = new mongoose.Schema({
   size: Array,
   category: String,
   sex: Number,
+  color: Array,
+  colorHex: Array,
   S: Number,
   M: Number,
   L: Number,
@@ -112,6 +118,8 @@ const DisableFemaleJacketSchema = new mongoose.Schema({
   size: Array,
   category: String,
   sex: Number,
+  color: Array,
+  colorHex: Array,
   S: Number,
   M: Number,
   L: Number,
@@ -127,6 +135,8 @@ const DisableFemaleJeanSchema = new mongoose.Schema({
   size: Array,
   category: String,
   sex: Number,
+  color: Array,
+  colorHex: Array,
   S: Number,
   M: Number,
   L: Number,
@@ -142,6 +152,8 @@ const DisableFemaleTshirtSchema = new mongoose.Schema({
   size: Array,
   category: String,
   sex: Number,
+  color: Array,
+  colorHex: Array,
   S: Number,
   M: Number,
   L: Number,
@@ -161,6 +173,8 @@ const ProductSchema = new Schema({
   size: Array,
   category: String,
   sex: Number,
+  color: Array,
+  colorHex: Array,
   S: Number,
   M: Number,
   L: Number,
@@ -212,10 +226,13 @@ app.use("/users", require("./routes/userRouter"));
 app.use("/admins", require("./routes/adminRouter"));
 app.use("/api/dialogflow", require("./routes/dialogflow"));
 
-// CORS 
-app.use(function(req, res, next) {
+// CORS
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   next();
 });
 
