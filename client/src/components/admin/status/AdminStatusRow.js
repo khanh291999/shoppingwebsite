@@ -111,9 +111,7 @@ export default function AdminStatusRow(props) {
     <div className="admin-status-table-rows">
       <div className="admin-status-table-cell">{date}</div>
       <div className="admin-status-table-cell">{name}</div>
-      <div className="admin-status-table-cell">{address}</div>
-      <div className="admin-status-table-cell">{paypalstatus}</div>
-      <div className="admin-status-table-cell">{allTotal}</div>
+      <div className="admin-status-table-cell">{allTotal.toFixed(2)}</div>
       <div className="admin-status-table-cell">{phone_number}</div>
       <div className="admin-status-table-cell">{status}</div>
       <div className="admin-status-table-cell">{editedby}</div>
@@ -216,7 +214,7 @@ export default function AdminStatusRow(props) {
                       <div className="payment-container">
                         <h2 style={{ textAlignLast: "start" }}>Status</h2>
                         <h3>Shipping: {status}</h3>
-                        <h3>Payment: {paypalstatus}</h3>
+                        <h3 style={{marginLeft: '-26%'}}>Payment: {paypalstatus}</h3>
                       </div>
                     </div>
 
@@ -238,7 +236,7 @@ export default function AdminStatusRow(props) {
                         <table>
                           <tr>
                             <th class="set-left">Pre-total</th>
-                            <td class="set-right">{"$" + total}</td>
+                            <td class="set-right">{"$" + total.toFixed(2)}</td>
                           </tr>
                           <tr>
                             <th class="set-left">Shipping</th>
@@ -257,7 +255,7 @@ export default function AdminStatusRow(props) {
                         <tr>
                           <th class="set-left">Total</th>
                           <td class="set-right" style={{ fontSize: "1.5em" }}>
-                            {"$" + allTotal}
+                            {"$" + allTotal.toFixed(2)}
                           </td>
                         </tr>
                       </table>

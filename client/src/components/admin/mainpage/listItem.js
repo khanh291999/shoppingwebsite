@@ -5,6 +5,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import AssessmentIcon from '@material-ui/icons/Assessment';
 import PeopleIcon from "@material-ui/icons/People";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
@@ -64,6 +65,11 @@ export class MenuSideBar extends React.Component {
     changeActive("profile");
   };
 
+  handleReport = () => {
+    const { changeActive } = this.props;
+    changeActive("report");
+  }
+
   render() {
     const admin = this.context.adminData.admin;
     if (admin == undefined) {
@@ -86,6 +92,12 @@ export class MenuSideBar extends React.Component {
                 <ShoppingCartIcon />
               </ListItemIcon>
               <ListItemText primary="Orders" />
+            </ListItem>
+            <ListItem button onClick={this.handleReport}>
+              <ListItemIcon style={{ opacity: "1" }}>
+                <AssessmentIcon />
+              </ListItemIcon>
+              <ListItemText primary="Report" />
             </ListItem>
           </div>
         </List>

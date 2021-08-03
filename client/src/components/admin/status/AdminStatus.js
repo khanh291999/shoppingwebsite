@@ -108,19 +108,13 @@ export default class AdminStatus extends Component{
                             Date
                         </div>
                         <div className="admin-status-table-header">
-                            User
-                        </div>
-                        <div className="admin-status-table-header">
-                            Ship To
-                        </div>
-                        <div className="admin-status-table-header">
-                            Payment Method
+                            User Name
                         </div>
                         <div className="admin-status-table-header">
                             Sale Amount
                         </div>
                         <div className="admin-status-table-header">
-                            Phone
+                            Phone Number
                         </div>
                         <div className="admin-status-table-header">
                             Status

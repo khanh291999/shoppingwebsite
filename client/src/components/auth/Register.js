@@ -107,7 +107,7 @@ export default function Register() {
           <TextField
             id="outlined-basic"
             variant="outlined"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setDisplayName(e.target.value)}
             style={{ margin: "2% 0", width: "200%" }}
           />
 
