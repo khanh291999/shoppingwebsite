@@ -11,12 +11,11 @@ const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
       api_key:
-        "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",
+        "",
     },
   })
 );
 
-//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
 router.post("/register", async (req, res) => {
   try {
     let { email, password, passwordCheck, displayName, address, phoneNumber } =

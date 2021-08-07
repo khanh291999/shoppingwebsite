@@ -297,8 +297,8 @@ class Cart extends React.Component {
           id = "emailForm"
           style={{display:'none'}}
           onSubmit={this.sendEmail}>
-            <input type="text" placeholder="Name" name="name" value={userData.displayName}/>
-            <input type="email"  placeholder="Email Address" name="email" value={userData.email}/>
+            <input type="text" placeholder="Name" name="name" value={userData ? userData.displayName: ""}/>
+            <input type="email"  placeholder="Email Address" name="email" value={userData ? userData.email: ""}/>
             <input type="submit" value="Send Message"></input>
         </form>
       </Container>
