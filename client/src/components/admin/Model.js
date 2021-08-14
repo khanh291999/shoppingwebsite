@@ -56,6 +56,7 @@ class Modal extends Component {
     category: "jacket",
     color: "white",
     colorHex: "#ffffff",
+    PID: "J21",
     S: 10,
     M: 10,
     L: 10,
@@ -91,6 +92,7 @@ class Modal extends Component {
         category,
         color,
         colorHex,
+        PID,
         S,
         M,
         L,
@@ -106,6 +108,7 @@ class Modal extends Component {
         category,
         color,
         colorHex,
+        PID,
         S,
         M,
         L,
@@ -179,6 +182,7 @@ class Modal extends Component {
       category,
       color,
       colorHex,
+      PID,
       S,
       M,
       L,
@@ -206,6 +210,7 @@ class Modal extends Component {
       category === "" ||
       color === "" ||
       colorHex === "" ||
+      PID == "" ||
       S === "" ||
       M === "" ||
       L === "" ||
@@ -226,6 +231,7 @@ class Modal extends Component {
           category,
           color,
           colorHex,
+          PID,
           S,
           M,
           L,
@@ -243,6 +249,7 @@ class Modal extends Component {
           category,
           color,
           colorHex,
+          PID,
           S,
           M,
           L,
@@ -276,6 +283,7 @@ class Modal extends Component {
       category,
       color,
       colorHex,
+      PID,
       S,
       M,
       L,
@@ -378,29 +386,8 @@ class Modal extends Component {
                     value={sex}
                     onChange={this.handleSex}
                   />
-                  {/* <FormControlLabel
-                    label="Male"
-                    control={
-                      <TextField
-                        name="Male"
-                        component={Checkbox}
-                        type="checkbox"
-                      />
-                    }
-                  />
-                  <FormControlLabel
-                    label="Female"
-                    control={
-                      <TextField
-                        name="Female"
-                        component={Checkbox}
-                        type="checkbox"
-                      />
-                    }
-                  /> */}
                 </Grid>
-                {/* Category */}
-                <Grid item xs={6} style={{ marginTop: "1%" }}>
+                <Grid item xs={5} style={{ marginTop: "1%" }}>
                   <Typography
                     style={{ display: "inline-flex", paddingRight: "20px" }}
                   >
@@ -419,6 +406,18 @@ class Modal extends Component {
                       </MenuItem>
                     ))}
                   </TextField>
+                </Grid>
+                <Grid item xs={3}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="Product ID"
+                    type="text"
+                    value={PID}
+                    id="standard-required"
+                    onChange={this.handleChange}
+                    label="Product ID"
+                  />
                 </Grid>
                 {/* Product Image */}
                 <Grid item xs={12} style={{ display: "flex", marginTop: "2%" }}>
