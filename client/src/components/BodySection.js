@@ -83,7 +83,7 @@ function BodySection(props) {
                         Shop now
                       </Button>
                     </Link>
-                    <Link to="/product">
+                    <Link to="/about">
                       <Button
                         className="btns"
                         buttonStyle="btn--primary"

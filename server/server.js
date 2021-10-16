@@ -69,6 +69,7 @@ const DisableJacketSchema = new mongoose.Schema({
   sex: Number,
   color: Array,
   colorHex: Array,
+  PID: String,
   S: Number,
   M: Number,
   L: Number,
@@ -86,6 +87,7 @@ const DisableJeanSchema = new mongoose.Schema({
   sex: Number,
   color: Array,
   colorHex: Array,
+  PID: String,
   S: Number,
   M: Number,
   L: Number,
@@ -103,6 +105,7 @@ const DisableTshirtSchema = new mongoose.Schema({
   sex: Number,
   color: Array,
   colorHex: Array,
+  PID: String,
   S: Number,
   M: Number,
   L: Number,
@@ -120,6 +123,7 @@ const DisableFemaleJacketSchema = new mongoose.Schema({
   sex: Number,
   color: Array,
   colorHex: Array,
+  PID: String,
   S: Number,
   M: Number,
   L: Number,
@@ -137,6 +141,7 @@ const DisableFemaleJeanSchema = new mongoose.Schema({
   sex: Number,
   color: Array,
   colorHex: Array,
+  PID: String,
   S: Number,
   M: Number,
   L: Number,
@@ -154,6 +159,7 @@ const DisableFemaleTshirtSchema = new mongoose.Schema({
   sex: Number,
   color: Array,
   colorHex: Array,
+  PID: String,
   S: Number,
   M: Number,
   L: Number,
@@ -175,6 +181,7 @@ const ProductSchema = new Schema({
   sex: Number,
   color: Array,
   colorHex: Array,
+  PID: String,
   S: Number,
   M: Number,
   L: Number,
@@ -592,7 +599,6 @@ app.get("/cart", (req, res) => {
 
 app.post("/cart", (req, res) => {
   const data = req.body;
-
   const newCart = new Cart(data);
   newCart.save((error) => {
     if (error) {

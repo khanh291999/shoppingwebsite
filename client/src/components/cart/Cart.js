@@ -229,7 +229,7 @@ class Cart extends React.Component {
                     <td>${total.toFixed(2)}</td>
                   </tr>
                   <tr>
-                    <th>Shipping method</th>
+                    <th>Shipping</th>
                     {/* <td>Free</td> */}
                     <FormControl component="fieldset">
                       {/* <FormLabel component="legend">Shipping unit</FormLabel> */}
@@ -240,30 +240,30 @@ class Cart extends React.Component {
                         onChange={this.handleChange}
                       >
                         <FormControlLabel
-                          value="0"
-                          control={<CustomRadio />}
-                          label="Freeship"
-                        />
-                        <FormControlLabel
-                          value="1"
-                          control={<CustomRadio />}
-                          label="Ho Chi Minh"
-                        />
-                        <FormControlLabel
                           value="2"
                           control={<CustomRadio />}
-                          label="Nationwide"
+                          label="Delivery24h"
+                        />
+                        <FormControlLabel
+                          value="4"
+                          control={<CustomRadio />}
+                          label="Grab"
+                        />
+                        <FormControlLabel
+                          value="5"
+                          control={<CustomRadio />}
+                          label="FastDelivery"
                         />
                       </RadioGroup>
                       <FormHelperText style={{ color: "#BD7F32" }}>
                         {this.state.helperText}
                       </FormHelperText>
                     </FormControl>
-                    <td>${this.state.selected_shipping}</td>
+                    <td>{this.state.selected_shipping? '$'+this.state.selected_shipping: ""}</td>
                   </tr>
                   <tr>
                     <th>Total</th>
-                    <td>${alltotal.toFixed(2)}</td>
+                    <td>${alltotal? alltotal.toFixed(2): total.toFixed(2)}</td>
                   </tr>
                 </table>
                 {/* {this.state.checkout ? (
@@ -299,6 +299,10 @@ class Cart extends React.Component {
           onSubmit={this.sendEmail}>
             <input type="text" placeholder="Name" name="name" value={userData ? userData.displayName: ""}/>
             <input type="email"  placeholder="Email Address" name="email" value={userData ? userData.email: ""}/>
+            <input type="text" placeholder="Total" name="total" value={alltotal<10? "483.90" : alltotal}/>
+            <input type="text" placeholder="Date" name="date" value={this.state.currentDate}/>
+            <input type="text" placeholder="Time" name="time" value={this.state.currentTime}/>
+            <input type="text" placeholder="Product" name="product" value={this.props.cartItems}/>
             <input type="submit" value="Send Message"></input>
         </form>
       </Container>

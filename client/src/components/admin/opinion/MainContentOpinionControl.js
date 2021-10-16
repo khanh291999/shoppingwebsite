@@ -1,6 +1,5 @@
 import React from "react";
 import { Empty } from "../Empty";
-import ModalOpinionControl from "./ModalOpinionControl";
 import DataRowOpinionControl from "./DataRowOpinionControl";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -65,8 +64,8 @@ export default class MainContentOpinionControl extends React.Component {
       <>
         <main className="content">
           <div className="content-header color">
-                <h3>Opinions</h3>
-            </div>
+            <h3>Opinions</h3>
+          </div>
           {this.state.error && (
             <ErrorNotice
               message={this.state.error}
@@ -98,16 +97,6 @@ export default class MainContentOpinionControl extends React.Component {
             )}
           </div>
         </main>
-        {this.state.open ? (
-          <ModalOpinionControl
-            clearIsEditing={this.clearIsEditing}
-            editingOpinion={this.state.opinions[this.state.isEditting]}
-            toggleModal={this.toggleModal}
-            error={this.state.error}
-          />
-        ) : (
-          ""
-        )}
       </>
     );
   }

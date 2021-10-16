@@ -134,9 +134,9 @@ export default function UserProfile() {
                       <Typography className="user-info-title">Email</Typography>
                       <TextField
                         style={{ width: "100%" }}
+                        defaultValue={userData.user.email}
                         required
                         id="email"
-                        label="Email Address"
                         name="email"
                         autoComplete="email"
                         onChange={(e) => setEmail(e.target.value)}
@@ -151,9 +151,9 @@ export default function UserProfile() {
                       </Typography>
                       <TextField
                         style={{ width: "100%" }}
+                        defaultValue={userData.user.displayName}
                         required
                         id="username"
-                        label="User Name"
                         name="username"
                         autoComplete="username"
                         onChange={(e) => setDisplayName(e.target.value)}
@@ -168,9 +168,9 @@ export default function UserProfile() {
                       </Typography>
                       <TextField
                         style={{ width: "100%" }}
+                        defaultValue={userData.user.phoneNumber}
                         required
                         id="phonenumber"
-                        label="Phone Number"
                         name="phonenumber"
                         autoComplete="phonenumber"
                         onChange={(e) => setPhoneNumber(e.target.value)}
@@ -185,9 +185,9 @@ export default function UserProfile() {
                       </Typography>
                       <TextField
                         style={{ width: "100%" }}
+                        defaultValue={userData.user.address}
                         required
                         id="address"
-                        label="Address"
                         name="address"
                         autoComplete="address"
                         onChange={(e) => setAddress(e.target.value)}

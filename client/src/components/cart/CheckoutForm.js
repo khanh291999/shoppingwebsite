@@ -80,7 +80,7 @@ export default class CheckoutForm extends Component {
 
   handlePaypalPay = () => {
     this.setState({
-      status: "Delivery",
+      status: "Waitting for Confirm",
       paypalstatus: "Paid by paypal",
     });
     this.props.handleSendForm(this.state);

@@ -100,7 +100,7 @@ function ProductListMaleTshirt(props) {
       </div>
       <form style={{ overflow: "hidden" }}>
         <input
-          style={{ width: "15%", float: "right", clear: "both" }}
+          style={{ width: "23%", marginTop: "1%", float: "right", clear: "both" }}
           type="text"
           placeholder="Seach..."
           onChange={(event) => {

@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
       api_key:
-        "",
+        "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",
     },
   })
 );
@@ -262,8 +262,8 @@ router.post("/resetpassword", (req, res) => {
       user.save().then((result) => {
         transporter.sendMail({
           to: user.email,
-          from: "khanh451754@gmail.com",
-          subject: "password reset",
+          from: "17110041@student.hcmute.edu.vn",
+          subject: "Reset password",
           html: `
                   <p>You requested for password reset</p>
                   <h5>click in this <a href="https://localhost:3001/reset/${token}">link</a> to reset password</h5>

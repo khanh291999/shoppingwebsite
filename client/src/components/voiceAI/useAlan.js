@@ -6,6 +6,7 @@ import get from "lodash/get";
 import axios from "axios";
 import Swal from "sweetalert2";
 import UserContext from "./../../context/userContext";
+import emailjs from "emailjs-com";
 
 const COMMANDS = {
   OPEN_CART: "open-cart",
@@ -57,6 +58,9 @@ function AlanTrigger(props) {
   }, [alanInstance]);
 
   const addItem = ({ detail: { name, quantity, size } }) => {
+    if (name == undefined){
+      alanInstance.playText(`I cannot find the ${name} item`);
+    }
     getAllProduct();
     const productShortVer = name.replace(/[^a-zA-Z0-9]/g, '');
     console.log('hahhahhaha',productShortVer);
@@ -142,11 +146,11 @@ function AlanTrigger(props) {
   const buyProduct = ({ detail: { shipping_fee } }) => {
     let shippingfee = undefined;
     if (shipping_fee == "0") {
-      shippingfee = 0;
-    } else if (shipping_fee == "1") {
-      shippingfee = 1;
-    } else if (shipping_fee == "2") {
       shippingfee = 2;
+    } else if (shipping_fee == "1") {
+      shippingfee = 4;
+    } else if (shipping_fee == "2") {
+      shippingfee = 5;
     }
     const { cartItems = [] } = props;
     const total = cartItems.reduce((total, pic) => {
@@ -166,7 +170,7 @@ function AlanTrigger(props) {
         .post("http://localhost:8080/cart", {
           name: userData.user.displayName,
           address: userData.user.address,
-          phoneNumber: userData.user.phoneNumber,
+          phone_number: userData.user.phoneNumber,
           paypalstatus: "Paid by COD",
           status: "Waitting for Confirm",
           product: props.cartItems,

@@ -81,7 +81,7 @@ export default function Home() {
                 >
                   <Grid item xs={12}>
                     <div id="img-box">
-                      <img src="https://scontent-xsp1-2.xx.fbcdn.net/v/t1.6435-9/154004316_886280068873569_207835256949117669_n.jpg?_nc_cat=106&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=vFKBPKBkd1MAX905GxN&_nc_ht=scontent-xsp1-2.xx&oh=440107796ccfd23d05b1ef639e277dc8&oe=60D13E77" />
+                      <img src="https://shorturl.at/hEQR6" />
                     </div>
                     <div className="leader-info">
                       <div>
@@ -119,7 +119,7 @@ export default function Home() {
                 >
                   <Grid item xs={12}>
                     <div id="img-box">
-                      <img src="https://scontent-xsp1-1.xx.fbcdn.net/v/t1.6435-9/57128382_1080220895519208_2983454892787499008_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=-qClRcDc8swAX_FMTiS&_nc_ht=scontent-xsp1-1.xx&oh=36e60bef5dbc40158fc8e546bf713f5b&oe=60D34E2C" />
+                      <img src="https://shorturl.at/bxO57" />
                     </div>
                     <div className="leader-info">
                       <div>

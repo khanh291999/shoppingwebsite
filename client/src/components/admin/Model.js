@@ -56,6 +56,7 @@ class Modal extends Component {
     category: "jacket",
     color: "white",
     colorHex: "#ffffff",
+    PID:"J21",
     S: 10,
     M: 10,
     L: 10,
@@ -91,6 +92,7 @@ class Modal extends Component {
         category,
         color,
         colorHex,
+        PID,
         S,
         M,
         L,
@@ -106,6 +108,7 @@ class Modal extends Component {
         category,
         color,
         colorHex,
+        PID,
         S,
         M,
         L,
@@ -157,6 +160,12 @@ class Modal extends Component {
   };
 
   handleColorHex = (event) => {
+    this.setState({
+      [event.target.name]: event.target.name,
+    });
+  };
+
+  handlePID = (event) => {
     this.setState({
       [event.target.name]: event.target.name,
     });
@@ -276,6 +285,7 @@ class Modal extends Component {
       category,
       color,
       colorHex,
+      PID,
       S,
       M,
       L,
@@ -400,7 +410,7 @@ class Modal extends Component {
                   /> */}
                 </Grid>
                 {/* Category */}
-                <Grid item xs={6} style={{ marginTop: "1%" }}>
+                <Grid item xs={4} style={{ marginTop: "1%" }}>
                   <Typography
                     style={{ display: "inline-flex", paddingRight: "20px" }}
                   >
@@ -419,6 +429,18 @@ class Modal extends Component {
                       </MenuItem>
                     ))}
                   </TextField>
+                </Grid>
+                <Grid item xs={1.5}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="PID"
+                    type="text"
+                    value={PID}
+                    id="standard-required"
+                    onChange={this.handlePID}
+                    label="PID"
+                  />
                 </Grid>
                 {/* Product Image */}
                 <Grid item xs={12} style={{ display: "flex", marginTop: "2%" }}>
